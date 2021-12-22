@@ -1,0 +1,10 @@
+{
+  "$schema": "../schema.json",
+  "plugins": ["@dimensiondev"],
+  "rules": {
+    "@dimensiondev/no-default-error": "error",
+    "@dimensiondev/no-implicit-array-sort": "error",
+    "@dimensiondev/no-unneeded-to-string": "error",
+    "@dimensiondev/no-unsafe-date": "error"
+  }
+}

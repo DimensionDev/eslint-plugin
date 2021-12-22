@@ -1,0 +1,197 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "allOf": [{ "$ref": "https://json.schemastore.org/eslintrc.json" }],
+  "properties": {
+    "rules": { "$ref": "#/definitions/user-defined-rules" },
+    "overrides": {
+      "type": "array",
+      "items": { "type": "object", "properties": { "rules": { "$ref": "#/definitions/user-defined-rules" } } }
+    }
+  },
+  "definitions": {
+    "rule": { "enum": ["off", "warn", "error"] },
+    "user-defined-rules": {
+      "type": "object",
+      "properties": {
+        "@dimensiondev/ban-eslint-disable": {
+          "description": "Ban `eslint-disable` comment directive",
+          "oneOf": [
+            { "$ref": "#/definitions/rule" },
+            {
+              "type": "array",
+              "items": [
+                { "$ref": "#/definitions/rule" },
+                { "oneOf": [{ "type": "boolean" }, { "const": "allow-with-description" }] }
+              ],
+              "minItems": 2
+            }
+          ]
+        },
+        "@dimensiondev/no-bidi-characters": {
+          "description": "Detect and stop Trojan Source attacks",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-bigint": { "description": "Disallow use BigInt", "$ref": "#/definitions/rule" },
+        "@dimensiondev/no-builtin-base64": {
+          "description": "Disallow use built-in base64 function",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-default-error": {
+          "description": "Restrict the usage of default (unextended) error",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-implicit-array-sort": {
+          "description": "Enforce Array#sort provide comparator function",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-invisible-characters": {
+          "description": "Disallow invisible characters",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-jsx-logical": {
+          "description": "Limit the complexity of JSX logic expression",
+          "oneOf": [
+            { "$ref": "#/definitions/rule" },
+            {
+              "type": "array",
+              "items": [
+                { "$ref": "#/definitions/rule" },
+                {
+                  "oneOf": [
+                    { "type": "integer", "minimum": 0 },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "attribute": { "type": "integer", "minimum": 0 },
+                        "element": { "type": "integer", "minimum": 0 }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                }
+              ],
+              "minItems": 2
+            }
+          ]
+        },
+        "@dimensiondev/no-jsx-template-literal": {
+          "description": "Disallow use template-literal in JSX",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-locale-case": {
+          "description": "Disallow use `.toLocale{Upper,Lower}Case()`",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-number-constructor": {
+          "description": "Disallow use `Number` constructor",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-redundant-variable": {
+          "description": "Disallow redundant variable",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-simple-string-interpolation": {
+          "description": "Disallow simple string interpolation",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-simple-template-literal": {
+          "description": "Disallow simple template-literal",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-single-return": { "description": "Disallow single-return", "$ref": "#/definitions/rule" },
+        "@dimensiondev/no-then": { "description": "Disallow `.then(...)`", "$ref": "#/definitions/rule" },
+        "@dimensiondev/no-timer": { "description": "Disallow use timer function", "$ref": "#/definitions/rule" },
+        "@dimensiondev/no-top-level": {
+          "description": "Disallow side-effect at module top-level",
+          "oneOf": [
+            { "$ref": "#/definitions/rule" },
+            {
+              "type": "array",
+              "items": [
+                { "$ref": "#/definitions/rule" },
+                {
+                  "type": "object",
+                  "properties": { "variable": { "type": "boolean" }, "side-effect": { "type": "boolean" } },
+                  "additionalProperties": false
+                }
+              ],
+              "minItems": 2
+            }
+          ]
+        },
+        "@dimensiondev/no-unneeded-flat-map": {
+          "description": "Disallow `.flatMap((x) => x)` when simpler alternatives exist",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-unneeded-to-string": {
+          "description": "Disallow `.toString()` when simpler alternatives exist",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-unsafe-date": {
+          "description": "Disallow use unsafe Date methods",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/prefer-default-export": {
+          "description": "Enforce default export location at top or bottom",
+          "oneOf": [
+            { "$ref": "#/definitions/rule" },
+            {
+              "type": "array",
+              "items": [{ "$ref": "#/definitions/rule" }, { "enum": ["at-top", "at-bottom"] }],
+              "minItems": 2
+            }
+          ]
+        },
+        "@dimensiondev/prefer-early-return": {
+          "description": "Prefer early returns over full-body conditional wrapping in function declarations",
+          "oneOf": [
+            { "$ref": "#/definitions/rule" },
+            {
+              "type": "array",
+              "items": [
+                { "$ref": "#/definitions/rule" },
+                {
+                  "type": "object",
+                  "properties": { "maximumStatements": { "type": "integer", "minimum": 0 } },
+                  "additionalProperties": false
+                }
+              ],
+              "minItems": 2
+            }
+          ]
+        },
+        "@dimensiondev/prefer-fetch": { "description": "Enforce fetch", "$ref": "#/definitions/rule" },
+        "@dimensiondev/prefer-location-assign": {
+          "description": "Enforce best practice with location",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/prefer-timer-id": {
+          "description": "Enforce best practice with timer function",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/unicode-specific-set": {
+          "description": "Limit the range of literal characters",
+          "oneOf": [
+            { "$ref": "#/definitions/rule" },
+            {
+              "type": "array",
+              "items": [
+                { "$ref": "#/definitions/rule" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "pattern": { "type": "string" },
+                    "flags": { "type": "string" },
+                    "only": { "enum": ["code", "comment"] }
+                  },
+                  "additionalProperties": false
+                }
+              ],
+              "minItems": 2
+            }
+          ]
+        }
+      }
+    }
+  }
+}
