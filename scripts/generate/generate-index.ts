@@ -3,9 +3,7 @@ import path from 'node:path'
 import dedent from 'ts-dedent'
 import ts, { factory } from 'typescript'
 import type { ExportedRuleModule } from '../../src/rule'
-import { format } from './format'
-import { SOURCE_PATH } from './paths'
-import { getConfigNames } from './utils'
+import { format, getConfigNames, toReference, SOURCE_PATH } from './utils'
 
 export async function generateIndex(modules: ExportedRuleModule[]) {
   const configs = await getConfigNames()
@@ -71,5 +69,5 @@ function createPropertyAssignment(name: string) {
 }
 
 function toCamelCase(name: string) {
-  return factory.createIdentifier(name.replaceAll('-', '_'))
+  return factory.createIdentifier(toReference(name))
 }

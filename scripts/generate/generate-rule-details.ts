@@ -4,8 +4,7 @@ import path from 'node:path'
 import { compile as toJSONSchema, JSONSchema } from 'json-schema-to-typescript'
 import type { RuleMetaData } from '@typescript-eslint/utils/dist/ts-eslint'
 import type { ExportedRuleModule } from '../../src/rule'
-import { RULE_PATH } from './paths'
-import { format } from './format'
+import { RULE_PATH, format, getRuleName, replace } from './utils'
 
 export async function generateRuleDetails(modules: ExportedRuleModule[]) {
   for (const module of modules) {
@@ -19,7 +18,7 @@ export async function generateRuleDetails(modules: ExportedRuleModule[]) {
 async function update(filePath: string, { name, meta }: ExportedRuleModule) {
   let content = await fs.readFile(filePath, 'utf-8')
 
-  content = replace(content, 'title', `# \`@dimensiondev/${name}\`\n${meta.docs?.description}`)
+  content = replace(content, 'title', `# \`${getRuleName(name)}\`\n${meta.docs?.description}`)
   content = replace(content, 'options', await makeOptions(meta))
   content = replace(content, 'attributes', makeAttributes(meta))
 
@@ -34,11 +33,6 @@ async function exists(filePath: string) {
   } catch {
     return false
   }
-}
-
-function replace(content: string, name: string, replaced: string) {
-  const pattern = new RegExp(`(<!-- begin ${name} -->)(.+)(<!-- end ${name} -->)`, 'gs')
-  return content.replace(pattern, `$1\n\n${replaced}\n\n$3`)
 }
 
 function makeAttributes(meta: RuleMetaData<string>) {

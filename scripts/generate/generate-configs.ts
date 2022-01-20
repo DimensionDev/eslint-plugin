@@ -3,8 +3,7 @@ import path from 'node:path'
 import type { Linter } from '@typescript-eslint/utils/dist/ts-eslint'
 import type { JSONSchema4 } from '@typescript-eslint/utils/dist/json-schema'
 import type { ExportedRuleModule } from '../../src/rule'
-import { format } from './format'
-import { CONFIG_PATH, SOURCE_PATH } from './paths'
+import { format, getRuleName, CONFIG_PATH, SOURCE_PATH } from './utils'
 
 const baseConfig: Linter.Config = {
   $schema: '../schema.json',
@@ -56,7 +55,7 @@ async function makeSchema(modules: ExportedRuleModule[]) {
     const rule: JSONSchema4 = { $ref: '#/definitions/rule' }
     const schemaOptions: JSONSchema4[] = Array.isArray(schema) ? schema : [schema]
     const oneOf: JSONSchema4[] = [rule, { type: 'array', items: [rule, ...schemaOptions], minItems: 2 }]
-    return [`@dimensiondev/${name}`, schemaOptions.length > 0 ? { description, oneOf } : { description, ...rule }]
+    return [getRuleName(name), schemaOptions.length > 0 ? { description, oneOf } : { description, ...rule }]
   })
   const schema: JSONSchema4 = {
     $schema: 'http://json-schema.org/draft-04/schema',
@@ -97,7 +96,7 @@ function filterRules(
   for (const rule of modules) {
     const entry = onEntry(rule)
     if (entry === undefined || entry === false) continue
-    rules.push([`@dimensiondev/${rule.name}`, entry])
+    rules.push([getRuleName(rule.name), entry])
   }
   return Object.fromEntries(rules)
 }
