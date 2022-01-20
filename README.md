@@ -156,3 +156,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [unicode_specific_set]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode-specific-set
 
 <!-- end rule list -->
+
+## LICENSE
+
+[MIT](LICENSE)
