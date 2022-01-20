@@ -1,6 +1,6 @@
 {
   "name": "@dimensiondev/eslint-plugin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "eslint plugin for dimensiondev",
   "keywords": [
     "eslint",
@@ -8,6 +8,7 @@
   ],
   "homepage": "https://dimensiondev.github.io/eslint-plugin",
   "repository": "https://github.com/DimensionDev/eslint-plugin",
+  "license": "MIT",
   "main": "lib/index.js",
   "files": [
     "lib"
