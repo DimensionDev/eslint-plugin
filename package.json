@@ -1,6 +1,11 @@
 {
   "name": "@dimensiondev/eslint-plugin",
   "version": "0.0.1",
+  "description": "eslint plugin for dimensiondev",
+  "keywords": [
+    "eslint",
+    "eslint-plugin"
+  ],
   "homepage": "https://dimensiondev.github.io/eslint-plugin",
   "repository": "https://github.com/DimensionDev/eslint-plugin",
   "main": "lib/index.js",
@@ -25,11 +30,13 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^16.0.0",
     "@types/prettier": "^2.4.3",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "@typescript-eslint/types": "^5.10.0",
     "@typescript-eslint/utils": "^5.10.0",
+    "commitlint": "^16.0.3",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-eslint-plugin": "^4.0.1",
