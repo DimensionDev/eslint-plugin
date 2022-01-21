@@ -39,7 +39,7 @@ export default createRule({
       getAttribute: over('.dataset', '.getAttribute("data-*")'),
       setAttribute: over('.dataset', '.setAttribute("data-*")'),
       hasAttribute: over('.dataset', '.hasAttribute("data-*")'),
-      removeAttribute: over('.dataset', '.remmoveAttribute("data-*")'),
+      removeAttribute: over('.dataset', '.removeAttribute("data-*")'),
     },
     replacedBy: ['unicorn/prefer-dom-node-append', 'unicorn/prefer-dom-node-remove', 'unicorn/prefer-modern-dom-apis'],
   },
