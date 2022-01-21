@@ -39,14 +39,14 @@
       "type": "object",
       "properties": {
         "@dimensiondev/ban-eslint-disable": {
-          "description": "[!] Ban `eslint-disable` comment directive",
+          "description": "Ban `eslint-disable` comment directive",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {
               "type": "array",
               "items": [
                 { "$ref": "#/definitions/rule" },
-                { "oneOf": [{ "type": "boolean" }, { "enum": ["allow-with-description"] }] }
+                { "oneOf": [{ "type": "boolean" }, { "const": "allow-with-description" }] }
               ],
               "minItems": 2
             }
@@ -74,7 +74,7 @@
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-jsx-logical": {
-          "description": "[!] Limit the complexity of JSX logic expression",
+          "description": "Limit the complexity of JSX logic expression",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {
@@ -90,8 +90,7 @@
                         "attribute": { "type": "integer", "minimum": 0 },
                         "element": { "type": "integer", "minimum": 0 }
                       },
-                      "additionalProperties": false,
-                      "required": []
+                      "additionalProperties": false
                     }
                   ]
                 }
@@ -128,7 +127,7 @@
         "@dimensiondev/no-then": { "description": "Disallow `.then(...)`", "$ref": "#/definitions/rule" },
         "@dimensiondev/no-timer": { "description": "Disallow use timer function", "$ref": "#/definitions/rule" },
         "@dimensiondev/no-top-level": {
-          "description": "[!] Disallow side-effect at module top-level",
+          "description": "Disallow side-effect at module top-level",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {
@@ -138,8 +137,7 @@
                 {
                   "type": "object",
                   "properties": { "variable": { "type": "boolean" }, "side-effect": { "type": "boolean" } },
-                  "additionalProperties": false,
-                  "required": []
+                  "additionalProperties": false
                 }
               ],
               "minItems": 2
@@ -159,7 +157,7 @@
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/prefer-default-export": {
-          "description": "[!] Enforce default export location at top or bottom",
+          "description": "Enforce default export location at top or bottom",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {
@@ -170,7 +168,7 @@
           ]
         },
         "@dimensiondev/prefer-early-return": {
-          "description": "[!] Prefer early returns over full-body conditional wrapping in function declarations",
+          "description": "Prefer early returns over full-body conditional wrapping in function declarations",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {
@@ -180,8 +178,7 @@
                 {
                   "type": "object",
                   "properties": { "maximumStatements": { "type": "integer", "minimum": 0 } },
-                  "additionalProperties": false,
-                  "required": []
+                  "additionalProperties": false
                 }
               ],
               "minItems": 2
@@ -198,7 +195,7 @@
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/unicode-specific-set": {
-          "description": "[!] Limit the range of literal characters",
+          "description": "Limit the range of literal characters",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {
@@ -212,8 +209,7 @@
                     "flags": { "type": "string" },
                     "only": { "enum": ["code", "comment"] }
                   },
-                  "additionalProperties": false,
-                  "required": []
+                  "additionalProperties": false
                 }
               ],
               "minItems": 2

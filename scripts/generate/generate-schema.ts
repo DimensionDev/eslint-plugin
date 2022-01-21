@@ -10,7 +10,7 @@ export async function generateSchema(modules: ExportedRuleModule[], configNames:
     const rule: JSONSchema4 = { $ref: '#/definitions/rule' }
     const schemaOptions: JSONSchema4[] = Array.isArray(schema) ? schema : [schema]
     const oneOf: JSONSchema4[] = [rule, { type: 'array', items: [rule, ...schemaOptions], minItems: 2 }]
-    const description = docs?.description && schemaOptions.length > 0 ? '[!] ' + docs.description : docs?.description
+    const description = docs?.description
     return [getRuleName(name), schemaOptions.length > 0 ? { description, oneOf } : { description, ...rule }]
   })
   const schema: JSONSchema4 = {

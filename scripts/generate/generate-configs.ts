@@ -60,7 +60,7 @@ export function getConfigNames() {
   return names
 }
 
-export async function generateConfigMetadata(modules: ExportedRuleModule[]) {
+export async function generateConfigs(modules: ExportedRuleModule[]) {
   await fs.rm(CONFIG_PATH, { recursive: true })
   await fs.mkdir(CONFIG_PATH)
   for (const name of Object.keys(configs)) {

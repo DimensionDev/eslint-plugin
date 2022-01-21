@@ -1,7 +1,7 @@
 #!npx ts-node
 /* eslint-disable no-console */
 import { getRuleModules } from './utils'
-import { generateConfigMetadata, getConfigNames } from './generate-configs'
+import { generateConfigs, getConfigNames } from './generate-configs'
 import { generateRuleDetails } from './generate-rule-details'
 import { generateIndex } from './generate-index'
 import { generateREADME } from './generate-readme'
@@ -12,11 +12,11 @@ async function main() {
   const configNames = getConfigNames()
   console.log('rules', rules.length)
   console.log('configs', configNames.length)
-  await time('generate configs', () => generateConfigMetadata(rules))
-  await time('generate details', () => generateRuleDetails(rules))
-  await time('generate readme', () => generateREADME(rules))
+  await time('generate configs', () => generateConfigs(rules))
   await time('generate schema', () => generateSchema(rules, configNames))
   await time('generate index', () => generateIndex(rules, configNames))
+  await time('generate readme', () => generateREADME(rules))
+  await time('generate details', () => generateRuleDetails(rules))
 }
 
 async function time<T>(name: string, callback: () => Promise<T>) {
