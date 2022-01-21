@@ -1,6 +1,6 @@
 import type { Node, ReturnStatement, VariableDeclaration } from '@typescript-eslint/types/dist/ast-spec'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
-import { closest, isIdentifier, isSameIdentifier } from '../node'
+import { closest, isAwait, isIdentifier, isSameIdentifier } from '../node'
 import { createRule } from '../rule'
 import { wrap } from '../utils'
 
@@ -59,17 +59,15 @@ function getFixer(
     const replaced = getReturnExpression(init)
     const modified = wrap(source.getText(replaced), (input) => {
       if (!id.typeAnnotation) return input
-      let annotation = source.getText(id.typeAnnotation.typeAnnotation)
-      if (init.type === 'AwaitExpression') {
-        annotation = `Promise<${annotation}>`
-      }
-      return `(${input}) as ${annotation}`
+      const annotation = source.getText(id.typeAnnotation.typeAnnotation)
+      return `(${input}) as ${isAwait(init) ? `Promise<${annotation}>` : annotation}`
     })
     return [fixer.remove(variable), fixer.replaceText(exit.argument, modified)]
   }
 }
 
 export function getReturnExpression(node: Node) {
+  if (!isAwait(node)) return node
   if (closest(node, 'TryStatement')) return node
-  return node.type === 'AwaitExpression' ? node.argument : node
+  return node.argument
 }
