@@ -31,11 +31,11 @@ export default createRule({
           *fix(fixer) {
             const annotation = wrap(source.getText(argument.typeAnnotation), (annotation) => {
               if (annotation.startsWith('Promise')) return annotation
-              return isAwait(argument.expression) ? `Promise<${annotation}>` : annotation
+              return parent.async || isAwait(argument.expression) ? `Promise<${annotation}>` : annotation
             })
             if (!parent.returnType) {
-              if (!parent.body) return
-              const range = wrap(parent.body.range, ([start, end]): Range => [start - 1, end])
+              const offset = parent.type === 'ArrowFunctionExpression' ? 4 : 1
+              const range = wrap(parent.body.range, ([start, end]): Range => [start - offset, end])
               yield fixer.insertTextBeforeRange(range, `: ${annotation}`)
             } else {
               yield fixer.insertTextAfter(parent.returnType, ` | ${annotation}`)

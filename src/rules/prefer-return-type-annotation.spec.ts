@@ -8,6 +8,16 @@ runTest({
   },
   *invalid() {
     yield {
+      code: '() => { return foo as T }',
+      output: '(): T => { return foo }',
+      errors: [{ messageId: 'move-type' }],
+    }
+    yield {
+      code: 'async () => { return foo as T }',
+      output: 'async (): Promise<T> => { return foo }',
+      errors: [{ messageId: 'move-type' }],
+    }
+    yield {
       code: 'function foo() { return bar() as Promise<T> }',
       output: 'function foo(): Promise<T> { return bar() }',
       errors: [{ messageId: 'move-type' }],

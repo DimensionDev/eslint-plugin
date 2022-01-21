@@ -1,7 +1,9 @@
 import type {
+  ArrowFunctionExpression,
   AwaitExpression,
   BigIntLiteral,
-  FunctionLike,
+  FunctionDeclaration,
+  FunctionExpression,
   Identifier,
   Literal,
   MemberExpression,
@@ -74,7 +76,9 @@ export function isLiteralValue(node: Node | undefined | null, value: unknown) {
   return node.value === value
 }
 
-export function isFunctionLike(node?: Node | null): node is FunctionLike {
+export function isFunctionLike(
+  node?: Node | null
+): node is ArrowFunctionExpression | FunctionDeclaration | FunctionExpression {
   const ALLOWED_TYPES = ['ArrowFunctionExpression', 'FunctionDeclaration', 'FunctionExpression']
   return node ? ALLOWED_TYPES.includes(node.type) : false
 }
