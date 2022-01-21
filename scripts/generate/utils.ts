@@ -35,6 +35,9 @@ export async function getRuleModules() {
   return Promise.all(
     filePaths.map(async (filePath): Promise<ExportedRuleModule> => {
       const module: { default: ExportedRuleModule } = await import(path.join(RULE_PATH, filePath))
+      if (filePath !== module.default.name + '.ts') {
+        throw new Error(`Please check ${filePath} rule name`)
+      }
       return module.default
     })
   )

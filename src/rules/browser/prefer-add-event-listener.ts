@@ -1,8 +1,8 @@
 import type { MemberExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
 import type ts from 'typescript'
-import { isIdentifier, isMemberExpression } from '../../node'
+import { isChainExpression, isIdentifier, isLiteral, isMemberExpression } from '../../node'
 import { createRule, getParserServices } from '../../rule'
-import { quote } from '../../utils'
+import { quote, wrap } from '../../utils'
 
 export default createRule({
   name: 'browser/prefer-add-event-listener',
@@ -25,11 +25,11 @@ export default createRule({
     const { typeChecker, esTreeNodeToTSNodeMap } = getParserServices(context)
     return {
       AssignmentExpression(node) {
+        if (node.operator !== '=') return
         const { left, right } = node
-        if (!isMemberExpression(left) || left.computed) return
-        const eventName = getEventMethodName(left)
-        if (!eventName?.startsWith('on')) return
-        if (!isEventTarget(typeChecker, esTreeNodeToTSNodeMap.get(left.object))) return
+        const [eventName, expression] = parse(left)
+        if (!eventName || !expression?.object) return
+        if (!isEventTarget(typeChecker, esTreeNodeToTSNodeMap.get(expression.object))) return
         context.report({
           node: left,
           messageId: 'prefer',
@@ -39,7 +39,7 @@ export default createRule({
           },
           fix(fixer) {
             if (isNil(right)) return null
-            const reference = source.getText(left.object)
+            const reference = source.getText(expression.object) + (expression.optional ? '?' : '')
             const method = quote(eventName.replace(/^on/, ''))
             const handle = source.getText(right)
             const modified = `${reference}.addEventListener(${method}, ${handle})`
@@ -51,21 +51,30 @@ export default createRule({
   },
 })
 
+function parse(node: Node): [string | undefined, MemberExpression | undefined] {
+  if (isChainExpression(node)) {
+    return parse(node.expression)
+  } else if (isMemberExpression(node)) {
+    const propertyName = wrap(node.property, (node) => {
+      if (isIdentifier(node)) return node.name
+      if (isLiteral(node) && typeof node.value === 'string') return node.value
+      return
+    })
+    return [propertyName, node]
+  }
+  return [undefined, undefined]
+}
+
 function isEventTarget(checker: ts.TypeChecker, node: ts.Node) {
-  const baseTypes = checker.getTypeAtLocation(node).getBaseTypes()
-  return baseTypes?.some((baseType) => {
-    const symbol = baseType.getSymbol()
-    return symbol && checker.symbolToString(symbol) === 'EventTarget'
-  })
+  const type = checker.getTypeAtLocation(node)
+  if (type.isUnionOrIntersection()) {
+    return type.types.some((type) => type.getProperty('addEventListener'))
+  }
+  return type.getProperty('addEventListener')
 }
 
 function isNil(node: Node) {
   if (node.type === 'Literal') return node.raw === 'null'
   if (node.type === 'Identifier') return node.name === 'undefined'
   return false
-}
-
-function getEventMethodName(node: MemberExpression) {
-  if (!isIdentifier(node.property)) return
-  return node.property.name
 }

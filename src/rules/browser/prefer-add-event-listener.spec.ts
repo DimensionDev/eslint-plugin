@@ -9,13 +9,13 @@ runTest({
       code: dedent`
         const reader = new FileReader()
         reader.onload = resolve
-        reader.onerror = reject
+        reader?.['onerror'] = reject
         reader.onerror = null
       `,
       output: dedent`
         const reader = new FileReader()
         reader.addEventListener("load", resolve)
-        reader.addEventListener("error", reject)
+        reader?.addEventListener("error", reject)
         reader.onerror = null
       `,
       errors: [
@@ -34,6 +34,22 @@ runTest({
         channel.port1.addEventListener("message", function (e) {})
       `,
       errors: [{ messageId: 'prefer', data: { replacement: 'add', methodName: 'onmessage' } }],
+    }
+    yield {
+      code: dedent`
+        const element = document.querySelector('...')
+        element?.onclick = handleClick
+        element?.['onclick'] = handleClick
+      `,
+      output: dedent`
+        const element = document.querySelector('...')
+        element?.addEventListener("click", handleClick)
+        element?.addEventListener("click", handleClick)
+      `,
+      errors: [
+        { messageId: 'prefer', data: { replacement: 'add', methodName: 'onclick' } },
+        { messageId: 'prefer', data: { replacement: 'add', methodName: 'onclick' } },
+      ],
     }
   },
 })

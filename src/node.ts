@@ -2,6 +2,7 @@ import type {
   ArrowFunctionExpression,
   AwaitExpression,
   BigIntLiteral,
+  ChainExpression,
   FunctionDeclaration,
   FunctionExpression,
   Identifier,
@@ -39,6 +40,10 @@ export function isIdentifier(node?: Node | null): node is Identifier | PrivateId
 
 export function isMemberExpression(node?: Node | null): node is MemberExpression {
   return node?.type === 'MemberExpression'
+}
+
+export function isChainExpression(node?: Node | null): node is ChainExpression {
+  return node?.type === 'ChainExpression'
 }
 
 export function isLiteral(node?: Node | null): node is Literal {
