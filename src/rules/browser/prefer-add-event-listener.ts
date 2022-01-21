@@ -1,7 +1,6 @@
 import type { MemberExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
-import { isIdentifier } from '@typescript-eslint/utils/dist/ast-utils'
 import type ts from 'typescript'
-import { isMemberExpression } from '../../node'
+import { isIdentifier, isMemberExpression } from '../../node'
 import { createRule, getParserServices } from '../../rule'
 import { quote } from '../../utils'
 

@@ -52,6 +52,10 @@
     "unicorn/prefer-string-starts-ends-with": "error",
     "unicorn/prefer-string-trim-start-end": "error",
     "unicorn/template-indent": "error",
+    "@typescript-eslint/no-restricted-imports": [
+      "error",
+      { "patterns": [{ "name": "@typescript-eslint/*", "allowTypeImports": true }] }
+    ],
     "@typescript-eslint/await-thenable": "error",
     "@typescript-eslint/no-for-in-array": "error",
     "@typescript-eslint/no-implied-eval": "error",
