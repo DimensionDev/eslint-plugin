@@ -3,6 +3,17 @@
   "allOf": [{ "$ref": "https://json.schemastore.org/eslintrc.json" }],
   "properties": {
     "rules": { "$ref": "#/definitions/user-defined-rules" },
+    "plugins": {
+      "type": "array",
+      "items": { "anyOf": [{ "type": "string" }, { "const": "@dimensiondev" }] },
+      "uniqueItems": true
+    },
+    "extends": {
+      "oneOf": [
+        { "$ref": "#/definitions/preset-configs" },
+        { "type": "array", "items": { "$ref": "#/definitions/preset-configs" }, "uniqueItems": true }
+      ]
+    },
     "overrides": {
       "type": "array",
       "items": { "type": "object", "properties": { "rules": { "$ref": "#/definitions/user-defined-rules" } } }
@@ -10,18 +21,32 @@
   },
   "definitions": {
     "rule": { "enum": ["off", "warn", "error"] },
+    "preset-configs": {
+      "anyOf": [
+        { "type": "string" },
+        {
+          "enum": [
+            "plugin:@dimensiondev/all",
+            "plugin:@dimensiondev/base",
+            "plugin:@dimensiondev/fixable",
+            "plugin:@dimensiondev/recommended",
+            "plugin:@dimensiondev/recommended-requires-type-checking"
+          ]
+        }
+      ]
+    },
     "user-defined-rules": {
       "type": "object",
       "properties": {
         "@dimensiondev/ban-eslint-disable": {
-          "description": "Ban `eslint-disable` comment directive",
+          "description": "[!] Ban `eslint-disable` comment directive",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {
               "type": "array",
               "items": [
                 { "$ref": "#/definitions/rule" },
-                { "oneOf": [{ "type": "boolean" }, { "const": "allow-with-description" }] }
+                { "oneOf": [{ "type": "boolean" }, { "enum": ["allow-with-description"] }] }
               ],
               "minItems": 2
             }
@@ -49,7 +74,7 @@
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-jsx-logical": {
-          "description": "Limit the complexity of JSX logic expression",
+          "description": "[!] Limit the complexity of JSX logic expression",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {
@@ -65,7 +90,8 @@
                         "attribute": { "type": "integer", "minimum": 0 },
                         "element": { "type": "integer", "minimum": 0 }
                       },
-                      "additionalProperties": false
+                      "additionalProperties": false,
+                      "required": []
                     }
                   ]
                 }
@@ -102,7 +128,7 @@
         "@dimensiondev/no-then": { "description": "Disallow `.then(...)`", "$ref": "#/definitions/rule" },
         "@dimensiondev/no-timer": { "description": "Disallow use timer function", "$ref": "#/definitions/rule" },
         "@dimensiondev/no-top-level": {
-          "description": "Disallow side-effect at module top-level",
+          "description": "[!] Disallow side-effect at module top-level",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {
@@ -112,7 +138,8 @@
                 {
                   "type": "object",
                   "properties": { "variable": { "type": "boolean" }, "side-effect": { "type": "boolean" } },
-                  "additionalProperties": false
+                  "additionalProperties": false,
+                  "required": []
                 }
               ],
               "minItems": 2
@@ -132,7 +159,7 @@
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/prefer-default-export": {
-          "description": "Enforce default export location at top or bottom",
+          "description": "[!] Enforce default export location at top or bottom",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {
@@ -143,7 +170,7 @@
           ]
         },
         "@dimensiondev/prefer-early-return": {
-          "description": "Prefer early returns over full-body conditional wrapping in function declarations",
+          "description": "[!] Prefer early returns over full-body conditional wrapping in function declarations",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {
@@ -153,7 +180,8 @@
                 {
                   "type": "object",
                   "properties": { "maximumStatements": { "type": "integer", "minimum": 0 } },
-                  "additionalProperties": false
+                  "additionalProperties": false,
+                  "required": []
                 }
               ],
               "minItems": 2
@@ -170,7 +198,7 @@
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/unicode-specific-set": {
-          "description": "Limit the range of literal characters",
+          "description": "[!] Limit the range of literal characters",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {
@@ -184,7 +212,8 @@
                     "flags": { "type": "string" },
                     "only": { "enum": ["code", "comment"] }
                   },
-                  "additionalProperties": false
+                  "additionalProperties": false,
+                  "required": []
                 }
               ],
               "minItems": 2

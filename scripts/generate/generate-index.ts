@@ -3,15 +3,14 @@ import path from 'node:path'
 import dedent from 'ts-dedent'
 import ts, { factory } from 'typescript'
 import type { ExportedRuleModule } from '../../src/rule'
-import { format, getConfigNames, toReference, SOURCE_PATH } from './utils'
+import { format, toReference, SOURCE_PATH } from './utils'
 
-export async function generateIndex(modules: ExportedRuleModule[]) {
-  const configs = await getConfigNames()
+export async function generateIndex(modules: ExportedRuleModule[], configNames: string[]) {
   const moduleNames = modules.map(({ name }) => name)
-  const source = await makeSourceFile(configs, moduleNames)
+  const source = await makeSourceFile(configNames, moduleNames)
   const header = dedent`
-    // ${modules.length.toString().padEnd(2, ' ')} Rules
-    // ${configs.length.toString().padEnd(2, ' ')} Configs\n
+    // ${moduleNames.length.toString().padEnd(2, ' ')} Rules
+    // ${configNames.length.toString().padEnd(2, ' ')} Configs\n
   `
   const formatted = await format(header + source, 'typescript')
   await fs.writeFile(path.join(SOURCE_PATH, 'index.ts'), formatted, 'utf-8')

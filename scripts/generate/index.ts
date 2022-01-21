@@ -1,18 +1,22 @@
 #!npx ts-node
 /* eslint-disable no-console */
 import { getRuleModules } from './utils'
-import { generateConfigMetadata } from './generate-configs'
+import { generateConfigMetadata, getConfigNames } from './generate-configs'
 import { generateRuleDetails } from './generate-rule-details'
 import { generateIndex } from './generate-index'
 import { generateREADME } from './generate-readme'
+import { generateSchema } from './generate-schema'
 
 async function main() {
-  const modules = await time('load rules', getRuleModules)
-  console.log('module', modules.length, 'count')
-  await time('generate configs', () => generateConfigMetadata(modules))
-  await time('generate details', () => generateRuleDetails(modules))
-  await time('generate readme', () => generateREADME(modules))
-  await time('generate index', () => generateIndex(modules))
+  const rules = await time('load rules', getRuleModules)
+  const configNames = getConfigNames()
+  console.log('rules', rules.length)
+  console.log('configs', configNames.length)
+  await time('generate configs', () => generateConfigMetadata(rules))
+  await time('generate details', () => generateRuleDetails(rules))
+  await time('generate readme', () => generateREADME(rules))
+  await time('generate schema', () => generateSchema(rules, configNames))
+  await time('generate index', () => generateIndex(rules, configNames))
 }
 
 async function time<T>(name: string, callback: () => Promise<T>) {

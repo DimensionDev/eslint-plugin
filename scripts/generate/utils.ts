@@ -4,7 +4,7 @@ import { glob } from 'glob'
 import prettier from 'prettier'
 import type { ExportedRuleModule } from '../../src/rule'
 
-const PREFIX = '@dimensiondev/'
+export const PACKAGE_NAME = '@dimensiondev'
 
 // eslint-disable-next-line unicorn/prefer-module
 export const ROOT_PATH = path.resolve(__dirname, '..', '..')
@@ -13,8 +13,8 @@ export const RULE_PATH = path.join(SOURCE_PATH, 'rules')
 export const CONFIG_PATH = path.join(SOURCE_PATH, 'configs')
 
 export function getRuleName(name: string) {
-  if (name.startsWith(PREFIX)) return name
-  return PREFIX + name
+  if (name.startsWith(PACKAGE_NAME)) return name
+  return `${PACKAGE_NAME}/${name}`
 }
 
 export function toReference(name: string) {
@@ -27,26 +27,17 @@ export function replace(content: string, name: string, replaced: string) {
 }
 
 export async function getRuleModules() {
-  const filePaths = await promisify(glob)(`${RULE_PATH}/**/*.ts`, { ignore: ['**/*.spec.ts'] })
-  const modules: ExportedRuleModule[] = []
-  for (const filePath of filePaths) {
-    const module = await import(filePath)
-    modules.push(module.default ?? module)
-  }
-  modules.sort((a, b) => {
-    return a.name.localeCompare(b.name, 'en-US', { numeric: true })
+  const filePaths = await promisify(glob)('**/*.ts', {
+    cwd: RULE_PATH,
+    ignore: ['**/*.spec.ts'],
   })
-  return modules
-}
-
-export async function getConfigNames() {
-  const filePaths = await promisify(glob)(`${CONFIG_PATH}/**/*.json`)
-  const names = filePaths.map((filePath) => {
-    const parsed = path.parse(path.relative(CONFIG_PATH, filePath))
-    return path.join(parsed.dir, parsed.name)
-  })
-  names.sort((a, b) => a.localeCompare(b, 'en-US', { numeric: true }))
-  return names
+  filePaths.sort((a, b) => a.localeCompare(b, 'en-US', { numeric: true }))
+  return Promise.all(
+    filePaths.map(async (filePath): Promise<ExportedRuleModule> => {
+      const module: { default: ExportedRuleModule } = await import(path.join(RULE_PATH, filePath))
+      return module.default
+    })
+  )
 }
 
 export async function format(source: string, parser: prettier.Config['parser']) {
