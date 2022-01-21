@@ -1,5 +1,5 @@
 import type { Property, TemplateLiteral } from '@typescript-eslint/types/dist/ast-spec'
-import type { ReportFixFunction } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
 import { closest, isMulitline } from '../node'
 import { createRule } from '../rule'
 
@@ -18,32 +18,31 @@ export default createRule({
     },
   },
   create(context) {
-    const handle = (node: TemplateLiteral) => {
-      let fixer: ReportFixFunction | undefined
-      if (isNoTemplateExpression(node)) {
-        fixer = (fixer) => {
-          const source = context.getSourceCode()
-          const key = JSON.stringify(node.quasis[0].value.cooked)
-          const property = closest<Property>(node, 'Property')
-          return property?.key === node
-            ? fixer.replaceText(property, `${key}: ${source.getText(property.value)}`)
-            : fixer.replaceText(node, key)
-        }
-      } else if (isToString(node)) {
-        fixer = (fixer) => {
-          const source = context.getSourceCode()
-          return fixer.replaceText(node, source.getText(node.expressions[0]))
-        }
-      }
-      if (fixer) {
-        context.report({ node, messageId: 'invalid', fix: fixer })
-      }
-    }
+    const source = context.getSourceCode()
     return {
-      TemplateLiteral: handle,
+      TemplateLiteral(node) {
+        const fix = getFixer(source, node)
+        if (!fix) return
+        context.report({ node, messageId: 'invalid', fix })
+      },
     }
   },
 })
+
+function getFixer(source: Readonly<SourceCode>, node: TemplateLiteral): ReportFixFunction | undefined {
+  if (isNoTemplateExpression(node)) {
+    return (fixer) => {
+      const key = JSON.stringify(node.quasis[0].value.cooked)
+      const property = closest<Property>(node, (property) => property.type === 'Property' && property.key === node)
+      return property
+        ? fixer.replaceText(property, `${key}: ${source.getText(property.value)}`)
+        : fixer.replaceText(node, key)
+    }
+  } else if (isToString(node)) {
+    return (fixer) => fixer.replaceText(node, source.getText(node.expressions[0]))
+  }
+  return
+}
 
 function isNoTemplateExpression(node: TemplateLiteral) {
   return (
