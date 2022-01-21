@@ -1,5 +1,5 @@
-import type { Node, Range, TSAsExpression } from '@typescript-eslint/types/dist/ast-spec'
-import { closest, isFunctionLike, isAwait } from '../node'
+import type { Node, Range, TSAsExpression, TypeNode } from '@typescript-eslint/types/dist/ast-spec'
+import { closest, isFunctionLike, isAwait, isIdentifierName } from '../node'
 import { createRule } from '../rule'
 import { wrap } from '../utils'
 
@@ -24,6 +24,7 @@ export default createRule({
         const { argument } = node
         const parent = closest(node, isFunctionLike)
         if (!parent || !isAs(argument)) return
+        if (isAsConstType(argument.typeAnnotation)) return
         context.report({
           node: argument.typeAnnotation,
           messageId: 'move-type',
@@ -51,4 +52,8 @@ export default createRule({
 
 function isAs(node?: Node | null): node is TSAsExpression {
   return node?.type === 'TSAsExpression'
+}
+
+function isAsConstType(node: TypeNode) {
+  return node?.type === 'TSTypeReference' && isIdentifierName(node.typeName, 'const')
 }

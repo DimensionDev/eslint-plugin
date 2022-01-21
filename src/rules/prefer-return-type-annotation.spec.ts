@@ -3,6 +3,9 @@ import module from './prefer-return-type-annotation'
 
 runTest({
   module,
+  *valid() {
+    yield 'function foo() { return [] as const }'
+  },
   *invalid() {
     yield {
       code: 'function foo() { return bar() as Promise<T> }',
