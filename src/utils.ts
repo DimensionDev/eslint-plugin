@@ -1,6 +1,6 @@
 export type Predicate<T> = (value: T) => boolean
 
-export function wrap<T>(input: T, callback: (input: T) => T) {
+export function wrap<T, R = T>(input: T, callback: (input: T) => R) {
   return callback(input)
 }
 

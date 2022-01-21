@@ -2,6 +2,7 @@
 import type { Program, Token } from '@typescript-eslint/types/dist/ast-spec'
 import type { ReportFixFunction, RuleListener } from '@typescript-eslint/utils/dist/ts-eslint'
 import { createRule } from '../rule'
+import { wrap } from '../utils'
 
 // https://unicode.org/reports/tr18
 // https://unicode.org/reports/tr51
@@ -60,15 +61,17 @@ export function makeProgramListener(pattern: RegExp, onReport: (node: Token, kin
   return {
     Program(program: Program) {
       for (const token of program.tokens ?? []) {
-        let value = token.value
-        if (token.type === 'String' || token.type === 'Template') {
-          value = value.slice(1, -1)
-        } else if (token.type === 'Identifier' && token.value.startsWith('#')) {
-          value = value.slice(1)
-        } else if (token.type === 'RegularExpression') {
-          value = token.regex.pattern
-        }
-        if (!pattern.test(token.value)) continue
+        const value = wrap(token, (token) => {
+          if (token.type === 'String' || token.type === 'Template') {
+            return token.value.slice(1, -1)
+          } else if (token.type === 'Identifier' && token.value.startsWith('#')) {
+            return token.value.slice(1)
+          } else if (token.type === 'RegularExpression') {
+            return token.regex.pattern
+          }
+          return token.value
+        })
+        if (!pattern.test(value)) continue
         onReport(token, 'code')
       }
       for (const comment of program.comments ?? []) {
