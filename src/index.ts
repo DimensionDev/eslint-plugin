@@ -1,4 +1,4 @@
-// 27 Rules
+// 28 Rules
 // 5  Configs
 import ban_eslint_disable from './rules/ban-eslint-disable'
 import no_bidi_characters from './rules/no-bidi-characters'
@@ -25,6 +25,7 @@ import prefer_default_export from './rules/prefer-default-export'
 import prefer_early_return from './rules/prefer-early-return'
 import prefer_fetch from './rules/prefer-fetch'
 import prefer_location_assign from './rules/prefer-location-assign'
+import prefer_return_type_annotation from './rules/prefer-return-type-annotation'
 import prefer_timer_id from './rules/prefer-timer-id'
 import unicode_specific_set from './rules/unicode-specific-set'
 export const rules = {
@@ -53,6 +54,7 @@ export const rules = {
   'prefer-early-return': prefer_early_return,
   'prefer-fetch': prefer_fetch,
   'prefer-location-assign': prefer_location_assign,
+  'prefer-return-type-annotation': prefer_return_type_annotation,
   'prefer-timer-id': prefer_timer_id,
   'unicode-specific-set': unicode_specific_set,
 }

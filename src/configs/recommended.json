@@ -17,6 +17,7 @@
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-fetch": "error",
     "@dimensiondev/prefer-location-assign": "error",
+    "@dimensiondev/prefer-return-type-annotation": "error",
     "@dimensiondev/prefer-timer-id": "error"
   }
 }

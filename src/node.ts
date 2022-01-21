@@ -1,4 +1,5 @@
 import type {
+  AwaitExpression,
   BigIntLiteral,
   FunctionLike,
   Identifier,
@@ -10,10 +11,10 @@ import type {
 } from '@typescript-eslint/types/dist/ast-spec'
 import type { Predicate } from './utils'
 
-export function closest<T extends Node>(node: Node | null | undefined, type: string): T | undefined
-export function closest<T extends Node>(node: Node | null | undefined, test: (node: Node) => node is T): T | undefined
-export function closest<T extends Node>(node: Node | null | undefined, test: (node: Node) => boolean): T | undefined
-export function closest(node: Node | null | undefined, test: string | ((node: Node) => boolean)): Node | undefined {
+export function closest<T extends Node>(node: Node | undefined | null, type: string): T | undefined
+export function closest<T extends Node>(node: Node | undefined | null, test: (node: Node) => node is T): T | undefined
+export function closest<T extends Node>(node: Node | undefined | null, test: (node: Node) => boolean): T | undefined
+export function closest(node: Node | undefined | null, test: string | ((node: Node) => boolean)): Node | undefined {
   if (typeof test === 'string') {
     const typeName = test
     test = (node) => node.type === typeName
@@ -30,46 +31,50 @@ export function isMulitline({ loc }: Node) {
   return loc.start.line !== loc.end.line
 }
 
-export function isIdentifier(node: Node | null | undefined): node is Identifier | PrivateIdentifier {
+export function isIdentifier(node?: Node | null): node is Identifier | PrivateIdentifier {
   return node?.type === 'Identifier' || node?.type === 'PrivateIdentifier'
 }
 
-export function isMemberExpression(node: Node | null | undefined): node is MemberExpression {
+export function isMemberExpression(node?: Node | null): node is MemberExpression {
   return node?.type === 'MemberExpression'
 }
 
-export function isLiteral(node: Node | null | undefined): node is Literal {
+export function isLiteral(node?: Node | null): node is Literal {
   return node?.type === 'Literal'
 }
 
-export function isBigIntLiteral(node: Node | null | undefined): node is BigIntLiteral {
+export function isAwait(node?: Node | null): node is AwaitExpression {
+  return node?.type === 'AwaitExpression'
+}
+
+export function isBigIntLiteral(node?: Node | null): node is BigIntLiteral {
   return node?.type === 'Literal' && Reflect.has(node, 'bigint')
 }
 
-export function isRegExpLiteral(node: Node | null | undefined): node is RegExpLiteral {
+export function isRegExpLiteral(node?: Node | null): node is RegExpLiteral {
   return node?.type === 'Literal' && Reflect.has(node, 'regex')
 }
 
-export function isIdentifierName(node: Node, name: string): boolean
-export function isIdentifierName(node: Node, names: string[]): boolean
-export function isIdentifierName(node: Node, test: Predicate<string>): boolean
-export function isIdentifierName(node: Node, name: unknown) {
+export function isIdentifierName(node: Node | undefined | null, name: string): boolean
+export function isIdentifierName(node: Node | undefined | null, names: string[]): boolean
+export function isIdentifierName(node: Node | undefined | null, test: Predicate<string>): boolean
+export function isIdentifierName(node: Node | undefined | null, name: unknown) {
   if (!isIdentifier(node)) return false
   if (typeof name === 'function') return name(node.name)
   if (Array.isArray(name)) return name.includes(node.name)
   return node.name === name
 }
 
-export function isLiteralValue(node: Node, value: number): boolean
-export function isLiteralValue(node: Node, value: string): boolean
-export function isLiteralValue(node: Node, pattern: RegExp): boolean
-export function isLiteralValue(node: Node, value: unknown) {
-  if (node.type !== 'Literal') return false
+export function isLiteralValue(node: Node | undefined | null, value: number): boolean
+export function isLiteralValue(node: Node | undefined | null, value: string): boolean
+export function isLiteralValue(node: Node | undefined | null, pattern: RegExp): boolean
+export function isLiteralValue(node: Node | undefined | null, value: unknown) {
+  if (node?.type !== 'Literal') return false
   if (typeof node.value === 'string' && value instanceof RegExp) return value.test(node.value)
   return node.value === value
 }
 
-export function isFunctionLike(node: Node | undefined): node is FunctionLike {
+export function isFunctionLike(node?: Node | null): node is FunctionLike {
   const ALLOWED_TYPES = ['ArrowFunctionExpression', 'FunctionDeclaration', 'FunctionExpression']
   return node ? ALLOWED_TYPES.includes(node.type) : false
 }

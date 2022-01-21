@@ -190,6 +190,10 @@
           "description": "Enforce best practice with location",
           "$ref": "#/definitions/rule"
         },
+        "@dimensiondev/prefer-return-type-annotation": {
+          "description": "Enforce Move return type annotation to function return type",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/prefer-timer-id": {
           "description": "Enforce best practice with timer function",
           "$ref": "#/definitions/rule"

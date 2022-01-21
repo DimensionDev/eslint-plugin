@@ -53,6 +53,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-fetch": "error",
     "@dimensiondev/prefer-location-assign": "error",
+    "@dimensiondev/prefer-return-type-annotation": "error",
     "@dimensiondev/prefer-timer-id": "error",
     "@dimensiondev/unicode-specific-set": "off"
   }
@@ -122,6 +123,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Enforce fetch
 - [prefer-location-assign][prefer_location_assign] :white_check_mark: :wrench:\
   Enforce best practice with location
+- [prefer-return-type-annotation][prefer_return_type_annotation] :white_check_mark: :wrench:\
+  Enforce Move return type annotation to function return type
 - [prefer-timer-id][prefer_timer_id] :white_check_mark: :bulb:\
   Enforce best practice with timer function
 - [unicode-specific-set][unicode_specific_set] :wrench: :gear:\
@@ -152,6 +155,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [prefer_early_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-early-return
 [prefer_fetch]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-fetch
 [prefer_location_assign]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-location-assign
+[prefer_return_type_annotation]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-return-type-annotation
 [prefer_timer_id]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-timer-id
 [unicode_specific_set]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode-specific-set
 
