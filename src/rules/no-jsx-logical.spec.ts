@@ -3,9 +3,9 @@ import module from './no-jsx-logical'
 
 runTest({
   module,
-  *valid() {
-    yield { code: '<a href />', options: [0] } as const
-    yield { code: '<a href={1} />', options: [3] } as const
+  *valid(cast) {
+    yield cast({ code: '<a href />', options: [0] })
+    yield cast({ code: '<a href={1} />', options: [3] })
     yield '<a>{1 || 2}</a>'
   },
   *invalid() {

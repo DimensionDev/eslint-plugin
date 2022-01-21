@@ -3,12 +3,12 @@ import module from './unicode-specific-set'
 
 runTest({
   module,
-  *valid() {
+  *valid(cast) {
     yield `''`
     yield `'ABC'`
     yield '1'
-    yield { code: '// 中文', options: [{ only: 'code' }] } as const
-    yield { code: '中文', options: [{ only: 'comment' }] } as const
+    yield cast({ code: '// 中文', options: [{ only: 'code' }] })
+    yield cast({ code: '中文', options: [{ only: 'comment' }] })
   },
   *invalid() {
     for (const code of ['中文', '#中文', '// 中文']) {

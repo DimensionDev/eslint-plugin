@@ -5,12 +5,12 @@ import module from './no-top-level'
 
 runTest({
   module,
-  *valid() {
+  *valid(cast) {
     yield 'const foo = "bar"'
-    yield { code: 'let foo = "bar"', options: [{ variable: false }] } as const
-    yield { code: '{ let foo = "bar" }', options: [{ variable: false }] } as const
-    yield { code: 'if (1) {}', options: [{ 'side-effect': false }] } as const
-    yield { code: '{ if (1) {} }', options: [{ 'side-effect': false }] } as const
+    yield cast({ code: 'let foo = "bar"', options: [{ variable: false }] })
+    yield cast({ code: '{ let foo = "bar" }', options: [{ variable: false }] })
+    yield cast({ code: 'if (1) {}', options: [{ 'side-effect': false }] })
+    yield cast({ code: '{ if (1) {} }', options: [{ 'side-effect': false }] })
   },
   *invalid() {
     yield {

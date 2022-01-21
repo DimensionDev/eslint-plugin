@@ -15,10 +15,12 @@ const tester = new RuleTester({
   },
 })
 
+type TestCaseGenerator<T, R = T> = (cast: (input: T) => T) => Generator<R>
+
 interface RunOptions<TOptions extends readonly unknown[], TMessageIds extends string> {
   module: ExportedRuleModule<TOptions, TMessageIds, RuleListener>
-  valid?(): Generator<string | ValidTestCase<TOptions>>
-  invalid(): Generator<InvalidTestCase<TMessageIds, TOptions>>
+  valid?: TestCaseGenerator<ValidTestCase<TOptions>, string | ValidTestCase<TOptions>>
+  invalid: TestCaseGenerator<InvalidTestCase<TMessageIds, TOptions>>
 }
 
 export async function runTest<TOptions extends readonly unknown[], TMessageIds extends string>(
@@ -26,7 +28,11 @@ export async function runTest<TOptions extends readonly unknown[], TMessageIds e
 ) {
   const { module, valid, invalid } = options
   tester.run(module.name, module, {
-    valid: [...(valid?.() ?? [])].flat(),
-    invalid: [...(invalid?.() ?? [])].flat(),
+    valid: [...(valid?.(identifier) ?? [])].flat(),
+    invalid: [...(invalid(identifier) ?? [])].flat(),
   })
+}
+
+function identifier<T>(input: T): T {
+  return input
 }

@@ -3,20 +3,20 @@ import module from './prefer-default-export'
 
 runTest({
   module,
-  *valid() {
-    yield { code: 'export default 1; export const example = 1;', options: ['at-top'] } as const
-    yield { code: 'export const example = 1; export default 1;', options: ['at-bottom'] } as const
+  *valid(cast) {
+    yield cast({ code: 'export default 1; export const example = 1;', options: ['at-top'] })
+    yield cast({ code: 'export const example = 1; export default 1;', options: ['at-bottom'] })
   },
-  *invalid() {
-    yield {
+  *invalid(cast) {
+    yield cast({
       code: 'export default 1; export const example = 1;',
       options: ['at-bottom'],
       errors: [{ messageId: 'at-bottom' }],
-    } as const
-    yield {
+    })
+    yield cast({
       code: 'export const example = 1; export default 1;',
       options: ['at-top'],
       errors: [{ messageId: 'at-top' }],
-    } as const
+    })
   },
 })
