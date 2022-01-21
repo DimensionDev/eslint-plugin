@@ -7,6 +7,7 @@
     "@dimensiondev/no-bigint": "off",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-default-error": "error",
+    "@dimensiondev/no-force-cast-via-top-type": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
     "@dimensiondev/no-invisible-characters": "error",
     "@dimensiondev/no-jsx-logical": "off",

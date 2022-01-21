@@ -1,10 +1,11 @@
-// 28 Rules
+// 29 Rules
 // 5  Configs
 import ban_eslint_disable from './rules/ban-eslint-disable'
 import no_bidi_characters from './rules/no-bidi-characters'
 import no_bigint from './rules/no-bigint'
 import no_builtin_base64 from './rules/no-builtin-base64'
 import no_default_error from './rules/no-default-error'
+import no_force_cast_via_top_type from './rules/no-force-cast-via-top-type'
 import no_implicit_array_sort from './rules/no-implicit-array-sort'
 import no_invisible_characters from './rules/no-invisible-characters'
 import no_jsx_logical from './rules/no-jsx-logical'
@@ -34,6 +35,7 @@ export const rules = {
   'no-bigint': no_bigint,
   'no-builtin-base64': no_builtin_base64,
   'no-default-error': no_default_error,
+  'no-force-cast-via-top-type': no_force_cast_via_top_type,
   'no-implicit-array-sort': no_implicit_array_sort,
   'no-invisible-characters': no_invisible_characters,
   'no-jsx-logical': no_jsx_logical,

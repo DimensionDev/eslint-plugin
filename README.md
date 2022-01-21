@@ -33,6 +33,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/no-bigint": "off",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-default-error": "error",
+    "@dimensiondev/no-force-cast-via-top-type": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
     "@dimensiondev/no-invisible-characters": "error",
     "@dimensiondev/no-jsx-logical": "off",
@@ -83,6 +84,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallow use built-in base64 function
 - [no-default-error][no_default_error] :white_check_mark: :thought_balloon:\
   Restrict the usage of default (unextended) error
+- [no-force-cast-via-top-type][no_force_cast_via_top_type] :white_check_mark:\
+  Disallowing cast a type T to unrelated or incompatible type Q via "T as any as Q"
 - [no-implicit-array-sort][no_implicit_array_sort] :white_check_mark: :thought_balloon:\
   Enforce Array#sort provide comparator function
 - [no-invisible-characters][no_invisible_characters] :white_check_mark: :wrench:\
@@ -135,6 +138,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [no_bigint]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-bigint
 [no_builtin_base64]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-builtin-base64
 [no_default_error]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-default-error
+[no_force_cast_via_top_type]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-force-cast-via-top-type
 [no_implicit_array_sort]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-implicit-array-sort
 [no_invisible_characters]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-invisible-characters
 [no_jsx_logical]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-jsx-logical

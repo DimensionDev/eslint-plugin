@@ -4,6 +4,7 @@
   "rules": {
     "@dimensiondev/ban-eslint-disable": "error",
     "@dimensiondev/no-builtin-base64": "error",
+    "@dimensiondev/no-force-cast-via-top-type": "error",
     "@dimensiondev/no-invisible-characters": "error",
     "@dimensiondev/no-jsx-template-literal": "error",
     "@dimensiondev/no-locale-case": "error",
