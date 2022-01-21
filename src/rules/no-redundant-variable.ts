@@ -56,10 +56,7 @@ function getFixer(
   return (fixer) => {
     const { init, id } = variable.declarations[0]
     if (!(init && id && exit.argument)) return null
-    const replaced = wrap(init, (node) => {
-      if (closest(node, 'TryStatement')) return node
-      return node.type === 'AwaitExpression' ? node.argument : node
-    })
+    const replaced = getReturnExpression(init)
     const modified = wrap(source.getText(replaced), (input) => {
       if (!id.typeAnnotation) return input
       let annotation = source.getText(id.typeAnnotation.typeAnnotation)
@@ -70,4 +67,9 @@ function getFixer(
     })
     return [fixer.remove(variable), fixer.replaceText(exit.argument, modified)]
   }
+}
+
+export function getReturnExpression(node: Node) {
+  if (closest(node, 'TryStatement')) return node
+  return node.type === 'AwaitExpression' ? node.argument : node
 }

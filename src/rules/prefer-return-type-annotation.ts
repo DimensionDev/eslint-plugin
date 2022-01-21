@@ -2,6 +2,7 @@ import type { Node, Range, TSAsExpression, TypeNode } from '@typescript-eslint/t
 import { closest, isFunctionLike, isAwait, isIdentifierName } from '../node'
 import { createRule } from '../rule'
 import { wrap } from '../utils'
+import { getReturnExpression } from './no-redundant-variable'
 
 export default createRule({
   name: 'prefer-return-type-annotation',
@@ -41,7 +42,7 @@ export default createRule({
               yield fixer.insertTextAfter(parent.returnType, ` | ${annotation}`)
             }
             yield isAwait(argument.expression)
-              ? fixer.replaceText(argument, source.getText(argument.expression.argument))
+              ? fixer.replaceText(argument, source.getText(getReturnExpression(argument.expression)))
               : fixer.removeRange(wrap(argument.typeAnnotation.range, ([start, end]) => [start - 4, end]))
           },
         })
