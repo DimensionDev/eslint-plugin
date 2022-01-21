@@ -2,6 +2,7 @@ import type { Property, TemplateLiteral } from '@typescript-eslint/types/dist/as
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
 import { closest, isMulitline } from '../node'
 import { createRule } from '../rule'
+import { quote } from '../utils'
 
 export default createRule({
   name: 'no-simple-template-literal',
@@ -32,7 +33,7 @@ export default createRule({
 function getFixer(source: Readonly<SourceCode>, node: TemplateLiteral): ReportFixFunction | undefined {
   if (isNoTemplateExpression(node)) {
     return (fixer) => {
-      const key = JSON.stringify(node.quasis[0].value.cooked)
+      const key = quote(node.quasis[0].value.cooked)
       const property = closest<Property>(node, (property) => property.type === 'Property' && property.key === node)
       return property
         ? fixer.replaceText(property, `${key}: ${source.getText(property.value)}`)

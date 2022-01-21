@@ -3,6 +3,7 @@ import { isIdentifier } from '@typescript-eslint/utils/dist/ast-utils'
 import type ts from 'typescript'
 import { isMemberExpression } from '../../node'
 import { createRule, getParserServices } from '../../rule'
+import { quote } from '../../utils'
 
 export default createRule({
   name: 'browser/prefer-add-event-listener',
@@ -39,8 +40,8 @@ export default createRule({
           },
           fix(fixer) {
             if (isNil(right)) return null
-            const method = JSON.stringify(eventName.replace(/^on/, ''))
             const reference = source.getText(left.object)
+            const method = quote(eventName.replace(/^on/, ''))
             const handle = source.getText(right)
             const modified = `${reference}.addEventListener(${method}, ${handle})`
             return fixer.replaceText(node, modified)
