@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/prefer-location-assign`
+# `@dimensiondev/browser/prefer-location-assign`
 
 Enforce best practice with location
 
@@ -10,10 +10,8 @@ Enforce best practice with location
 
 Safely Navigate to target url
 
-API:
-
-[location.assign(...)](https://html.spec.whatwg.org/multipage/history.html#dom-location-assign)
-[location.replace(...)](https://html.spec.whatwg.org/multipage/history.html#dom-location-replace)
+- [location.assign(...)](https://html.spec.whatwg.org/multipage/history.html#dom-location-assign)
+- [location.replace(...)](https://html.spec.whatwg.org/multipage/history.html#dom-location-replace)
 
 ### :x: Incorrect
 

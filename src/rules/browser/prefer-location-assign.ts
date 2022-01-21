@@ -1,14 +1,14 @@
 import type { Node } from '@typescript-eslint/types/dist/ast-spec'
 import type { ReportFixFunction } from '@typescript-eslint/utils/dist/ts-eslint'
-import { isIdentifierName, isMemberExpression } from '../node'
-import { createRule } from '../rule'
+import { isIdentifierName, isMemberExpression } from '../../node'
+import { createRule } from '../../rule'
 
 const methodNames = ['href', 'pathname', 'search', 'hash', 'origin']
 
 export default createRule({
-  name: 'prefer-location-assign',
+  name: 'browser/prefer-location-assign',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     fixable: 'code',
     docs: {
       description: 'Enforce best practice with location',

@@ -2,6 +2,8 @@
   "$schema": "../schema.json",
   "plugins": ["@dimensiondev"],
   "rules": {
+    "@dimensiondev/browser/prefer-add-event-listener": "error",
+    "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/no-default-error": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
     "@dimensiondev/no-unneeded-to-string": "error",

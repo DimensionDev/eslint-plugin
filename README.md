@@ -29,6 +29,9 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   "plugins": ["@dimensiondev"],
   "rules": {
     "@dimensiondev/ban-eslint-disable": "error",
+    "@dimensiondev/browser/prefer-add-event-listener": "error",
+    "@dimensiondev/browser/prefer-location-assign": "error",
+    "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/no-bidi-characters": "off",
     "@dimensiondev/no-bigint": "off",
     "@dimensiondev/no-builtin-base64": "error",
@@ -53,7 +56,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/prefer-default-export": "off",
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-fetch": "error",
-    "@dimensiondev/prefer-location-assign": "error",
     "@dimensiondev/prefer-return-type-annotation": "error",
     "@dimensiondev/prefer-timer-id": "error",
     "@dimensiondev/unicode-specific-set": "off"
@@ -76,6 +78,12 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 
 - [ban-eslint-disable][ban_eslint_disable] :white_check_mark: :gear:\
   Ban `eslint-disable` comment directive
+- [browser/prefer-add-event-listener][browser$prefer_add_event_listener] :white_check_mark: :wrench: :thought_balloon:\
+  Prefer `.{add,remove}EventListener()` over `on`-functions
+- [browser/prefer-location-assign][browser$prefer_location_assign] :white_check_mark: :wrench:\
+  Enforce best practice with location
+- [browser/prefer-modern-dom-apis][browser$prefer_modern_dom_apis] :white_check_mark: :wrench: :thought_balloon:\
+  Prefer Modern DOM APIs
 - [no-bidi-characters][no_bidi_characters] :wrench:\
   Detect and stop Trojan Source attacks
 - [no-bigint][no_bigint] :thought_balloon:\
@@ -124,8 +132,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Prefer early returns over full-body conditional wrapping in function declarations
 - [prefer-fetch][prefer_fetch] :white_check_mark:\
   Enforce fetch
-- [prefer-location-assign][prefer_location_assign] :white_check_mark: :wrench:\
-  Enforce best practice with location
 - [prefer-return-type-annotation][prefer_return_type_annotation] :white_check_mark: :wrench:\
   Enforce Move return type annotation to function return type
 - [prefer-timer-id][prefer_timer_id] :white_check_mark: :bulb:\
@@ -134,6 +140,9 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Limit the range of literal characters
 
 [ban_eslint_disable]: https://dimensiondev.github.io/eslint-plugin/src/rules/ban-eslint-disable
+[browser$prefer_add_event_listener]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-add-event-listener
+[browser$prefer_location_assign]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-location-assign
+[browser$prefer_modern_dom_apis]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-modern-dom-apis
 [no_bidi_characters]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-bidi-characters
 [no_bigint]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-bigint
 [no_builtin_base64]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-builtin-base64
@@ -158,7 +167,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [prefer_default_export]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-default-export
 [prefer_early_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-early-return
 [prefer_fetch]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-fetch
-[prefer_location_assign]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-location-assign
 [prefer_return_type_annotation]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-return-type-annotation
 [prefer_timer_id]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-timer-id
 [unicode_specific_set]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode-specific-set

@@ -2,6 +2,9 @@
   "$schema": "../schema.json",
   "plugins": ["@dimensiondev"],
   "rules": {
+    "@dimensiondev/browser/prefer-add-event-listener": "error",
+    "@dimensiondev/browser/prefer-location-assign": "error",
+    "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-invisible-characters": "error",
     "@dimensiondev/no-jsx-template-literal": "error",
@@ -11,7 +14,6 @@
     "@dimensiondev/no-unneeded-flat-map": "error",
     "@dimensiondev/no-unneeded-to-string": "error",
     "@dimensiondev/prefer-early-return": "error",
-    "@dimensiondev/prefer-location-assign": "error",
     "@dimensiondev/prefer-return-type-annotation": "error",
     "@dimensiondev/prefer-timer-id": "error"
   }

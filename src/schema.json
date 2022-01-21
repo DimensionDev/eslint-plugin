@@ -52,6 +52,18 @@
             }
           ]
         },
+        "@dimensiondev/browser/prefer-add-event-listener": {
+          "description": "Prefer `.{add,remove}EventListener()` over `on`-functions",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/browser/prefer-location-assign": {
+          "description": "Enforce best practice with location",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/browser/prefer-modern-dom-apis": {
+          "description": "Prefer Modern DOM APIs",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/no-bidi-characters": {
           "description": "Detect and stop Trojan Source attacks",
           "$ref": "#/definitions/rule"
@@ -190,10 +202,6 @@
           ]
         },
         "@dimensiondev/prefer-fetch": { "description": "Enforce fetch", "$ref": "#/definitions/rule" },
-        "@dimensiondev/prefer-location-assign": {
-          "description": "Enforce best practice with location",
-          "$ref": "#/definitions/rule"
-        },
         "@dimensiondev/prefer-return-type-annotation": {
           "description": "Enforce Move return type annotation to function return type",
           "$ref": "#/definitions/rule"

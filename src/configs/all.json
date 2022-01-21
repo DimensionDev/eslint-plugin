@@ -3,6 +3,9 @@
   "plugins": ["@dimensiondev"],
   "rules": {
     "@dimensiondev/ban-eslint-disable": "error",
+    "@dimensiondev/browser/prefer-add-event-listener": "error",
+    "@dimensiondev/browser/prefer-location-assign": "error",
+    "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/no-bidi-characters": "off",
     "@dimensiondev/no-bigint": "off",
     "@dimensiondev/no-builtin-base64": "error",
@@ -27,7 +30,6 @@
     "@dimensiondev/prefer-default-export": "off",
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-fetch": "error",
-    "@dimensiondev/prefer-location-assign": "error",
     "@dimensiondev/prefer-return-type-annotation": "error",
     "@dimensiondev/prefer-timer-id": "error",
     "@dimensiondev/unicode-specific-set": "off"

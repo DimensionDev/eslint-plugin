@@ -1,6 +1,9 @@
-// 29 Rules
+// 31 Rules
 // 5  Configs
 import ban_eslint_disable from './rules/ban-eslint-disable'
+import browser$prefer_add_event_listener from './rules/browser/prefer-add-event-listener'
+import browser$prefer_location_assign from './rules/browser/prefer-location-assign'
+import browser$prefer_modern_dom_apis from './rules/browser/prefer-modern-dom-apis'
 import no_bidi_characters from './rules/no-bidi-characters'
 import no_bigint from './rules/no-bigint'
 import no_builtin_base64 from './rules/no-builtin-base64'
@@ -25,12 +28,14 @@ import no_unsafe_date from './rules/no-unsafe-date'
 import prefer_default_export from './rules/prefer-default-export'
 import prefer_early_return from './rules/prefer-early-return'
 import prefer_fetch from './rules/prefer-fetch'
-import prefer_location_assign from './rules/prefer-location-assign'
 import prefer_return_type_annotation from './rules/prefer-return-type-annotation'
 import prefer_timer_id from './rules/prefer-timer-id'
 import unicode_specific_set from './rules/unicode-specific-set'
 export const rules = {
   'ban-eslint-disable': ban_eslint_disable,
+  'browser/prefer-add-event-listener': browser$prefer_add_event_listener,
+  'browser/prefer-location-assign': browser$prefer_location_assign,
+  'browser/prefer-modern-dom-apis': browser$prefer_modern_dom_apis,
   'no-bidi-characters': no_bidi_characters,
   'no-bigint': no_bigint,
   'no-builtin-base64': no_builtin_base64,
@@ -55,7 +60,6 @@ export const rules = {
   'prefer-default-export': prefer_default_export,
   'prefer-early-return': prefer_early_return,
   'prefer-fetch': prefer_fetch,
-  'prefer-location-assign': prefer_location_assign,
   'prefer-return-type-annotation': prefer_return_type_annotation,
   'prefer-timer-id': prefer_timer_id,
   'unicode-specific-set': unicode_specific_set,
