@@ -69,6 +69,7 @@ export default createRule({
     return {
       MemberExpression(node) {
         if (!isIdentifierName(node.property, 'innerText')) return
+        if (!isElement(typeChecker, esTreeNodeToTSNodeMap.get(node.object))) return
         const fix: ReportFixFunction = (fixer) => fixer.replaceText(node.property, 'textContent')
         context.report({
           node: node.property,
