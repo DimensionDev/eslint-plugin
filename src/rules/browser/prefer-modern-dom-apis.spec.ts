@@ -20,10 +20,10 @@ runTest({
         referenceNode?.insertAdjacentText("beforeend", "text")
         referenceNode?.insertAdjacentText("afterend", "text")
         referenceNode?.insertAdjacentElement("beforebegin", newNode)
-        element?.getAttribute('data-test-id')
-        element?.setAttribute('data-test-id', '')
-        element?.hasAttribute('data-test-id')
-        element?.removeAttribute('data-test-id')
+        element?.getAttribute("data-test-id")
+        element?.setAttribute("data-test-id", "")
+        element?.hasAttribute("data-test-id")
+        element?.removeAttribute("data-test-id")
       `,
       output: dedent`
         declare const element: HTMLElement | null
@@ -40,7 +40,7 @@ runTest({
         referenceNode?.after("text")
         referenceNode?.before(newNode)
         element?.dataset.testId
-        element?.dataset.testId = ''
+        element?.dataset.testId = ""
         Object.hasOwn(element?.dataset, "testId")
         delete element?.dataset.testId
       `,
@@ -50,15 +50,15 @@ runTest({
         { messageId: 'removeChild' },
         { messageId: 'replaceChild' },
         { messageId: 'insertBefore' },
-        { messageId: 'insertAdjacentText' },
-        { messageId: 'insertAdjacentText' },
-        { messageId: 'insertAdjacentText' },
-        { messageId: 'insertAdjacentText' },
-        { messageId: 'insertAdjacentElement' },
-        { messageId: 'getAttribute' },
-        { messageId: 'setAttribute' },
-        { messageId: 'hasAttribute' },
-        { messageId: 'removeAttribute' },
+        { messageId: 'insertAdjacentText', data: { method: 'before', action: '"beforebegin"' } },
+        { messageId: 'insertAdjacentText', data: { method: 'prepend', action: '"afterbegin"' } },
+        { messageId: 'insertAdjacentText', data: { method: 'append', action: '"beforeend"' } },
+        { messageId: 'insertAdjacentText', data: { method: 'after', action: '"afterend"' } },
+        { messageId: 'insertAdjacentElement', data: { method: 'before', action: '"beforebegin"' } },
+        { messageId: 'getAttribute', data: { path: '.testId', name: '"data-test-id"' } },
+        { messageId: 'setAttribute', data: { path: '.testId', name: '"data-test-id"' } },
+        { messageId: 'hasAttribute', data: { path: '.testId', name: '"data-test-id"' } },
+        { messageId: 'removeAttribute', data: { path: '.testId', name: '"data-test-id"' } },
       ],
     })
   },

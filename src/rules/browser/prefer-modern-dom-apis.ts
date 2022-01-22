@@ -41,16 +41,16 @@ export default createRule({
     },
     schema: [],
     messages: {
-      appendChild: over('Element#append()', 'Element#appendChild()'),
-      removeChild: over('childNode.remove()', 'parentNode.removeChild(childNode)'),
-      replaceChild: over('childNode.replaceWith(newNode)', 'parentNode.replaceChild(newNode, oldNode)'),
-      insertBefore: over('oldNode.before(newNode)', 'parentNode.insertBefore(newNode, oldNode)'),
-      insertAdjacentText: over('node.before("text")', 'node.insertAdjacentText("beforebegin", "text")'),
-      insertAdjacentElement: over('node.before(newNode)', 'node.insertAdjacentElement("beforebegin", newNode)'),
-      getAttribute: over('.dataset', '.getAttribute("data-*")'),
-      setAttribute: over('.dataset', '.setAttribute("data-*")'),
-      hasAttribute: over('.dataset', '.hasAttribute("data-*")'),
-      removeAttribute: over('.dataset', '.removeAttribute("data-*")'),
+      appendChild: prefer('.append', '.appendChild'),
+      removeChild: prefer('.remove', '.removeChild'),
+      replaceChild: prefer('.replaceWith', '.replaceChild'),
+      insertBefore: prefer('.before', '.insertBefore'),
+      insertAdjacentText: prefer('.{{method}}', '.insertAdjacentText({{action}}, *)'),
+      insertAdjacentElement: prefer('.{{method}}', '.insertAdjacentElement({{action}}, *)'),
+      getAttribute: prefer('.dataset{{path}}', '.getAttribute({{name}})'),
+      setAttribute: prefer('.dataset{{path}}', '.setAttribute({{name}}, *)'),
+      hasAttribute: prefer('.dataset{{path}}', '.hasAttribute({{name}})'),
+      removeAttribute: prefer('.dataset{{path}}', '.removeAttribute({{name}})'),
     },
     replacedBy: ['unicorn/prefer-dom-node-append', 'unicorn/prefer-dom-node-remove', 'unicorn/prefer-modern-dom-apis'],
   },
@@ -65,6 +65,7 @@ export default createRule({
         context.report({
           node,
           messageId: methodName,
+          data: getMessageData(source, methodName, node),
           fix: getFixer(source, methodName, node),
         })
       },
@@ -127,13 +128,7 @@ function getFixer(
     case 'insertAdjacentElement':
       return (fixer) => {
         if (!isLiteral(node.arguments[0])) return null
-        const position = wrap(node.arguments[0].value, (value) => {
-          if (value === 'beforebegin') return 'before'
-          if (value === 'afterbegin') return 'prepend'
-          if (value === 'beforeend') return 'append'
-          if (value === 'afterend') return 'after'
-          return
-        })
+        const position = getMethodOfLocation(node.arguments[0].value)
         if (!position) return null
         const baseNode = source.getText(callee.object)
         const insert = source.getText(node.arguments[1])
@@ -179,8 +174,35 @@ function getDataSetName(node: Node) {
     .join('')
 }
 
-function over(oldPattern: string, newPattern: string) {
-  return `Prefer \`${oldPattern}\` over \`${newPattern}\`.`
+function getMessageData(source: Readonly<SourceCode>, methodName: FixableMethodName, node: CallExpression) {
+  switch (methodName) {
+    case 'insertAdjacentText':
+    case 'insertAdjacentElement':
+      if (!isLiteral(node.arguments[0])) return
+      return {
+        method: getMethodOfLocation(node.arguments[0].value),
+        action: source.getText(node.arguments[0]),
+      }
+    case 'getAttribute':
+    case 'setAttribute':
+    case 'hasAttribute':
+    case 'removeAttribute': {
+      const name = getDataSetName(node.arguments[0])
+      return {
+        path: name ? property(name) : undefined,
+        name: source.getText(node.arguments[0]),
+      }
+    }
+  }
+  return
+}
+
+function getMethodOfLocation(value: unknown) {
+  if (value === 'beforebegin') return 'before'
+  if (value === 'afterbegin') return 'prepend'
+  if (value === 'beforeend') return 'append'
+  if (value === 'afterend') return 'after'
+  return
 }
 
 function isElement(checker: ts.TypeChecker, node: ts.Node) {
@@ -195,4 +217,8 @@ function isElement(checker: ts.TypeChecker, node: ts.Node) {
       return symbol && checker.symbolToString(symbol) === 'Element'
     })
   }
+}
+
+function prefer(oldPattern: string, newPattern: string) {
+  return `Prefer \`${oldPattern}\` over \`${newPattern}\`.`
 }
