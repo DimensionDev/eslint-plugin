@@ -34,7 +34,7 @@ export default createRule({
           node: left,
           messageId: 'prefer',
           data: {
-            replacement: !isNil(right) ? 'add' : 'remove',
+            replacement: isNil(right) ? 'remove' : 'add',
             methodName: eventName,
           },
           fix(fixer) {
@@ -55,12 +55,13 @@ function parse(node: Node): [string | undefined, MemberExpression | undefined] {
   if (isChainExpression(node)) {
     return parse(node.expression)
   } else if (isMemberExpression(node)) {
-    const propertyName = wrap(node.property, (node) => {
+    const name = wrap(node.property, (node) => {
       if (isIdentifier(node)) return node.name
       if (isLiteral(node) && typeof node.value === 'string') return node.value
       return
     })
-    return [propertyName, node]
+    if (!name?.startsWith('on')) return [undefined, undefined]
+    return [name, node]
   }
   return [undefined, undefined]
 }
