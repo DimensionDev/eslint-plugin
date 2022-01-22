@@ -41,16 +41,16 @@ export default createRule({
     },
     schema: [],
     messages: {
-      appendChild: prefer('.append', '.appendChild'),
-      removeChild: prefer('.remove', '.removeChild'),
-      replaceChild: prefer('.replaceWith', '.replaceChild'),
-      insertBefore: prefer('.before', '.insertBefore'),
-      insertAdjacentText: prefer('.{{method}}', '.insertAdjacentText({{action}}, *)'),
-      insertAdjacentElement: prefer('.{{method}}', '.insertAdjacentElement({{action}}, *)'),
-      getAttribute: prefer('.dataset{{path}}', '.getAttribute({{name}})'),
-      setAttribute: prefer('.dataset{{path}}', '.setAttribute({{name}}, *)'),
-      hasAttribute: prefer('.dataset{{path}}', '.hasAttribute({{name}})'),
-      removeAttribute: prefer('.dataset{{path}}', '.removeAttribute({{name}})'),
+      appendChild: prefer('append', 'appendChild'),
+      removeChild: prefer('remove', 'removeChild'),
+      replaceChild: prefer('replaceWith', 'replaceChild'),
+      insertBefore: prefer('before', 'insertBefore'),
+      insertAdjacentText: prefer('{{method}}', 'insertAdjacentText({{action}}, *)'),
+      insertAdjacentElement: prefer('{{method}}', 'insertAdjacentElement({{action}}, *)'),
+      getAttribute: prefer('dataset{{path}}', 'getAttribute({{name}})'),
+      setAttribute: prefer('dataset{{path}}', 'setAttribute({{name}}, *)'),
+      hasAttribute: prefer('dataset{{path}}', 'hasAttribute({{name}})'),
+      removeAttribute: prefer('dataset{{path}}', 'removeAttribute({{name}})'),
     },
     replacedBy: ['unicorn/prefer-dom-node-append', 'unicorn/prefer-dom-node-remove', 'unicorn/prefer-modern-dom-apis'],
   },
@@ -219,6 +219,6 @@ function isElement(checker: ts.TypeChecker, node: ts.Node) {
   }
 }
 
-function prefer(oldPattern: string, newPattern: string) {
-  return `Prefer \`${oldPattern}\` over \`${newPattern}\`.`
+function prefer(modern: string, legacy: string) {
+  return `Prefer \`.${modern}\` over \`.${legacy}\``
 }
