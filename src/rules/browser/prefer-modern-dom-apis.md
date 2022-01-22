@@ -8,6 +8,26 @@ Prefer Modern DOM APIs
 
 ## Rule Details
 
+| Legacy APIs                                              | Modern APIs                    |
+| -------------------------------------------------------- | ------------------------------ |
+| `Element#appendChild`                                    | [Element#append][append]       |
+| `Element#removeChild`                                    | [Element#remove][remove]       |
+| `Element#replaceChild`                                   | [Element#replaceWith][replace] |
+| `Element#insertBefore`                                   | [Element#before][before]       |
+| `Element#insertAdjacent{Text,Element}("beforebegin", *)` | [Element#before][before]       |
+| `Element#insertAdjacent{Text,Element}("afterbegin", *)`  | [Element#prepend][prepend]     |
+| `Element#insertAdjacent{Text,Element}("beforeend", *)`   | [Element#append][append]       |
+| `Element#insertAdjacent{Text,Element}("afterend", *)`    | [Element#after][after]         |
+| `Element#{get,set,has,remove}Attribute("data-*")`        | [Element#dataset][dataset]     |
+
+[append]: https://mdn.io/element-append
+[remove]: https://mdn.io/element-remove
+[replace]: https://mdn.io/element-replace-with
+[before]: https://mdn.io/element-before
+[prepend]: https://mdn.io/element-prepend
+[after]: https://mdn.io/element-after
+[dataset]: https://mdn.io/element-dataset
+
 ### :x: Incorrect
 
 ```ts
