@@ -61,5 +61,33 @@ runTest({
         { messageId: 'removeAttribute', data: { path: '.testId', name: '"data-test-id"' } },
       ],
     })
+    yield cast({
+      code: 'declare const element: HTMLElement; element.innerText;',
+      errors: [
+        {
+          messageId: 'innerText',
+          suggestions: [
+            {
+              messageId: 'innerTextSuggest',
+              output: 'declare const element: HTMLElement; element.textContent;',
+            },
+          ],
+        },
+      ],
+    })
+    yield cast({
+      code: 'declare const element: HTMLElement; const { innerText } = element;',
+      errors: [
+        {
+          messageId: 'innerText',
+          suggestions: [
+            {
+              messageId: 'innerTextSuggest',
+              output: 'declare const element: HTMLElement; const { textContent: innerText } = element;',
+            },
+          ],
+        },
+      ],
+    })
   },
 })

@@ -8,18 +8,20 @@ Prefer Modern DOM APIs
 
 ## Rule Details
 
-| Legacy APIs                                              | Modern APIs                    |
-| -------------------------------------------------------- | ------------------------------ |
-| `Element.appendChild`                                    | [Element.append][append]       |
-| `Element.removeChild`                                    | [Element.remove][remove]       |
-| `Element.replaceChild`                                   | [Element.replaceWith][replace] |
-| `Element.insertBefore`                                   | [Element.before][before]       |
-| `Element.insertAdjacent{Text,Element}("beforebegin", *)` | [Element.before][before]       |
-| `Element.insertAdjacent{Text,Element}("afterbegin", *)`  | [Element.prepend][prepend]     |
-| `Element.insertAdjacent{Text,Element}("beforeend", *)`   | [Element.append][append]       |
-| `Element.insertAdjacent{Text,Element}("afterend", *)`    | [Element.after][after]         |
-| `Element.{get,set,has,remove}Attribute("data-*")`        | [Element.dataset][dataset]     |
+| Legacy APIs                                              | Modern APIs                      |
+| -------------------------------------------------------- | -------------------------------- |
+| `HTMLElement.innerText`                                  | [Node.textContent][text-content] |
+| `Element.appendChild`                                    | [Element.append][append]         |
+| `Element.removeChild`                                    | [Element.remove][remove]         |
+| `Element.replaceChild`                                   | [Element.replaceWith][replace]   |
+| `Element.insertBefore`                                   | [Element.before][before]         |
+| `Element.insertAdjacent{Text,Element}("beforebegin", *)` | [Element.before][before]         |
+| `Element.insertAdjacent{Text,Element}("afterbegin", *)`  | [Element.prepend][prepend]       |
+| `Element.insertAdjacent{Text,Element}("beforeend", *)`   | [Element.append][append]         |
+| `Element.insertAdjacent{Text,Element}("afterend", *)`    | [Element.after][after]           |
+| `Element.{get,set,has,remove}Attribute("data-*")`        | [Element.dataset][dataset]       |
 
+[text-content]: https://developer.mozilla.org/docs/Web/API/Node/textContent
 [append]: https://developer.mozilla.org/docs/Web/API/Element/append
 [remove]: https://developer.mozilla.org/docs/Web/API/Element/remove
 [replace]: https://developer.mozilla.org/docs/Web/API/Element/replaceWith
@@ -52,7 +54,7 @@ children.remove()
 
 - [x] :white_check_mark: Recommended
 - [x] :wrench: Fixable
-- [ ] :bulb: Suggestions
+- [x] :bulb: Suggestions
 - [ ] :gear: Configurable
 - [x] :thought_balloon: Requires type information
 
@@ -62,4 +64,5 @@ children.remove()
 
 - <https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-dom-node-append.md>
 - <https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-dom-node-remove.md>
+- <https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-dom-node-text-content.md>
 - <https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-modern-dom-apis.md>

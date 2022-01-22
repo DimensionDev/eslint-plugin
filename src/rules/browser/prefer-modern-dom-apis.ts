@@ -7,6 +7,7 @@ import {
   isCallExpression,
   isChainExpression,
   isIdentifier,
+  isIdentifierName,
   isLiteral,
   isLiteralValue,
   isMemberExpression,
@@ -34,6 +35,7 @@ export default createRule({
   meta: {
     type: 'suggestion',
     fixable: 'code',
+    hasSuggestions: true,
     docs: {
       description: 'Prefer Modern DOM APIs',
       recommended: 'error',
@@ -51,13 +53,42 @@ export default createRule({
       setAttribute: prefer('dataset{{path}}', 'setAttribute({{name}}, *)'),
       hasAttribute: prefer('dataset{{path}}', 'hasAttribute({{name}})'),
       removeAttribute: prefer('dataset{{path}}', 'removeAttribute({{name}})'),
+      innerText: prefer('textContent', 'innerText'),
+      innerTextSuggest: 'Switch to `.textContent`',
     },
-    replacedBy: ['unicorn/prefer-dom-node-append', 'unicorn/prefer-dom-node-remove', 'unicorn/prefer-modern-dom-apis'],
+    replacedBy: [
+      'unicorn/prefer-dom-node-append',
+      'unicorn/prefer-dom-node-remove',
+      'unicorn/prefer-dom-node-text-content',
+      'unicorn/prefer-modern-dom-apis',
+    ],
   },
   create(context) {
     const source = context.getSourceCode()
     const { typeChecker, esTreeNodeToTSNodeMap } = getParserServices(context)
     return {
+      MemberExpression(node) {
+        if (!isIdentifierName(node.property, 'innerText')) return
+        const fix: ReportFixFunction = (fixer) => fixer.replaceText(node.property, 'textContent')
+        context.report({
+          node: node.property,
+          messageId: 'innerText',
+          suggest: [{ messageId: 'innerTextSuggest', fix }],
+        })
+      },
+      Property(node) {
+        if (node.parent?.type !== 'ObjectPattern') return
+        if (!isElement(typeChecker, esTreeNodeToTSNodeMap.get(node.parent))) return
+        if (!isIdentifierName(node.key, 'innerText')) return
+        const fix: ReportFixFunction = (fixer) => {
+          return fixer.replaceText(node.key, `textContent${node.shorthand ? ': innerText' : ''}`)
+        }
+        context.report({
+          node,
+          messageId: 'innerText',
+          suggest: [{ messageId: 'innerTextSuggest', fix }],
+        })
+      },
       CallExpression(node) {
         const [methodName, expression] = parse(node.callee)
         if (!methodName || !expression) return

@@ -82,7 +82,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Prefer `.{add,remove}EventListener()` over `on`-functions
 - [browser/prefer-location-assign][browser$prefer_location_assign] :white_check_mark: :wrench:\
   Enforce best practice with location
-- [browser/prefer-modern-dom-apis][browser$prefer_modern_dom_apis] :white_check_mark: :wrench: :thought_balloon:\
+- [browser/prefer-modern-dom-apis][browser$prefer_modern_dom_apis] :white_check_mark: :wrench: :bulb: :thought_balloon:\
   Prefer Modern DOM APIs
 - [no-bidi-characters][no_bidi_characters] :wrench:\
   Detect and stop Trojan Source attacks
