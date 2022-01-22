@@ -1,7 +1,16 @@
 import type { CallExpression, MemberExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
 import type ts from 'typescript'
-import { isAwait, isIdentifier, isLiteral, isLiteralValue, isMemberExpression } from '../../node'
+import {
+  closest,
+  isAwait,
+  isCallExpression,
+  isChainExpression,
+  isIdentifier,
+  isLiteral,
+  isLiteralValue,
+  isMemberExpression,
+} from '../../node'
 import { createRule, getParserServices } from '../../rule'
 import { property, quote, wrap } from '../../utils'
 
@@ -17,6 +26,8 @@ const METHOD_NAMES = <const>[
   'hasAttribute',
   'removeAttribute',
 ]
+
+type FixableMethodName = typeof METHOD_NAMES[number]
 
 export default createRule({
   name: 'browser/prefer-modern-dom-apis',
@@ -48,11 +59,9 @@ export default createRule({
     const { typeChecker, esTreeNodeToTSNodeMap } = getParserServices(context)
     return {
       CallExpression(node) {
-        const { callee } = node
-        if (!isMemberExpression(callee) || callee.computed) return
-        const methodName = getMethodName(callee)
-        if (!methodName || !isValidDataSetOperation(methodName, node.arguments[0])) return
-        if (!isElement(typeChecker, esTreeNodeToTSNodeMap.get(callee.object))) return
+        const [methodName, expression] = parse(node.callee)
+        if (!methodName || !expression) return
+        if (!isElement(typeChecker, esTreeNodeToTSNodeMap.get(expression.object))) return
         context.report({
           node,
           messageId: methodName,
@@ -63,14 +72,34 @@ export default createRule({
   },
 })
 
-function isValidDataSetOperation(method: string, key: Node | undefined) {
-  if (!/^(get|set|has|remove)Attribute$/.test(method)) return true
-  return isLiteralValue(key, /^data-/)
+function parse(node: Node): [FixableMethodName | undefined, MemberExpression | undefined] {
+  if (isChainExpression(node)) {
+    return parse(node.expression)
+  } else if (isMemberExpression(node)) {
+    const name = wrap(node.property, (node) => {
+      if (isIdentifier(node)) return node.name
+      if (isLiteral(node) && typeof node.value === 'string') return node.value
+      return
+    })
+    if (!isFixableMetohdName(name)) return [undefined, undefined]
+    if (name.endsWith('Attribute')) {
+      const called = closest(node, isCallExpression)
+      if (!isLiteralValue(called?.arguments[0], /^data-/)) return [undefined, undefined]
+      return [name, node]
+    }
+    return [name, node]
+  }
+  return [undefined, undefined]
+}
+
+function isFixableMetohdName(name: string | undefined): name is FixableMethodName {
+  if (!name) return false
+  return (METHOD_NAMES as readonly string[]).includes(name)
 }
 
 function getFixer(
   source: Readonly<SourceCode>,
-  methodName: typeof METHOD_NAMES[number],
+  methodName: FixableMethodName,
   node: CallExpression
 ): ReportFixFunction | undefined {
   const { callee } = node
@@ -108,7 +137,7 @@ function getFixer(
         if (!position) return null
         const baseNode = source.getText(callee.object)
         const insert = source.getText(node.arguments[1])
-        return fixer.replaceText(node, `${baseNode}.${position}(${insert})`)
+        return fixer.replaceText(node, `${baseNode}${callee.optional ? '?' : ''}.${position}(${insert})`)
       }
     case 'getAttribute':
       return getDataSetFixer(source, node, (prefix, name) => prefix + property(name))
@@ -131,19 +160,13 @@ function getDataSetFixer(
   replacer: (prefix: string, name: string) => string
 ): ReportFixFunction {
   return (fixer) => {
-    if (!isMemberExpression(node.callee)) return null
-    const prefix = `${source.getText(node.callee.object)}.dataset`
+    const { callee } = node
+    if (!isMemberExpression(callee)) return null
+    const prefix = `${source.getText(callee.object)}${callee.optional ? '?' : ''}.dataset`
     const name = getDataSetName(node.arguments[0])
     if (!name) return null
     return fixer.replaceText(node, replacer(prefix, name))
   }
-}
-
-function getMethodName(callee: MemberExpression) {
-  if (!isIdentifier(callee.property)) return
-  const name = callee.property.name as typeof METHOD_NAMES[number]
-  if (!METHOD_NAMES.includes(name)) return
-  return name
 }
 
 function getDataSetName(node: Node) {
@@ -161,9 +184,15 @@ function over(oldPattern: string, newPattern: string) {
 }
 
 function isElement(checker: ts.TypeChecker, node: ts.Node) {
-  const baseTypes = checker.getTypeAtLocation(node).getBaseTypes()
-  return baseTypes?.some((baseType) => {
-    const symbol = baseType.getSymbol()
-    return symbol && checker.symbolToString(symbol) === 'Element'
-  })
+  const type = checker.getTypeAtLocation(node)
+  if (type.isUnionOrIntersection()) {
+    return type.types.some(isElementBaseType)
+  }
+  return isElementBaseType(type)
+  function isElementBaseType(type: ts.Type) {
+    return type.getBaseTypes()?.some((baseType) => {
+      const symbol = baseType.getSymbol()
+      return symbol && checker.symbolToString(symbol) === 'Element'
+    })
+  }
 }

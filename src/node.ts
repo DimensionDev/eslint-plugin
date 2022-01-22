@@ -2,6 +2,7 @@ import type {
   ArrowFunctionExpression,
   AwaitExpression,
   BigIntLiteral,
+  CallExpression,
   ChainExpression,
   FunctionDeclaration,
   FunctionExpression,
@@ -44,6 +45,10 @@ export function isMemberExpression(node?: Node | null): node is MemberExpression
 
 export function isChainExpression(node?: Node | null): node is ChainExpression {
   return node?.type === 'ChainExpression'
+}
+
+export function isCallExpression(node?: Node | null): node is CallExpression {
+  return node?.type === 'CallExpression'
 }
 
 export function isLiteral(node?: Node | null): node is Literal {
