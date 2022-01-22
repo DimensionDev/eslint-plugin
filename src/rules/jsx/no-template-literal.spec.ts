@@ -1,6 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
-import { runTest } from '../spec'
-import module from './no-jsx-template-literal'
+import { runTest } from '../../spec'
+import module from './no-template-literal'
 
 runTest({
   module,

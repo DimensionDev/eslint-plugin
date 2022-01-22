@@ -64,32 +64,7 @@
           "description": "Prefer Modern DOM APIs",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/no-bidi-characters": {
-          "description": "Detect and stop Trojan Source attacks",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/no-bigint": { "description": "Disallow use BigInt", "$ref": "#/definitions/rule" },
-        "@dimensiondev/no-builtin-base64": {
-          "description": "Disallow use built-in base64 function",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/no-default-error": {
-          "description": "Restrict the usage of default (unextended) error",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/no-force-cast-via-top-type": {
-          "description": "Disallowing cast a type T to unrelated or incompatible type Q via \"T as any as Q\"",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/no-implicit-array-sort": {
-          "description": "Enforce Array#sort provide comparator function",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/no-invisible-characters": {
-          "description": "Disallow invisible characters",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/no-jsx-logical": {
+        "@dimensiondev/jsx/no-logical": {
           "description": "Limit the complexity of JSX logic expression",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
@@ -115,8 +90,33 @@
             }
           ]
         },
-        "@dimensiondev/no-jsx-template-literal": {
+        "@dimensiondev/jsx/no-template-literal": {
           "description": "Disallow use template-literal in JSX",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-bidi-characters": {
+          "description": "Detect and stop Trojan Source attacks",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-bigint": { "description": "Disallow use BigInt", "$ref": "#/definitions/rule" },
+        "@dimensiondev/no-builtin-base64": {
+          "description": "Disallow use built-in base64 function",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-default-error": {
+          "description": "Restrict the usage of default (unextended) error",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-force-cast-via-top-type": {
+          "description": "Disallowing cast a type T to unrelated or incompatible type Q via \"T as any as Q\"",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-implicit-array-sort": {
+          "description": "Enforce Array#sort provide comparator function",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-invisible-characters": {
+          "description": "Disallow invisible characters",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-locale-case": {

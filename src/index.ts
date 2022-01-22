@@ -4,6 +4,8 @@ import ban_eslint_disable from './rules/ban-eslint-disable'
 import browser$prefer_event_target from './rules/browser/prefer-event-target'
 import browser$prefer_location_assign from './rules/browser/prefer-location-assign'
 import browser$prefer_modern_dom_apis from './rules/browser/prefer-modern-dom-apis'
+import jsx$no_logical from './rules/jsx/no-logical'
+import jsx$no_template_literal from './rules/jsx/no-template-literal'
 import no_bidi_characters from './rules/no-bidi-characters'
 import no_bigint from './rules/no-bigint'
 import no_builtin_base64 from './rules/no-builtin-base64'
@@ -11,8 +13,6 @@ import no_default_error from './rules/no-default-error'
 import no_force_cast_via_top_type from './rules/no-force-cast-via-top-type'
 import no_implicit_array_sort from './rules/no-implicit-array-sort'
 import no_invisible_characters from './rules/no-invisible-characters'
-import no_jsx_logical from './rules/no-jsx-logical'
-import no_jsx_template_literal from './rules/no-jsx-template-literal'
 import no_locale_case from './rules/no-locale-case'
 import no_number_constructor from './rules/no-number-constructor'
 import no_redundant_variable from './rules/no-redundant-variable'
@@ -36,6 +36,8 @@ export const rules = {
   'browser/prefer-event-target': browser$prefer_event_target,
   'browser/prefer-location-assign': browser$prefer_location_assign,
   'browser/prefer-modern-dom-apis': browser$prefer_modern_dom_apis,
+  'jsx/no-logical': jsx$no_logical,
+  'jsx/no-template-literal': jsx$no_template_literal,
   'no-bidi-characters': no_bidi_characters,
   'no-bigint': no_bigint,
   'no-builtin-base64': no_builtin_base64,
@@ -43,8 +45,6 @@ export const rules = {
   'no-force-cast-via-top-type': no_force_cast_via_top_type,
   'no-implicit-array-sort': no_implicit_array_sort,
   'no-invisible-characters': no_invisible_characters,
-  'no-jsx-logical': no_jsx_logical,
-  'no-jsx-template-literal': no_jsx_template_literal,
   'no-locale-case': no_locale_case,
   'no-number-constructor': no_number_constructor,
   'no-redundant-variable': no_redundant_variable,

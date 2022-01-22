@@ -1,5 +1,5 @@
 import type { JSXExpressionContainer, Node } from '@typescript-eslint/types/dist/ast-spec'
-import { createRule } from '../rule'
+import { createRule } from '../../rule'
 
 const DEFAULT_LIMIT = 2
 
@@ -9,7 +9,7 @@ interface Options {
 }
 
 export default createRule({
-  name: 'no-jsx-logical',
+  name: 'jsx/no-logical',
   meta: {
     type: 'problem',
     docs: {

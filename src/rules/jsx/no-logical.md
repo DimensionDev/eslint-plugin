@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-jsx-logical`
+# `@dimensiondev/jsx/no-logical`
 
 Limit the complexity of JSX logic expression
 

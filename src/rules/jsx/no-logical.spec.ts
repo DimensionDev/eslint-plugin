@@ -1,5 +1,5 @@
-import { runTest } from '../spec'
-import module from './no-jsx-logical'
+import { runTest } from '../../spec'
+import module from './no-logical'
 
 runTest({
   module,

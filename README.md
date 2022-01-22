@@ -32,6 +32,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/browser/prefer-event-target": "error",
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
+    "@dimensiondev/jsx/no-logical": "off",
+    "@dimensiondev/jsx/no-template-literal": "error",
     "@dimensiondev/no-bidi-characters": "off",
     "@dimensiondev/no-bigint": "off",
     "@dimensiondev/no-builtin-base64": "error",
@@ -39,8 +41,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/no-force-cast-via-top-type": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
     "@dimensiondev/no-invisible-characters": "error",
-    "@dimensiondev/no-jsx-logical": "off",
-    "@dimensiondev/no-jsx-template-literal": "error",
     "@dimensiondev/no-locale-case": "error",
     "@dimensiondev/no-number-constructor": "error",
     "@dimensiondev/no-redundant-variable": "error",
@@ -84,6 +84,10 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Enforce best practice with location
 - [browser/prefer-modern-dom-apis][browser$prefer_modern_dom_apis] :white_check_mark: :wrench: :bulb: :thought_balloon:\
   Prefer Modern DOM APIs
+- [jsx/no-logical][jsx$no_logical] :gear:\
+  Limit the complexity of JSX logic expression
+- [jsx/no-template-literal][jsx$no_template_literal] :white_check_mark: :wrench:\
+  Disallow use template-literal in JSX
 - [no-bidi-characters][no_bidi_characters] :wrench:\
   Detect and stop Trojan Source attacks
 - [no-bigint][no_bigint] :thought_balloon:\
@@ -98,10 +102,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Enforce Array#sort provide comparator function
 - [no-invisible-characters][no_invisible_characters] :white_check_mark: :wrench:\
   Disallow invisible characters
-- [no-jsx-logical][no_jsx_logical] :gear:\
-  Limit the complexity of JSX logic expression
-- [no-jsx-template-literal][no_jsx_template_literal] :white_check_mark: :wrench:\
-  Disallow use template-literal in JSX
 - [no-locale-case][no_locale_case] :white_check_mark: :wrench:\
   Disallow use `.toLocale{Upper,Lower}Case()`
 - [no-number-constructor][no_number_constructor] :white_check_mark:\
@@ -143,6 +143,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [browser$prefer_event_target]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-event-target
 [browser$prefer_location_assign]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-location-assign
 [browser$prefer_modern_dom_apis]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-modern-dom-apis
+[jsx$no_logical]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-logical
+[jsx$no_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-template-literal
 [no_bidi_characters]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-bidi-characters
 [no_bigint]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-bigint
 [no_builtin_base64]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-builtin-base64
@@ -150,8 +152,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [no_force_cast_via_top_type]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-force-cast-via-top-type
 [no_implicit_array_sort]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-implicit-array-sort
 [no_invisible_characters]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-invisible-characters
-[no_jsx_logical]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-jsx-logical
-[no_jsx_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-jsx-template-literal
 [no_locale_case]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-locale-case
 [no_number_constructor]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-number-constructor
 [no_redundant_variable]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-redundant-variable

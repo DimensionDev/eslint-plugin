@@ -1,7 +1,7 @@
-import { createRule } from '../rule'
+import { createRule } from '../../rule'
 
 export default createRule({
-  name: 'no-jsx-template-literal',
+  name: 'jsx/no-template-literal',
   meta: {
     type: 'problem',
     fixable: 'code',
