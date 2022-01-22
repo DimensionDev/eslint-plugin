@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/browser/prefer-add-event-listener`
+# `@dimensiondev/browser/prefer-event-target`
 
 Prefer `.{add,remove}EventListener()` over `on`-functions
 
@@ -44,4 +44,5 @@ new Promise((resolve, reject) => {
 
 ## Thanks
 
-<https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-add-event-listener.md>
+- <https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-add-event-listener.md>
+- <https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-invalid-remove-event-listener.md>

@@ -51,6 +51,10 @@ export function isCallExpression(node?: Node | null): node is CallExpression {
   return node?.type === 'CallExpression'
 }
 
+export function isBindCall(node?: Node | null): node is CallExpression {
+  return isCallExpression(node) && isMemberExpression(node.callee) && isIdentifierName(node.callee.property, 'bind')
+}
+
 export function isLiteral(node?: Node | null): node is Literal {
   return node?.type === 'Literal'
 }

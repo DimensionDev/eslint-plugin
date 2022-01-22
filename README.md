@@ -29,7 +29,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   "plugins": ["@dimensiondev"],
   "rules": {
     "@dimensiondev/ban-eslint-disable": "error",
-    "@dimensiondev/browser/prefer-add-event-listener": "error",
+    "@dimensiondev/browser/prefer-event-target": "error",
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/no-bidi-characters": "off",
@@ -78,7 +78,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 
 - [ban-eslint-disable][ban_eslint_disable] :white_check_mark: :gear:\
   Ban `eslint-disable` comment directive
-- [browser/prefer-add-event-listener][browser$prefer_add_event_listener] :white_check_mark: :wrench: :thought_balloon:\
+- [browser/prefer-event-target][browser$prefer_event_target] :white_check_mark: :wrench: :thought_balloon:\
   Prefer `.{add,remove}EventListener()` over `on`-functions
 - [browser/prefer-location-assign][browser$prefer_location_assign] :white_check_mark: :wrench:\
   Enforce best practice with location
@@ -140,7 +140,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Limit the range of literal characters
 
 [ban_eslint_disable]: https://dimensiondev.github.io/eslint-plugin/src/rules/ban-eslint-disable
-[browser$prefer_add_event_listener]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-add-event-listener
+[browser$prefer_event_target]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-event-target
 [browser$prefer_location_assign]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-location-assign
 [browser$prefer_modern_dom_apis]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-modern-dom-apis
 [no_bidi_characters]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-bidi-characters

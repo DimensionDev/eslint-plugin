@@ -52,7 +52,7 @@
             }
           ]
         },
-        "@dimensiondev/browser/prefer-add-event-listener": {
+        "@dimensiondev/browser/prefer-event-target": {
           "description": "Prefer `.{add,remove}EventListener()` over `on`-functions",
           "$ref": "#/definitions/rule"
         },

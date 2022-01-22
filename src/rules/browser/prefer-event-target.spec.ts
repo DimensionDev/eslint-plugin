@@ -1,9 +1,14 @@
 import dedent from 'ts-dedent'
 import { runTest } from '../../spec'
-import module from './prefer-add-event-listener'
+import module from './prefer-event-target'
 
 runTest({
   module,
+  *valid() {
+    yield "window.addEventListener('click', handleClick)"
+    yield "window.removeEventListener('click', handleClick)"
+    yield "window.removeEventListener('click', getListener())"
+  },
   *invalid() {
     yield {
       code: dedent`
@@ -50,6 +55,13 @@ runTest({
         { messageId: 'prefer', data: { replacement: 'add', methodName: 'onclick' } },
         { messageId: 'prefer', data: { replacement: 'add', methodName: 'onclick' } },
       ],
+    }
+    yield {
+      code: dedent`
+        window.removeEventListener('click', fn.bind(window))
+        window.removeEventListener('click', () => {})
+      `,
+      errors: [{ messageId: 'invalid-bound' }, { messageId: 'invalid-bound' }],
     }
   },
 })

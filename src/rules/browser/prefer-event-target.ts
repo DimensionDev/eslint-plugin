@@ -1,11 +1,19 @@
 import type { MemberExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
 import type ts from 'typescript'
-import { isChainExpression, isIdentifier, isLiteral, isMemberExpression } from '../../node'
+import {
+  isBindCall,
+  isChainExpression,
+  isFunctionLike,
+  isIdentifier,
+  isIdentifierName,
+  isLiteral,
+  isMemberExpression,
+} from '../../node'
 import { createRule, getParserServices } from '../../rule'
 import { quote, wrap } from '../../utils'
 
 export default createRule({
-  name: 'browser/prefer-add-event-listener',
+  name: 'browser/prefer-event-target',
   meta: {
     type: 'suggestion',
     fixable: 'code',
@@ -16,9 +24,10 @@ export default createRule({
     },
     schema: [],
     messages: {
-      prefer: 'Prefer `{{replacement}}EventListener` over `{{methodName}}`.',
+      'prefer': 'Prefer `{{replacement}}EventListener` over `{{methodName}}`',
+      'invalid-bound': 'The listener argument should be a function reference',
     },
-    replacedBy: ['unicorn/prefer-add-event-listener'],
+    replacedBy: ['unicorn/prefer-add-event-listener', 'unicorn/no-invalid-remove-event-listener'],
   },
   create(context) {
     const source = context.getSourceCode()
@@ -47,6 +56,13 @@ export default createRule({
           },
         })
       },
+      CallExpression(node) {
+        if (!isMemberExpression(node.callee)) return
+        if (!isIdentifierName(node.callee.property, 'removeEventListener')) return
+        const callback = node.arguments[1]
+        if (!(isBindCall(callback) || isFunctionLike(callback))) return
+        context.report({ node, messageId: 'invalid-bound' })
+      },
     }
   },
 })
@@ -71,7 +87,7 @@ function isEventTarget(checker: ts.TypeChecker, node: ts.Node) {
   if (type.isUnionOrIntersection()) {
     return type.types.some((type) => type.getProperty('addEventListener'))
   }
-  return type.getProperty('addEventListener')
+  return type.getProperty('addEventListener') !== undefined
 }
 
 function isNil(node: Node) {

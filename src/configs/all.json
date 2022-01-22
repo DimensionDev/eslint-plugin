@@ -3,7 +3,7 @@
   "plugins": ["@dimensiondev"],
   "rules": {
     "@dimensiondev/ban-eslint-disable": "error",
-    "@dimensiondev/browser/prefer-add-event-listener": "error",
+    "@dimensiondev/browser/prefer-event-target": "error",
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/no-bidi-characters": "off",

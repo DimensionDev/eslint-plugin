@@ -1,7 +1,7 @@
 // 31 Rules
 // 5  Configs
 import ban_eslint_disable from './rules/ban-eslint-disable'
-import browser$prefer_add_event_listener from './rules/browser/prefer-add-event-listener'
+import browser$prefer_event_target from './rules/browser/prefer-event-target'
 import browser$prefer_location_assign from './rules/browser/prefer-location-assign'
 import browser$prefer_modern_dom_apis from './rules/browser/prefer-modern-dom-apis'
 import no_bidi_characters from './rules/no-bidi-characters'
@@ -33,7 +33,7 @@ import prefer_timer_id from './rules/prefer-timer-id'
 import unicode_specific_set from './rules/unicode-specific-set'
 export const rules = {
   'ban-eslint-disable': ban_eslint_disable,
-  'browser/prefer-add-event-listener': browser$prefer_add_event_listener,
+  'browser/prefer-event-target': browser$prefer_event_target,
   'browser/prefer-location-assign': browser$prefer_location_assign,
   'browser/prefer-modern-dom-apis': browser$prefer_modern_dom_apis,
   'no-bidi-characters': no_bidi_characters,
