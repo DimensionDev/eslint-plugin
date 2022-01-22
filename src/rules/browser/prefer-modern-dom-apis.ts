@@ -201,6 +201,7 @@ function getDataSetName(node: Node) {
   if (!node.value.startsWith('data-')) return
   return node.value
     .replace(/^data-/, '')
+    .toLowerCase()
     .split(/-/g)
     .map((element, index) => (index === 0 ? element : element[0].toUpperCase() + element.slice(1)))
     .join('')

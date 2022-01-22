@@ -19,7 +19,7 @@ Prefer Modern DOM APIs
 | `Element.insertAdjacent{Text,Element}("afterbegin", *)`  | [Element.prepend][prepend]       |
 | `Element.insertAdjacent{Text,Element}("beforeend", *)`   | [Element.append][append]         |
 | `Element.insertAdjacent{Text,Element}("afterend", *)`    | [Element.after][after]           |
-| `Element.{get,set,has,remove}Attribute("data-*")`        | [Element.dataset][dataset]       |
+| `Element.{get,set,has,remove}Attribute("data-*")`        | [HTMLElement.dataset][dataset]   |
 
 [text-content]: https://developer.mozilla.org/docs/Web/API/Node/textContent
 [append]: https://developer.mozilla.org/docs/Web/API/Element/append
@@ -28,7 +28,7 @@ Prefer Modern DOM APIs
 [before]: https://developer.mozilla.org/docs/Web/API/Element/before
 [prepend]: https://developer.mozilla.org/docs/Web/API/Element/prepend
 [after]: https://developer.mozilla.org/docs/Web/API/Element/after
-[dataset]: https://developer.mozilla.org/docs/Web/API/Element/dataset
+[dataset]: https://developer.mozilla.org/docs/Web/API/HTMLElement/dataset
 
 ### :x: Incorrect
 
