@@ -24,7 +24,7 @@ new Promise((resolve, reject) => {
 new Promise((resolve, reject) => {
   const reader = new FileReader()
   reader.addEventListener('load', () => resolve(reader.result))
-  reader.addEventListener('reject', reject)
+  reader.addEventListener('error', reject)
 })
 ```
 
