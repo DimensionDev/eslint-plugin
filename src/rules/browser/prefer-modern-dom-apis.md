@@ -8,18 +8,20 @@ Prefer Modern DOM APIs
 
 ## Rule Details
 
-| Legacy APIs                                              | Modern APIs                      |
-| -------------------------------------------------------- | -------------------------------- |
-| `HTMLElement.innerText`                                  | [Node.textContent][text-content] |
-| `Element.appendChild`                                    | [Element.append][append]         |
-| `Element.removeChild`                                    | [Element.remove][remove]         |
-| `Element.replaceChild`                                   | [Element.replaceWith][replace]   |
-| `Element.insertBefore`                                   | [Element.before][before]         |
-| `Element.insertAdjacent{Text,Element}("beforebegin", *)` | [Element.before][before]         |
-| `Element.insertAdjacent{Text,Element}("afterbegin", *)`  | [Element.prepend][prepend]       |
-| `Element.insertAdjacent{Text,Element}("beforeend", *)`   | [Element.append][append]         |
-| `Element.insertAdjacent{Text,Element}("afterend", *)`    | [Element.after][after]           |
-| `Element.{get,set,has,remove}Attribute("data-*")`        | [HTMLElement.dataset][dataset]   |
+| Legacy APIs                                              | Modern APIs                                    |
+| -------------------------------------------------------- | ---------------------------------------------- |
+| `HTMLElement.innerText`                                  | [Node.textContent][text-content]               |
+| `Element.appendChild`                                    | [Element.append][append]                       |
+| `Element.removeChild`                                    | [Element.remove][remove]                       |
+| `Element.replaceChild`                                   | [Element.replaceWith][replace]                 |
+| `Element.insertBefore`                                   | [Element.before][before]                       |
+| `Element.insertAdjacent{Text,Element}("beforebegin", *)` | [Element.before][before]                       |
+| `Element.insertAdjacent{Text,Element}("afterbegin", *)`  | [Element.prepend][prepend]                     |
+| `Element.insertAdjacent{Text,Element}("beforeend", *)`   | [Element.append][append]                       |
+| `Element.insertAdjacent{Text,Element}("afterend", *)`    | [Element.after][after]                         |
+| `Element.getElementById`                                 | [Element.querySelector][query-selector]        |
+| `Element.getElementsBy{Class,Tag}Name`                   | [Element.querySelectorAll][query-selector-all] |
+| `Element.{get,set,has,remove}Attribute("data-*")`        | [HTMLElement.dataset][dataset]                 |
 
 [text-content]: https://developer.mozilla.org/docs/Web/API/Node/textContent
 [append]: https://developer.mozilla.org/docs/Web/API/Element/append
@@ -28,6 +30,8 @@ Prefer Modern DOM APIs
 [before]: https://developer.mozilla.org/docs/Web/API/Element/before
 [prepend]: https://developer.mozilla.org/docs/Web/API/Element/prepend
 [after]: https://developer.mozilla.org/docs/Web/API/Element/after
+[query-selector]: https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector
+[query-selector-all]: https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll
 [dataset]: https://developer.mozilla.org/docs/Web/API/HTMLElement/dataset
 
 ### :x: Incorrect
@@ -62,7 +66,4 @@ children.remove()
 
 ## Thanks
 
-- <https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-dom-node-append.md>
-- <https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-dom-node-remove.md>
-- <https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-dom-node-text-content.md>
-- <https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-modern-dom-apis.md>
+- <https://github.com/sindresorhus/eslint-plugin-unicorn>

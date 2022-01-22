@@ -26,6 +26,9 @@ const METHOD_NAMES = <const>[
   'setAttribute',
   'hasAttribute',
   'removeAttribute',
+  'getElementById',
+  'getElementsByClassName',
+  'getElementsByTagName',
 ]
 
 type FixableMethodName = typeof METHOD_NAMES[number]
@@ -53,6 +56,9 @@ export default createRule({
       setAttribute: prefer('dataset{{path}}', 'setAttribute({{name}}, *)'),
       hasAttribute: prefer('dataset{{path}}', 'hasAttribute({{name}})'),
       removeAttribute: prefer('dataset{{path}}', 'removeAttribute({{name}})'),
+      getElementById: prefer('getElementById', 'querySelector'),
+      getElementsByClassName: prefer('getElementsByClassName', 'querySelectorAll'),
+      getElementsByTagName: prefer('getElementsByTagName', 'querySelectorAll'),
       innerText: prefer('textContent', 'innerText'),
       innerTextSuggest: 'Switch to `.textContent`',
     },
@@ -60,6 +66,7 @@ export default createRule({
       'unicorn/prefer-dom-node-append',
       'unicorn/prefer-dom-node-remove',
       'unicorn/prefer-dom-node-text-content',
+      'unicorn/prefer-query-selector',
       'unicorn/prefer-modern-dom-apis',
     ],
   },
@@ -167,32 +174,41 @@ function getFixer(
         return fixer.replaceText(node, `${baseNode}${callee.optional ? '?' : ''}.${position}(${insert})`)
       }
     case 'getAttribute':
-      return getDataSetFixer(source, node, (prefix, name) => prefix + property(name))
     case 'setAttribute':
-      return getDataSetFixer(
-        source,
-        node,
-        (prefix, name) => `${prefix}${property(name)} = ${source.getText(node.arguments[1])}`
-      )
     case 'hasAttribute':
-      return getDataSetFixer(source, node, (prefix, name) => `Object.hasOwn(${prefix}, ${quote(name)})`)
     case 'removeAttribute':
-      return getDataSetFixer(source, node, (prefix, name) => `delete ${prefix}${property(name)}`)
+      return getDataSetFixer(source, node, methodName)
   }
+  return
 }
 
 function getDataSetFixer(
   source: Readonly<SourceCode>,
   node: CallExpression,
-  replacer: (prefix: string, name: string) => string
+  methodName: FixableMethodName
 ): ReportFixFunction {
   return (fixer) => {
+    const replacement = getReplacement()
+    if (!replacement) return null
+    return fixer.replaceText(node, replacement)
+  }
+  function getReplacement() {
     const { callee } = node
-    if (!isMemberExpression(callee)) return null
+    if (!isMemberExpression(callee)) return
     const prefix = `${source.getText(callee.object)}${callee.optional ? '?' : ''}.dataset`
     const name = getDataSetName(node.arguments[0])
-    if (!name) return null
-    return fixer.replaceText(node, replacer(prefix, name))
+    if (!name) return
+    switch (methodName) {
+      case 'getAttribute':
+        return prefix + property(name)
+      case 'setAttribute':
+        return `${prefix}${property(name)} = ${source.getText(node.arguments[1])}`
+      case 'hasAttribute':
+        return `Object.hasOwn(${prefix}, ${quote(name)})`
+      case 'removeAttribute':
+        return `delete ${prefix}${property(name)}`
+    }
+    return
   }
 }
 
@@ -221,8 +237,9 @@ function getMessageData(source: Readonly<SourceCode>, methodName: FixableMethodN
     case 'hasAttribute':
     case 'removeAttribute': {
       const name = getDataSetName(node.arguments[0])
+      if (!name) return
       return {
-        path: name ? property(name) : undefined,
+        path: property(name),
         name: source.getText(node.arguments[0]),
       }
     }
@@ -240,16 +257,13 @@ function getMethodOfLocation(value: unknown) {
 
 function isElement(checker: ts.TypeChecker, node: ts.Node) {
   const type = checker.getTypeAtLocation(node)
-  if (type.isUnionOrIntersection()) {
-    return type.types.some(isElementBaseType)
-  }
-  return isElementBaseType(type)
-  function isElementBaseType(type: ts.Type) {
-    return type.getBaseTypes()?.some((baseType) => {
+  const types = type.isUnionOrIntersection() ? type.types : [type]
+  return types
+    .flatMap((t) => t.getBaseTypes() ?? [])
+    ?.some((baseType) => {
       const symbol = baseType.getSymbol()
       return symbol && checker.symbolToString(symbol) === 'Element'
     })
-  }
 }
 
 function prefer(modern: string, legacy: string) {
