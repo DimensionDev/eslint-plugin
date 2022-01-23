@@ -84,10 +84,13 @@ function parse(node: Node): [string | undefined, MemberExpression | undefined] {
 
 function isEventTarget(checker: ts.TypeChecker, node: ts.Node) {
   const type = checker.getTypeAtLocation(node)
-  if (type.isUnionOrIntersection()) {
-    return type.types.some((type) => type.getProperty('addEventListener'))
-  }
-  return type.getProperty('addEventListener') !== undefined
+  const types = type.isUnionOrIntersection() ? type.types : [type]
+  const allTypes = types.flatMap((t) => [t, ...(t.getBaseTypes() ?? [])])
+  return allTypes.some((t) => {
+    const symbol = t.getSymbol()
+    const name = symbol && checker.symbolToString(symbol)
+    return name === 'EventTarget' || name === 'Element'
+  })
 }
 
 function isNil(node: Node) {
