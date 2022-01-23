@@ -1,12 +1,19 @@
 // 33 Rules
 // 5  Configs
-import ban_eslint_disable from './rules/ban-eslint-disable'
 import browser$prefer_event_target from './rules/browser/prefer-event-target'
 import browser$prefer_keyboard_event_key from './rules/browser/prefer-keyboard-event-key'
 import browser$prefer_location_assign from './rules/browser/prefer-location-assign'
 import browser$prefer_modern_dom_apis from './rules/browser/prefer-modern-dom-apis'
 import jsx$no_logical from './rules/jsx/no-logical'
 import jsx$no_template_literal from './rules/jsx/no-template-literal'
+import string$no_locale_case from './rules/string/no-locale-case'
+import string$no_simple_string_interpolation from './rules/string/no-simple-string-interpolation'
+import string$no_simple_template_literal from './rules/string/no-simple-template-literal'
+import string$no_unneeded_to_string from './rules/string/no-unneeded-to-string'
+import unicode$no_bidi from './rules/unicode/no-bidi'
+import unicode$no_invisible from './rules/unicode/no-invisible'
+import unicode$specific_set from './rules/unicode/specific-set'
+import ban_eslint_disable from './rules/ban-eslint-disable'
 import no_bigint from './rules/no-bigint'
 import no_builtin_base64 from './rules/no-builtin-base64'
 import no_default_error from './rules/no-default-error'
@@ -26,21 +33,21 @@ import prefer_early_return from './rules/prefer-early-return'
 import prefer_fetch from './rules/prefer-fetch'
 import prefer_return_type_annotation from './rules/prefer-return-type-annotation'
 import prefer_timer_id from './rules/prefer-timer-id'
-import string$no_locale_case from './rules/string/no-locale-case'
-import string$no_simple_string_interpolation from './rules/string/no-simple-string-interpolation'
-import string$no_simple_template_literal from './rules/string/no-simple-template-literal'
-import string$no_unneeded_to_string from './rules/string/no-unneeded-to-string'
-import unicode$no_bidi from './rules/unicode/no-bidi'
-import unicode$no_invisible from './rules/unicode/no-invisible'
-import unicode$specific_set from './rules/unicode/specific-set'
 export const rules = {
-  'ban-eslint-disable': ban_eslint_disable,
   'browser/prefer-event-target': browser$prefer_event_target,
   'browser/prefer-keyboard-event-key': browser$prefer_keyboard_event_key,
   'browser/prefer-location-assign': browser$prefer_location_assign,
   'browser/prefer-modern-dom-apis': browser$prefer_modern_dom_apis,
   'jsx/no-logical': jsx$no_logical,
   'jsx/no-template-literal': jsx$no_template_literal,
+  'string/no-locale-case': string$no_locale_case,
+  'string/no-simple-string-interpolation': string$no_simple_string_interpolation,
+  'string/no-simple-template-literal': string$no_simple_template_literal,
+  'string/no-unneeded-to-string': string$no_unneeded_to_string,
+  'unicode/no-bidi': unicode$no_bidi,
+  'unicode/no-invisible': unicode$no_invisible,
+  'unicode/specific-set': unicode$specific_set,
+  'ban-eslint-disable': ban_eslint_disable,
   'no-bigint': no_bigint,
   'no-builtin-base64': no_builtin_base64,
   'no-default-error': no_default_error,
@@ -60,13 +67,6 @@ export const rules = {
   'prefer-fetch': prefer_fetch,
   'prefer-return-type-annotation': prefer_return_type_annotation,
   'prefer-timer-id': prefer_timer_id,
-  'string/no-locale-case': string$no_locale_case,
-  'string/no-simple-string-interpolation': string$no_simple_string_interpolation,
-  'string/no-simple-template-literal': string$no_simple_template_literal,
-  'string/no-unneeded-to-string': string$no_unneeded_to_string,
-  'unicode/no-bidi': unicode$no_bidi,
-  'unicode/no-invisible': unicode$no_invisible,
-  'unicode/specific-set': unicode$specific_set,
 }
 import all from './configs/all.json'
 import base from './configs/base.json'

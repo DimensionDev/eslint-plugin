@@ -28,13 +28,20 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   "$schema": "https://dimensiondev.github.io/eslint-plugin/src/schema.json",
   "plugins": ["@dimensiondev"],
   "rules": {
-    "@dimensiondev/ban-eslint-disable": "error",
     "@dimensiondev/browser/prefer-event-target": "error",
     "@dimensiondev/browser/prefer-keyboard-event-key": "error",
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/jsx/no-logical": "off",
     "@dimensiondev/jsx/no-template-literal": "error",
+    "@dimensiondev/string/no-locale-case": "error",
+    "@dimensiondev/string/no-simple-string-interpolation": "error",
+    "@dimensiondev/string/no-simple-template-literal": "error",
+    "@dimensiondev/string/no-unneeded-to-string": "error",
+    "@dimensiondev/unicode/no-bidi": "off",
+    "@dimensiondev/unicode/no-invisible": "error",
+    "@dimensiondev/unicode/specific-set": "off",
+    "@dimensiondev/ban-eslint-disable": "error",
     "@dimensiondev/no-bigint": "off",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-default-error": "error",
@@ -53,14 +60,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-fetch": "error",
     "@dimensiondev/prefer-return-type-annotation": "error",
-    "@dimensiondev/prefer-timer-id": "error",
-    "@dimensiondev/string/no-locale-case": "error",
-    "@dimensiondev/string/no-simple-string-interpolation": "error",
-    "@dimensiondev/string/no-simple-template-literal": "error",
-    "@dimensiondev/string/no-unneeded-to-string": "error",
-    "@dimensiondev/unicode/no-bidi": "off",
-    "@dimensiondev/unicode/no-invisible": "error",
-    "@dimensiondev/unicode/specific-set": "off"
+    "@dimensiondev/prefer-timer-id": "error"
   }
 }
 ```
@@ -78,8 +78,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 
 <!-- begin rule list -->
 
-- [ban-eslint-disable][ban_eslint_disable] :white_check_mark: :gear:\
-  Ban `eslint-disable` comment directive
 - [browser/prefer-event-target][browser$prefer_event_target] :white_check_mark: :wrench: :thought_balloon:\
   Prefer `.{add,remove}EventListener()` over `on`-functions
 - [browser/prefer-keyboard-event-key][browser$prefer_keyboard_event_key] :white_check_mark: :wrench: :thought_balloon:\
@@ -92,6 +90,22 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Limit the complexity of JSX logic expression
 - [jsx/no-template-literal][jsx$no_template_literal] :white_check_mark: :wrench:\
   Disallow use template-literal in JSX
+- [string/no-locale-case][string$no_locale_case] :white_check_mark: :wrench:\
+  Disallow use `.toLocale{Upper,Lower}Case()`
+- [string/no-simple-string-interpolation][string$no_simple_string_interpolation] :white_check_mark:\
+  Disallow simple string interpolation
+- [string/no-simple-template-literal][string$no_simple_template_literal] :white_check_mark: :wrench:\
+  Disallow simple template-literal
+- [string/no-unneeded-to-string][string$no_unneeded_to_string] :white_check_mark: :wrench: :thought_balloon:\
+  Disallow `.toString()` when simpler alternatives exist
+- [unicode/no-bidi][unicode$no_bidi] :wrench:\
+  Detect and stop Trojan Source attacks
+- [unicode/no-invisible][unicode$no_invisible] :white_check_mark: :wrench:\
+  Disallow invisible characters
+- [unicode/specific-set][unicode$specific_set] :wrench: :gear:\
+  Limit the range of literal characters
+- [ban-eslint-disable][ban_eslint_disable] :white_check_mark: :gear:\
+  Ban `eslint-disable` comment directive
 - [no-bigint][no_bigint] :thought_balloon:\
   Disallow use BigInt
 - [no-builtin-base64][no_builtin_base64] :white_check_mark: :wrench:\
@@ -130,28 +144,21 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Enforce Move return type annotation to function return type
 - [prefer-timer-id][prefer_timer_id] :white_check_mark: :bulb:\
   Enforce best practice with timer function
-- [string/no-locale-case][string$no_locale_case] :white_check_mark: :wrench:\
-  Disallow use `.toLocale{Upper,Lower}Case()`
-- [string/no-simple-string-interpolation][string$no_simple_string_interpolation] :white_check_mark:\
-  Disallow simple string interpolation
-- [string/no-simple-template-literal][string$no_simple_template_literal] :white_check_mark: :wrench:\
-  Disallow simple template-literal
-- [string/no-unneeded-to-string][string$no_unneeded_to_string] :white_check_mark: :wrench: :thought_balloon:\
-  Disallow `.toString()` when simpler alternatives exist
-- [unicode/no-bidi][unicode$no_bidi] :wrench:\
-  Detect and stop Trojan Source attacks
-- [unicode/no-invisible][unicode$no_invisible] :white_check_mark: :wrench:\
-  Disallow invisible characters
-- [unicode/specific-set][unicode$specific_set] :wrench: :gear:\
-  Limit the range of literal characters
 
-[ban_eslint_disable]: https://dimensiondev.github.io/eslint-plugin/src/rules/ban-eslint-disable
 [browser$prefer_event_target]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-event-target
 [browser$prefer_keyboard_event_key]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-keyboard-event-key
 [browser$prefer_location_assign]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-location-assign
 [browser$prefer_modern_dom_apis]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-modern-dom-apis
 [jsx$no_logical]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-logical
 [jsx$no_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-template-literal
+[string$no_locale_case]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-locale-case
+[string$no_simple_string_interpolation]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-simple-string-interpolation
+[string$no_simple_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-simple-template-literal
+[string$no_unneeded_to_string]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-unneeded-to-string
+[unicode$no_bidi]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-bidi
+[unicode$no_invisible]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-invisible
+[unicode$specific_set]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/specific-set
+[ban_eslint_disable]: https://dimensiondev.github.io/eslint-plugin/src/rules/ban-eslint-disable
 [no_bigint]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-bigint
 [no_builtin_base64]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-builtin-base64
 [no_default_error]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-default-error
@@ -171,13 +178,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [prefer_fetch]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-fetch
 [prefer_return_type_annotation]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-return-type-annotation
 [prefer_timer_id]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-timer-id
-[string$no_locale_case]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-locale-case
-[string$no_simple_string_interpolation]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-simple-string-interpolation
-[string$no_simple_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-simple-template-literal
-[string$no_unneeded_to_string]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-unneeded-to-string
-[unicode$no_bidi]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-bidi
-[unicode$no_invisible]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-invisible
-[unicode$specific_set]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/specific-set
 
 <!-- end rule list -->
 

@@ -32,8 +32,12 @@ export async function getRuleModules() {
     ignore: ['**/*.spec.ts'],
   })
   filePaths.sort((a, b) => a.localeCompare(b, 'en-US', { numeric: true }))
+  const fileNames = [
+    ...filePaths.filter((name) => name.includes('/')),
+    ...filePaths.filter((name) => !name.includes('/')),
+  ]
   return Promise.all(
-    filePaths.map(async (filePath): Promise<ExportedRuleModule> => {
+    fileNames.map(async (filePath): Promise<ExportedRuleModule> => {
       const module: { default: ExportedRuleModule } = await import(path.join(RULE_PATH, filePath))
       if (filePath !== module.default.name + '.ts') {
         throw new Error(`Please check ${filePath} rule name`)

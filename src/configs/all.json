@@ -2,13 +2,20 @@
   "$schema": "../schema.json",
   "plugins": ["@dimensiondev"],
   "rules": {
-    "@dimensiondev/ban-eslint-disable": "error",
     "@dimensiondev/browser/prefer-event-target": "error",
     "@dimensiondev/browser/prefer-keyboard-event-key": "error",
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/jsx/no-logical": "off",
     "@dimensiondev/jsx/no-template-literal": "error",
+    "@dimensiondev/string/no-locale-case": "error",
+    "@dimensiondev/string/no-simple-string-interpolation": "error",
+    "@dimensiondev/string/no-simple-template-literal": "error",
+    "@dimensiondev/string/no-unneeded-to-string": "error",
+    "@dimensiondev/unicode/no-bidi": "off",
+    "@dimensiondev/unicode/no-invisible": "error",
+    "@dimensiondev/unicode/specific-set": "off",
+    "@dimensiondev/ban-eslint-disable": "error",
     "@dimensiondev/no-bigint": "off",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-default-error": "error",
@@ -27,13 +34,6 @@
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-fetch": "error",
     "@dimensiondev/prefer-return-type-annotation": "error",
-    "@dimensiondev/prefer-timer-id": "error",
-    "@dimensiondev/string/no-locale-case": "error",
-    "@dimensiondev/string/no-simple-string-interpolation": "error",
-    "@dimensiondev/string/no-simple-template-literal": "error",
-    "@dimensiondev/string/no-unneeded-to-string": "error",
-    "@dimensiondev/unicode/no-bidi": "off",
-    "@dimensiondev/unicode/no-invisible": "error",
-    "@dimensiondev/unicode/specific-set": "off"
+    "@dimensiondev/prefer-timer-id": "error"
   }
 }

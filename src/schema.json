@@ -38,20 +38,6 @@
     "user-defined-rules": {
       "type": "object",
       "properties": {
-        "@dimensiondev/ban-eslint-disable": {
-          "description": "Ban `eslint-disable` comment directive",
-          "oneOf": [
-            { "$ref": "#/definitions/rule" },
-            {
-              "type": "array",
-              "items": [
-                { "$ref": "#/definitions/rule" },
-                { "oneOf": [{ "type": "boolean" }, { "const": "allow-with-description" }] }
-              ],
-              "minItems": 2
-            }
-          ]
-        },
         "@dimensiondev/browser/prefer-event-target": {
           "description": "Prefer `.{add,remove}EventListener()` over `on`-functions",
           "$ref": "#/definitions/rule"
@@ -97,6 +83,66 @@
         "@dimensiondev/jsx/no-template-literal": {
           "description": "Disallow use template-literal in JSX",
           "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/string/no-locale-case": {
+          "description": "Disallow use `.toLocale{Upper,Lower}Case()`",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/string/no-simple-string-interpolation": {
+          "description": "Disallow simple string interpolation",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/string/no-simple-template-literal": {
+          "description": "Disallow simple template-literal",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/string/no-unneeded-to-string": {
+          "description": "Disallow `.toString()` when simpler alternatives exist",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/unicode/no-bidi": {
+          "description": "Detect and stop Trojan Source attacks",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/unicode/no-invisible": {
+          "description": "Disallow invisible characters",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/unicode/specific-set": {
+          "description": "Limit the range of literal characters",
+          "oneOf": [
+            { "$ref": "#/definitions/rule" },
+            {
+              "type": "array",
+              "items": [
+                { "$ref": "#/definitions/rule" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "pattern": { "type": "string" },
+                    "flags": { "type": "string" },
+                    "only": { "enum": ["code", "comment"] }
+                  },
+                  "additionalProperties": false
+                }
+              ],
+              "minItems": 2
+            }
+          ]
+        },
+        "@dimensiondev/ban-eslint-disable": {
+          "description": "Ban `eslint-disable` comment directive",
+          "oneOf": [
+            { "$ref": "#/definitions/rule" },
+            {
+              "type": "array",
+              "items": [
+                { "$ref": "#/definitions/rule" },
+                { "oneOf": [{ "type": "boolean" }, { "const": "allow-with-description" }] }
+              ],
+              "minItems": 2
+            }
+          ]
         },
         "@dimensiondev/no-bigint": { "description": "Disallow use BigInt", "$ref": "#/definitions/rule" },
         "@dimensiondev/no-builtin-base64": {
@@ -190,52 +236,6 @@
         "@dimensiondev/prefer-timer-id": {
           "description": "Enforce best practice with timer function",
           "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/string/no-locale-case": {
-          "description": "Disallow use `.toLocale{Upper,Lower}Case()`",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/string/no-simple-string-interpolation": {
-          "description": "Disallow simple string interpolation",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/string/no-simple-template-literal": {
-          "description": "Disallow simple template-literal",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/string/no-unneeded-to-string": {
-          "description": "Disallow `.toString()` when simpler alternatives exist",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/unicode/no-bidi": {
-          "description": "Detect and stop Trojan Source attacks",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/unicode/no-invisible": {
-          "description": "Disallow invisible characters",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/unicode/specific-set": {
-          "description": "Limit the range of literal characters",
-          "oneOf": [
-            { "$ref": "#/definitions/rule" },
-            {
-              "type": "array",
-              "items": [
-                { "$ref": "#/definitions/rule" },
-                {
-                  "type": "object",
-                  "properties": {
-                    "pattern": { "type": "string" },
-                    "flags": { "type": "string" },
-                    "only": { "enum": ["code", "comment"] }
-                  },
-                  "additionalProperties": false
-                }
-              ],
-              "minItems": 2
-            }
-          ]
         }
       }
     }

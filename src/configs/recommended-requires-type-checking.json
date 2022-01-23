@@ -5,9 +5,9 @@
     "@dimensiondev/browser/prefer-event-target": "error",
     "@dimensiondev/browser/prefer-keyboard-event-key": "error",
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
+    "@dimensiondev/string/no-unneeded-to-string": "error",
     "@dimensiondev/no-default-error": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
-    "@dimensiondev/no-unsafe-date": "error",
-    "@dimensiondev/string/no-unneeded-to-string": "error"
+    "@dimensiondev/no-unsafe-date": "error"
   }
 }

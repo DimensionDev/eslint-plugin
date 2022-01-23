@@ -7,15 +7,15 @@
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/jsx/no-template-literal": "error",
+    "@dimensiondev/string/no-locale-case": "error",
+    "@dimensiondev/string/no-simple-template-literal": "error",
+    "@dimensiondev/string/no-unneeded-to-string": "error",
+    "@dimensiondev/unicode/no-invisible": "error",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-redundant-variable": "error",
     "@dimensiondev/no-unneeded-flat-map": "error",
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-return-type-annotation": "error",
-    "@dimensiondev/prefer-timer-id": "error",
-    "@dimensiondev/string/no-locale-case": "error",
-    "@dimensiondev/string/no-simple-template-literal": "error",
-    "@dimensiondev/string/no-unneeded-to-string": "error",
-    "@dimensiondev/unicode/no-invisible": "error"
+    "@dimensiondev/prefer-timer-id": "error"
   }
 }
