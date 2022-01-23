@@ -1,4 +1,5 @@
 import type ts from 'typescript'
+import { isIdentifier, isMemberExpression } from '../node'
 import { createRule, getParserServices } from '../rule'
 
 const ALLOWED_METHOD_NAMES = new Set([
@@ -32,14 +33,16 @@ export default createRule({
   create(context) {
     const { typeChecker, esTreeNodeToTSNodeMap } = getParserServices(context)
     return {
-      MemberExpression(node) {
-        if (!isDateConstructor(typeChecker, esTreeNodeToTSNodeMap.get(node.object))) return
-        if (node.property.type !== 'Identifier') return
-        if (ALLOWED_METHOD_NAMES.has(node.property.name)) return
+      CallExpression(node) {
+        if (!isMemberExpression(node.callee)) return
+        const { object, property } = node.callee
+        if (!isIdentifier(property)) return
+        if (ALLOWED_METHOD_NAMES.has(property.name)) return
+        if (!isDateConstructor(typeChecker, esTreeNodeToTSNodeMap.get(object))) return
         context.report({
-          node: node.property,
+          node: node,
           messageId: 'disallow',
-          data: { name: node.property.name },
+          data: { name: property.name },
         })
       },
     }
