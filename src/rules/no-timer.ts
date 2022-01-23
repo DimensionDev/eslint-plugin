@@ -1,7 +1,8 @@
 import type { Node } from '@typescript-eslint/types/dist/ast-spec'
+import { isIdentifierName, isLiteralValue, isMemberExpression } from '../node'
 import { createRule } from '../rule'
 
-const methodNames = new Set([
+const methodNames = [
   'setTimeout',
   'clearTimeout',
   'setInterval',
@@ -13,7 +14,7 @@ const methodNames = new Set([
   'requestIdleCallback',
   'cancelIdleCallback',
   'nextTick',
-])
+]
 
 export default createRule({
   name: 'no-timer',
@@ -39,13 +40,11 @@ export default createRule({
 })
 
 function detect(node: Node): boolean {
-  switch (node.type) {
-    case 'MemberExpression':
-      return detect(node.property) || detect(node.object)
-    case 'Identifier':
-      return methodNames.has(node.name)
-    case 'Literal':
-      return typeof node.value === 'string' && methodNames.has(node.value)
+  if (isIdentifierName(node, methodNames)) return true
+  while (isMemberExpression(node)) {
+    if (isIdentifierName(node.property, methodNames)) return true
+    if (isLiteralValue(node.property, methodNames)) return true
+    node = node.object
   }
   return false
 }

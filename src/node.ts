@@ -89,9 +89,11 @@ export function isIdentifierName(node: Node | undefined | null, name: unknown) {
 
 export function isLiteralValue(node: Node | undefined | null, value: number): node is NumberLiteral
 export function isLiteralValue(node: Node | undefined | null, value: string): node is StringLiteral
+export function isLiteralValue(node: Node | undefined | null, value: Literal['value'][]): node is Literal
 export function isLiteralValue(node: Node | undefined | null, pattern: RegExp): node is StringLiteral
 export function isLiteralValue(node: Node | undefined | null, value: unknown) {
   if (node?.type !== 'Literal') return false
+  if (Array.isArray(value)) return value.includes(node.value)
   if (typeof node.value === 'string' && value instanceof RegExp) return value.test(node.value)
   return node.value === value
 }
