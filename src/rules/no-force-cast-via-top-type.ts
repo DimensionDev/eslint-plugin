@@ -1,4 +1,4 @@
-import type { TypeNode } from '@typescript-eslint/types/dist/ast-spec'
+import type { Node, TypeNode } from '@typescript-eslint/types/dist/ast-spec'
 import { createRule } from '../rule'
 
 export default createRule({
@@ -18,12 +18,17 @@ export default createRule({
     return {
       TSAsExpression(node) {
         if (!isTopType(node.typeAnnotation)) return
+        if (!isTypeReference(node.parent)) return
         const type = node.typeAnnotation.type === 'TSAnyKeyword' ? 'any' : 'unknown'
         context.report({ node, messageId: 'invalid', data: { type } })
       },
     }
   },
 })
+
+function isTypeReference(node: Node | undefined) {
+  return node && node.type === 'TSAsExpression' && node.typeAnnotation.type === 'TSTypeReference'
+}
 
 function isTopType(node: TypeNode) {
   return node.type === 'TSAnyKeyword' || node.type === 'TSUnknownKeyword'
