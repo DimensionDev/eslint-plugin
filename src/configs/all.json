@@ -4,6 +4,7 @@
   "rules": {
     "@dimensiondev/ban-eslint-disable": "error",
     "@dimensiondev/browser/prefer-event-target": "error",
+    "@dimensiondev/browser/prefer-keyboard-event-key": "error",
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/jsx/no-logical": "off",

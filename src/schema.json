@@ -56,6 +56,10 @@
           "description": "Prefer `.{add,remove}EventListener()` over `on`-functions",
           "$ref": "#/definitions/rule"
         },
+        "@dimensiondev/browser/prefer-keyboard-event-key": {
+          "description": "Prefer KeyboardEvent#key",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/browser/prefer-location-assign": {
           "description": "Enforce best practice with location",
           "$ref": "#/definitions/rule"

@@ -10,8 +10,10 @@ import type {
   Literal,
   MemberExpression,
   Node,
+  NumberLiteral,
   PrivateIdentifier,
   RegExpLiteral,
+  StringLiteral,
 } from '@typescript-eslint/types/dist/ast-spec'
 import type { Predicate } from './utils'
 
@@ -63,6 +65,10 @@ export function isAwait(node?: Node | null): node is AwaitExpression {
   return node?.type === 'AwaitExpression'
 }
 
+export function isNumberLiteral(node?: Node | null): node is NumberLiteral {
+  return node?.type === 'Literal' && typeof node.value === 'number'
+}
+
 export function isBigIntLiteral(node?: Node | null): node is BigIntLiteral {
   return node?.type === 'Literal' && Reflect.has(node, 'bigint')
 }
@@ -71,9 +77,9 @@ export function isRegExpLiteral(node?: Node | null): node is RegExpLiteral {
   return node?.type === 'Literal' && Reflect.has(node, 'regex')
 }
 
-export function isIdentifierName(node: Node | undefined | null, name: string): boolean
-export function isIdentifierName(node: Node | undefined | null, names: string[]): boolean
-export function isIdentifierName(node: Node | undefined | null, test: Predicate<string>): boolean
+export function isIdentifierName(node: Node | undefined | null, name: string): node is Identifier
+export function isIdentifierName(node: Node | undefined | null, names: string[]): node is Identifier
+export function isIdentifierName(node: Node | undefined | null, test: Predicate<string>): node is Identifier
 export function isIdentifierName(node: Node | undefined | null, name: unknown) {
   if (!isIdentifier(node)) return false
   if (typeof name === 'function') return name(node.name)
@@ -81,9 +87,9 @@ export function isIdentifierName(node: Node | undefined | null, name: unknown) {
   return node.name === name
 }
 
-export function isLiteralValue(node: Node | undefined | null, value: number): boolean
-export function isLiteralValue(node: Node | undefined | null, value: string): boolean
-export function isLiteralValue(node: Node | undefined | null, pattern: RegExp): boolean
+export function isLiteralValue(node: Node | undefined | null, value: number): node is NumberLiteral
+export function isLiteralValue(node: Node | undefined | null, value: string): node is StringLiteral
+export function isLiteralValue(node: Node | undefined | null, pattern: RegExp): node is StringLiteral
 export function isLiteralValue(node: Node | undefined | null, value: unknown) {
   if (node?.type !== 'Literal') return false
   if (typeof node.value === 'string' && value instanceof RegExp) return value.test(node.value)

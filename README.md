@@ -30,6 +30,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   "rules": {
     "@dimensiondev/ban-eslint-disable": "error",
     "@dimensiondev/browser/prefer-event-target": "error",
+    "@dimensiondev/browser/prefer-keyboard-event-key": "error",
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/jsx/no-logical": "off",
@@ -80,6 +81,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Ban `eslint-disable` comment directive
 - [browser/prefer-event-target][browser$prefer_event_target] :white_check_mark: :wrench: :thought_balloon:\
   Prefer `.{add,remove}EventListener()` over `on`-functions
+- [browser/prefer-keyboard-event-key][browser$prefer_keyboard_event_key] :white_check_mark: :wrench: :thought_balloon:\
+  Prefer KeyboardEvent#key
 - [browser/prefer-location-assign][browser$prefer_location_assign] :white_check_mark: :wrench:\
   Enforce best practice with location
 - [browser/prefer-modern-dom-apis][browser$prefer_modern_dom_apis] :white_check_mark: :wrench: :bulb: :thought_balloon:\
@@ -141,6 +144,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 
 [ban_eslint_disable]: https://dimensiondev.github.io/eslint-plugin/src/rules/ban-eslint-disable
 [browser$prefer_event_target]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-event-target
+[browser$prefer_keyboard_event_key]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-keyboard-event-key
 [browser$prefer_location_assign]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-location-assign
 [browser$prefer_modern_dom_apis]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-modern-dom-apis
 [jsx$no_logical]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-logical
