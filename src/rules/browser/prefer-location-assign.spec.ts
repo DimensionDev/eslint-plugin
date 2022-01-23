@@ -3,16 +3,20 @@ import module from './prefer-location-assign'
 
 runTest({
   module,
-  *invalid() {
-    yield {
-      code: "location = ''",
-      output: "location.assign('')",
-      errors: [{ messageId: 'enforce' }],
-    }
-    yield {
-      code: "location.href = ''",
-      output: "location.assign('')",
-      errors: [{ messageId: 'enforce' }],
-    }
+  *invalid(cast) {
+    yield cast({
+      code: "window.location = ''",
+      output: "window.location.assign('')",
+      errors: [{ messageId: 'instead' }],
+    })
+    yield cast({
+      code: "window.location.href = ''",
+      output: "window.location.assign('')",
+      errors: [{ messageId: 'instead', data: { name: 'href' } }],
+    })
+    yield cast({
+      code: 'window.location.port = 8080',
+      errors: [{ messageId: 'instead', data: { name: 'port' } }],
+    })
   },
 })
