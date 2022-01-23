@@ -1,5 +1,5 @@
-import { runTest } from '../spec'
-import module from './no-invisible-characters'
+import { runTest } from '../../spec'
+import module from './no-invisible'
 
 runTest({
   module,

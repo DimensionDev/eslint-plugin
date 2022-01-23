@@ -1,5 +1,5 @@
-import { runTest } from '../spec'
-import module from './unicode-specific-set'
+import { runTest } from '../../spec'
+import module from './specific-set'
 
 runTest({
   module,

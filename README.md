@@ -35,13 +35,11 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/jsx/no-logical": "off",
     "@dimensiondev/jsx/no-template-literal": "error",
-    "@dimensiondev/no-bidi-characters": "off",
     "@dimensiondev/no-bigint": "off",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-default-error": "error",
     "@dimensiondev/no-force-cast-via-top-type": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
-    "@dimensiondev/no-invisible-characters": "error",
     "@dimensiondev/no-locale-case": "error",
     "@dimensiondev/no-number-constructor": "error",
     "@dimensiondev/no-redundant-variable": "error",
@@ -59,7 +57,9 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/prefer-fetch": "error",
     "@dimensiondev/prefer-return-type-annotation": "error",
     "@dimensiondev/prefer-timer-id": "error",
-    "@dimensiondev/unicode-specific-set": "off"
+    "@dimensiondev/unicode/no-bidi": "off",
+    "@dimensiondev/unicode/no-invisible": "error",
+    "@dimensiondev/unicode/specific-set": "off"
   }
 }
 ```
@@ -91,8 +91,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Limit the complexity of JSX logic expression
 - [jsx/no-template-literal][jsx$no_template_literal] :white_check_mark: :wrench:\
   Disallow use template-literal in JSX
-- [no-bidi-characters][no_bidi_characters] :wrench:\
-  Detect and stop Trojan Source attacks
 - [no-bigint][no_bigint] :thought_balloon:\
   Disallow use BigInt
 - [no-builtin-base64][no_builtin_base64] :white_check_mark: :wrench:\
@@ -103,8 +101,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallowing cast a type T to unrelated or incompatible type Q via "T as any as Q"
 - [no-implicit-array-sort][no_implicit_array_sort] :white_check_mark: :thought_balloon:\
   Enforce Array#sort provide comparator function
-- [no-invisible-characters][no_invisible_characters] :white_check_mark: :wrench:\
-  Disallow invisible characters
 - [no-locale-case][no_locale_case] :white_check_mark: :wrench:\
   Disallow use `.toLocale{Upper,Lower}Case()`
 - [no-number-constructor][no_number_constructor] :white_check_mark:\
@@ -139,7 +135,11 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Enforce Move return type annotation to function return type
 - [prefer-timer-id][prefer_timer_id] :white_check_mark: :bulb:\
   Enforce best practice with timer function
-- [unicode-specific-set][unicode_specific_set] :wrench: :gear:\
+- [unicode/no-bidi][unicode$no_bidi] :wrench:\
+  Detect and stop Trojan Source attacks
+- [unicode/no-invisible][unicode$no_invisible] :white_check_mark: :wrench:\
+  Disallow invisible characters
+- [unicode/specific-set][unicode$specific_set] :wrench: :gear:\
   Limit the range of literal characters
 
 [ban_eslint_disable]: https://dimensiondev.github.io/eslint-plugin/src/rules/ban-eslint-disable
@@ -149,13 +149,11 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [browser$prefer_modern_dom_apis]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-modern-dom-apis
 [jsx$no_logical]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-logical
 [jsx$no_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-template-literal
-[no_bidi_characters]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-bidi-characters
 [no_bigint]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-bigint
 [no_builtin_base64]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-builtin-base64
 [no_default_error]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-default-error
 [no_force_cast_via_top_type]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-force-cast-via-top-type
 [no_implicit_array_sort]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-implicit-array-sort
-[no_invisible_characters]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-invisible-characters
 [no_locale_case]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-locale-case
 [no_number_constructor]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-number-constructor
 [no_redundant_variable]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-redundant-variable
@@ -173,7 +171,9 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [prefer_fetch]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-fetch
 [prefer_return_type_annotation]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-return-type-annotation
 [prefer_timer_id]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-timer-id
-[unicode_specific_set]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode-specific-set
+[unicode$no_bidi]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-bidi
+[unicode$no_invisible]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-invisible
+[unicode$specific_set]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/specific-set
 
 <!-- end rule list -->
 

@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/unicode-specific-set`
+# `@dimensiondev/unicode/specific-set`
 
 Limit the range of literal characters
 

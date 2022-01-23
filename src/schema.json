@@ -98,10 +98,6 @@
           "description": "Disallow use template-literal in JSX",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/no-bidi-characters": {
-          "description": "Detect and stop Trojan Source attacks",
-          "$ref": "#/definitions/rule"
-        },
         "@dimensiondev/no-bigint": { "description": "Disallow use BigInt", "$ref": "#/definitions/rule" },
         "@dimensiondev/no-builtin-base64": {
           "description": "Disallow use built-in base64 function",
@@ -117,10 +113,6 @@
         },
         "@dimensiondev/no-implicit-array-sort": {
           "description": "Enforce Array#sort provide comparator function",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/no-invisible-characters": {
-          "description": "Disallow invisible characters",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-locale-case": {
@@ -214,7 +206,15 @@
           "description": "Enforce best practice with timer function",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/unicode-specific-set": {
+        "@dimensiondev/unicode/no-bidi": {
+          "description": "Detect and stop Trojan Source attacks",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/unicode/no-invisible": {
+          "description": "Disallow invisible characters",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/unicode/specific-set": {
           "description": "Limit the range of literal characters",
           "oneOf": [
             { "$ref": "#/definitions/rule" },

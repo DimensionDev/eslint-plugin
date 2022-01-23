@@ -1,5 +1,5 @@
-import { createRule } from '../rule'
-import { getFixer, makeProgramListener } from './unicode-specific-set'
+import { createRule } from '../../rule'
+import { getFixer, makeProgramListener } from './specific-set'
 
 // Generated using
 // https://github.com/hediet/vscode-unicode-data
@@ -18,7 +18,7 @@ const INVISIBLE_PATTERN = combinePattern(
 )
 
 export default createRule({
-  name: 'no-invisible-characters',
+  name: 'unicode/no-invisible',
   meta: {
     type: 'problem',
     fixable: 'code',

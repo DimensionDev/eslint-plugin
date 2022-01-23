@@ -1,10 +1,10 @@
-import { createRule } from '../rule'
-import { escape, getFixer, makeProgramListener } from './unicode-specific-set'
+import { createRule } from '../../rule'
+import { escape, getFixer, makeProgramListener } from './specific-set'
 
 const BIDI_PATTERN = /[\u061C\u202A-\u202E\u2066-\u2069]/
 
 export default createRule({
-  name: 'no-bidi-characters',
+  name: 'unicode/no-bidi',
   meta: {
     type: 'problem',
     fixable: 'code',

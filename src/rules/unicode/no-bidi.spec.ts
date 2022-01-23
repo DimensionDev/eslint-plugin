@@ -1,6 +1,6 @@
 import dedent from 'ts-dedent'
-import { runTest } from '../spec'
-import module from './no-bidi-characters'
+import { runTest } from '../../spec'
+import module from './no-bidi'
 
 runTest({
   module,

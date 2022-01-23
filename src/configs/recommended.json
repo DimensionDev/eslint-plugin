@@ -7,7 +7,6 @@
     "@dimensiondev/jsx/no-template-literal": "error",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-force-cast-via-top-type": "error",
-    "@dimensiondev/no-invisible-characters": "error",
     "@dimensiondev/no-locale-case": "error",
     "@dimensiondev/no-number-constructor": "error",
     "@dimensiondev/no-redundant-variable": "error",
@@ -19,6 +18,7 @@
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-fetch": "error",
     "@dimensiondev/prefer-return-type-annotation": "error",
-    "@dimensiondev/prefer-timer-id": "error"
+    "@dimensiondev/prefer-timer-id": "error",
+    "@dimensiondev/unicode/no-invisible": "error"
   }
 }
