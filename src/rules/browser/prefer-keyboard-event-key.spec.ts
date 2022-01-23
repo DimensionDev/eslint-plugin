@@ -10,8 +10,8 @@ runTest({
       errors: [{ messageId: 'instead', data: { name: 'keyCode' } }],
     })
     yield cast({
-      code: 'document.addEventListener("keydown", (event) => { event.which === 8 })',
-      output: 'document.addEventListener("keydown", (event) => { event.key === "Backspace" })',
+      code: 'document.addEventListener("keydown", (event) => { 8 === event.which })',
+      output: 'document.addEventListener("keydown", (event) => { "Backspace" === event.key })',
       errors: [{ messageId: 'instead', data: { name: 'which' } }],
     })
     yield cast({

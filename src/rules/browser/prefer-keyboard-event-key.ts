@@ -1,4 +1,4 @@
-import type { BinaryExpression, MemberExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
+import type { MemberExpression } from '@typescript-eslint/types/dist/ast-spec'
 import type { ReportFixFunction } from '@typescript-eslint/utils/dist/ts-eslint'
 import type ts from 'typescript'
 import { isIdentifierName, isNumberLiteral } from '../../node'
@@ -50,8 +50,9 @@ export default createRule({
 })
 
 function getFixer(node: MemberExpression): ReportFixFunction | undefined {
-  if (!isEqEqExpression(node.parent)) return
-  const { left, right } = node.parent
+  if (node.parent?.type !== 'BinaryExpression') return
+  const { left, operator, right } = node.parent
+  if (!(operator === '==' || operator === '===')) return
   return function* (fixer) {
     yield fixer.replaceText(node.property, 'key')
     if (isNumberLiteral(right)) {
@@ -60,10 +61,6 @@ function getFixer(node: MemberExpression): ReportFixFunction | undefined {
       yield fixer.replaceText(left, quote(getKey(left.value)))
     }
   }
-}
-
-function isEqEqExpression(node: Node | undefined): node is BinaryExpression {
-  return node?.type === 'BinaryExpression' && (node.operator === '==' || node.operator === '===')
 }
 
 function getKey(point: number) {
