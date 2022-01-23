@@ -6,7 +6,6 @@ import { createRule, getParserServices } from '../../rule'
 import EventKeys from '../../shared/event-keys.json'
 import { quote } from '../../utils'
 
-const eventKeys = new Map<number, string>(EventKeys as [number, string][])
 const fieldNames = ['keyCode', 'charCode', 'which']
 
 export default createRule({
@@ -68,7 +67,7 @@ function isEqEqExpression(node: Node | undefined): node is BinaryExpression {
 }
 
 function getKey(point: number) {
-  return eventKeys.get(point) ?? String.fromCodePoint(point)
+  return EventKeys[point] ?? String.fromCodePoint(point)
 }
 
 function isKeyboardEvent(checker: ts.TypeChecker, node: ts.Node) {
