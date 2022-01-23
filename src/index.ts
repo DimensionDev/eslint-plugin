@@ -1,4 +1,4 @@
-// 32 Rules
+// 33 Rules
 // 5  Configs
 import ban_eslint_disable from './rules/ban-eslint-disable'
 import browser$prefer_event_target from './rules/browser/prefer-event-target'
@@ -20,6 +20,7 @@ import no_timer from './rules/no-timer'
 import no_top_level from './rules/no-top-level'
 import no_unneeded_flat_map from './rules/no-unneeded-flat-map'
 import no_unsafe_date from './rules/no-unsafe-date'
+import no_vue from './rules/no-vue'
 import prefer_default_export from './rules/prefer-default-export'
 import prefer_early_return from './rules/prefer-early-return'
 import prefer_fetch from './rules/prefer-fetch'
@@ -53,6 +54,7 @@ export const rules = {
   'no-top-level': no_top_level,
   'no-unneeded-flat-map': no_unneeded_flat_map,
   'no-unsafe-date': no_unsafe_date,
+  'no-vue': no_vue,
   'prefer-default-export': prefer_default_export,
   'prefer-early-return': prefer_early_return,
   'prefer-fetch': prefer_fetch,

@@ -152,6 +152,7 @@
           "description": "Disallow use unsafe Date methods",
           "$ref": "#/definitions/rule"
         },
+        "@dimensiondev/no-vue": { "description": "Disallow Vue.js in this project", "$ref": "#/definitions/rule" },
         "@dimensiondev/prefer-default-export": {
           "description": "Enforce default export location at top or bottom",
           "oneOf": [
