@@ -84,12 +84,12 @@
           "description": "Disallow use template-literal in JSX",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/string/no-locale-case": {
-          "description": "Disallow use `.toLocale{Upper,Lower}Case()`",
+        "@dimensiondev/string/no-interpolation": {
+          "description": "Disallow simple string interpolation",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/string/no-simple-string-interpolation": {
-          "description": "Disallow simple string interpolation",
+        "@dimensiondev/string/no-locale-case": {
+          "description": "Disallow use `.toLocale{Upper,Lower}Case()`",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/string/no-simple-template-literal": {

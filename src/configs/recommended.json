@@ -4,8 +4,8 @@
   "rules": {
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/jsx/no-template-literal": "error",
+    "@dimensiondev/string/no-interpolation": "error",
     "@dimensiondev/string/no-locale-case": "error",
-    "@dimensiondev/string/no-simple-string-interpolation": "error",
     "@dimensiondev/string/no-simple-template-literal": "error",
     "@dimensiondev/unicode/no-invisible": "error",
     "@dimensiondev/ban-eslint-disable": "error",

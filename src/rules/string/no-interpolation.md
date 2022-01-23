@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/string/no-simple-string-interpolation`
+# `@dimensiondev/string/no-interpolation`
 
 Disallow simple string interpolation
 

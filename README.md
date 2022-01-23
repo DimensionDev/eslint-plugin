@@ -34,8 +34,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/jsx/no-logical": "off",
     "@dimensiondev/jsx/no-template-literal": "error",
+    "@dimensiondev/string/no-interpolation": "error",
     "@dimensiondev/string/no-locale-case": "error",
-    "@dimensiondev/string/no-simple-string-interpolation": "error",
     "@dimensiondev/string/no-simple-template-literal": "error",
     "@dimensiondev/string/no-unneeded-to-string": "error",
     "@dimensiondev/unicode/no-bidi": "off",
@@ -90,10 +90,10 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Limit the complexity of JSX logic expression
 - [jsx/no-template-literal][jsx$no_template_literal] :white_check_mark: :wrench:\
   Disallow use template-literal in JSX
+- [string/no-interpolation][string$no_interpolation] :white_check_mark:\
+  Disallow simple string interpolation
 - [string/no-locale-case][string$no_locale_case] :white_check_mark: :wrench:\
   Disallow use `.toLocale{Upper,Lower}Case()`
-- [string/no-simple-string-interpolation][string$no_simple_string_interpolation] :white_check_mark:\
-  Disallow simple string interpolation
 - [string/no-simple-template-literal][string$no_simple_template_literal] :white_check_mark: :wrench:\
   Disallow simple template-literal
 - [string/no-unneeded-to-string][string$no_unneeded_to_string] :white_check_mark: :wrench: :thought_balloon:\
@@ -151,8 +151,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [browser$prefer_modern_dom_apis]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-modern-dom-apis
 [jsx$no_logical]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-logical
 [jsx$no_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-template-literal
+[string$no_interpolation]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-interpolation
 [string$no_locale_case]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-locale-case
-[string$no_simple_string_interpolation]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-simple-string-interpolation
 [string$no_simple_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-simple-template-literal
 [string$no_unneeded_to_string]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-unneeded-to-string
 [unicode$no_bidi]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-bidi

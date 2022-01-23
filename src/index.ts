@@ -6,8 +6,8 @@ import browser$prefer_location_assign from './rules/browser/prefer-location-assi
 import browser$prefer_modern_dom_apis from './rules/browser/prefer-modern-dom-apis'
 import jsx$no_logical from './rules/jsx/no-logical'
 import jsx$no_template_literal from './rules/jsx/no-template-literal'
+import string$no_interpolation from './rules/string/no-interpolation'
 import string$no_locale_case from './rules/string/no-locale-case'
-import string$no_simple_string_interpolation from './rules/string/no-simple-string-interpolation'
 import string$no_simple_template_literal from './rules/string/no-simple-template-literal'
 import string$no_unneeded_to_string from './rules/string/no-unneeded-to-string'
 import unicode$no_bidi from './rules/unicode/no-bidi'
@@ -40,8 +40,8 @@ export const rules = {
   'browser/prefer-modern-dom-apis': browser$prefer_modern_dom_apis,
   'jsx/no-logical': jsx$no_logical,
   'jsx/no-template-literal': jsx$no_template_literal,
+  'string/no-interpolation': string$no_interpolation,
   'string/no-locale-case': string$no_locale_case,
-  'string/no-simple-string-interpolation': string$no_simple_string_interpolation,
   'string/no-simple-template-literal': string$no_simple_template_literal,
   'string/no-unneeded-to-string': string$no_unneeded_to_string,
   'unicode/no-bidi': unicode$no_bidi,
