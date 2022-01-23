@@ -17,24 +17,21 @@ export default createRule({
   create(context) {
     return {
       Program(program) {
-        if (context.getFilename().endsWith('.vue')) {
-          context.report({
-            node: program,
-            messageId: 'disallow',
-            data: { name: 'Vue.js' },
-          })
-          return
-        }
-        for (const decl of program.body) {
-          if (decl.type !== 'ImportDeclaration') continue
-          if (isVueEcosystem(decl.source.value)) {
-            context.report({
-              node: decl,
-              messageId: 'disallow',
-              data: { name: quote(decl.source.value) },
-            })
-          }
-        }
+        if (!context.getFilename().endsWith('.vue')) return
+        context.report({
+          node: program,
+          messageId: 'disallow',
+          data: { name: 'Vue.js' },
+        })
+      },
+      ImportDeclaration(node) {
+        const packageName = node.source.value
+        if (!isVueEcosystem(packageName)) return
+        context.report({
+          node,
+          messageId: 'disallow',
+          data: { name: quote(packageName) },
+        })
       },
     }
   },
@@ -42,6 +39,7 @@ export default createRule({
 
 function isVueEcosystem(name: string) {
   if (name.startsWith('.')) return false
+  name = name.toLowerCase()
   return (
     name === 'vue' ||
     name === 'vuex' ||
