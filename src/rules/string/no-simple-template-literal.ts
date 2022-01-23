@@ -1,11 +1,11 @@
 import type { Property, TemplateLiteral } from '@typescript-eslint/types/dist/ast-spec'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
-import { closest, isMulitline } from '../node'
-import { createRule } from '../rule'
-import { quote } from '../utils'
+import { closest, isMulitline } from '../../node'
+import { createRule } from '../../rule'
+import { quote } from '../../utils'
 
 export default createRule({
-  name: 'no-simple-template-literal',
+  name: 'string/no-simple-template-literal',
   meta: {
     type: 'problem',
     fixable: 'code',

@@ -1,29 +1,27 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-simple-template-literal`
+# `@dimensiondev/string/no-simple-string-interpolation`
 
-Disallow simple template-literal
+Disallow simple string interpolation
 
 <!-- end title -->
 
 ## Rule Details
 
+Template literal string expressions cross-lines reduce readability
+
 ### :x: Incorrect
 
+<!-- prettier-ignore -->
 ```ts
-const foo = `example`
-const bar = `${foo}`
-const baz = { [`${bar}`]: foo }
-const qux = { [`bar`]: foo }
+const foo = `foo${bar
+.toString()}baz`
 ```
 
 ### :white_check_mark: Correct
 
 ```ts
-const foo = 'example'
-const bar = foo
-const baz = { [bar]: foo }
-const qux = { bar: foo }
+const foo = `foo${bar.toString()}baz`
 ```
 
 ## When Not To Use It
@@ -33,7 +31,7 @@ const qux = { bar: foo }
 <!-- begin attributes -->
 
 - [x] :white_check_mark: Recommended
-- [x] :wrench: Fixable
+- [ ] :wrench: Fixable
 - [ ] :bulb: Suggestions
 - [ ] :gear: Configurable
 - [ ] :thought_balloon: Requires type information

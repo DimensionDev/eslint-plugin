@@ -1,8 +1,8 @@
-import { isMulitline } from '../node'
-import { createRule } from '../rule'
+import { isMulitline } from '../../node'
+import { createRule } from '../../rule'
 
 export default createRule({
-  name: 'no-simple-string-interpolation',
+  name: 'string/no-simple-string-interpolation',
   meta: {
     type: 'problem',
     docs: {

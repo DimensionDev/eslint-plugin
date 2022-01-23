@@ -1,9 +1,9 @@
 import type ts from 'typescript'
-import { isIdentifierName, isLiteralValue } from '../node'
-import { createRule, getParserServices } from '../rule'
+import { isIdentifierName, isLiteralValue } from '../../node'
+import { createRule, getParserServices } from '../../rule'
 
 export default createRule({
-  name: 'no-unneeded-to-string',
+  name: 'string/no-unneeded-to-string',
   meta: {
     type: 'problem',
     fixable: 'code',

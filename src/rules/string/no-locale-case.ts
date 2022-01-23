@@ -1,10 +1,10 @@
-import { isIdentifier, isMemberExpression } from '../node'
-import { createRule } from '../rule'
+import { isIdentifier, isMemberExpression } from '../../node'
+import { createRule } from '../../rule'
 
-const methods = new Set(['toLocaleUpperCase', 'toLocaleLowerCase'])
+const RE_METHOD_NAME = /^toLocale(?<name>Upper|Lower)Case$/g
 
 export default createRule({
-  name: 'no-locale-case',
+  name: 'string/no-locale-case',
   meta: {
     type: 'problem',
     fixable: 'code',
@@ -14,7 +14,7 @@ export default createRule({
     },
     schema: [],
     messages: {
-      invalid: 'Disallow use .{{name}}()',
+      instead: 'Use `.to{{name}}Case(...)` instead of `.toLocale{{name}}Case()`',
     },
   },
   create(context) {
@@ -23,11 +23,12 @@ export default createRule({
         if (node.arguments.length > 0) return
         if (!isMemberExpression(node.callee) || !isIdentifier(node.callee.property)) return
         const { property } = node.callee
-        if (!methods.has(property.name)) return
+        const matched = RE_METHOD_NAME.exec(property.name)
+        if (!matched) return
         context.report({
           node,
-          data: { name: property.name },
-          messageId: 'invalid',
+          data: { name: matched.groups?.name },
+          messageId: 'instead',
           fix(fixer) {
             return fixer.replaceText(property, property.name.replaceAll('Locale', ''))
           },

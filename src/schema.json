@@ -115,24 +115,12 @@
           "description": "Enforce Array#sort provide comparator function",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/no-locale-case": {
-          "description": "Disallow use `.toLocale{Upper,Lower}Case()`",
-          "$ref": "#/definitions/rule"
-        },
         "@dimensiondev/no-number-constructor": {
           "description": "Disallow use `Number` constructor",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-redundant-variable": {
           "description": "Disallow redundant variable",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/no-simple-string-interpolation": {
-          "description": "Disallow simple string interpolation",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/no-simple-template-literal": {
-          "description": "Disallow simple template-literal",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-single-return": { "description": "Disallow single-return", "$ref": "#/definitions/rule" },
@@ -158,10 +146,6 @@
         },
         "@dimensiondev/no-unneeded-flat-map": {
           "description": "Disallow `.flatMap((x) => x)` when simpler alternatives exist",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/no-unneeded-to-string": {
-          "description": "Disallow `.toString()` when simpler alternatives exist",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-unsafe-date": {
@@ -204,6 +188,22 @@
         },
         "@dimensiondev/prefer-timer-id": {
           "description": "Enforce best practice with timer function",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/string/no-locale-case": {
+          "description": "Disallow use `.toLocale{Upper,Lower}Case()`",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/string/no-simple-string-interpolation": {
+          "description": "Disallow simple string interpolation",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/string/no-simple-template-literal": {
+          "description": "Disallow simple template-literal",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/string/no-unneeded-to-string": {
+          "description": "Disallow `.toString()` when simpler alternatives exist",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/unicode/no-bidi": {

@@ -1,4 +1,4 @@
-import { runTest } from '../spec'
+import { runTest } from '../../spec'
 import module from './no-locale-case'
 
 runTest({
@@ -7,16 +7,16 @@ runTest({
     yield 'example.toLocaleUpperCase("en-US")'
     yield 'example.toLocaleLowerCase("en-US")'
   },
-  *invalid() {
-    yield {
+  *invalid(cast) {
+    yield cast({
       code: 'example.toLocaleUpperCase()',
       output: 'example.toUpperCase()',
-      errors: [{ messageId: 'invalid' }],
-    }
-    yield {
+      errors: [{ messageId: 'instead', data: { name: 'Upper' } }],
+    })
+    yield cast({
       code: 'example.toLocaleLowerCase()',
       output: 'example.toLowerCase()',
-      errors: [{ messageId: 'invalid' }],
-    }
+      errors: [{ messageId: 'instead', data: { name: 'Lower' } }],
+    })
   },
 })

@@ -7,7 +7,7 @@
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/no-default-error": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
-    "@dimensiondev/no-unneeded-to-string": "error",
-    "@dimensiondev/no-unsafe-date": "error"
+    "@dimensiondev/no-unsafe-date": "error",
+    "@dimensiondev/string/no-unneeded-to-string": "error"
   }
 }

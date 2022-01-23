@@ -1,5 +1,5 @@
 /* eslint-disable no-template-curly-in-string */
-import { runTest } from '../spec'
+import { runTest } from '../../spec'
 import module from './no-simple-string-interpolation'
 
 runTest({

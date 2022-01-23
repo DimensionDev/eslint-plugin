@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-unneeded-to-string`
+# `@dimensiondev/string/no-unneeded-to-string`
 
 Disallow `.toString()` when simpler alternatives exist
 

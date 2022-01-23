@@ -40,23 +40,23 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/no-default-error": "error",
     "@dimensiondev/no-force-cast-via-top-type": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
-    "@dimensiondev/no-locale-case": "error",
     "@dimensiondev/no-number-constructor": "error",
     "@dimensiondev/no-redundant-variable": "error",
-    "@dimensiondev/no-simple-string-interpolation": "error",
-    "@dimensiondev/no-simple-template-literal": "error",
     "@dimensiondev/no-single-return": "error",
     "@dimensiondev/no-then": "error",
     "@dimensiondev/no-timer": "off",
     "@dimensiondev/no-top-level": "off",
     "@dimensiondev/no-unneeded-flat-map": "error",
-    "@dimensiondev/no-unneeded-to-string": "error",
     "@dimensiondev/no-unsafe-date": "error",
     "@dimensiondev/prefer-default-export": "off",
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-fetch": "error",
     "@dimensiondev/prefer-return-type-annotation": "error",
     "@dimensiondev/prefer-timer-id": "error",
+    "@dimensiondev/string/no-locale-case": "error",
+    "@dimensiondev/string/no-simple-string-interpolation": "error",
+    "@dimensiondev/string/no-simple-template-literal": "error",
+    "@dimensiondev/string/no-unneeded-to-string": "error",
     "@dimensiondev/unicode/no-bidi": "off",
     "@dimensiondev/unicode/no-invisible": "error",
     "@dimensiondev/unicode/specific-set": "off"
@@ -101,16 +101,10 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallowing cast a type T to unrelated or incompatible type Q via "T as any as Q"
 - [no-implicit-array-sort][no_implicit_array_sort] :white_check_mark: :thought_balloon:\
   Enforce Array#sort provide comparator function
-- [no-locale-case][no_locale_case] :white_check_mark: :wrench:\
-  Disallow use `.toLocale{Upper,Lower}Case()`
 - [no-number-constructor][no_number_constructor] :white_check_mark:\
   Disallow use `Number` constructor
 - [no-redundant-variable][no_redundant_variable] :white_check_mark: :wrench:\
   Disallow redundant variable
-- [no-simple-string-interpolation][no_simple_string_interpolation] :white_check_mark:\
-  Disallow simple string interpolation
-- [no-simple-template-literal][no_simple_template_literal] :white_check_mark: :wrench:\
-  Disallow simple template-literal
 - [no-single-return][no_single_return] :white_check_mark:\
   Disallow single-return
 - [no-then][no_then] :white_check_mark:\
@@ -121,8 +115,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallow side-effect at module top-level
 - [no-unneeded-flat-map][no_unneeded_flat_map] :white_check_mark: :wrench:\
   Disallow `.flatMap((x) => x)` when simpler alternatives exist
-- [no-unneeded-to-string][no_unneeded_to_string] :white_check_mark: :wrench: :thought_balloon:\
-  Disallow `.toString()` when simpler alternatives exist
 - [no-unsafe-date][no_unsafe_date] :white_check_mark: :thought_balloon:\
   Disallow use unsafe Date methods
 - [prefer-default-export][prefer_default_export] :gear:\
@@ -135,6 +127,14 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Enforce Move return type annotation to function return type
 - [prefer-timer-id][prefer_timer_id] :white_check_mark: :bulb:\
   Enforce best practice with timer function
+- [string/no-locale-case][string$no_locale_case] :white_check_mark: :wrench:\
+  Disallow use `.toLocale{Upper,Lower}Case()`
+- [string/no-simple-string-interpolation][string$no_simple_string_interpolation] :white_check_mark:\
+  Disallow simple string interpolation
+- [string/no-simple-template-literal][string$no_simple_template_literal] :white_check_mark: :wrench:\
+  Disallow simple template-literal
+- [string/no-unneeded-to-string][string$no_unneeded_to_string] :white_check_mark: :wrench: :thought_balloon:\
+  Disallow `.toString()` when simpler alternatives exist
 - [unicode/no-bidi][unicode$no_bidi] :wrench:\
   Detect and stop Trojan Source attacks
 - [unicode/no-invisible][unicode$no_invisible] :white_check_mark: :wrench:\
@@ -154,23 +154,23 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [no_default_error]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-default-error
 [no_force_cast_via_top_type]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-force-cast-via-top-type
 [no_implicit_array_sort]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-implicit-array-sort
-[no_locale_case]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-locale-case
 [no_number_constructor]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-number-constructor
 [no_redundant_variable]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-redundant-variable
-[no_simple_string_interpolation]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-simple-string-interpolation
-[no_simple_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-simple-template-literal
 [no_single_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-single-return
 [no_then]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-then
 [no_timer]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-timer
 [no_top_level]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-top-level
 [no_unneeded_flat_map]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-unneeded-flat-map
-[no_unneeded_to_string]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-unneeded-to-string
 [no_unsafe_date]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-unsafe-date
 [prefer_default_export]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-default-export
 [prefer_early_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-early-return
 [prefer_fetch]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-fetch
 [prefer_return_type_annotation]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-return-type-annotation
 [prefer_timer_id]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-timer-id
+[string$no_locale_case]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-locale-case
+[string$no_simple_string_interpolation]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-simple-string-interpolation
+[string$no_simple_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-simple-template-literal
+[string$no_unneeded_to_string]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-unneeded-to-string
 [unicode$no_bidi]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-bidi
 [unicode$no_invisible]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-invisible
 [unicode$specific_set]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/specific-set
