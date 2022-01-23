@@ -13,17 +13,13 @@ create new dates using a library like [date-fns](https://date-fns.org).
 
 Only the following methods are allowed
 
-- getTime
-- getTimezoneOffset
-- toJSON
-- toString
-- toISOString
-- toUTCString
-- toGMTString
-- toLocaleString
-- toLocaleDateString
-- toLocaleTimeString
-- valueOf
+- `.getTime()`
+- `.getTimezoneOffset()`
+- `.to{JSON,String}()`
+- `.to{ISO,UTC,GMT}String()`
+- `.toLocaleString()`
+- `.toLocale{Date,Time}String()`
+- `.valueOf()`
 
 ### :x: Incorrect
 
