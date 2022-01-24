@@ -39,7 +39,7 @@
       "type": "object",
       "properties": {
         "@dimensiondev/browser/prefer-dataset": {
-          "description": "Use `.dataset` instead of `Element#{get,set,has,remove}Attribute`",
+          "description": "Prefer `Element#dataset` over `Element#{get,set,has,remove}Attribute`",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/browser/prefer-event-target": {
@@ -59,11 +59,11 @@
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/browser/prefer-query-selector": {
-          "description": "Use `Element#querySelector` instead of `Element#getElementById`",
+          "description": "Prefer `Element#querySelector` over `Element#getElementById`",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/browser/prefer-text-content": {
-          "description": "Use `Element#textContent` instead of `Element#innerText`",
+          "description": "Prefer `Element#textContent` over `Element#innerText`",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/jsx/no-logical": {

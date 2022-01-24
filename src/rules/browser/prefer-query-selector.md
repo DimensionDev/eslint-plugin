@@ -2,7 +2,7 @@
 
 # `@dimensiondev/browser/prefer-query-selector`
 
-Use `Element#querySelector` instead of `Element#getElementById`
+Prefer `Element#querySelector` over `Element#getElementById`
 
 <!-- end title -->
 

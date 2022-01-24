@@ -14,7 +14,7 @@ export default createRule({
     type: 'suggestion',
     fixable: 'code',
     docs: {
-      description: 'Use `.dataset` instead of `Element#{get,set,has,remove}Attribute`',
+      description: 'Prefer `Element#dataset` over `Element#{get,set,has,remove}Attribute`',
       recommended: 'error',
       requiresTypeChecking: true,
     },

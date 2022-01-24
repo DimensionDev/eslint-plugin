@@ -95,7 +95,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 <!-- begin rule list -->
 
 - [browser/prefer-dataset][browser$prefer_dataset] :white_check_mark: :wrench: :thought_balloon:\
-  Use `.dataset` instead of `Element#{get,set,has,remove}Attribute`
+  Prefer `Element#dataset` over `Element#{get,set,has,remove}Attribute`
 - [browser/prefer-event-target][browser$prefer_event_target] :white_check_mark: :wrench: :thought_balloon:\
   Prefer `.{add,remove}EventListener()` over `on`-functions
 - [browser/prefer-keyboard-event-key][browser$prefer_keyboard_event_key] :white_check_mark: :wrench: :thought_balloon:\
@@ -105,9 +105,9 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 - [browser/prefer-modern-dom-apis][browser$prefer_modern_dom_apis] :white_check_mark: :wrench: :thought_balloon:\
   Prefer Modern DOM APIs
 - [browser/prefer-query-selector][browser$prefer_query_selector] :white_check_mark: :wrench: :thought_balloon:\
-  Use `Element#querySelector` instead of `Element#getElementById`
+  Prefer `Element#querySelector` over `Element#getElementById`
 - [browser/prefer-text-content][browser$prefer_text_content] :white_check_mark: :bulb: :thought_balloon:\
-  Use `Element#textContent` instead of `Element#innerText`
+  Prefer `Element#textContent` over `Element#innerText`
 - [jsx/no-logical][jsx$no_logical] :gear:\
   Limit the complexity of JSX logic expression
 - [jsx/no-template-literal][jsx$no_template_literal] :white_check_mark: :wrench:\

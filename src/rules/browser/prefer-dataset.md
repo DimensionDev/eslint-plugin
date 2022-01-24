@@ -2,7 +2,7 @@
 
 # `@dimensiondev/browser/prefer-dataset`
 
-Use `.dataset` instead of `Element#{get,set,has,remove}Attribute`
+Prefer `Element#dataset` over `Element#{get,set,has,remove}Attribute`
 
 <!-- end title -->
 

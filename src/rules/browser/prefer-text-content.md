@@ -2,7 +2,7 @@
 
 # `@dimensiondev/browser/prefer-text-content`
 
-Use `Element#textContent` instead of `Element#innerText`
+Prefer `Element#textContent` over `Element#innerText`
 
 <!-- end title -->
 

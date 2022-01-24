@@ -12,7 +12,7 @@ export default createRule({
     type: 'suggestion',
     fixable: 'code',
     docs: {
-      description: 'Use `Element#querySelector` instead of `Element#getElementById`',
+      description: 'Prefer `Element#querySelector` over `Element#getElementById`',
       recommended: 'error',
       requiresTypeChecking: true,
     },

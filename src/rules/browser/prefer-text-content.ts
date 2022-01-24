@@ -8,7 +8,7 @@ export default createRule({
     type: 'suggestion',
     hasSuggestions: true,
     docs: {
-      description: 'Use `Element#textContent` instead of `Element#innerText`',
+      description: 'Prefer `Element#textContent` over `Element#innerText`',
       recommended: 'error',
       requiresTypeChecking: true,
     },
