@@ -42,6 +42,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/type/no-bigint": "off",
     "@dimensiondev/type/no-force-cast-via-top-type": "error",
     "@dimensiondev/type/no-instanceof-wrapper": "error",
+    "@dimensiondev/type/no-wrapper-type-reference": "error",
     "@dimensiondev/type/prefer-return-type-annotation": "error",
     "@dimensiondev/unicode/no-bidi": "off",
     "@dimensiondev/unicode/no-invisible": "error",
@@ -108,6 +109,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`
 - [type/no-instanceof-wrapper][type$no_instanceof_wrapper] :white_check_mark: :wrench:\
   Disallow `instanceof` for wrapper objects
+- [type/no-wrapper-type-reference][type$no_wrapper_type_reference] :white_check_mark: :wrench:\
+  Disallow wrapper type for type reference
 - [type/prefer-return-type-annotation][type$prefer_return_type_annotation] :white_check_mark: :wrench:\
   Enforce Move return type annotation to function return type
 - [unicode/no-bidi][unicode$no_bidi] :wrench:\
@@ -165,6 +168,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [type$no_bigint]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-bigint
 [type$no_force_cast_via_top_type]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-force-cast-via-top-type
 [type$no_instanceof_wrapper]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-instanceof-wrapper
+[type$no_wrapper_type_reference]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-wrapper-type-reference
 [type$prefer_return_type_annotation]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/prefer-return-type-annotation
 [unicode$no_bidi]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-bidi
 [unicode$no_invisible]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-invisible

@@ -1,4 +1,4 @@
-// 35 Rules
+// 36 Rules
 // 5  Configs
 import browser$prefer_event_target from './rules/browser/prefer-event-target'
 import browser$prefer_keyboard_event_key from './rules/browser/prefer-keyboard-event-key'
@@ -14,6 +14,7 @@ import string$no_unneeded_to_string from './rules/string/no-unneeded-to-string'
 import type$no_bigint from './rules/type/no-bigint'
 import type$no_force_cast_via_top_type from './rules/type/no-force-cast-via-top-type'
 import type$no_instanceof_wrapper from './rules/type/no-instanceof-wrapper'
+import type$no_wrapper_type_reference from './rules/type/no-wrapper-type-reference'
 import type$prefer_return_type_annotation from './rules/type/prefer-return-type-annotation'
 import unicode$no_bidi from './rules/unicode/no-bidi'
 import unicode$no_invisible from './rules/unicode/no-invisible'
@@ -50,6 +51,7 @@ export const rules = {
   'type/no-bigint': type$no_bigint,
   'type/no-force-cast-via-top-type': type$no_force_cast_via_top_type,
   'type/no-instanceof-wrapper': type$no_instanceof_wrapper,
+  'type/no-wrapper-type-reference': type$no_wrapper_type_reference,
   'type/prefer-return-type-annotation': type$prefer_return_type_annotation,
   'unicode/no-bidi': unicode$no_bidi,
   'unicode/no-invisible': unicode$no_invisible,

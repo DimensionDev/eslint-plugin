@@ -16,6 +16,7 @@
     "@dimensiondev/type/no-bigint": "off",
     "@dimensiondev/type/no-force-cast-via-top-type": "error",
     "@dimensiondev/type/no-instanceof-wrapper": "error",
+    "@dimensiondev/type/no-wrapper-type-reference": "error",
     "@dimensiondev/type/prefer-return-type-annotation": "error",
     "@dimensiondev/unicode/no-bidi": "off",
     "@dimensiondev/unicode/no-invisible": "error",

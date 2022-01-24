@@ -11,6 +11,7 @@
     "@dimensiondev/string/no-simple-template-literal": "error",
     "@dimensiondev/string/no-unneeded-to-string": "error",
     "@dimensiondev/type/no-instanceof-wrapper": "error",
+    "@dimensiondev/type/no-wrapper-type-reference": "error",
     "@dimensiondev/type/prefer-return-type-annotation": "error",
     "@dimensiondev/unicode/no-invisible": "error",
     "@dimensiondev/no-builtin-base64": "error",
