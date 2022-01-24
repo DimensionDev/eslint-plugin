@@ -2,10 +2,13 @@
   "$schema": "../schema.json",
   "plugins": ["@dimensiondev"],
   "rules": {
+    "@dimensiondev/browser/prefer-dataset": "error",
     "@dimensiondev/browser/prefer-event-target": "error",
     "@dimensiondev/browser/prefer-keyboard-event-key": "error",
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
+    "@dimensiondev/browser/prefer-query-selector": "error",
+    "@dimensiondev/browser/prefer-text-content": "error",
     "@dimensiondev/jsx/no-logical": "off",
     "@dimensiondev/jsx/no-template-literal": "error",
     "@dimensiondev/jsx/prefer-test-id": "off",

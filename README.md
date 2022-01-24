@@ -28,10 +28,13 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   "$schema": "https://dimensiondev.github.io/eslint-plugin/src/schema.json",
   "plugins": ["@dimensiondev"],
   "rules": {
+    "@dimensiondev/browser/prefer-dataset": "error",
     "@dimensiondev/browser/prefer-event-target": "error",
     "@dimensiondev/browser/prefer-keyboard-event-key": "error",
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
+    "@dimensiondev/browser/prefer-query-selector": "error",
+    "@dimensiondev/browser/prefer-text-content": "error",
     "@dimensiondev/jsx/no-logical": "off",
     "@dimensiondev/jsx/no-template-literal": "error",
     "@dimensiondev/jsx/prefer-test-id": "off",
@@ -81,14 +84,20 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 
 <!-- begin rule list -->
 
+- [browser/prefer-dataset][browser$prefer_dataset] :white_check_mark: :wrench: :thought_balloon:\
+  Use `.dataset` instead of `Element#{get,set,has,remove}Attribute`
 - [browser/prefer-event-target][browser$prefer_event_target] :white_check_mark: :wrench: :thought_balloon:\
   Prefer `.{add,remove}EventListener()` over `on`-functions
 - [browser/prefer-keyboard-event-key][browser$prefer_keyboard_event_key] :white_check_mark: :wrench: :thought_balloon:\
   Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`
 - [browser/prefer-location-assign][browser$prefer_location_assign] :white_check_mark: :wrench:\
   Prefer `location.assign(...)` over `location.*`
-- [browser/prefer-modern-dom-apis][browser$prefer_modern_dom_apis] :white_check_mark: :wrench: :bulb: :thought_balloon:\
+- [browser/prefer-modern-dom-apis][browser$prefer_modern_dom_apis] :white_check_mark: :wrench: :thought_balloon:\
   Prefer Modern DOM APIs
+- [browser/prefer-query-selector][browser$prefer_query_selector] :white_check_mark: :wrench: :thought_balloon:\
+  Use `Element#querySelector` instead of `Element#getElementById`
+- [browser/prefer-text-content][browser$prefer_text_content] :white_check_mark: :bulb: :thought_balloon:\
+  Use `Element#textContent` instead of `Element#innerText`
 - [jsx/no-logical][jsx$no_logical] :gear:\
   Limit the complexity of JSX logic expression
 - [jsx/no-template-literal][jsx$no_template_literal] :white_check_mark: :wrench:\
@@ -154,10 +163,13 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 - [prefer-timer-id][prefer_timer_id] :white_check_mark: :bulb:\
   Enforce best practice with timer function
 
+[browser$prefer_dataset]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-dataset
 [browser$prefer_event_target]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-event-target
 [browser$prefer_keyboard_event_key]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-keyboard-event-key
 [browser$prefer_location_assign]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-location-assign
 [browser$prefer_modern_dom_apis]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-modern-dom-apis
+[browser$prefer_query_selector]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-query-selector
+[browser$prefer_text_content]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-text-content
 [jsx$no_logical]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-logical
 [jsx$no_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-template-literal
 [jsx$prefer_test_id]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/prefer-test-id

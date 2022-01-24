@@ -1,9 +1,12 @@
-// 36 Rules
+// 39 Rules
 // 5  Configs
+import browser$prefer_dataset from './rules/browser/prefer-dataset'
 import browser$prefer_event_target from './rules/browser/prefer-event-target'
 import browser$prefer_keyboard_event_key from './rules/browser/prefer-keyboard-event-key'
 import browser$prefer_location_assign from './rules/browser/prefer-location-assign'
 import browser$prefer_modern_dom_apis from './rules/browser/prefer-modern-dom-apis'
+import browser$prefer_query_selector from './rules/browser/prefer-query-selector'
+import browser$prefer_text_content from './rules/browser/prefer-text-content'
 import jsx$no_logical from './rules/jsx/no-logical'
 import jsx$no_template_literal from './rules/jsx/no-template-literal'
 import jsx$prefer_test_id from './rules/jsx/prefer-test-id'
@@ -37,10 +40,13 @@ import prefer_early_return from './rules/prefer-early-return'
 import prefer_fetch from './rules/prefer-fetch'
 import prefer_timer_id from './rules/prefer-timer-id'
 export const rules = {
+  'browser/prefer-dataset': browser$prefer_dataset,
   'browser/prefer-event-target': browser$prefer_event_target,
   'browser/prefer-keyboard-event-key': browser$prefer_keyboard_event_key,
   'browser/prefer-location-assign': browser$prefer_location_assign,
   'browser/prefer-modern-dom-apis': browser$prefer_modern_dom_apis,
+  'browser/prefer-query-selector': browser$prefer_query_selector,
+  'browser/prefer-text-content': browser$prefer_text_content,
   'jsx/no-logical': jsx$no_logical,
   'jsx/no-template-literal': jsx$no_template_literal,
   'jsx/prefer-test-id': jsx$prefer_test_id,

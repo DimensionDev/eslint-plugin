@@ -8,20 +8,16 @@ Prefer Modern DOM APIs
 
 ## Rule Details
 
-| Legacy APIs                                              | Modern APIs                                    |
-| -------------------------------------------------------- | ---------------------------------------------- |
-| `HTMLElement.innerText`                                  | [Node.textContent][text-content]               |
-| `Element.appendChild`                                    | [Element.append][append]                       |
-| `Element.removeChild`                                    | [Element.remove][remove]                       |
-| `Element.replaceChild`                                   | [Element.replaceWith][replace]                 |
-| `Element.insertBefore`                                   | [Element.before][before]                       |
-| `Element.insertAdjacent{Text,Element}("beforebegin", *)` | [Element.before][before]                       |
-| `Element.insertAdjacent{Text,Element}("afterbegin", *)`  | [Element.prepend][prepend]                     |
-| `Element.insertAdjacent{Text,Element}("beforeend", *)`   | [Element.append][append]                       |
-| `Element.insertAdjacent{Text,Element}("afterend", *)`    | [Element.after][after]                         |
-| `Element.getElementById`                                 | [Element.querySelector][query-selector]        |
-| `Element.getElementsBy{Class,Tag}Name`                   | [Element.querySelectorAll][query-selector-all] |
-| `Element.{get,set,has,remove}Attribute("data-*")`        | [HTMLElement.dataset][dataset]                 |
+| Legacy APIs                                              | Modern APIs                    |
+| -------------------------------------------------------- | ------------------------------ |
+| `Element#appendChild`                                    | [Element#append][append]       |
+| `Element#removeChild`                                    | [Element#remove][remove]       |
+| `Element#replaceChild`                                   | [Element#replaceWith][replace] |
+| `Element#insertBefore`                                   | [Element#before][before]       |
+| `Element#insertAdjacent{Text,Element}("beforebegin", *)` | [Element#before][before]       |
+| `Element#insertAdjacent{Text,Element}("afterbegin", *)`  | [Element#prepend][prepend]     |
+| `Element#insertAdjacent{Text,Element}("beforeend", *)`   | [Element#append][append]       |
+| `Element#insertAdjacent{Text,Element}("afterend", *)`    | [Element#after][after]         |
 
 [text-content]: https://developer.mozilla.org/docs/Web/API/Node/textContent
 [append]: https://developer.mozilla.org/docs/Web/API/Element/append
@@ -58,7 +54,7 @@ children.remove()
 
 - [x] :white_check_mark: Recommended
 - [x] :wrench: Fixable
-- [x] :bulb: Suggestions
+- [ ] :bulb: Suggestions
 - [ ] :gear: Configurable
 - [x] :thought_balloon: Requires type information
 

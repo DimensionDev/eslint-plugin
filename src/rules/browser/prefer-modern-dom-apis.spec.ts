@@ -20,10 +20,6 @@ runTest({
         referenceNode?.insertAdjacentText("beforeend", "text")
         referenceNode?.insertAdjacentText("afterend", "text")
         referenceNode?.insertAdjacentElement("beforebegin", newNode)
-        element?.getAttribute("data-test-id")
-        element?.setAttribute("data-test-id", "")
-        element?.hasAttribute("data-test-id")
-        element?.removeAttribute("data-test-id")
       `,
       output: dedent`
         declare const element: HTMLElement | null
@@ -39,54 +35,18 @@ runTest({
         referenceNode?.append("text")
         referenceNode?.after("text")
         referenceNode?.before(newNode)
-        element?.dataset.testId
-        element?.dataset.testId = ""
-        Object.hasOwn(element?.dataset, "testId")
-        delete element?.dataset.testId
       `,
       errors: [
-        { messageId: 'appendChild' },
-        { messageId: 'removeChild' },
-        { messageId: 'removeChild' },
-        { messageId: 'replaceChild' },
-        { messageId: 'insertBefore' },
-        { messageId: 'insertAdjacentText', data: { method: 'before', action: '"beforebegin"' } },
-        { messageId: 'insertAdjacentText', data: { method: 'prepend', action: '"afterbegin"' } },
-        { messageId: 'insertAdjacentText', data: { method: 'append', action: '"beforeend"' } },
-        { messageId: 'insertAdjacentText', data: { method: 'after', action: '"afterend"' } },
-        { messageId: 'insertAdjacentElement', data: { method: 'before', action: '"beforebegin"' } },
-        { messageId: 'getAttribute', data: { path: '.testId', name: '"data-test-id"' } },
-        { messageId: 'setAttribute', data: { path: '.testId', name: '"data-test-id"' } },
-        { messageId: 'hasAttribute', data: { path: '.testId', name: '"data-test-id"' } },
-        { messageId: 'removeAttribute', data: { path: '.testId', name: '"data-test-id"' } },
-      ],
-    })
-    yield cast({
-      code: 'declare const element: HTMLElement; element.innerText;',
-      errors: [
-        {
-          messageId: 'innerText',
-          suggestions: [
-            {
-              messageId: 'innerTextSuggest',
-              output: 'declare const element: HTMLElement; element.textContent;',
-            },
-          ],
-        },
-      ],
-    })
-    yield cast({
-      code: 'declare const element: HTMLElement; const { innerText } = element;',
-      errors: [
-        {
-          messageId: 'innerText',
-          suggestions: [
-            {
-              messageId: 'innerTextSuggest',
-              output: 'declare const element: HTMLElement; const { textContent: innerText } = element;',
-            },
-          ],
-        },
+        { messageId: 'instead', data: { modern: 'append', legacy: 'appendChild' } },
+        { messageId: 'instead', data: { modern: 'remove', legacy: 'removeChild' } },
+        { messageId: 'instead', data: { modern: 'remove', legacy: 'removeChild' } },
+        { messageId: 'instead', data: { modern: 'replaceWith', legacy: 'replaceChild' } },
+        { messageId: 'instead', data: { modern: 'before', legacy: 'insertBefore' } },
+        { messageId: 'instead', data: { modern: 'before', legacy: 'insertAdjacentText' } },
+        { messageId: 'instead', data: { modern: 'prepend', legacy: 'insertAdjacentText' } },
+        { messageId: 'instead', data: { modern: 'append', legacy: 'insertAdjacentText' } },
+        { messageId: 'instead', data: { modern: 'after', legacy: 'insertAdjacentText' } },
+        { messageId: 'instead', data: { modern: 'before', legacy: 'insertAdjacentElement' } },
       ],
     })
   },

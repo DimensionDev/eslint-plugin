@@ -1,44 +1,25 @@
-import type { CallExpression, MemberExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
+import type { CallExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
-import type ts from 'typescript'
-import {
-  closest,
-  isAwait,
-  isCallExpression,
-  isChainExpression,
-  isIdentifier,
-  isIdentifierName,
-  isLiteral,
-  isLiteralValue,
-  isMemberExpression,
-} from '../../node'
+import { isAwait, isLiteral, isMemberExpression } from '../../node'
 import { createRule, getParserServices } from '../../rule'
-import { property, quote, wrap } from '../../utils'
+import { isElement } from '../../type-checker'
+import { wrap } from '../../utils'
+import { parseCallee } from './prefer-query-selector'
 
-const METHOD_NAMES = <const>[
+const METHOD_NAMES = new Set([
   'appendChild',
   'removeChild',
   'replaceChild',
   'insertBefore',
   'insertAdjacentText',
   'insertAdjacentElement',
-  'getAttribute',
-  'setAttribute',
-  'hasAttribute',
-  'removeAttribute',
-  'getElementById',
-  'getElementsByClassName',
-  'getElementsByTagName',
-]
-
-type FixableMethodName = typeof METHOD_NAMES[number]
+])
 
 export default createRule({
   name: 'browser/prefer-modern-dom-apis',
   meta: {
     type: 'suggestion',
     fixable: 'code',
-    hasSuggestions: true,
     docs: {
       description: 'Prefer Modern DOM APIs',
       recommended: 'error',
@@ -46,101 +27,37 @@ export default createRule({
     },
     schema: [],
     messages: {
-      appendChild: prefer('append', 'appendChild'),
-      removeChild: prefer('remove', 'removeChild'),
-      replaceChild: prefer('replaceWith', 'replaceChild'),
-      insertBefore: prefer('before', 'insertBefore'),
-      insertAdjacentText: prefer('{{method}}', 'insertAdjacentText({{action}}, *)'),
-      insertAdjacentElement: prefer('{{method}}', 'insertAdjacentElement({{action}}, *)'),
-      getAttribute: prefer('dataset{{path}}', 'getAttribute({{name}})'),
-      setAttribute: prefer('dataset{{path}}', 'setAttribute({{name}}, *)'),
-      hasAttribute: prefer('dataset{{path}}', 'hasAttribute({{name}})'),
-      removeAttribute: prefer('dataset{{path}}', 'removeAttribute({{name}})'),
-      getElementById: prefer('getElementById', 'querySelector'),
-      getElementsByClassName: prefer('getElementsByClassName', 'querySelectorAll'),
-      getElementsByTagName: prefer('getElementsByTagName', 'querySelectorAll'),
-      innerText: prefer('textContent', 'innerText'),
-      innerTextSuggest: 'Switch to `.textContent`',
+      instead: 'Use `Element#{{modern}}` instead of `Element#{{legacy}}`',
     },
-    replacedBy: [
-      'unicorn/prefer-dom-node-append',
-      'unicorn/prefer-dom-node-remove',
-      'unicorn/prefer-dom-node-text-content',
-      'unicorn/prefer-query-selector',
-      'unicorn/prefer-modern-dom-apis',
-    ],
+    replacedBy: ['unicorn/prefer-dom-node-append', 'unicorn/prefer-dom-node-remove', 'unicorn/prefer-modern-dom-apis'],
   },
   create(context) {
     const source = context.getSourceCode()
     const { typeChecker, esTreeNodeToTSNodeMap } = getParserServices(context)
     return {
-      MemberExpression(node) {
-        if (!isIdentifierName(node.property, 'innerText')) return
-        if (!isElement(typeChecker, esTreeNodeToTSNodeMap.get(node.object))) return
-        const fix: ReportFixFunction = (fixer) => fixer.replaceText(node.property, 'textContent')
-        context.report({
-          node: node.property,
-          messageId: 'innerText',
-          suggest: [{ messageId: 'innerTextSuggest', fix }],
-        })
-      },
-      Property(node) {
-        if (node.parent?.type !== 'ObjectPattern') return
-        if (!isElement(typeChecker, esTreeNodeToTSNodeMap.get(node.parent))) return
-        if (!isIdentifierName(node.key, 'innerText')) return
-        const fix: ReportFixFunction = (fixer) => {
-          return fixer.replaceText(node.key, `textContent${node.shorthand ? ': innerText' : ''}`)
-        }
-        context.report({
-          node,
-          messageId: 'innerText',
-          suggest: [{ messageId: 'innerTextSuggest', fix }],
-        })
-      },
       CallExpression(node) {
-        const [methodName, expression] = parse(node.callee)
+        const [methodName, expression] = parseCallee(node.callee)
         if (!methodName || !expression) return
+        if (!METHOD_NAMES.has(methodName)) return
         if (!isElement(typeChecker, esTreeNodeToTSNodeMap.get(expression.object))) return
         context.report({
           node,
-          messageId: methodName,
-          data: getMessageData(source, methodName, node),
-          fix: getFixer(source, methodName, node),
+          messageId: 'instead',
+          data: {
+            modern: getModernMethodName(node.arguments[0], methodName),
+            legacy: methodName,
+          },
+          fix: getFixer(source, node, methodName),
         })
       },
     }
   },
 })
 
-function parse(node: Node): [FixableMethodName | undefined, MemberExpression | undefined] {
-  if (isChainExpression(node)) {
-    return parse(node.expression)
-  } else if (isMemberExpression(node)) {
-    const name = wrap(node.property, (node) => {
-      if (isIdentifier(node)) return node.name
-      if (isLiteral(node) && typeof node.value === 'string') return node.value
-      return
-    })
-    if (!isFixableMetohdName(name)) return [undefined, undefined]
-    if (name.endsWith('Attribute')) {
-      const called = closest(node, isCallExpression)
-      if (!isLiteralValue(called?.arguments[0], /^data-/)) return [undefined, undefined]
-      return [name, node]
-    }
-    return [name, node]
-  }
-  return [undefined, undefined]
-}
-
-function isFixableMetohdName(name: string | undefined): name is FixableMethodName {
-  if (!name) return false
-  return (METHOD_NAMES as readonly string[]).includes(name)
-}
-
 function getFixer(
   source: Readonly<SourceCode>,
-  methodName: FixableMethodName,
-  node: CallExpression
+  node: CallExpression,
+  methodName: string
 ): ReportFixFunction | undefined {
   const { callee } = node
   if (!isMemberExpression(callee)) return
@@ -173,76 +90,24 @@ function getFixer(
         const insert = source.getText(node.arguments[1])
         return fixer.replaceText(node, `${baseNode}${callee.optional ? '?' : ''}.${position}(${insert})`)
       }
-    case 'getAttribute':
-    case 'setAttribute':
-    case 'hasAttribute':
-    case 'removeAttribute':
-      return getDataSetFixer(source, node, methodName)
   }
   return
 }
 
-function getDataSetFixer(
-  source: Readonly<SourceCode>,
-  node: CallExpression,
-  methodName: FixableMethodName
-): ReportFixFunction {
-  return (fixer) => {
-    const replacement = getReplacement()
-    if (!replacement) return null
-    return fixer.replaceText(node, replacement)
-  }
-  function getReplacement() {
-    const { callee } = node
-    if (!isMemberExpression(callee)) return
-    const prefix = `${source.getText(callee.object)}${callee.optional ? '?' : ''}.dataset`
-    const name = getDataSetName(node.arguments[0])
-    if (!name) return
-    switch (methodName) {
-      case 'getAttribute':
-        return prefix + property(name)
-      case 'setAttribute':
-        return `${prefix}${property(name)} = ${source.getText(node.arguments[1])}`
-      case 'hasAttribute':
-        return `Object.hasOwn(${prefix}, ${quote(name)})`
-      case 'removeAttribute':
-        return `delete ${prefix}${property(name)}`
-    }
-    return
-  }
-}
-
-function getDataSetName(node: Node) {
-  if (!isLiteral(node) || typeof node.value !== 'string') return
-  if (!node.value.startsWith('data-')) return
-  return node.value
-    .replace(/^data-/, '')
-    .toLowerCase()
-    .split(/-/g)
-    .map((element, index) => (index === 0 ? element : element[0].toUpperCase() + element.slice(1)))
-    .join('')
-}
-
-function getMessageData(source: Readonly<SourceCode>, methodName: FixableMethodName, node: CallExpression) {
+function getModernMethodName(node: Node, methodName: string) {
   switch (methodName) {
+    case 'appendChild':
+      return 'append'
+    case 'removeChild':
+      return 'remove'
+    case 'replaceChild':
+      return 'replaceWith'
+    case 'insertBefore':
+      return 'before'
     case 'insertAdjacentText':
     case 'insertAdjacentElement':
-      if (!isLiteral(node.arguments[0])) return
-      return {
-        method: getMethodOfLocation(node.arguments[0].value),
-        action: source.getText(node.arguments[0]),
-      }
-    case 'getAttribute':
-    case 'setAttribute':
-    case 'hasAttribute':
-    case 'removeAttribute': {
-      const name = getDataSetName(node.arguments[0])
-      if (!name) return
-      return {
-        path: property(name),
-        name: source.getText(node.arguments[0]),
-      }
-    }
+      if (!isLiteral(node)) return
+      return getMethodOfLocation(node.value)
   }
   return
 }
@@ -253,19 +118,4 @@ function getMethodOfLocation(value: unknown) {
   if (value === 'beforeend') return 'append'
   if (value === 'afterend') return 'after'
   return
-}
-
-function isElement(checker: ts.TypeChecker, node: ts.Node) {
-  const type = checker.getTypeAtLocation(node)
-  const types = type.isUnionOrIntersection() ? type.types : [type]
-  return types
-    .flatMap((t) => t.getBaseTypes() ?? [])
-    ?.some((baseType) => {
-      const symbol = baseType.getSymbol()
-      return symbol && checker.symbolToString(symbol) === 'Element'
-    })
-}
-
-function prefer(modern: string, legacy: string) {
-  return `Prefer \`.${modern}\` over \`.${legacy}\``
 }

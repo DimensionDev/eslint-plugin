@@ -2,9 +2,12 @@
   "$schema": "../schema.json",
   "plugins": ["@dimensiondev"],
   "rules": {
+    "@dimensiondev/browser/prefer-dataset": "error",
     "@dimensiondev/browser/prefer-event-target": "error",
     "@dimensiondev/browser/prefer-keyboard-event-key": "error",
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
+    "@dimensiondev/browser/prefer-query-selector": "error",
+    "@dimensiondev/browser/prefer-text-content": "error",
     "@dimensiondev/string/no-unneeded-to-string": "error",
     "@dimensiondev/no-default-error": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
