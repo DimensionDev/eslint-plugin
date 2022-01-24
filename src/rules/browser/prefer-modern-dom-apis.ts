@@ -1,6 +1,6 @@
 import type { CallExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
-import { isAwait, isLiteral, isMemberExpression } from '../../node'
+import { isAwait, isMemberExpression, isStringLiteral } from '../../node'
 import { createRule, getParserServices } from '../../rule'
 import { isElement } from '../../type-checker'
 import { wrap } from '../../utils'
@@ -14,6 +14,13 @@ const METHOD_NAMES = new Set([
   'insertAdjacentText',
   'insertAdjacentElement',
 ])
+
+const METHOD_OF_WHERE: Record<string, string> = {
+  beforebegin: 'before',
+  afterbegin: 'prepend',
+  beforeend: 'append',
+  afterend: 'after',
+}
 
 export default createRule({
   name: 'browser/prefer-modern-dom-apis',
@@ -83,8 +90,8 @@ function getFixer(
     case 'insertAdjacentText':
     case 'insertAdjacentElement':
       return (fixer) => {
-        if (!isLiteral(node.arguments[0])) return null
-        const position = getMethodOfLocation(node.arguments[0].value)
+        if (!isStringLiteral(node.arguments[0])) return null
+        const position = METHOD_OF_WHERE[node.arguments[0].value]
         if (!position) return null
         const baseNode = source.getText(callee.object)
         const insert = source.getText(node.arguments[1])
@@ -106,16 +113,8 @@ function getModernMethodName(node: Node, methodName: string) {
       return 'before'
     case 'insertAdjacentText':
     case 'insertAdjacentElement':
-      if (!isLiteral(node)) return
-      return getMethodOfLocation(node.value)
+      if (!isStringLiteral(node)) return
+      return METHOD_OF_WHERE[node.value]
   }
-  return
-}
-
-function getMethodOfLocation(value: unknown) {
-  if (value === 'beforebegin') return 'before'
-  if (value === 'afterbegin') return 'prepend'
-  if (value === 'beforeend') return 'append'
-  if (value === 'afterend') return 'after'
   return
 }

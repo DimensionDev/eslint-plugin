@@ -1,16 +1,9 @@
-import type { MemberExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
+import type { Node } from '@typescript-eslint/types/dist/ast-spec'
 import type ts from 'typescript'
-import {
-  isBindCall,
-  isChainExpression,
-  isFunctionLike,
-  isIdentifier,
-  isIdentifierName,
-  isLiteral,
-  isMemberExpression,
-} from '../../node'
+import { isBindCall, isFunctionLike, isIdentifierName, isMemberExpression } from '../../node'
 import { createRule, getParserServices } from '../../rule'
-import { quote, wrap } from '../../utils'
+import { quote } from '../../utils'
+import { parseCallee } from './prefer-query-selector'
 
 export default createRule({
   name: 'browser/prefer-event-target',
@@ -36,7 +29,8 @@ export default createRule({
       AssignmentExpression(node) {
         if (node.operator !== '=') return
         const { left, right } = node
-        const [eventName, expression] = parse(left)
+        const [eventName, expression] = parseCallee(left)
+        if (!eventName?.startsWith('on')) return
         if (!eventName || !expression?.object) return
         if (!isEventTarget(typeChecker, esTreeNodeToTSNodeMap.get(expression.object))) return
         context.report({
@@ -66,21 +60,6 @@ export default createRule({
     }
   },
 })
-
-function parse(node: Node): [string | undefined, MemberExpression | undefined] {
-  if (isChainExpression(node)) {
-    return parse(node.expression)
-  } else if (isMemberExpression(node)) {
-    const name = wrap(node.property, (node) => {
-      if (isIdentifier(node)) return node.name
-      if (isLiteral(node) && typeof node.value === 'string') return node.value
-      return
-    })
-    if (!name?.startsWith('on')) return [undefined, undefined]
-    return [name, node]
-  }
-  return [undefined, undefined]
-}
 
 function isEventTarget(checker: ts.TypeChecker, node: ts.Node) {
   const type = checker.getTypeAtLocation(node)

@@ -1,5 +1,5 @@
 import type { MemberExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
-import { isChainExpression, isIdentifier, isLiteral, isMemberExpression } from '../../node'
+import { isChainExpression, isIdentifier, isMemberExpression, isStringLiteral } from '../../node'
 import { createRule, getParserServices } from '../../rule'
 import { isElement } from '../../type-checker'
 import { wrap } from '../../utils'
@@ -48,7 +48,7 @@ export function parseCallee(node: Node): [string | undefined, MemberExpression |
   } else if (isMemberExpression(node)) {
     const name = wrap(node.property, (property) => {
       if (isIdentifier(property)) return property.name
-      if (isLiteral(property) && typeof property.value === 'string') return property.value
+      if (isStringLiteral(property)) return property.value
       return
     })
     return [name, node]

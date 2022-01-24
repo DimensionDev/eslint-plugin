@@ -65,6 +65,10 @@ export function isAwait(node?: Node | null): node is AwaitExpression {
   return node?.type === 'AwaitExpression'
 }
 
+export function isStringLiteral(node?: Node | null): node is StringLiteral {
+  return node?.type === 'Literal' && typeof node.value === 'string'
+}
+
 export function isNumberLiteral(node?: Node | null): node is NumberLiteral {
   return node?.type === 'Literal' && typeof node.value === 'number'
 }
