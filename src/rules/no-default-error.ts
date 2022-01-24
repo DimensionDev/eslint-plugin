@@ -1,6 +1,6 @@
-import type ts from 'typescript'
 import type { Node } from '@typescript-eslint/types/dist/ast-spec'
 import { createRule, getParserServices } from '../rule'
+import { isConstructor } from '../type-checker'
 
 export default createRule({
   name: 'no-default-error',
@@ -19,11 +19,7 @@ export default createRule({
   create(context) {
     const { typeChecker, esTreeNodeToTSNodeMap } = getParserServices(context)
     function report(node: Node) {
-      // TODO:
-      //   promise.catch(() => new Error())
-      //   promise.then(resolver, () => new Error())
-      //   Promise.reject(new Error())
-      if (!isErrorConstructor(typeChecker, esTreeNodeToTSNodeMap.get(node))) return
+      if (!isConstructor(typeChecker, esTreeNodeToTSNodeMap.get(node), 'ErrorConstructor')) return
       context.report({ node, messageId: 'invalid' })
     }
     return {
@@ -36,10 +32,3 @@ export default createRule({
     }
   },
 })
-
-function isErrorConstructor(checker: ts.TypeChecker, node: ts.Node): boolean {
-  const symbol = checker.getTypeAtLocation(node).getSymbol()
-  if (!symbol?.valueDeclaration) return false
-  const type = checker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration)
-  return checker.typeToString(type) === 'ErrorConstructor'
-}

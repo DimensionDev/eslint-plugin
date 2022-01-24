@@ -1,6 +1,6 @@
-import type ts from 'typescript'
 import { isIdentifier, isMemberExpression } from '../node'
 import { createRule, getParserServices } from '../rule'
+import { isConstructor } from '../type-checker'
 
 const ALLOWED_METHOD_NAMES = new Set([
   'getTime',
@@ -38,7 +38,7 @@ export default createRule({
         const { object, property } = node.callee
         if (!isIdentifier(property)) return
         if (ALLOWED_METHOD_NAMES.has(property.name)) return
-        if (!isDateConstructor(typeChecker, esTreeNodeToTSNodeMap.get(object))) return
+        if (!isConstructor(typeChecker, esTreeNodeToTSNodeMap.get(object), 'DateConstructor')) return
         context.report({
           node: node,
           messageId: 'disallow',
@@ -48,10 +48,3 @@ export default createRule({
     }
   },
 })
-
-function isDateConstructor(checker: ts.TypeChecker, node: ts.Node): boolean {
-  const symbol = checker.getTypeAtLocation(node).getSymbol()
-  if (!symbol?.valueDeclaration) return false
-  const type = checker.getTypeOfSymbolAtLocation(symbol, symbol.valueDeclaration)
-  return checker.typeToString(type) === 'DateConstructor'
-}

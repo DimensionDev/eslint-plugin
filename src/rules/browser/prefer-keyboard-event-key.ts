@@ -1,9 +1,9 @@
 import type { MemberExpression } from '@typescript-eslint/types/dist/ast-spec'
 import type { ReportFixFunction } from '@typescript-eslint/utils/dist/ts-eslint'
-import type ts from 'typescript'
 import { isIdentifierName, isNumberLiteral } from '../../node'
 import { createRule, getParserServices } from '../../rule'
 import EventKeys from '../../shared/event-keys.json'
+import { isKeyboardEvent } from '../../type-checker'
 import { quote } from '../../utils'
 
 const fieldNames = ['keyCode', 'charCode', 'which']
@@ -66,14 +66,4 @@ function getFixer(node: MemberExpression): ReportFixFunction | undefined {
 
 function getKey(point: number) {
   return EventKeys[point] ?? String.fromCodePoint(point)
-}
-
-function isKeyboardEvent(checker: ts.TypeChecker, node: ts.Node) {
-  const type = checker.getTypeAtLocation(node)
-  const types = type.isUnionOrIntersection() ? type.types : [type]
-  const allTypes = types.flatMap((t) => [t, ...(t.getBaseTypes() ?? [])])
-  return allTypes.some((t) => {
-    const symbol = t.getSymbol()
-    return symbol && checker.symbolToString(symbol) === 'KeyboardEvent'
-  })
 }

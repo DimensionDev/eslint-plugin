@@ -1,6 +1,6 @@
-import type ts from 'typescript'
 import { isIdentifierName, isMemberExpression } from '../node'
 import { createRule, getParserServices } from '../rule'
+import { isConstructor } from '../type-checker'
 
 export default createRule({
   name: 'no-implicit-array-sort',
@@ -21,17 +21,12 @@ export default createRule({
     return {
       CallExpression(node) {
         if (!isMemberExpression(node.callee)) return
-        if (!isIdentifierName(node.callee.property, 'sort')) return
+        const { property, object } = node.callee
+        if (!isIdentifierName(property, 'sort')) return
         if (node.arguments.length > 0) return
-        if (!isArrayType(typeChecker, esTreeNodeToTSNodeMap.get(node.callee.object))) return
-        context.report({ node: node.callee.property, messageId: 'invalid' })
+        if (!isConstructor(typeChecker, esTreeNodeToTSNodeMap.get(object), 'ArrayConstructor')) return
+        context.report({ node: property, messageId: 'invalid' })
       },
     }
   },
 })
-
-function isArrayType(checker: ts.TypeChecker, node: ts.Node) {
-  const symbol = checker.getTypeAtLocation(node).getSymbol()
-  if (!symbol) return false
-  return checker.symbolToString(symbol) === 'Array'
-}

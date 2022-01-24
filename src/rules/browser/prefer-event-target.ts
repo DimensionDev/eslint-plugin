@@ -1,7 +1,7 @@
 import type { Node } from '@typescript-eslint/types/dist/ast-spec'
-import type ts from 'typescript'
 import { isBindCall, isFunctionLike, isIdentifierName, isMemberExpression } from '../../node'
 import { createRule, getParserServices } from '../../rule'
+import { isEventTarget } from '../../type-checker'
 import { quote } from '../../utils'
 import { parseCallee } from './prefer-query-selector'
 
@@ -60,17 +60,6 @@ export default createRule({
     }
   },
 })
-
-function isEventTarget(checker: ts.TypeChecker, node: ts.Node) {
-  const type = checker.getTypeAtLocation(node)
-  const types = type.isUnionOrIntersection() ? type.types : [type]
-  const allTypes = types.flatMap((t) => [t, ...(t.getBaseTypes() ?? [])])
-  return allTypes.some((t) => {
-    const symbol = t.getSymbol()
-    const name = symbol && checker.symbolToString(symbol)
-    return name === 'EventTarget' || name === 'Element'
-  })
-}
 
 function isNil(node: Node) {
   if (node.type === 'Literal') return node.raw === 'null'
