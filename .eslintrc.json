@@ -65,6 +65,16 @@
     "@typescript-eslint/prefer-nullish-coalescing": "error",
     "@typescript-eslint/prefer-optional-chain": "error",
     "@typescript-eslint/prefer-reduce-type-parameter": "error",
-    "@typescript-eslint/prefer-string-starts-ends-with": "error"
+    "@typescript-eslint/prefer-string-starts-ends-with": "error",
+    "@typescript-eslint/no-restricted-imports": [
+      "error",
+      {
+        "paths": [
+          { "name": "@typescript-eslint/types/dist/ast-spec", "allowTypeImports": true },
+          { "name": "@typescript-eslint/utils/dist/ast-utils", "allowTypeImports": true },
+          { "name": "@typescript-eslint/utils/dist/ts-eslint", "allowTypeImports": true }
+        ]
+      }
+    ]
   }
 }

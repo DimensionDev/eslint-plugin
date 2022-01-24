@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-restricted-imports */
 /* eslint-disable unicorn/prefer-module */
 import path from 'node:path'
 import { RuleTester } from '@typescript-eslint/utils/dist/ts-eslint'
