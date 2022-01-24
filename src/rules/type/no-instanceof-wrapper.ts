@@ -1,11 +1,11 @@
 import type { BinaryExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
-import { createRule } from '../rule'
-import { quote } from '../utils'
+import { createRule } from '../../rule'
+import { quote } from '../../utils'
 
 const PRIMITIVE_TYPES = ['BigInt', 'Boolean', 'Function', 'Number', 'Object', 'String', 'Symbol', 'Array']
 
 export default createRule({
-  name: 'no-instanceof-wrapper',
+  name: 'type/no-instanceof-wrapper',
   meta: {
     type: 'problem',
     fixable: 'code',

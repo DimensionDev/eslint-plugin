@@ -1,8 +1,8 @@
 import type { Node, TypeNode } from '@typescript-eslint/types/dist/ast-spec'
-import { createRule } from '../rule'
+import { createRule } from '../../rule'
 
 export default createRule({
-  name: 'no-force-cast-via-top-type',
+  name: 'type/no-force-cast-via-top-type',
   meta: {
     type: 'problem',
     docs: {

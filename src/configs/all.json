@@ -13,16 +13,17 @@
     "@dimensiondev/string/no-locale-case": "error",
     "@dimensiondev/string/no-simple-template-literal": "error",
     "@dimensiondev/string/no-unneeded-to-string": "error",
+    "@dimensiondev/type/no-bigint": "off",
+    "@dimensiondev/type/no-force-cast-via-top-type": "error",
+    "@dimensiondev/type/no-instanceof-wrapper": "error",
+    "@dimensiondev/type/prefer-return-type-annotation": "error",
     "@dimensiondev/unicode/no-bidi": "off",
     "@dimensiondev/unicode/no-invisible": "error",
     "@dimensiondev/unicode/specific-set": "off",
     "@dimensiondev/ban-eslint-disable": "error",
-    "@dimensiondev/no-bigint": "off",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-default-error": "error",
-    "@dimensiondev/no-force-cast-via-top-type": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
-    "@dimensiondev/no-instanceof-wrapper": "error",
     "@dimensiondev/no-number-constructor": "error",
     "@dimensiondev/no-redundant-variable": "error",
     "@dimensiondev/no-single-return": "error",
@@ -35,7 +36,6 @@
     "@dimensiondev/prefer-default-export": "off",
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-fetch": "error",
-    "@dimensiondev/prefer-return-type-annotation": "error",
     "@dimensiondev/prefer-timer-id": "error"
   }
 }

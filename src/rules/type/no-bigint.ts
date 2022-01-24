@@ -1,7 +1,7 @@
 import type ts from 'typescript'
 import type { CallExpression, NewExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
-import { isIdentifierName, isMemberExpression } from '../node'
-import { createRule, getParserServices } from '../rule'
+import { isIdentifierName, isMemberExpression } from '../../node'
+import { createRule, getParserServices } from '../../rule'
 
 const symbolNames = [
   'BigInt',
@@ -13,7 +13,7 @@ const symbolNames = [
 ]
 
 export default createRule({
-  name: 'no-bigint',
+  name: 'type/no-bigint',
   meta: {
     type: 'problem',
     docs: {

@@ -1,4 +1,4 @@
-import { runTest } from '../spec'
+import { runTest } from '../../spec'
 import module from './no-force-cast-via-top-type'
 
 runTest({

@@ -1,11 +1,11 @@
 import type { Node, Range, TSAsExpression, TypeNode } from '@typescript-eslint/types/dist/ast-spec'
-import { closest, isFunctionLike, isAwait, isIdentifierName } from '../node'
-import { createRule } from '../rule'
-import { wrap } from '../utils'
-import { getReturnExpression } from './no-redundant-variable'
+import { closest, isFunctionLike, isAwait, isIdentifierName } from '../../node'
+import { createRule } from '../../rule'
+import { wrap } from '../../utils'
+import { getReturnExpression } from './../no-redundant-variable'
 
 export default createRule({
-  name: 'prefer-return-type-annotation',
+  name: 'type/prefer-return-type-annotation',
   meta: {
     type: 'problem',
     fixable: 'code',

@@ -7,11 +7,12 @@
     "@dimensiondev/string/no-interpolation": "error",
     "@dimensiondev/string/no-locale-case": "error",
     "@dimensiondev/string/no-simple-template-literal": "error",
+    "@dimensiondev/type/no-force-cast-via-top-type": "error",
+    "@dimensiondev/type/no-instanceof-wrapper": "error",
+    "@dimensiondev/type/prefer-return-type-annotation": "error",
     "@dimensiondev/unicode/no-invisible": "error",
     "@dimensiondev/ban-eslint-disable": "error",
     "@dimensiondev/no-builtin-base64": "error",
-    "@dimensiondev/no-force-cast-via-top-type": "error",
-    "@dimensiondev/no-instanceof-wrapper": "error",
     "@dimensiondev/no-number-constructor": "error",
     "@dimensiondev/no-redundant-variable": "error",
     "@dimensiondev/no-single-return": "error",
@@ -20,7 +21,6 @@
     "@dimensiondev/no-vue": "error",
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-fetch": "error",
-    "@dimensiondev/prefer-return-type-annotation": "error",
     "@dimensiondev/prefer-timer-id": "error"
   }
 }

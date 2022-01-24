@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-force-cast-via-top-type`
+# `@dimensiondev/type/no-force-cast-via-top-type`
 
 Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`
 

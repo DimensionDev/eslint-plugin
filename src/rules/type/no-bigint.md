@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-bigint`
+# `@dimensiondev/type/no-bigint`
 
 Disallow use BigInt
 

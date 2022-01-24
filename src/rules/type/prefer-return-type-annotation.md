@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/prefer-return-type-annotation`
+# `@dimensiondev/type/prefer-return-type-annotation`
 
 Enforce Move return type annotation to function return type
 

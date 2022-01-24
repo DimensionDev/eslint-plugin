@@ -123,6 +123,19 @@
           "description": "Disallow `.toString()` when simpler alternatives exist",
           "$ref": "#/definitions/rule"
         },
+        "@dimensiondev/type/no-bigint": { "description": "Disallow use BigInt", "$ref": "#/definitions/rule" },
+        "@dimensiondev/type/no-force-cast-via-top-type": {
+          "description": "Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/type/no-instanceof-wrapper": {
+          "description": "Disallow `instanceof` for wrapper objects",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/type/prefer-return-type-annotation": {
+          "description": "Enforce Move return type annotation to function return type",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/unicode/no-bidi": {
           "description": "Detect and stop Trojan Source attacks",
           "$ref": "#/definitions/rule"
@@ -167,7 +180,6 @@
             }
           ]
         },
-        "@dimensiondev/no-bigint": { "description": "Disallow use BigInt", "$ref": "#/definitions/rule" },
         "@dimensiondev/no-builtin-base64": {
           "description": "Disallow use built-in base64 function",
           "$ref": "#/definitions/rule"
@@ -176,16 +188,8 @@
           "description": "Restrict the usage of default (unextended) error",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/no-force-cast-via-top-type": {
-          "description": "Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`",
-          "$ref": "#/definitions/rule"
-        },
         "@dimensiondev/no-implicit-array-sort": {
           "description": "Enforce `Array#sort` provide comparator function",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/no-instanceof-wrapper": {
-          "description": "Disallow `instanceof` for wrapper objects",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-number-constructor": {
@@ -256,10 +260,6 @@
           ]
         },
         "@dimensiondev/prefer-fetch": { "description": "Enforce fetch", "$ref": "#/definitions/rule" },
-        "@dimensiondev/prefer-return-type-annotation": {
-          "description": "Enforce Move return type annotation to function return type",
-          "$ref": "#/definitions/rule"
-        },
         "@dimensiondev/prefer-timer-id": {
           "description": "Enforce best practice with timer function",
           "$ref": "#/definitions/rule"

@@ -11,16 +11,17 @@ import string$no_interpolation from './rules/string/no-interpolation'
 import string$no_locale_case from './rules/string/no-locale-case'
 import string$no_simple_template_literal from './rules/string/no-simple-template-literal'
 import string$no_unneeded_to_string from './rules/string/no-unneeded-to-string'
+import type$no_bigint from './rules/type/no-bigint'
+import type$no_force_cast_via_top_type from './rules/type/no-force-cast-via-top-type'
+import type$no_instanceof_wrapper from './rules/type/no-instanceof-wrapper'
+import type$prefer_return_type_annotation from './rules/type/prefer-return-type-annotation'
 import unicode$no_bidi from './rules/unicode/no-bidi'
 import unicode$no_invisible from './rules/unicode/no-invisible'
 import unicode$specific_set from './rules/unicode/specific-set'
 import ban_eslint_disable from './rules/ban-eslint-disable'
-import no_bigint from './rules/no-bigint'
 import no_builtin_base64 from './rules/no-builtin-base64'
 import no_default_error from './rules/no-default-error'
-import no_force_cast_via_top_type from './rules/no-force-cast-via-top-type'
 import no_implicit_array_sort from './rules/no-implicit-array-sort'
-import no_instanceof_wrapper from './rules/no-instanceof-wrapper'
 import no_number_constructor from './rules/no-number-constructor'
 import no_redundant_variable from './rules/no-redundant-variable'
 import no_single_return from './rules/no-single-return'
@@ -33,7 +34,6 @@ import no_vue from './rules/no-vue'
 import prefer_default_export from './rules/prefer-default-export'
 import prefer_early_return from './rules/prefer-early-return'
 import prefer_fetch from './rules/prefer-fetch'
-import prefer_return_type_annotation from './rules/prefer-return-type-annotation'
 import prefer_timer_id from './rules/prefer-timer-id'
 export const rules = {
   'browser/prefer-event-target': browser$prefer_event_target,
@@ -47,16 +47,17 @@ export const rules = {
   'string/no-locale-case': string$no_locale_case,
   'string/no-simple-template-literal': string$no_simple_template_literal,
   'string/no-unneeded-to-string': string$no_unneeded_to_string,
+  'type/no-bigint': type$no_bigint,
+  'type/no-force-cast-via-top-type': type$no_force_cast_via_top_type,
+  'type/no-instanceof-wrapper': type$no_instanceof_wrapper,
+  'type/prefer-return-type-annotation': type$prefer_return_type_annotation,
   'unicode/no-bidi': unicode$no_bidi,
   'unicode/no-invisible': unicode$no_invisible,
   'unicode/specific-set': unicode$specific_set,
   'ban-eslint-disable': ban_eslint_disable,
-  'no-bigint': no_bigint,
   'no-builtin-base64': no_builtin_base64,
   'no-default-error': no_default_error,
-  'no-force-cast-via-top-type': no_force_cast_via_top_type,
   'no-implicit-array-sort': no_implicit_array_sort,
-  'no-instanceof-wrapper': no_instanceof_wrapper,
   'no-number-constructor': no_number_constructor,
   'no-redundant-variable': no_redundant_variable,
   'no-single-return': no_single_return,
@@ -69,7 +70,6 @@ export const rules = {
   'prefer-default-export': prefer_default_export,
   'prefer-early-return': prefer_early_return,
   'prefer-fetch': prefer_fetch,
-  'prefer-return-type-annotation': prefer_return_type_annotation,
   'prefer-timer-id': prefer_timer_id,
 }
 import all from './configs/all.json'

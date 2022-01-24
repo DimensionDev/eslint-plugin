@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-instanceof-wrapper`
+# `@dimensiondev/type/no-instanceof-wrapper`
 
 Disallow `instanceof` for wrapper objects
 

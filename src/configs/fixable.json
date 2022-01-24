@@ -10,13 +10,13 @@
     "@dimensiondev/string/no-locale-case": "error",
     "@dimensiondev/string/no-simple-template-literal": "error",
     "@dimensiondev/string/no-unneeded-to-string": "error",
+    "@dimensiondev/type/no-instanceof-wrapper": "error",
+    "@dimensiondev/type/prefer-return-type-annotation": "error",
     "@dimensiondev/unicode/no-invisible": "error",
     "@dimensiondev/no-builtin-base64": "error",
-    "@dimensiondev/no-instanceof-wrapper": "error",
     "@dimensiondev/no-redundant-variable": "error",
     "@dimensiondev/no-unneeded-flat-map": "error",
     "@dimensiondev/prefer-early-return": "error",
-    "@dimensiondev/prefer-return-type-annotation": "error",
     "@dimensiondev/prefer-timer-id": "error"
   }
 }
