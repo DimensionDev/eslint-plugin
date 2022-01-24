@@ -34,7 +34,3 @@ const foo = T as unknown as Q
 - [ ] :thought_balloon: Requires type information
 
 <!-- end attributes -->
-
-## Thanks
-
-<https://github.com/andrewms2013/eslint-plugin-no-default-error>

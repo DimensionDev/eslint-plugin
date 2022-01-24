@@ -25,8 +25,3 @@ If you're unaware of what Trojan Source attacks are, or how unicode characters i
 - [ ] :thought_balloon: Requires type information
 
 <!-- end attributes -->
-
-## Thanks
-
-- <https://github.com/lirantal/anti-trojan-source>
-- <https://github.com/lirantal/eslint-plugin-anti-trojan-source>
