@@ -42,6 +42,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/type/no-bigint": "off",
     "@dimensiondev/type/no-force-cast-via-top-type": "error",
     "@dimensiondev/type/no-instanceof-wrapper": "error",
+    "@dimensiondev/type/no-number-constructor": "error",
     "@dimensiondev/type/no-wrapper-type-reference": "error",
     "@dimensiondev/type/prefer-return-type-annotation": "error",
     "@dimensiondev/unicode/no-bidi": "off",
@@ -51,7 +52,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-default-error": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
-    "@dimensiondev/no-number-constructor": "error",
     "@dimensiondev/no-redundant-variable": "error",
     "@dimensiondev/no-single-return": "error",
     "@dimensiondev/no-then": "error",
@@ -109,6 +109,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`
 - [type/no-instanceof-wrapper][type$no_instanceof_wrapper] :white_check_mark: :wrench:\
   Disallow `instanceof` for wrapper objects
+- [type/no-number-constructor][type$no_number_constructor] :white_check_mark:\
+  Disallow use `Number` constructor
 - [type/no-wrapper-type-reference][type$no_wrapper_type_reference] :white_check_mark: :wrench:\
   Disallow wrapper type for type reference
 - [type/prefer-return-type-annotation][type$prefer_return_type_annotation] :white_check_mark: :wrench:\
@@ -127,8 +129,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Restrict the usage of default (unextended) error
 - [no-implicit-array-sort][no_implicit_array_sort] :white_check_mark: :thought_balloon:\
   Enforce `Array#sort` provide comparator function
-- [no-number-constructor][no_number_constructor] :white_check_mark:\
-  Disallow use `Number` constructor
 - [no-redundant-variable][no_redundant_variable] :white_check_mark: :wrench:\
   Disallow redundant variable
 - [no-single-return][no_single_return] :white_check_mark:\
@@ -168,6 +168,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [type$no_bigint]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-bigint
 [type$no_force_cast_via_top_type]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-force-cast-via-top-type
 [type$no_instanceof_wrapper]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-instanceof-wrapper
+[type$no_number_constructor]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-number-constructor
 [type$no_wrapper_type_reference]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-wrapper-type-reference
 [type$prefer_return_type_annotation]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/prefer-return-type-annotation
 [unicode$no_bidi]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-bidi
@@ -177,7 +178,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [no_builtin_base64]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-builtin-base64
 [no_default_error]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-default-error
 [no_implicit_array_sort]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-implicit-array-sort
-[no_number_constructor]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-number-constructor
 [no_redundant_variable]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-redundant-variable
 [no_single_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-single-return
 [no_then]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-then

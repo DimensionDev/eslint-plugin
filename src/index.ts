@@ -14,6 +14,7 @@ import string$no_unneeded_to_string from './rules/string/no-unneeded-to-string'
 import type$no_bigint from './rules/type/no-bigint'
 import type$no_force_cast_via_top_type from './rules/type/no-force-cast-via-top-type'
 import type$no_instanceof_wrapper from './rules/type/no-instanceof-wrapper'
+import type$no_number_constructor from './rules/type/no-number-constructor'
 import type$no_wrapper_type_reference from './rules/type/no-wrapper-type-reference'
 import type$prefer_return_type_annotation from './rules/type/prefer-return-type-annotation'
 import unicode$no_bidi from './rules/unicode/no-bidi'
@@ -23,7 +24,6 @@ import ban_eslint_disable from './rules/ban-eslint-disable'
 import no_builtin_base64 from './rules/no-builtin-base64'
 import no_default_error from './rules/no-default-error'
 import no_implicit_array_sort from './rules/no-implicit-array-sort'
-import no_number_constructor from './rules/no-number-constructor'
 import no_redundant_variable from './rules/no-redundant-variable'
 import no_single_return from './rules/no-single-return'
 import no_then from './rules/no-then'
@@ -51,6 +51,7 @@ export const rules = {
   'type/no-bigint': type$no_bigint,
   'type/no-force-cast-via-top-type': type$no_force_cast_via_top_type,
   'type/no-instanceof-wrapper': type$no_instanceof_wrapper,
+  'type/no-number-constructor': type$no_number_constructor,
   'type/no-wrapper-type-reference': type$no_wrapper_type_reference,
   'type/prefer-return-type-annotation': type$prefer_return_type_annotation,
   'unicode/no-bidi': unicode$no_bidi,
@@ -60,7 +61,6 @@ export const rules = {
   'no-builtin-base64': no_builtin_base64,
   'no-default-error': no_default_error,
   'no-implicit-array-sort': no_implicit_array_sort,
-  'no-number-constructor': no_number_constructor,
   'no-redundant-variable': no_redundant_variable,
   'no-single-return': no_single_return,
   'no-then': no_then,

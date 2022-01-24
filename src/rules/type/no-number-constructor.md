@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-number-constructor`
+# `@dimensiondev/type/no-number-constructor`
 
 Disallow use `Number` constructor
 

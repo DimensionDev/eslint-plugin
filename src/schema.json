@@ -132,6 +132,10 @@
           "description": "Disallow `instanceof` for wrapper objects",
           "$ref": "#/definitions/rule"
         },
+        "@dimensiondev/type/no-number-constructor": {
+          "description": "Disallow use `Number` constructor",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/type/no-wrapper-type-reference": {
           "description": "Disallow wrapper type for type reference",
           "$ref": "#/definitions/rule"
@@ -194,10 +198,6 @@
         },
         "@dimensiondev/no-implicit-array-sort": {
           "description": "Enforce `Array#sort` provide comparator function",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/no-number-constructor": {
-          "description": "Disallow use `Number` constructor",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-redundant-variable": {

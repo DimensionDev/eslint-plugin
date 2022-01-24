@@ -1,9 +1,9 @@
 import type { CallExpression, NewExpression } from '@typescript-eslint/types/dist/ast-spec'
-import { isIdentifierName } from '../node'
-import { createRule } from '../rule'
+import { isIdentifierName } from '../../node'
+import { createRule } from '../../rule'
 
 export default createRule({
-  name: 'no-number-constructor',
+  name: 'type/no-number-constructor',
   meta: {
     type: 'problem',
     docs: {
