@@ -11,13 +11,13 @@ export default createRule({
     type: 'suggestion',
     fixable: 'code',
     docs: {
-      description: 'Prefer `.{add,remove}EventListener()` over `on`-functions',
+      description: 'Prefer `EventTarget#{add,remove}EventListener()` over `on`-functions',
       recommended: 'error',
       requiresTypeChecking: true,
     },
     schema: [],
     messages: {
-      'prefer': 'Prefer `{{replacement}}EventListener` over `{{methodName}}`',
+      'instead': 'Use `EventTarget#{{replacement}}EventListener` instead of `.{{methodName}}`',
       'invalid-bound': 'The listener argument should be a function reference',
     },
     replacedBy: ['unicorn/prefer-add-event-listener', 'unicorn/no-invalid-remove-event-listener'],
@@ -35,7 +35,7 @@ export default createRule({
         if (!isEventTarget(typeChecker, esTreeNodeToTSNodeMap.get(expression.object))) return
         context.report({
           node: left,
-          messageId: 'prefer',
+          messageId: 'instead',
           data: {
             replacement: isNil(right) ? 'remove' : 'add',
             methodName: eventName,

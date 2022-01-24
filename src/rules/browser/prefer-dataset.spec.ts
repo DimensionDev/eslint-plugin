@@ -33,5 +33,10 @@ runTest({
         { messageId: 'instead', data: { methodName: 'removeAttribute' } },
       ],
     })
+    yield cast({
+      code: 'document.getAttribute("data-test-id")',
+      output: 'document.dataset.testId',
+      errors: [{ messageId: 'instead', data: { methodName: 'getAttribute' } }],
+    })
   },
 })

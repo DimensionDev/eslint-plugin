@@ -43,7 +43,7 @@
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/browser/prefer-event-target": {
-          "description": "Prefer `.{add,remove}EventListener()` over `on`-functions",
+          "description": "Prefer `EventTarget#{add,remove}EventListener()` over `on`-functions",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/browser/prefer-keyboard-event-key": {

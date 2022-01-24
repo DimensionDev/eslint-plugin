@@ -2,7 +2,7 @@
 
 # `@dimensiondev/browser/prefer-event-target`
 
-Prefer `.{add,remove}EventListener()` over `on`-functions
+Prefer `EventTarget#{add,remove}EventListener()` over `on`-functions
 
 <!-- end title -->
 

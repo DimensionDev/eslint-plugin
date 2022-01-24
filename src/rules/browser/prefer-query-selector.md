@@ -8,10 +8,11 @@ Prefer `Element#querySelector` over `Element#getElementById`
 
 ## Rule Details
 
-| Legacy APIs                            | Modern APIs                                    |
-| -------------------------------------- | ---------------------------------------------- |
-| `Element#getElementById`               | [Element#querySelector][query-selector]        |
-| `Element#getElementsBy{Class,Tag}Name` | [Element#querySelectorAll][query-selector-all] |
+| Legacy APIs                      | Modern APIs                                    |
+| -------------------------------- | ---------------------------------------------- |
+| `Element#getElementById`         | [Element#querySelector][query-selector]        |
+| `Element#getElementsByClassName` | [Element#querySelectorAll][query-selector-all] |
+| `Element#getElementsByTagName`   | [Element#querySelectorAll][query-selector-all] |
 
 [query-selector]: https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector
 [query-selector-all]: https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll

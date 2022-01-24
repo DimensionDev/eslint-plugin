@@ -6,6 +6,14 @@ runTest({
   module,
   *invalid(cast) {
     yield cast({
+      code: 'window.getElementById("...")',
+      errors: [{ messageId: 'getElementById' }],
+    })
+    yield cast({
+      code: 'document.getElementById("...")',
+      errors: [{ messageId: 'getElementById' }],
+    })
+    yield cast({
       code: dedent`
         declare const element: HTMLElement | null
         element?.getElementById('...')

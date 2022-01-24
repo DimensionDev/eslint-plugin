@@ -97,7 +97,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 - [browser/prefer-dataset][browser$prefer_dataset] :white_check_mark: :wrench: :thought_balloon:\
   Prefer `Element#dataset` over `Element#{get,set,has,remove}Attribute`
 - [browser/prefer-event-target][browser$prefer_event_target] :white_check_mark: :wrench: :thought_balloon:\
-  Prefer `.{add,remove}EventListener()` over `on`-functions
+  Prefer `EventTarget#{add,remove}EventListener()` over `on`-functions
 - [browser/prefer-keyboard-event-key][browser$prefer_keyboard_event_key] :white_check_mark: :wrench: :thought_balloon:\
   Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`
 - [browser/prefer-location-assign][browser$prefer_location_assign] :white_check_mark: :wrench:\

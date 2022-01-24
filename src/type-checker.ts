@@ -1,11 +1,11 @@
 import type ts from 'typescript'
 
 export function isElement(checker: ts.TypeChecker, node: ts.Node) {
-  return isBaseType(checker, node, ['Element'])
+  return isBaseType(checker, node, ['Window', 'Document', 'Element'])
 }
 
 export function isEventTarget(checker: ts.TypeChecker, node: ts.Node) {
-  return isBaseType(checker, node, ['Element', 'EventTarget'])
+  return isBaseType(checker, node, ['Window', 'Document', 'Element', 'EventTarget'])
 }
 
 export function isKeyboardEvent(checker: ts.TypeChecker, node: ts.Node) {

@@ -19,16 +19,12 @@ Prefer Modern DOM APIs
 | `Element#insertAdjacent{Text,Element}("beforeend", *)`   | [Element#append][append]       |
 | `Element#insertAdjacent{Text,Element}("afterend", *)`    | [Element#after][after]         |
 
-[text-content]: https://developer.mozilla.org/docs/Web/API/Node/textContent
 [append]: https://developer.mozilla.org/docs/Web/API/Element/append
 [remove]: https://developer.mozilla.org/docs/Web/API/Element/remove
 [replace]: https://developer.mozilla.org/docs/Web/API/Element/replaceWith
 [before]: https://developer.mozilla.org/docs/Web/API/Element/before
 [prepend]: https://developer.mozilla.org/docs/Web/API/Element/prepend
 [after]: https://developer.mozilla.org/docs/Web/API/Element/after
-[query-selector]: https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelector
-[query-selector-all]: https://developer.mozilla.org/en-US/docs/Web/API/Element/querySelectorAll
-[dataset]: https://developer.mozilla.org/docs/Web/API/HTMLElement/dataset
 
 ### :x: Incorrect
 

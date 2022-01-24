@@ -24,9 +24,9 @@ runTest({
         reader.onerror = null
       `,
       errors: [
-        { messageId: 'prefer', data: { replacement: 'add', methodName: 'onload' } },
-        { messageId: 'prefer', data: { replacement: 'add', methodName: 'onerror' } },
-        { messageId: 'prefer', data: { replacement: 'remove', methodName: 'onerror' } },
+        { messageId: 'instead', data: { replacement: 'add', methodName: 'onload' } },
+        { messageId: 'instead', data: { replacement: 'add', methodName: 'onerror' } },
+        { messageId: 'instead', data: { replacement: 'remove', methodName: 'onerror' } },
       ],
     }
     yield {
@@ -38,7 +38,7 @@ runTest({
         declare const channel: MessageChannel
         channel.port1.addEventListener("message", function (e) {})
       `,
-      errors: [{ messageId: 'prefer', data: { replacement: 'add', methodName: 'onmessage' } }],
+      errors: [{ messageId: 'instead', data: { replacement: 'add', methodName: 'onmessage' } }],
     }
     yield {
       code: dedent`
@@ -52,9 +52,19 @@ runTest({
         element?.addEventListener("click", handleClick)
       `,
       errors: [
-        { messageId: 'prefer', data: { replacement: 'add', methodName: 'onclick' } },
-        { messageId: 'prefer', data: { replacement: 'add', methodName: 'onclick' } },
+        { messageId: 'instead', data: { replacement: 'add', methodName: 'onclick' } },
+        { messageId: 'instead', data: { replacement: 'add', methodName: 'onclick' } },
       ],
+    }
+    yield {
+      code: 'window.onclick = handleClick',
+      output: 'window.addEventListener("click", handleClick)',
+      errors: [{ messageId: 'instead', data: { replacement: 'add', methodName: 'onclick' } }],
+    }
+    yield {
+      code: 'document.onclick = handleClick',
+      output: 'document.addEventListener("click", handleClick)',
+      errors: [{ messageId: 'instead', data: { replacement: 'add', methodName: 'onclick' } }],
     }
     yield {
       code: dedent`
