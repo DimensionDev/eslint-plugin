@@ -1,4 +1,4 @@
-// 33 Rules
+// 34 Rules
 // 5  Configs
 import browser$prefer_event_target from './rules/browser/prefer-event-target'
 import browser$prefer_keyboard_event_key from './rules/browser/prefer-keyboard-event-key'
@@ -6,6 +6,7 @@ import browser$prefer_location_assign from './rules/browser/prefer-location-assi
 import browser$prefer_modern_dom_apis from './rules/browser/prefer-modern-dom-apis'
 import jsx$no_logical from './rules/jsx/no-logical'
 import jsx$no_template_literal from './rules/jsx/no-template-literal'
+import jsx$prefer_test_id from './rules/jsx/prefer-test-id'
 import string$no_interpolation from './rules/string/no-interpolation'
 import string$no_locale_case from './rules/string/no-locale-case'
 import string$no_simple_template_literal from './rules/string/no-simple-template-literal'
@@ -40,6 +41,7 @@ export const rules = {
   'browser/prefer-modern-dom-apis': browser$prefer_modern_dom_apis,
   'jsx/no-logical': jsx$no_logical,
   'jsx/no-template-literal': jsx$no_template_literal,
+  'jsx/prefer-test-id': jsx$prefer_test_id,
   'string/no-interpolation': string$no_interpolation,
   'string/no-locale-case': string$no_locale_case,
   'string/no-simple-template-literal': string$no_simple_template_literal,

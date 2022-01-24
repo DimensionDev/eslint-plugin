@@ -84,6 +84,29 @@
           "description": "Disallow use template-literal in JSX",
           "$ref": "#/definitions/rule"
         },
+        "@dimensiondev/jsx/prefer-test-id": {
+          "description": "Enforces `data-test-id` attribute is present on interactive DOM elements to help with UI testing",
+          "oneOf": [
+            { "$ref": "#/definitions/rule" },
+            {
+              "type": "array",
+              "items": [
+                { "$ref": "#/definitions/rule" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": { "type": "string" },
+                    "elements": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+                    "attributes": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+                    "ignore-attributes": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+                  },
+                  "additionalProperties": false
+                }
+              ],
+              "minItems": 2
+            }
+          ]
+        },
         "@dimensiondev/string/no-interpolation": {
           "description": "Disallow simple string interpolation",
           "$ref": "#/definitions/rule"

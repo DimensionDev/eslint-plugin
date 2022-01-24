@@ -34,6 +34,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/jsx/no-logical": "off",
     "@dimensiondev/jsx/no-template-literal": "error",
+    "@dimensiondev/jsx/prefer-test-id": "off",
     "@dimensiondev/string/no-interpolation": "error",
     "@dimensiondev/string/no-locale-case": "error",
     "@dimensiondev/string/no-simple-template-literal": "error",
@@ -90,6 +91,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Limit the complexity of JSX logic expression
 - [jsx/no-template-literal][jsx$no_template_literal] :white_check_mark: :wrench:\
   Disallow use template-literal in JSX
+- [jsx/prefer-test-id][jsx$prefer_test_id] :gear:\
+  Enforces `data-test-id` attribute is present on interactive DOM elements to help with UI testing
 - [string/no-interpolation][string$no_interpolation] :white_check_mark:\
   Disallow simple string interpolation
 - [string/no-locale-case][string$no_locale_case] :white_check_mark: :wrench:\
@@ -151,6 +154,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [browser$prefer_modern_dom_apis]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-modern-dom-apis
 [jsx$no_logical]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-logical
 [jsx$no_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-template-literal
+[jsx$prefer_test_id]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/prefer-test-id
 [string$no_interpolation]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-interpolation
 [string$no_locale_case]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-locale-case
 [string$no_simple_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-simple-template-literal

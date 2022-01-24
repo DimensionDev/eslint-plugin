@@ -8,6 +8,7 @@
     "@dimensiondev/browser/prefer-modern-dom-apis": "error",
     "@dimensiondev/jsx/no-logical": "off",
     "@dimensiondev/jsx/no-template-literal": "error",
+    "@dimensiondev/jsx/prefer-test-id": "off",
     "@dimensiondev/string/no-interpolation": "error",
     "@dimensiondev/string/no-locale-case": "error",
     "@dimensiondev/string/no-simple-template-literal": "error",
