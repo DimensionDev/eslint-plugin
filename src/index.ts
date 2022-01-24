@@ -1,4 +1,4 @@
-// 34 Rules
+// 35 Rules
 // 5  Configs
 import browser$prefer_event_target from './rules/browser/prefer-event-target'
 import browser$prefer_keyboard_event_key from './rules/browser/prefer-keyboard-event-key'
@@ -20,6 +20,7 @@ import no_builtin_base64 from './rules/no-builtin-base64'
 import no_default_error from './rules/no-default-error'
 import no_force_cast_via_top_type from './rules/no-force-cast-via-top-type'
 import no_implicit_array_sort from './rules/no-implicit-array-sort'
+import no_instanceof_wrapper from './rules/no-instanceof-wrapper'
 import no_number_constructor from './rules/no-number-constructor'
 import no_redundant_variable from './rules/no-redundant-variable'
 import no_single_return from './rules/no-single-return'
@@ -55,6 +56,7 @@ export const rules = {
   'no-default-error': no_default_error,
   'no-force-cast-via-top-type': no_force_cast_via_top_type,
   'no-implicit-array-sort': no_implicit_array_sort,
+  'no-instanceof-wrapper': no_instanceof_wrapper,
   'no-number-constructor': no_number_constructor,
   'no-redundant-variable': no_redundant_variable,
   'no-single-return': no_single_return,

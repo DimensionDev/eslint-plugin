@@ -22,6 +22,7 @@
     "@dimensiondev/no-default-error": "error",
     "@dimensiondev/no-force-cast-via-top-type": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
+    "@dimensiondev/no-instanceof-wrapper": "error",
     "@dimensiondev/no-number-constructor": "error",
     "@dimensiondev/no-redundant-variable": "error",
     "@dimensiondev/no-single-return": "error",

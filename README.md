@@ -48,6 +48,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/no-default-error": "error",
     "@dimensiondev/no-force-cast-via-top-type": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
+    "@dimensiondev/no-instanceof-wrapper": "error",
     "@dimensiondev/no-number-constructor": "error",
     "@dimensiondev/no-redundant-variable": "error",
     "@dimensiondev/no-single-return": "error",
@@ -119,6 +120,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`
 - [no-implicit-array-sort][no_implicit_array_sort] :white_check_mark: :thought_balloon:\
   Enforce `Array#sort` provide comparator function
+- [no-instanceof-wrapper][no_instanceof_wrapper] :white_check_mark: :wrench:\
+  Disallow `instanceof` for wrapper objects
 - [no-number-constructor][no_number_constructor] :white_check_mark:\
   Disallow use `Number` constructor
 - [no-redundant-variable][no_redundant_variable] :white_check_mark: :wrench:\
@@ -168,6 +171,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [no_default_error]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-default-error
 [no_force_cast_via_top_type]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-force-cast-via-top-type
 [no_implicit_array_sort]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-implicit-array-sort
+[no_instanceof_wrapper]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-instanceof-wrapper
 [no_number_constructor]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-number-constructor
 [no_redundant_variable]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-redundant-variable
 [no_single_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-single-return

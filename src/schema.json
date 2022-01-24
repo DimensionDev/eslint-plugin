@@ -184,6 +184,10 @@
           "description": "Enforce `Array#sort` provide comparator function",
           "$ref": "#/definitions/rule"
         },
+        "@dimensiondev/no-instanceof-wrapper": {
+          "description": "Disallow `instanceof` for wrapper objects",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/no-number-constructor": {
           "description": "Disallow use `Number` constructor",
           "$ref": "#/definitions/rule"
