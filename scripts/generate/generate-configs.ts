@@ -82,6 +82,15 @@ function filterRules(
   for (const rule of modules) {
     const entry = onEntry(rule)
     if (entry === undefined || entry === false) continue
+    const extendsBaseRule = rule.meta.docs?.extendsBaseRule ?? false
+    if (extendsBaseRule === true) {
+      rules.push([rule.name, 'off'])
+    } else if (typeof extendsBaseRule === 'string') {
+      rules.push([extendsBaseRule, 'off'])
+    }
+    for (const replacedRule of rule.meta.replacedBy ?? []) {
+      rules.push([replacedRule, 'off'])
+    }
     rules.push([getRuleName(rule.name), entry])
   }
   return Object.fromEntries(rules)

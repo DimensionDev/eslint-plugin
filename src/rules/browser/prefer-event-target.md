@@ -44,5 +44,4 @@ new Promise((resolve, reject) => {
 
 ## Thanks
 
-- <https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/prefer-add-event-listener.md>
-- <https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-invalid-remove-event-listener.md>
+- <https://github.com/sindresorhus/eslint-plugin-unicorn>

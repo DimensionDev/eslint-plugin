@@ -22,6 +22,7 @@ export default createRule({
     messages: {
       instead: 'Use `.key` instead of `.{{name}}`',
     },
+    replacedBy: ['unicorn/prefer-keyboard-event-key'],
   },
   create(context) {
     const { typeChecker, esTreeNodeToTSNodeMap } = getParserServices(context)
