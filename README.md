@@ -82,9 +82,9 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 - [browser/prefer-event-target][browser$prefer_event_target] :white_check_mark: :wrench: :thought_balloon:\
   Prefer `.{add,remove}EventListener()` over `on`-functions
 - [browser/prefer-keyboard-event-key][browser$prefer_keyboard_event_key] :white_check_mark: :wrench: :thought_balloon:\
-  Prefer KeyboardEvent#key
+  Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`
 - [browser/prefer-location-assign][browser$prefer_location_assign] :white_check_mark: :wrench:\
-  Enforce best practice with location
+  Prefer `location.assign(...)` over `location.*`
 - [browser/prefer-modern-dom-apis][browser$prefer_modern_dom_apis] :white_check_mark: :wrench: :bulb: :thought_balloon:\
   Prefer Modern DOM APIs
 - [jsx/no-logical][jsx$no_logical] :gear:\
@@ -116,9 +116,9 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 - [no-default-error][no_default_error] :white_check_mark: :thought_balloon:\
   Restrict the usage of default (unextended) error
 - [no-force-cast-via-top-type][no_force_cast_via_top_type] :white_check_mark:\
-  Disallowing cast a type T to unrelated or incompatible type Q via "T as any as Q"
+  Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`
 - [no-implicit-array-sort][no_implicit_array_sort] :white_check_mark: :thought_balloon:\
-  Enforce Array#sort provide comparator function
+  Enforce `Array#sort` provide comparator function
 - [no-number-constructor][no_number_constructor] :white_check_mark:\
   Disallow use `Number` constructor
 - [no-redundant-variable][no_redundant_variable] :white_check_mark: :wrench:\

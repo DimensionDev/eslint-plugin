@@ -7,7 +7,7 @@ export default createRule({
   meta: {
     type: 'problem',
     docs: {
-      description: 'Enforce Array#sort provide comparator function',
+      description: 'Enforce `Array#sort` provide comparator function',
       recommended: 'error',
       requiresTypeChecking: true,
     },

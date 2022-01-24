@@ -11,7 +11,7 @@ export default createRule({
     type: 'suggestion',
     fixable: 'code',
     docs: {
-      description: 'Enforce best practice with location',
+      description: 'Prefer `location.assign(...)` over `location.*`',
       recommended: 'error',
     },
     schema: [],

@@ -2,7 +2,7 @@
 
 # `@dimensiondev/browser/prefer-keyboard-event-key`
 
-Prefer KeyboardEvent#key
+Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`
 
 <!-- end title -->
 

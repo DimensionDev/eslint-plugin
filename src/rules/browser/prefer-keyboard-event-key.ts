@@ -14,7 +14,7 @@ export default createRule({
     type: 'suggestion',
     fixable: 'code',
     docs: {
-      description: 'Prefer KeyboardEvent#key',
+      description: 'Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`',
       recommended: 'error',
       requiresTypeChecking: true,
     },

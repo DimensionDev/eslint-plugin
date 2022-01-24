@@ -2,7 +2,7 @@
 
 # `@dimensiondev/no-implicit-array-sort`
 
-Enforce Array#sort provide comparator function
+Enforce `Array#sort` provide comparator function
 
 <!-- end title -->
 

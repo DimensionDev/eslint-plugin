@@ -2,7 +2,7 @@
 
 # `@dimensiondev/no-force-cast-via-top-type`
 
-Disallowing cast a type T to unrelated or incompatible type Q via "T as any as Q"
+Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`
 
 <!-- end title -->
 

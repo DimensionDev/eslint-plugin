@@ -43,11 +43,11 @@
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/browser/prefer-keyboard-event-key": {
-          "description": "Prefer KeyboardEvent#key",
+          "description": "Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/browser/prefer-location-assign": {
-          "description": "Enforce best practice with location",
+          "description": "Prefer `location.assign(...)` over `location.*`",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/browser/prefer-modern-dom-apis": {
@@ -177,11 +177,11 @@
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-force-cast-via-top-type": {
-          "description": "Disallowing cast a type T to unrelated or incompatible type Q via \"T as any as Q\"",
+          "description": "Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-implicit-array-sort": {
-          "description": "Enforce Array#sort provide comparator function",
+          "description": "Enforce `Array#sort` provide comparator function",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-number-constructor": {

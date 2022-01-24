@@ -2,7 +2,7 @@
 
 # `@dimensiondev/browser/prefer-location-assign`
 
-Enforce best practice with location
+Prefer `location.assign(...)` over `location.*`
 
 <!-- end title -->
 

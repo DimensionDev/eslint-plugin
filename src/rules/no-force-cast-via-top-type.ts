@@ -6,12 +6,12 @@ export default createRule({
   meta: {
     type: 'problem',
     docs: {
-      description: 'Disallowing cast a type T to unrelated or incompatible type Q via "T as any as Q"',
+      description: 'Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`',
       recommended: 'error',
     },
     schema: [],
     messages: {
-      invalid: 'Don\'t cast this expression to another type by "as {{type}} as T".',
+      invalid: "Don't cast this expression to another type by `as {{type}} as T`",
     },
   },
   create(context) {
