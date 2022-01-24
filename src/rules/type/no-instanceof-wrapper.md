@@ -50,4 +50,5 @@ typeof x === 'symbol'
 
 ## Thanks
 
-<https://github.com/mysticatea/eslint-plugin>
+- <https://github.com/mysticatea/eslint-plugin>
+- <https://github.com/sindresorhus/eslint-plugin-unicorn>

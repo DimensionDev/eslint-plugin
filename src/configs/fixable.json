@@ -22,6 +22,7 @@
     "@dimensiondev/string/no-locale-case": "error",
     "@dimensiondev/string/no-simple-template-literal": "error",
     "@dimensiondev/string/no-unneeded-to-string": "error",
+    "unicorn/no-instanceof-array": "off",
     "@dimensiondev/type/no-instanceof-wrapper": "error",
     "@dimensiondev/type/no-wrapper-type-reference": "error",
     "@dimensiondev/type/prefer-return-type-annotation": "error",

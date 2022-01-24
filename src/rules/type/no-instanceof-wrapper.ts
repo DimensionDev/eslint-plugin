@@ -18,6 +18,7 @@ export default createRule({
       primitive: 'Unexpected `instanceof` operator. Use `typeof x === "{{typeName}}"` instead',
       array: 'Unexpected `instanceof` operator. Use `Array.isArray` instead',
     },
+    replacedBy: ['unicorn/no-instanceof-array'],
   },
   create(context) {
     const source = context.getSourceCode()

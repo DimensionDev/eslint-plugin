@@ -27,6 +27,7 @@
     "@dimensiondev/string/no-unneeded-to-string": "error",
     "@dimensiondev/type/no-bigint": "off",
     "@dimensiondev/type/no-force-cast-via-top-type": "error",
+    "unicorn/no-instanceof-array": "off",
     "@dimensiondev/type/no-instanceof-wrapper": "error",
     "@dimensiondev/type/no-number-constructor": "error",
     "@dimensiondev/type/no-wrapper-type-reference": "error",
