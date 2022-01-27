@@ -2,7 +2,6 @@
 import type { Program, Token } from '@typescript-eslint/types/dist/ast-spec'
 import type { ReportFixFunction, RuleListener } from '@typescript-eslint/utils/dist/ts-eslint'
 import { createRule } from '../../rule'
-import { wrap } from '../../utils'
 
 // https://unicode.org/reports/tr18
 // https://unicode.org/reports/tr51
@@ -61,16 +60,8 @@ export function makeProgramListener(pattern: RegExp, onReport: (node: Token, kin
   return {
     Program(program: Program) {
       for (const token of program.tokens ?? []) {
-        const value = wrap(token, (token) => {
-          if (token.type === 'String' || token.type === 'Template') {
-            return token.value.slice(1, -1)
-          } else if (token.type === 'Identifier' && token.value.startsWith('#')) {
-            return token.value.slice(1)
-          } else if (token.type === 'RegularExpression') {
-            return token.regex.pattern
-          }
-          return token.value
-        })
+        const value = getValue(token)
+        if (value === false) continue
         if (!pattern.test(value)) continue
         onReport(token, 'code')
       }
@@ -117,4 +108,23 @@ export function escape(input: string, pattern: RegExp) {
 
 function toString(point: number) {
   return point.toString(16).padStart(4, '0').toUpperCase()
+}
+
+function getValue(token: Token) {
+  switch (token.type) {
+    case 'String':
+    case 'Template':
+      return token.value.slice(1, -1)
+    case 'Identifier':
+      if (token.value.startsWith('#')) {
+        return token.value.slice(1)
+      }
+      return token.value
+    case 'RegularExpression':
+      return token.regex.pattern
+    case 'JSXText':
+    case 'JSXIdentifier':
+      return token.value
+  }
+  return false
 }
