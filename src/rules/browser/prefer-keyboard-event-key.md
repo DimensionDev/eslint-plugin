@@ -2,9 +2,7 @@
 
 # `@dimensiondev/browser/prefer-keyboard-event-key`
 
-Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`.
-
-Some minority keyboard layout (Dvorak) will break when you use keyCode instead of key.
+Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`
 
 <!-- end title -->
 

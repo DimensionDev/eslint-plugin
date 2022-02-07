@@ -92,6 +92,10 @@
             }
           ]
         },
+        "@dimensiondev/jsx/no-set-html": {
+          "description": "Disallow use `dangerouslySetInnerHTML` jsx attribute",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/jsx/no-template-literal": {
           "description": "Disallow use template-literal in JSX",
           "$ref": "#/definitions/rule"
@@ -214,6 +218,10 @@
         },
         "@dimensiondev/no-redundant-variable": {
           "description": "Disallow redundant variable",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/no-set-html": {
+          "description": "Disallow use `.{inner,outer}HTML`",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-single-return": { "description": "Disallow single-return", "$ref": "#/definitions/rule" },

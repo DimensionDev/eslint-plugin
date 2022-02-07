@@ -45,6 +45,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "unicorn/prefer-dom-node-text-content": "off",
     "@dimensiondev/browser/prefer-text-content": "error",
     "@dimensiondev/jsx/no-logical": "off",
+    "@dimensiondev/jsx/no-set-html": "error",
     "@dimensiondev/jsx/no-template-literal": "error",
     "@dimensiondev/jsx/prefer-test-id": "off",
     "@dimensiondev/string/no-interpolation": "error",
@@ -66,6 +67,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/no-default-error": "error",
     "@dimensiondev/no-implicit-array-sort": "error",
     "@dimensiondev/no-redundant-variable": "error",
+    "@dimensiondev/no-set-html": "error",
     "@dimensiondev/no-single-return": "error",
     "@dimensiondev/no-then": "error",
     "@dimensiondev/no-timer": "off",
@@ -109,6 +111,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Prefer `Element#textContent` over `Element#innerText`
 - [jsx/no-logical][jsx$no_logical] :gear:\
   Limit the complexity of JSX logic expression
+- [jsx/no-set-html][jsx$no_set_html] :white_check_mark:\
+  Disallow use `dangerouslySetInnerHTML` jsx attribute
 - [jsx/no-template-literal][jsx$no_template_literal] :white_check_mark: :wrench:\
   Disallow use template-literal in JSX
 - [jsx/prefer-test-id][jsx$prefer_test_id] :gear:\
@@ -149,6 +153,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Enforce `Array#sort` provide comparator function
 - [no-redundant-variable][no_redundant_variable] :white_check_mark: :wrench:\
   Disallow redundant variable
+- [no-set-html][no_set_html] :white_check_mark:\
+  Disallow use `.{inner,outer}HTML`
 - [no-single-return][no_single_return] :white_check_mark:\
   Disallow single-return
 - [no-then][no_then] :white_check_mark:\
@@ -180,6 +186,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [browser$prefer_query_selector]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-query-selector
 [browser$prefer_text_content]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-text-content
 [jsx$no_logical]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-logical
+[jsx$no_set_html]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-set-html
 [jsx$no_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-template-literal
 [jsx$prefer_test_id]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/prefer-test-id
 [string$no_interpolation]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-interpolation
@@ -200,6 +207,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [no_default_error]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-default-error
 [no_implicit_array_sort]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-implicit-array-sort
 [no_redundant_variable]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-redundant-variable
+[no_set_html]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-set-html
 [no_single_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-single-return
 [no_then]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-then
 [no_timer]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-timer

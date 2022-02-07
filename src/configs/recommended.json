@@ -3,6 +3,7 @@
   "plugins": ["@dimensiondev"],
   "rules": {
     "@dimensiondev/browser/prefer-location-assign": "error",
+    "@dimensiondev/jsx/no-set-html": "error",
     "@dimensiondev/jsx/no-template-literal": "error",
     "@dimensiondev/string/no-interpolation": "error",
     "@dimensiondev/string/no-locale-case": "error",
@@ -17,6 +18,7 @@
     "@dimensiondev/ban-eslint-disable": "error",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-redundant-variable": "error",
+    "@dimensiondev/no-set-html": "error",
     "@dimensiondev/no-single-return": "error",
     "@dimensiondev/no-then": "error",
     "@dimensiondev/no-unneeded-flat-map": "error",

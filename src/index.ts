@@ -1,4 +1,4 @@
-// 39 Rules
+// 41 Rules
 // 5  Configs
 import browser$prefer_dataset from './rules/browser/prefer-dataset'
 import browser$prefer_event_target from './rules/browser/prefer-event-target'
@@ -8,6 +8,7 @@ import browser$prefer_modern_dom_apis from './rules/browser/prefer-modern-dom-ap
 import browser$prefer_query_selector from './rules/browser/prefer-query-selector'
 import browser$prefer_text_content from './rules/browser/prefer-text-content'
 import jsx$no_logical from './rules/jsx/no-logical'
+import jsx$no_set_html from './rules/jsx/no-set-html'
 import jsx$no_template_literal from './rules/jsx/no-template-literal'
 import jsx$prefer_test_id from './rules/jsx/prefer-test-id'
 import string$no_interpolation from './rules/string/no-interpolation'
@@ -28,6 +29,7 @@ import no_builtin_base64 from './rules/no-builtin-base64'
 import no_default_error from './rules/no-default-error'
 import no_implicit_array_sort from './rules/no-implicit-array-sort'
 import no_redundant_variable from './rules/no-redundant-variable'
+import no_set_html from './rules/no-set-html'
 import no_single_return from './rules/no-single-return'
 import no_then from './rules/no-then'
 import no_timer from './rules/no-timer'
@@ -48,6 +50,7 @@ export const rules = {
   'browser/prefer-query-selector': browser$prefer_query_selector,
   'browser/prefer-text-content': browser$prefer_text_content,
   'jsx/no-logical': jsx$no_logical,
+  'jsx/no-set-html': jsx$no_set_html,
   'jsx/no-template-literal': jsx$no_template_literal,
   'jsx/prefer-test-id': jsx$prefer_test_id,
   'string/no-interpolation': string$no_interpolation,
@@ -68,6 +71,7 @@ export const rules = {
   'no-default-error': no_default_error,
   'no-implicit-array-sort': no_implicit_array_sort,
   'no-redundant-variable': no_redundant_variable,
+  'no-set-html': no_set_html,
   'no-single-return': no_single_return,
   'no-then': no_then,
   'no-timer': no_timer,
