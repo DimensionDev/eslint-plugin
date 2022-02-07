@@ -4,6 +4,8 @@ import { closest, isMultiline } from '../../node'
 import { createRule } from '../../rule'
 import { quote } from '../../utils'
 
+// cspell:ignore quasis
+
 export default createRule({
   name: 'string/no-simple-template-literal',
   meta: {

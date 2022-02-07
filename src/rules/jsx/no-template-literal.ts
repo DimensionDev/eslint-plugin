@@ -1,5 +1,7 @@
 import { createRule } from '../../rule'
 
+// cspell:ignore quasis
+
 export default createRule({
   name: 'jsx/no-template-literal',
   meta: {

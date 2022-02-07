@@ -15,6 +15,7 @@ const METHOD_NAMES = new Set([
   'insertAdjacentElement',
 ])
 
+// cspell:ignore beforebegin afterbegin beforeend afterend
 const METHOD_OF_WHERE: Record<string, string> = {
   beforebegin: 'before',
   afterbegin: 'prepend',

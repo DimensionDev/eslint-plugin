@@ -2,6 +2,7 @@ import dedent from 'ts-dedent'
 import { runTest } from '../../spec'
 import module from './prefer-modern-dom-apis'
 
+// cspell:ignore beforebegin afterbegin beforeend afterend
 runTest({
   module,
   *invalid(cast) {

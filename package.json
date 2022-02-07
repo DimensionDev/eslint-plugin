@@ -17,17 +17,17 @@
     "build": "./scripts/build.sh",
     "generate": "ts-node ./scripts/generate",
     "lint": "eslint . --fix",
+    "markdownlint": "markdownlint-cli .",
     "prepare": "husky install",
     "prepublishOnly": "npm run build",
     "publish-to-github": "./scripts/publish-to-github.sh",
+    "spellcheck": "cspell '**'",
     "test": "mocha"
   },
   "lint-staged": {
-    "*": "prettier --write --ignore-unknown",
-    "src/**/*": [
-      "sh -c 'npm test'",
-      "ts-node ./scripts/generate",
-      "git add ."
+    "*": [
+      "prettier --write --ignore-unknown",
+      "cspell"
     ]
   },
   "devDependencies": {
@@ -39,6 +39,7 @@
     "@typescript-eslint/types": "^5.10.0",
     "@typescript-eslint/utils": "^5.10.0",
     "commitlint": "^16.1.0",
+    "cspell": "^5.18.4",
     "eslint": "^8.7.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-eslint-plugin": "^4.0.1",
@@ -49,6 +50,7 @@
     "husky": "^7.0.4",
     "json-schema-to-typescript": "^10.1.5",
     "lint-staged": "^12.3.1",
+    "markdownlint-cli": "^0.31.0",
     "mocha": "^8.1.3",
     "prettier": "^2.5.1",
     "ts-dedent": "^2.2.0",

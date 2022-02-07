@@ -1,6 +1,7 @@
 import { runTest } from '../../spec'
 import module from './prefer-keyboard-event-key'
 
+// cspell:ignore keydown
 runTest({
   module,
   *invalid(cast) {

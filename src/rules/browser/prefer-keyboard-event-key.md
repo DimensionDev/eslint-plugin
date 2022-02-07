@@ -8,6 +8,8 @@ Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`
 
 ## Rule Details
 
+<!-- cspell:ignore keydown -->
+
 ### :x: Incorrect
 
 ```ts

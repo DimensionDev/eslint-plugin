@@ -1,1 +1,2 @@
+# cspell:disable
 gem 'jemoji'
