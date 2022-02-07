@@ -19,6 +19,7 @@ jobs:
           registry: true
       - run: npm ci
       - run: npx prettier --check .
+      - run: npx markdownlint-cli .
       - run: npm test
       - run: npm run lint
       - run: npm run publish-to-github
