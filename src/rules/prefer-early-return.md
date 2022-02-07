@@ -43,8 +43,6 @@ function foo() {
 }
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

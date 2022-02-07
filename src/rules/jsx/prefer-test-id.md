@@ -37,8 +37,6 @@ export type Options = [
 <button data-test-id="download-button">Download</button>
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

@@ -36,8 +36,6 @@ export const foo = ''
 export const bar = ''
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

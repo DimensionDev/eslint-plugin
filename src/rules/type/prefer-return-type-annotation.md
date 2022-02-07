@@ -2,7 +2,7 @@
 
 # `@dimensiondev/type/prefer-return-type-annotation`
 
-Enforce Move return type annotation to function return type
+Enforce moving the return type annotation to function return type
 
 <!-- end title -->
 
@@ -25,8 +25,6 @@ async function request(): Promise<Payload> {
   return response.json()
 }
 ```
-
-## When Not To Use It
 
 ## Attributes
 

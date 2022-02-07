@@ -20,9 +20,13 @@ btoa('...') // encode base64
 ### :white_check_mark: Correct
 
 ```ts
+import Buffer from 'buffer'
 Buffer.from(input, 'base64') // decode base64 with Buffer
 buffer.toString('base64') // encode base64 with Buffer
 ```
+## When Not To Use It
+
+When you don't want to include the "buffer" module in your bundle.
 
 ## Attributes
 

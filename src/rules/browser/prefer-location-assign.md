@@ -27,8 +27,6 @@ location.assign(url)
 location.replace(url)
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

@@ -23,8 +23,6 @@ const timerId = setTimeout(() => {}, 1000)
 clearTimeout(timerId)
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

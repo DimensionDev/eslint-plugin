@@ -20,8 +20,6 @@ Disallow use template-literal in JSX
 <element>example {foo}</element>
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

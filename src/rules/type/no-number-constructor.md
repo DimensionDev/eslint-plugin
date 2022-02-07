@@ -21,8 +21,6 @@ Number.parseInt(input)
 Number.parseFloat(input)
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

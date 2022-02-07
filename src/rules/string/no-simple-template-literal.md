@@ -26,8 +26,6 @@ const baz = { [bar]: foo }
 const qux = { bar: foo }
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

@@ -24,6 +24,8 @@ example.toLowerCase()
 
 ## When Not To Use It
 
+When you're doing i18n.
+
 ## Attributes
 
 <!-- begin attributes -->

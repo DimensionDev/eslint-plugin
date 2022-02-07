@@ -28,8 +28,6 @@ new Promise((resolve, reject) => {
 })
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

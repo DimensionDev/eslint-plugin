@@ -21,8 +21,6 @@ const foo = T as any as Q
 const foo = T as unknown as Q
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

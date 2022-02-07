@@ -28,8 +28,6 @@ declare const element: HTMLElement
 element.textContent
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

@@ -31,8 +31,6 @@ function isGood(battery: Battery) {
 }
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

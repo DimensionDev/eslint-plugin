@@ -22,8 +22,6 @@ declare const elements: string[][]
 elements.flat()
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

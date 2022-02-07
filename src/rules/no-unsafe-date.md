@@ -31,10 +31,6 @@ expiration.setDate(17)
 expiration.setSeconds(30)
 ```
 
-## When Not To Use It
-
-If you don't mind the risk of date mutations causing bugs in your codebase.
-
 ## Attributes
 
 <!-- begin attributes -->

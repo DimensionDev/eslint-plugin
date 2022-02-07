@@ -29,10 +29,6 @@ class UserDefinedError extends Error {
 throw new UserDefinedError()
 ```
 
-## When Not To Use It
-
-If you think you don't need to improve the readability of the Error Stack
-
 ## Attributes
 
 <!-- begin attributes -->

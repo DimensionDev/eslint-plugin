@@ -12,8 +12,6 @@ Detect and stop Trojan Source attacks from entering your codebase
 
 If you're unaware of what Trojan Source attacks are, or how unicode characters injected into a codebase could be used in malicious ways, refer to <https://snyk.io/blog/how-to-detect-mitigate-trojan-source-attacks-javascript-eslint/>.
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

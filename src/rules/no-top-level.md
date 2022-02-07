@@ -41,6 +41,8 @@ function foo() {
 
 ## When Not To Use It
 
+When you have to run side effects at the top level.
+
 ## Attributes
 
 <!-- begin attributes -->

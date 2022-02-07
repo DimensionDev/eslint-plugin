@@ -40,8 +40,6 @@ const bar = <foo bar={value} />
 const baz = <foo>{value}</foo>
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

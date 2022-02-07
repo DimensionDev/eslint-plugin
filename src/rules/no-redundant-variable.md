@@ -25,8 +25,6 @@ async function example() {
 }
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

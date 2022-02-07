@@ -34,8 +34,6 @@ typeof x === 'string'
 typeof x === 'symbol'
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

@@ -12,8 +12,6 @@ Disallow invisible characters
 
 ### :white_check_mark: Correct
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

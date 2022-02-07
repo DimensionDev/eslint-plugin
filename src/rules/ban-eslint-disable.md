@@ -36,8 +36,6 @@ console.log(error)
 console.log(error)
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

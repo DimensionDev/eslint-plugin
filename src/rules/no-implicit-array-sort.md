@@ -22,8 +22,6 @@ declare const elements: number[]
 elements.sort((a, b) => a - b)
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

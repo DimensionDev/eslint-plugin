@@ -28,8 +28,6 @@ export type Options = [
 
 ### :white_check_mark: Correct
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

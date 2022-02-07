@@ -24,8 +24,6 @@ const foo = `foo${bar
 const foo = `foo${bar.toString()}baz`
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

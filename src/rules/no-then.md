@@ -30,6 +30,8 @@ try {
 
 ## When Not To Use It
 
+When you need to handle the promise directly, or it's easier to read with "then".
+
 ## Attributes
 
 <!-- begin attributes -->

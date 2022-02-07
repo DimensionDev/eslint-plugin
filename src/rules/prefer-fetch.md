@@ -23,8 +23,6 @@ new XMLHttpRequest()
 const response = await fetch(url, options)
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

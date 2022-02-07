@@ -31,8 +31,6 @@ declare const element: HTMLElement
 element.querySelector('#hello')
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

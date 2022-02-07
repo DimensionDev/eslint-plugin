@@ -22,8 +22,6 @@ declare const input: string
 input
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

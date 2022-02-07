@@ -28,8 +28,6 @@ const n: string
 const n: symbol
 ```
 
-## When Not To Use It
-
 ## Attributes
 
 <!-- begin attributes -->

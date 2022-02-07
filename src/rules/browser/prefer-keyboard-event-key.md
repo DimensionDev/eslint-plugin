@@ -2,7 +2,9 @@
 
 # `@dimensiondev/browser/prefer-keyboard-event-key`
 
-Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`
+Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`.
+
+Some minority keyboard layout (Dvorak) will break when you use keyCode instead of key.
 
 <!-- end title -->
 
@@ -29,6 +31,8 @@ window.addEventListener('keydown', (event) => {
 ```
 
 ## When Not To Use It
+
+When you want to detect the keyboard key instead of a meaningful input.
 
 ## Attributes
 

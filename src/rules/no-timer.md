@@ -18,6 +18,8 @@ setTimeout()
 
 ## When Not To Use It
 
+When you need the timer.
+
 ## Attributes
 
 <!-- begin attributes -->

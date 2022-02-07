@@ -12,6 +12,8 @@ Don't even try it!
 
 ## When Not To Use It
 
+When you're using Vue.
+
 ## Attributes
 
 <!-- begin attributes -->
