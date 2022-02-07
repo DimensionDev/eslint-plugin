@@ -9,8 +9,27 @@ on:
       - master
 
 jobs:
+  prettier:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npx prettier --check .
+  markdownlint:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npx markdownlint-cli .
+  spellcheck:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+      - run: npx cspell '**'
   publish:
     runs-on: ubuntu-20.04
+    needs: ['prettier', 'markdownlint', 'spellcheck']
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
@@ -18,9 +37,6 @@ jobs:
         with:
           registry: true
       - run: npm ci
-      - run: npx prettier --check .
-      - run: npx markdownlint-cli .
-      - run: npx cspell '**'
       - run: npm test
       - run: npm run lint
       - run: npm run publish-to-github
