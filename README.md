@@ -167,8 +167,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallow `.flatMap((x) => x)` when simpler alternatives exist
 - [no-unsafe-date][no_unsafe_date] :white_check_mark: :thought_balloon:\
   Disallow use unsafe Date methods
-- [no-vue][no_vue] :white_check_mark:\
-  Disallow Vue.js in this project
 - [prefer-default-export][prefer_default_export] :gear:\
   Enforce default export location at top or bottom
 - [prefer-early-return][prefer_early_return] :white_check_mark: :wrench: :gear:\
@@ -214,7 +212,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [no_top_level]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-top-level
 [no_unneeded_flat_map]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-unneeded-flat-map
 [no_unsafe_date]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-unsafe-date
-[no_vue]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-vue
 [prefer_default_export]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-default-export
 [prefer_early_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-early-return
 [prefer_fetch]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-fetch
