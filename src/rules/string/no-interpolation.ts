@@ -1,4 +1,4 @@
-import { isMulitline } from '../../node'
+import { isMultiline } from '../../node'
 import { createRule } from '../../rule'
 
 export default createRule({
@@ -18,7 +18,7 @@ export default createRule({
     return {
       TemplateLiteral(node) {
         for (const expr of node.expressions) {
-          if (!isMulitline(expr)) continue
+          if (!isMultiline(expr)) continue
           context.report({ node: expr, messageId: 'variable' })
         }
       },

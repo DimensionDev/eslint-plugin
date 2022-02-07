@@ -8,7 +8,7 @@ Enforce best practice with timer function
 
 ## Rule Details
 
-Requre store timer id on clear / cancel timer
+Require store timer id on clear / cancel timer
 
 ### :x: Incorrect
 

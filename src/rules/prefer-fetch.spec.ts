@@ -6,6 +6,7 @@ runTest({
   *invalid() {
     yield { code: 'import "axios"', errors: [{ messageId: 'callee' }] }
     yield { code: 'import "request"', errors: [{ messageId: 'callee' }] }
+    // cspell:ignore MSXML XMLHTTP
     {
       const segments = [
         'new XMLHttpRequest()',

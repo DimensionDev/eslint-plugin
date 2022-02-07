@@ -32,7 +32,7 @@ export function closest(node: Node | undefined | null, test: string | ((node: No
   return undefined
 }
 
-export function isMulitline({ loc }: Node) {
+export function isMultiline({ loc }: Node) {
   if (!loc) return false
   return loc.start.line !== loc.end.line
 }

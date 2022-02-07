@@ -34,6 +34,7 @@ export default createRule({
   create(context, maximumStatements: number) {
     function handle({ body, parent }: BlockStatement) {
       if (!isFunctionLike(parent)) return
+      // cspell:words simplifiable
       const simplifiable = body.length === 1 && isOffending(body[0], maximumStatements)
       if (!simplifiable) return
       const fix = makeFixer(context, body[0])

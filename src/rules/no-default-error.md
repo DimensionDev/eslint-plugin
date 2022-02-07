@@ -8,7 +8,7 @@ Restrict the usage of default (unextended) error
 
 ## Rule Details
 
-This rule aims to rescrict the usage of default errors in the project (in favor of custom ones)
+This rule aims to restrict the usage of default errors in the project (in favor of custom ones)
 
 ### :x: Incorrect
 

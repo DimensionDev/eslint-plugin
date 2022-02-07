@@ -42,6 +42,7 @@ function isXMLHttpRequest({ callee }: NewExpression) {
 }
 
 function isActiveXObject(expr: NewExpression) {
+  // cspell:ignore XMLHTTP
   return isIdentifierName(expr.callee, 'ActiveXObject') && isLiteralValue(expr.arguments[0], /xmlhttp/i)
 }
 

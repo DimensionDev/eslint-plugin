@@ -41,6 +41,7 @@ export default createRule({
 function isVueEcosystem(name: string) {
   if (name.startsWith('.')) return false
   name = name.toLowerCase()
+  /* cspell:ignore vuex */
   return (
     name === 'vue' ||
     name === 'vuex' ||

@@ -1,6 +1,6 @@
 import type { Property, TemplateLiteral } from '@typescript-eslint/types/dist/ast-spec'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
-import { closest, isMulitline } from '../../node'
+import { closest, isMultiline } from '../../node'
 import { createRule } from '../../rule'
 import { quote } from '../../utils'
 
@@ -49,7 +49,7 @@ function isNoTemplateExpression(node: TemplateLiteral) {
   return (
     node.parent?.type !== 'TaggedTemplateExpression' &&
     node.quasis.length === 1 &&
-    !isMulitline(node.quasis[0]) &&
+    !isMultiline(node.quasis[0]) &&
     node.expressions.length === 0
   )
 }

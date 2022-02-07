@@ -1,4 +1,5 @@
 #!/bin/bash
+# cspell:disable
 set -xeuo pipefail
 npm run generate
 rm -rf lib

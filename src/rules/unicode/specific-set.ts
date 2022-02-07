@@ -5,7 +5,7 @@ import { createRule } from '../../rule'
 
 // https://unicode.org/reports/tr18
 // https://unicode.org/reports/tr51
-const BUILIT_PATTERN = /\P{ASCII}/u
+const BUILT_PATTERN = /\P{ASCII}/u
 
 interface Options {
   pattern: RegExp['source']
@@ -43,7 +43,7 @@ export default createRule({
     },
   },
   resolveOptions(options?: Partial<Options>): ResolvedOptions {
-    const pattern = options?.pattern ? new RegExp(options.pattern, options.flags ?? 'u') : BUILIT_PATTERN
+    const pattern = options?.pattern ? new RegExp(options.pattern, options.flags ?? 'u') : BUILT_PATTERN
     return { pattern, only: options?.only }
   },
   create(context, { pattern, only }: ResolvedOptions) {
