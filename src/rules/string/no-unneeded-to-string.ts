@@ -8,7 +8,7 @@ export default createRule({
     type: 'problem',
     fixable: 'code',
     docs: {
-      description: 'Disallow `.toString()` when simpler alternatives exist',
+      description: 'Disallow `String#toString()` when simpler alternatives exist',
       recommended: 'error',
       requiresTypeChecking: true,
     },

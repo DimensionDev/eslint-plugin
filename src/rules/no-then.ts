@@ -7,7 +7,7 @@ export default createRule({
   meta: {
     type: 'problem',
     docs: {
-      description: 'Disallow `.then(...)`',
+      description: 'Disallow `Promise#then(...)`',
       recommended: 'error',
     },
     schema: [],

@@ -6,7 +6,7 @@ export default createRule({
   meta: {
     type: 'problem',
     docs: {
-      description: 'Disallow use `.{inner,outer}HTML`',
+      description: 'Disallow use `Element#{inner,outer}HTML`',
       recommended: 'error',
     },
     schema: [],

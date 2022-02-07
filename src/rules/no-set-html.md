@@ -2,7 +2,7 @@
 
 # `@dimensiondev/no-set-html`
 
-Disallow use `.{inner,outer}HTML`
+Disallow use `Element#{inner,outer}HTML`
 
 <!-- end title -->
 

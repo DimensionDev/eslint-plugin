@@ -2,7 +2,7 @@
 
 # `@dimensiondev/string/no-locale-case`
 
-Disallow use `.toLocale{Upper,Lower}Case()`
+Disallow use `String#toLocale{Upper,Lower}Case()`
 
 <!-- end title -->
 

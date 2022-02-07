@@ -120,11 +120,11 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 - [string/no-interpolation][string$no_interpolation] :white_check_mark:\
   Disallow simple string interpolation
 - [string/no-locale-case][string$no_locale_case] :white_check_mark: :wrench:\
-  Disallow use `.toLocale{Upper,Lower}Case()`
+  Disallow use `String#toLocale{Upper,Lower}Case()`
 - [string/no-simple-template-literal][string$no_simple_template_literal] :white_check_mark: :wrench:\
   Disallow simple template-literal
 - [string/no-unneeded-to-string][string$no_unneeded_to_string] :white_check_mark: :wrench: :thought_balloon:\
-  Disallow `.toString()` when simpler alternatives exist
+  Disallow `String#toString()` when simpler alternatives exist
 - [type/no-bigint][type$no_bigint] :thought_balloon:\
   Disallow use BigInt
 - [type/no-force-cast-via-top-type][type$no_force_cast_via_top_type] :white_check_mark:\
@@ -154,17 +154,17 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 - [no-redundant-variable][no_redundant_variable] :white_check_mark: :wrench:\
   Disallow redundant variable
 - [no-set-html][no_set_html] :white_check_mark:\
-  Disallow use `.{inner,outer}HTML`
+  Disallow use `Element#{inner,outer}HTML`
 - [no-single-return][no_single_return] :white_check_mark:\
   Disallow single-return
 - [no-then][no_then] :white_check_mark:\
-  Disallow `.then(...)`
+  Disallow `Promise#then(...)`
 - [no-timer][no_timer] \
   Disallow use timer function
 - [no-top-level][no_top_level] :gear:\
   Disallow side-effect at module top-level
 - [no-unneeded-flat-map][no_unneeded_flat_map] :white_check_mark: :wrench:\
-  Disallow `.flatMap((x) => x)` when simpler alternatives exist
+  Disallow `Array#flatMap((x) => x)` when simpler alternatives exist
 - [no-unsafe-date][no_unsafe_date] :white_check_mark: :thought_balloon:\
   Disallow use unsafe Date methods
 - [prefer-default-export][prefer_default_export] :gear:\

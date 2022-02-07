@@ -9,7 +9,7 @@ export default createRule({
     type: 'problem',
     fixable: 'code',
     docs: {
-      description: 'Disallow use `.toLocale{Upper,Lower}Case()`',
+      description: 'Disallow use `String#toLocale{Upper,Lower}Case()`',
       recommended: 'error',
     },
     schema: [],

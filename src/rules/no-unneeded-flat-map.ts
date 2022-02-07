@@ -7,12 +7,12 @@ export default createRule({
     type: 'problem',
     fixable: 'code',
     docs: {
-      description: 'Disallow `.flatMap((x) => x)` when simpler alternatives exist',
+      description: 'Disallow `Array#flatMap((x) => x)` when simpler alternatives exist',
       recommended: 'error',
     },
     schema: [],
     messages: {
-      invalid: 'Disallow simple `.flatMap()` in array',
+      invalid: 'Disallow simple `Array#flatMap()` in array',
     },
   },
   create(context) {

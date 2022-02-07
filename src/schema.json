@@ -128,7 +128,7 @@
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/string/no-locale-case": {
-          "description": "Disallow use `.toLocale{Upper,Lower}Case()`",
+          "description": "Disallow use `String#toLocale{Upper,Lower}Case()`",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/string/no-simple-template-literal": {
@@ -136,7 +136,7 @@
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/string/no-unneeded-to-string": {
-          "description": "Disallow `.toString()` when simpler alternatives exist",
+          "description": "Disallow `String#toString()` when simpler alternatives exist",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/type/no-bigint": { "description": "Disallow use BigInt", "$ref": "#/definitions/rule" },
@@ -221,11 +221,11 @@
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-set-html": {
-          "description": "Disallow use `.{inner,outer}HTML`",
+          "description": "Disallow use `Element#{inner,outer}HTML`",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-single-return": { "description": "Disallow single-return", "$ref": "#/definitions/rule" },
-        "@dimensiondev/no-then": { "description": "Disallow `.then(...)`", "$ref": "#/definitions/rule" },
+        "@dimensiondev/no-then": { "description": "Disallow `Promise#then(...)`", "$ref": "#/definitions/rule" },
         "@dimensiondev/no-timer": { "description": "Disallow use timer function", "$ref": "#/definitions/rule" },
         "@dimensiondev/no-top-level": {
           "description": "Disallow side-effect at module top-level",
@@ -246,7 +246,7 @@
           ]
         },
         "@dimensiondev/no-unneeded-flat-map": {
-          "description": "Disallow `.flatMap((x) => x)` when simpler alternatives exist",
+          "description": "Disallow `Array#flatMap((x) => x)` when simpler alternatives exist",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-unsafe-date": {

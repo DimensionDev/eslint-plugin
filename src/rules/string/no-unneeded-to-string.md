@@ -2,7 +2,7 @@
 
 # `@dimensiondev/string/no-unneeded-to-string`
 
-Disallow `.toString()` when simpler alternatives exist
+Disallow `String#toString()` when simpler alternatives exist
 
 <!-- end title -->
 

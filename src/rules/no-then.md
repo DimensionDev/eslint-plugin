@@ -2,7 +2,7 @@
 
 # `@dimensiondev/no-then`
 
-Disallow `.then(...)`
+Disallow `Promise#then(...)`
 
 <!-- end title -->
 

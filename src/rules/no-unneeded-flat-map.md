@@ -2,7 +2,7 @@
 
 # `@dimensiondev/no-unneeded-flat-map`
 
-Disallow `.flatMap((x) => x)` when simpler alternatives exist
+Disallow `Array#flatMap((x) => x)` when simpler alternatives exist
 
 <!-- end title -->
 
