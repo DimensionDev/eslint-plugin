@@ -9,7 +9,7 @@ const baseConfig: Linter.Config = {
   plugins: ['@dimensiondev'],
 }
 
-const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.Config> = {
+export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.Config> = {
   'base'() {
     return baseConfig
   },
@@ -80,6 +80,7 @@ function filterRules(
 ): Record<string, Linter.RuleEntry> {
   const rules: [string, Linter.RuleEntry][] = []
   for (const rule of modules) {
+    if (rule.meta.hidden) continue
     const entry = onEntry(rule)
     if (entry === undefined || entry === false) continue
     const extendsBaseRule = rule.meta.docs?.extendsBaseRule ?? false

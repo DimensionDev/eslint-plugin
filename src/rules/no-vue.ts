@@ -13,6 +13,7 @@ export default createRule({
     messages: {
       disallow: 'Disallow {{name}} in this project!',
     },
+    hidden: true,
   },
   create(context) {
     return {

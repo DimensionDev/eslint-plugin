@@ -1,22 +1,22 @@
-import path from 'node:path'
-import fs from 'node:fs/promises'
-import { dedent } from 'ts-dedent'
 import type { Linter } from '@typescript-eslint/utils/dist/ts-eslint'
+import fs from 'node:fs/promises'
+import path from 'node:path'
+import { dedent } from 'ts-dedent'
 import type { ExportedRuleModule } from '../../src/rule'
-import { format, replace, toReference, CONFIG_PATH, ROOT_PATH } from './utils'
+import { configs } from './generate-configs'
+import { format, replace, ROOT_PATH, toReference } from './utils'
 
 export async function generateREADME(modules: ExportedRuleModule[]) {
   const filePath = path.join(ROOT_PATH, 'README.md')
   let content = await fs.readFile(filePath, 'utf-8')
-  content = replace(content, 'example configure', await makeExampleConfigure())
+  content = replace(content, 'example configure', makeExampleConfigure(modules))
   content = replace(content, 'rule list', makeRuleList(modules))
   const formatted = await format(content, 'markdown')
   await fs.writeFile(filePath, formatted, 'utf-8')
 }
 
-async function makeExampleConfigure() {
-  const content = await fs.readFile(path.join(CONFIG_PATH, 'all.json'))
-  const config: Linter.Config = JSON.parse(content.toString('utf-8'))
+function makeExampleConfigure(modules: ExportedRuleModule[]) {
+  const config: Linter.Config = configs.all(modules)
   config.$schema = 'https://dimensiondev.github.io/eslint-plugin/src/schema.json'
   return '```json\n' + JSON.stringify(config) + '\n```'
 }

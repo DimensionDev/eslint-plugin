@@ -1,11 +1,11 @@
 #!npx ts-node
 /* eslint-disable no-console */
-import { getRuleModules } from './utils'
 import { generateConfigs, getConfigNames } from './generate-configs'
-import { generateRuleDetails } from './generate-rule-details'
 import { generateIndex } from './generate-index'
 import { generateREADME } from './generate-readme'
+import { generateRuleDetails } from './generate-rule-details'
 import { generateSchema } from './generate-schema'
+import { getRuleModules } from './utils'
 
 async function main() {
   const rules = await time('load rules', getRuleModules)

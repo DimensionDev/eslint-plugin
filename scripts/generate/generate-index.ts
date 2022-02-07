@@ -3,7 +3,7 @@ import path from 'node:path'
 import dedent from 'ts-dedent'
 import ts, { factory } from 'typescript'
 import type { ExportedRuleModule } from '../../src/rule'
-import { format, toReference, SOURCE_PATH } from './utils'
+import { format, SOURCE_PATH, toReference } from './utils'
 
 export async function generateIndex(modules: ExportedRuleModule[], configNames: string[]) {
   const moduleNames = modules.map(({ name }) => name)

@@ -72,7 +72,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/no-top-level": "off",
     "@dimensiondev/no-unneeded-flat-map": "error",
     "@dimensiondev/no-unsafe-date": "error",
-    "@dimensiondev/no-vue": "error",
     "@dimensiondev/prefer-default-export": "off",
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-fetch": "error",

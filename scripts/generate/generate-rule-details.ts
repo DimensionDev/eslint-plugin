@@ -1,10 +1,10 @@
 /* eslint-disable unicorn/no-useless-undefined */
+import type { RuleMetaData } from '@typescript-eslint/utils/dist/ts-eslint'
+import { compile as toJSONSchema, JSONSchema } from 'json-schema-to-typescript'
 import fs from 'node:fs/promises'
 import path from 'node:path'
-import { compile as toJSONSchema, JSONSchema } from 'json-schema-to-typescript'
-import type { RuleMetaData } from '@typescript-eslint/utils/dist/ts-eslint'
 import type { ExportedRuleModule } from '../../src/rule'
-import { RULE_PATH, format, getRuleName, replace } from './utils'
+import { format, getRuleName, replace, RULE_PATH } from './utils'
 
 export async function generateRuleDetails(modules: ExportedRuleModule[]) {
   for (const module of modules) {

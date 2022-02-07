@@ -1,6 +1,6 @@
-import path from 'node:path'
-import fs from 'node:fs/promises'
 import type { JSONSchema4 } from '@typescript-eslint/utils/dist/json-schema'
+import fs from 'node:fs/promises'
+import path from 'node:path'
 import type { ExportedRuleModule } from '../../src/rule'
 import { format, getRuleName, PACKAGE_NAME, SOURCE_PATH } from './utils'
 

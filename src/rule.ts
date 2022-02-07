@@ -4,6 +4,10 @@ import type { RuleContext, RuleListener, RuleMetaData } from '@typescript-eslint
 
 const BASE_URL = 'https://dimensiondev.github.io/eslint-plugin/src/rules/'
 
+interface Metadata<TMessageIDs extends string> extends RuleMetaData<TMessageIDs> {
+  hidden?: boolean
+}
+
 export interface RuleModule<
   TResolvedOptions,
   TOptions extends readonly unknown[],
@@ -11,7 +15,7 @@ export interface RuleModule<
   TRuleListener extends RuleListener
 > {
   readonly name: string
-  readonly meta: RuleMetaData<TMessageIDs>
+  readonly meta: Metadata<TMessageIDs>
   resolveOptions?(...options: TOptions): TResolvedOptions
   create(context: Readonly<RuleContext<TMessageIDs, TOptions>>, options: TResolvedOptions): TRuleListener
 }
@@ -22,7 +26,7 @@ export interface ExportedRuleModule<
   TRuleListener extends RuleListener = RuleListener
 > {
   readonly name: string
-  readonly meta: RuleMetaData<TMessageIDs>
+  readonly meta: Metadata<TMessageIDs>
   create(context: Readonly<RuleContext<TMessageIDs, TOptions>>): TRuleListener
 }
 
