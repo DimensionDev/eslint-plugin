@@ -38,6 +38,18 @@
     "user-defined-rules": {
       "type": "object",
       "properties": {
+        "@dimensiondev/array/no-implicit-sort": {
+          "description": "Enforce `Array#sort` provide comparator function",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/array/no-unneeded-flat-map": {
+          "description": "Disallow `Array#flatMap((x) => x)` when simpler alternatives exist",
+          "$ref": "#/definitions/rule"
+        },
+        "@dimensiondev/array/prefer-from": {
+          "description": "Prefer `new Array(...)` over `Array.from(...)`",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/browser/prefer-dataset": {
           "description": "Prefer `Element#dataset` over `Element#{get,set,has,remove}Attribute`",
           "$ref": "#/definitions/rule"
@@ -212,10 +224,6 @@
           "description": "Restrict the usage of default (unextended) error",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/no-implicit-array-sort": {
-          "description": "Enforce `Array#sort` provide comparator function",
-          "$ref": "#/definitions/rule"
-        },
         "@dimensiondev/no-redundant-variable": {
           "description": "Disallow redundant variable",
           "$ref": "#/definitions/rule"
@@ -244,10 +252,6 @@
               "minItems": 2
             }
           ]
-        },
-        "@dimensiondev/no-unneeded-flat-map": {
-          "description": "Disallow `Array#flatMap((x) => x)` when simpler alternatives exist",
-          "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-unsafe-date": {
           "description": "Disallow use unsafe Date methods",

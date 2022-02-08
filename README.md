@@ -28,6 +28,9 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   "$schema": "https://dimensiondev.github.io/eslint-plugin/src/schema.json",
   "plugins": ["@dimensiondev"],
   "rules": {
+    "@dimensiondev/array/no-implicit-sort": "error",
+    "@dimensiondev/array/no-unneeded-flat-map": "error",
+    "@dimensiondev/array/prefer-from": "error",
     "unicorn/prefer-dom-node-dataset": "off",
     "@dimensiondev/browser/prefer-dataset": "error",
     "unicorn/prefer-add-event-listener": "off",
@@ -65,14 +68,12 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/ban-eslint-disable": "error",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-default-error": "error",
-    "@dimensiondev/no-implicit-array-sort": "error",
     "@dimensiondev/no-redundant-variable": "error",
     "@dimensiondev/no-set-html": "error",
     "@dimensiondev/no-single-return": "error",
     "@dimensiondev/no-then": "error",
     "@dimensiondev/no-timer": "off",
     "@dimensiondev/no-top-level": "off",
-    "@dimensiondev/no-unneeded-flat-map": "error",
     "@dimensiondev/no-unsafe-date": "error",
     "@dimensiondev/prefer-default-export": "off",
     "@dimensiondev/prefer-early-return": "error",
@@ -95,6 +96,12 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 
 <!-- begin rule list -->
 
+- [array/no-implicit-sort][array$no_implicit_sort] :white_check_mark: :thought_balloon:\
+  Enforce `Array#sort` provide comparator function
+- [array/no-unneeded-flat-map][array$no_unneeded_flat_map] :white_check_mark: :wrench:\
+  Disallow `Array#flatMap((x) => x)` when simpler alternatives exist
+- [array/prefer-from][array$prefer_from] :white_check_mark: :wrench:\
+  Prefer `new Array(...)` over `Array.from(...)`
 - [browser/prefer-dataset][browser$prefer_dataset] :white_check_mark: :wrench: :thought_balloon:\
   Prefer `Element#dataset` over `Element#{get,set,has,remove}Attribute`
 - [browser/prefer-event-target][browser$prefer_event_target] :white_check_mark: :wrench: :thought_balloon:\
@@ -149,8 +156,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallow use built-in base64 function
 - [no-default-error][no_default_error] :white_check_mark: :thought_balloon:\
   Restrict the usage of default (unextended) error
-- [no-implicit-array-sort][no_implicit_array_sort] :white_check_mark: :thought_balloon:\
-  Enforce `Array#sort` provide comparator function
 - [no-redundant-variable][no_redundant_variable] :white_check_mark: :wrench:\
   Disallow redundant variable
 - [no-set-html][no_set_html] :white_check_mark:\
@@ -163,8 +168,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallow use timer function
 - [no-top-level][no_top_level] :gear:\
   Disallow side-effect at module top-level
-- [no-unneeded-flat-map][no_unneeded_flat_map] :white_check_mark: :wrench:\
-  Disallow `Array#flatMap((x) => x)` when simpler alternatives exist
 - [no-unsafe-date][no_unsafe_date] :white_check_mark: :thought_balloon:\
   Disallow use unsafe Date methods
 - [prefer-default-export][prefer_default_export] :gear:\
@@ -176,6 +179,9 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 - [prefer-timer-id][prefer_timer_id] :white_check_mark: :bulb:\
   Enforce best practice with timer function
 
+[array$no_implicit_sort]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/no-implicit-sort
+[array$no_unneeded_flat_map]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/no-unneeded-flat-map
+[array$prefer_from]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/prefer-from
 [browser$prefer_dataset]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-dataset
 [browser$prefer_event_target]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-event-target
 [browser$prefer_keyboard_event_key]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-keyboard-event-key
@@ -203,14 +209,12 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [ban_eslint_disable]: https://dimensiondev.github.io/eslint-plugin/src/rules/ban-eslint-disable
 [no_builtin_base64]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-builtin-base64
 [no_default_error]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-default-error
-[no_implicit_array_sort]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-implicit-array-sort
 [no_redundant_variable]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-redundant-variable
 [no_set_html]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-set-html
 [no_single_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-single-return
 [no_then]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-then
 [no_timer]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-timer
 [no_top_level]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-top-level
-[no_unneeded_flat_map]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-unneeded-flat-map
 [no_unsafe_date]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-unsafe-date
 [prefer_default_export]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-default-export
 [prefer_early_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-early-return

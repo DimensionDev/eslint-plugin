@@ -2,6 +2,8 @@
   "$schema": "../schema.json",
   "plugins": ["@dimensiondev"],
   "rules": {
+    "@dimensiondev/array/no-unneeded-flat-map": "error",
+    "@dimensiondev/array/prefer-from": "error",
     "unicorn/prefer-dom-node-dataset": "off",
     "@dimensiondev/browser/prefer-dataset": "error",
     "unicorn/prefer-add-event-listener": "off",
@@ -29,7 +31,6 @@
     "@dimensiondev/unicode/no-invisible": "error",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-redundant-variable": "error",
-    "@dimensiondev/no-unneeded-flat-map": "error",
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-timer-id": "error"
   }

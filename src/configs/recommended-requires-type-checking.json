@@ -2,6 +2,7 @@
   "$schema": "../schema.json",
   "plugins": ["@dimensiondev"],
   "rules": {
+    "@dimensiondev/array/no-implicit-sort": "error",
     "unicorn/prefer-dom-node-dataset": "off",
     "@dimensiondev/browser/prefer-dataset": "error",
     "unicorn/prefer-add-event-listener": "off",
@@ -19,7 +20,6 @@
     "@dimensiondev/browser/prefer-text-content": "error",
     "@dimensiondev/string/no-unneeded-to-string": "error",
     "@dimensiondev/no-default-error": "error",
-    "@dimensiondev/no-implicit-array-sort": "error",
     "@dimensiondev/no-unsafe-date": "error"
   }
 }

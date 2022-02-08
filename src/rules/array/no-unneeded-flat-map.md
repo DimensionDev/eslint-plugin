@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-unneeded-flat-map`
+# `@dimensiondev/array/no-unneeded-flat-map`
 
 Disallow `Array#flatMap((x) => x)` when simpler alternatives exist
 

@@ -2,6 +2,8 @@
   "$schema": "../schema.json",
   "plugins": ["@dimensiondev"],
   "rules": {
+    "@dimensiondev/array/no-unneeded-flat-map": "error",
+    "@dimensiondev/array/prefer-from": "error",
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/jsx/no-set-html": "error",
     "@dimensiondev/jsx/no-template-literal": "error",
@@ -21,7 +23,6 @@
     "@dimensiondev/no-set-html": "error",
     "@dimensiondev/no-single-return": "error",
     "@dimensiondev/no-then": "error",
-    "@dimensiondev/no-unneeded-flat-map": "error",
     "@dimensiondev/prefer-early-return": "error",
     "@dimensiondev/prefer-fetch": "error",
     "@dimensiondev/prefer-timer-id": "error"

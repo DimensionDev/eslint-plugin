@@ -1,8 +1,8 @@
-import { isIdentifierFunction, isIdentifierName } from '../node'
-import { createRule } from '../rule'
+import { isIdentifierFunction, isIdentifierName } from '../../node'
+import { createRule } from '../../rule'
 
 export default createRule({
-  name: 'no-unneeded-flat-map',
+  name: 'array/no-unneeded-flat-map',
   meta: {
     type: 'problem',
     fixable: 'code',

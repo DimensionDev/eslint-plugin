@@ -1,9 +1,9 @@
-import { isIdentifierName, isMemberExpression } from '../node'
-import { createRule, getParserServices } from '../rule'
-import { isConstructor } from '../type-checker'
+import { isIdentifierName, isMemberExpression } from '../../node'
+import { createRule, getParserServices } from '../../rule'
+import { isConstructor } from '../../type-checker'
 
 export default createRule({
-  name: 'no-implicit-array-sort',
+  name: 'array/no-implicit-sort',
   meta: {
     type: 'problem',
     docs: {

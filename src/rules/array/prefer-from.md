@@ -1,8 +1,8 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-implicit-array-sort`
+# `@dimensiondev/array/prefer-from`
 
-Enforce `Array#sort` provide comparator function
+Prefer `new Array(...)` over `Array.from(...)`
 
 <!-- end title -->
 
@@ -11,15 +11,15 @@ Enforce `Array#sort` provide comparator function
 ### :x: Incorrect
 
 ```ts
-declare const elements: number[]
-elements.sort()
+declare const elements: string[][]
+new Array(elements)
 ```
 
 ### :white_check_mark: Correct
 
 ```ts
-declare const elements: number[]
-elements.sort((a, b) => a - b)
+declare const elements: string[][]
+Array.from(elements)
 ```
 
 ## Attributes
@@ -27,9 +27,9 @@ elements.sort((a, b) => a - b)
 <!-- begin attributes -->
 
 - [x] :white_check_mark: Recommended
-- [ ] :wrench: Fixable
+- [x] :wrench: Fixable
 - [ ] :bulb: Suggestions
 - [ ] :gear: Configurable
-- [x] :thought_balloon: Requires type information
+- [ ] :thought_balloon: Requires type information
 
 <!-- end attributes -->
