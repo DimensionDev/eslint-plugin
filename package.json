@@ -21,7 +21,7 @@
     "prepare": "husky install",
     "prepublishOnly": "npm run build",
     "publish-to-github": "./scripts/publish-to-github.sh",
-    "spellcheck": "cspell '**'",
+    "spellcheck": "cspell lint --relative --no-progress '**'",
     "test": "mocha"
   },
   "lint-staged": {

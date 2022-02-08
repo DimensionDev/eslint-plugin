@@ -26,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
-      - run: npx cspell '**'
+      - run: npx cspell lint --relative --no-progress '**'
   publish:
     runs-on: ubuntu-20.04
     needs: ['prettier', 'markdownlint', 'spellcheck']
