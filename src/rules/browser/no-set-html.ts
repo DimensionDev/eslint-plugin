@@ -1,8 +1,8 @@
-import { isIdentifierName, isMemberExpression } from '../node'
-import { createRule } from '../rule'
+import { isIdentifierName, isMemberExpression } from '../../node'
+import { createRule } from '../../rule'
 
 export default createRule({
-  name: 'no-set-html',
+  name: 'browser/no-set-html',
   meta: {
     type: 'problem',
     docs: {

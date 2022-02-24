@@ -4,6 +4,7 @@
   "rules": {
     "@dimensiondev/array/no-unneeded-flat-map": "error",
     "@dimensiondev/array/prefer-from": "error",
+    "@dimensiondev/browser/no-set-html": "error",
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/jsx/no-set-html": "error",
     "@dimensiondev/jsx/no-template-literal": "error",
@@ -20,7 +21,6 @@
     "@dimensiondev/ban-eslint-disable": "error",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-redundant-variable": "error",
-    "@dimensiondev/no-set-html": "error",
     "@dimensiondev/no-single-return": "error",
     "@dimensiondev/no-then": "error",
     "@dimensiondev/prefer-early-return": "error",

@@ -3,6 +3,7 @@
 import array$no_implicit_sort from './rules/array/no-implicit-sort'
 import array$no_unneeded_flat_map from './rules/array/no-unneeded-flat-map'
 import array$prefer_from from './rules/array/prefer-from'
+import browser$no_set_html from './rules/browser/no-set-html'
 import browser$prefer_dataset from './rules/browser/prefer-dataset'
 import browser$prefer_event_target from './rules/browser/prefer-event-target'
 import browser$prefer_keyboard_event_key from './rules/browser/prefer-keyboard-event-key'
@@ -31,7 +32,6 @@ import ban_eslint_disable from './rules/ban-eslint-disable'
 import no_builtin_base64 from './rules/no-builtin-base64'
 import no_default_error from './rules/no-default-error'
 import no_redundant_variable from './rules/no-redundant-variable'
-import no_set_html from './rules/no-set-html'
 import no_single_return from './rules/no-single-return'
 import no_then from './rules/no-then'
 import no_timer from './rules/no-timer'
@@ -46,6 +46,7 @@ export const rules = {
   'array/no-implicit-sort': array$no_implicit_sort,
   'array/no-unneeded-flat-map': array$no_unneeded_flat_map,
   'array/prefer-from': array$prefer_from,
+  'browser/no-set-html': browser$no_set_html,
   'browser/prefer-dataset': browser$prefer_dataset,
   'browser/prefer-event-target': browser$prefer_event_target,
   'browser/prefer-keyboard-event-key': browser$prefer_keyboard_event_key,
@@ -74,7 +75,6 @@ export const rules = {
   'no-builtin-base64': no_builtin_base64,
   'no-default-error': no_default_error,
   'no-redundant-variable': no_redundant_variable,
-  'no-set-html': no_set_html,
   'no-single-return': no_single_return,
   'no-then': no_then,
   'no-timer': no_timer,

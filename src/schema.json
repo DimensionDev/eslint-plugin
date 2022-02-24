@@ -50,6 +50,10 @@
           "description": "Prefer `new Array(...)` over `Array.from(...)`",
           "$ref": "#/definitions/rule"
         },
+        "@dimensiondev/browser/no-set-html": {
+          "description": "Disallow use `Element#{inner,outer}HTML`",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/browser/prefer-dataset": {
           "description": "Prefer `Element#dataset` over `Element#{get,set,has,remove}Attribute`",
           "$ref": "#/definitions/rule"
@@ -226,10 +230,6 @@
         },
         "@dimensiondev/no-redundant-variable": {
           "description": "Disallow redundant variable",
-          "$ref": "#/definitions/rule"
-        },
-        "@dimensiondev/no-set-html": {
-          "description": "Disallow use `Element#{inner,outer}HTML`",
           "$ref": "#/definitions/rule"
         },
         "@dimensiondev/no-single-return": { "description": "Disallow single-return", "$ref": "#/definitions/rule" },

@@ -31,6 +31,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/array/no-implicit-sort": "error",
     "@dimensiondev/array/no-unneeded-flat-map": "error",
     "@dimensiondev/array/prefer-from": "error",
+    "@dimensiondev/browser/no-set-html": "error",
     "unicorn/prefer-dom-node-dataset": "off",
     "@dimensiondev/browser/prefer-dataset": "error",
     "unicorn/prefer-add-event-listener": "off",
@@ -69,7 +70,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-default-error": "error",
     "@dimensiondev/no-redundant-variable": "error",
-    "@dimensiondev/no-set-html": "error",
     "@dimensiondev/no-single-return": "error",
     "@dimensiondev/no-then": "error",
     "@dimensiondev/no-timer": "off",
@@ -102,6 +102,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallow `Array#flatMap((x) => x)` when simpler alternatives exist
 - [array/prefer-from][array$prefer_from] :white_check_mark: :wrench:\
   Prefer `new Array(...)` over `Array.from(...)`
+- [browser/no-set-html][browser$no_set_html] :white_check_mark:\
+  Disallow use `Element#{inner,outer}HTML`
 - [browser/prefer-dataset][browser$prefer_dataset] :white_check_mark: :wrench: :thought_balloon:\
   Prefer `Element#dataset` over `Element#{get,set,has,remove}Attribute`
 - [browser/prefer-event-target][browser$prefer_event_target] :white_check_mark: :wrench: :thought_balloon:\
@@ -158,8 +160,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Restrict the usage of default (unextended) error
 - [no-redundant-variable][no_redundant_variable] :white_check_mark: :wrench:\
   Disallow redundant variable
-- [no-set-html][no_set_html] :white_check_mark:\
-  Disallow use `Element#{inner,outer}HTML`
 - [no-single-return][no_single_return] :white_check_mark:\
   Disallow single-return
 - [no-then][no_then] :white_check_mark:\
@@ -182,6 +182,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [array$no_implicit_sort]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/no-implicit-sort
 [array$no_unneeded_flat_map]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/no-unneeded-flat-map
 [array$prefer_from]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/prefer-from
+[browser$no_set_html]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/no-set-html
 [browser$prefer_dataset]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-dataset
 [browser$prefer_event_target]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-event-target
 [browser$prefer_keyboard_event_key]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-keyboard-event-key
@@ -210,7 +211,6 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [no_builtin_base64]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-builtin-base64
 [no_default_error]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-default-error
 [no_redundant_variable]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-redundant-variable
-[no_set_html]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-set-html
 [no_single_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-single-return
 [no_then]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-then
 [no_timer]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-timer
