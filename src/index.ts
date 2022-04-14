@@ -1,4 +1,4 @@
-// 42 Rules
+// 43 Rules
 // 5  Configs
 import array$no_implicit_sort from './rules/array/no-implicit-sort'
 import array$no_unneeded_flat_map from './rules/array/no-unneeded-flat-map'
@@ -11,6 +11,7 @@ import browser$prefer_location_assign from './rules/browser/prefer-location-assi
 import browser$prefer_modern_dom_apis from './rules/browser/prefer-modern-dom-apis'
 import browser$prefer_query_selector from './rules/browser/prefer-query-selector'
 import browser$prefer_text_content from './rules/browser/prefer-text-content'
+import jsx$no_class_component from './rules/jsx/no-class-component'
 import jsx$no_logical from './rules/jsx/no-logical'
 import jsx$no_set_html from './rules/jsx/no-set-html'
 import jsx$no_template_literal from './rules/jsx/no-template-literal'
@@ -54,6 +55,7 @@ export const rules = {
   'browser/prefer-modern-dom-apis': browser$prefer_modern_dom_apis,
   'browser/prefer-query-selector': browser$prefer_query_selector,
   'browser/prefer-text-content': browser$prefer_text_content,
+  'jsx/no-class-component': jsx$no_class_component,
   'jsx/no-logical': jsx$no_logical,
   'jsx/no-set-html': jsx$no_set_html,
   'jsx/no-template-literal': jsx$no_template_literal,

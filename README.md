@@ -48,6 +48,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/browser/prefer-query-selector": "error",
     "unicorn/prefer-dom-node-text-content": "off",
     "@dimensiondev/browser/prefer-text-content": "error",
+    "@dimensiondev/jsx/no-class-component": "error",
     "@dimensiondev/jsx/no-logical": "off",
     "@dimensiondev/jsx/no-set-html": "error",
     "@dimensiondev/jsx/no-template-literal": "error",
@@ -118,6 +119,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Prefer `Element#querySelector` over `Element#getElementById`
 - [browser/prefer-text-content][browser$prefer_text_content] :white_check_mark: :bulb: :thought_balloon:\
   Prefer `Element#textContent` over `Element#innerText`
+- [jsx/no-class-component][jsx$no_class_component] :white_check_mark:\
+  Disallow React Class Component
 - [jsx/no-logical][jsx$no_logical] :gear:\
   Limit the complexity of JSX logic expression
 - [jsx/no-set-html][jsx$no_set_html] :white_check_mark:\
@@ -190,6 +193,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [browser$prefer_modern_dom_apis]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-modern-dom-apis
 [browser$prefer_query_selector]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-query-selector
 [browser$prefer_text_content]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-text-content
+[jsx$no_class_component]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-class-component
 [jsx$no_logical]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-logical
 [jsx$no_set_html]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-set-html
 [jsx$no_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-template-literal

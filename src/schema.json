@@ -82,6 +82,10 @@
           "description": "Prefer `Element#textContent` over `Element#innerText`",
           "$ref": "#/definitions/rule"
         },
+        "@dimensiondev/jsx/no-class-component": {
+          "description": "Disallow React Class Component",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/jsx/no-logical": {
           "description": "Limit the complexity of JSX logic expression",
           "oneOf": [

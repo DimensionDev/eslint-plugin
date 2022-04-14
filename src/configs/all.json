@@ -22,6 +22,7 @@
     "@dimensiondev/browser/prefer-query-selector": "error",
     "unicorn/prefer-dom-node-text-content": "off",
     "@dimensiondev/browser/prefer-text-content": "error",
+    "@dimensiondev/jsx/no-class-component": "error",
     "@dimensiondev/jsx/no-logical": "off",
     "@dimensiondev/jsx/no-set-html": "error",
     "@dimensiondev/jsx/no-template-literal": "error",

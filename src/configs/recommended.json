@@ -6,6 +6,7 @@
     "@dimensiondev/array/prefer-from": "error",
     "@dimensiondev/browser/no-set-html": "error",
     "@dimensiondev/browser/prefer-location-assign": "error",
+    "@dimensiondev/jsx/no-class-component": "error",
     "@dimensiondev/jsx/no-set-html": "error",
     "@dimensiondev/jsx/no-template-literal": "error",
     "@dimensiondev/string/no-interpolation": "error",
