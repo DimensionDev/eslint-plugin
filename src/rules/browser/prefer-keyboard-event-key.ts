@@ -2,7 +2,6 @@ import type { MemberExpression } from '@typescript-eslint/types/dist/ast-spec'
 import type { ReportFixFunction } from '@typescript-eslint/utils/dist/ts-eslint'
 import { isIdentifierName, isNumberLiteral } from '../../node'
 import { createRule, getParserServices } from '../../rule'
-import EventKeys from '../../shared/event-keys.json'
 import { isKeyboardEvent } from '../../type-checker'
 import { quote } from '../../utils'
 
@@ -65,5 +64,45 @@ function getFixer(node: MemberExpression): ReportFixFunction | undefined {
 }
 
 function getKey(point: number) {
-  return EventKeys[point] ?? String.fromCodePoint(point)
+  if (point > 110 && point < 124) return `F${point - 111}`
+  return eventKeys.get(point) ?? String.fromCodePoint(point)
 }
+
+// https://github.com/sindresorhus/eslint-plugin-unicorn/blob/c193e1e/rules/shared/event-keys.js
+// https://github.com/facebook/react/blob/b87aabd/packages/react-dom/src/events/getEventKey.js#L36
+// Only meta characters which can't be deciphered from `String.fromCharCode(...)`
+const eventKeys = new Map([
+  [8, 'Backspace'],
+  [9, 'Tab'],
+  [12, 'Clear'],
+  [13, 'Enter'],
+  [16, 'Shift'],
+  [17, 'Control'],
+  [18, 'Alt'],
+  [19, 'Pause'],
+  [20, 'CapsLock'],
+  [27, 'Escape'],
+  [33, 'PageUp'],
+  [34, 'PageDown'],
+  [35, 'End'],
+  [36, 'Home'],
+  [37, 'ArrowLeft'],
+  [38, 'ArrowUp'],
+  [39, 'ArrowRight'],
+  [40, 'ArrowDown'],
+  [45, 'Insert'],
+  [46, 'Delete'],
+  [144, 'NumLock'],
+  [145, 'ScrollLock'],
+  [186, ';'],
+  [187, '='],
+  [188, ','],
+  [189, '-'],
+  [190, '.'],
+  [191, '/'],
+  [219, '['],
+  [220, '\\'],
+  [221, ']'],
+  [222, "'"],
+  [224, 'Meta'],
+])
