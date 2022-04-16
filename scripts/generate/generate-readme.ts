@@ -1,6 +1,6 @@
-import type { Linter } from '@typescript-eslint/utils/dist/ts-eslint'
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import type { Linter } from '@typescript-eslint/utils/dist/ts-eslint'
 import { dedent } from 'ts-dedent'
 import type { ExportedRuleModule } from '../../src/rule'
 import { configs } from './generate-configs'

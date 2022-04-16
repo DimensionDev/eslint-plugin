@@ -1,8 +1,8 @@
 /* eslint-disable unicorn/no-useless-undefined */
+import path from 'node:path'
+import fs from 'node:fs/promises'
 import type { RuleMetaData } from '@typescript-eslint/utils/dist/ts-eslint'
 import { compile as toJSONSchema, JSONSchema } from 'json-schema-to-typescript'
-import fs from 'node:fs/promises'
-import path from 'node:path'
 import type { ExportedRuleModule } from '../../src/rule'
 import { format, getRuleName, replace, RULE_PATH } from './utils'
 

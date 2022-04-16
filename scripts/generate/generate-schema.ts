@@ -1,6 +1,6 @@
-import type { JSONSchema4 } from '@typescript-eslint/utils/dist/json-schema'
 import fs from 'node:fs/promises'
 import path from 'node:path'
+import type { JSONSchema4 } from '@typescript-eslint/utils/dist/json-schema'
 import type { ExportedRuleModule } from '../../src/rule'
 import { format, getRuleName, PACKAGE_NAME, SOURCE_PATH } from './utils'
 
@@ -10,7 +10,7 @@ export async function generateSchema(modules: ExportedRuleModule[], configNames:
     const rule: JSONSchema4 = { $ref: '#/definitions/rule' }
     const schemaOptions: JSONSchema4[] = Array.isArray(schema) ? schema : [schema]
     const oneOf: JSONSchema4[] = [rule, { type: 'array', items: [rule, ...schemaOptions], minItems: 2 }]
-    const description = docs?.description
+    const description = `${docs?.description ?? ''}\n${docs?.url ?? ''}`.trim()
     return [getRuleName(name), schemaOptions.length > 0 ? { description, oneOf } : { description, ...rule }]
   })
   const schema: JSONSchema4 = {

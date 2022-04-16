@@ -2,5 +2,6 @@
   "$schema": "https://github.com/streetsidesoftware/cspell/raw/main/cspell.schema.json",
   "useGitignore": true,
   "dictionaries": ["softwareTerms", "typescript"],
-  "ignoreWords": ["bidi", "commitlint", "markdownlint", "dimensiondev"]
+  "ignoreWords": ["bidi", "commitlint", "markdownlint", "dimensiondev"],
+  "ignorePaths": ["package.json", "package-lock.json", ".vscode/**/*"]
 }
