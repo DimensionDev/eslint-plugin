@@ -1,4 +1,4 @@
-// 43 Rules
+// 44 Rules
 // 5  Configs
 import array$no_implicit_sort from './rules/array/no-implicit-sort'
 import array$no_unneeded_flat_map from './rules/array/no-unneeded-flat-map'
@@ -21,6 +21,7 @@ import string$no_locale_case from './rules/string/no-locale-case'
 import string$no_simple_template_literal from './rules/string/no-simple-template-literal'
 import string$no_unneeded_to_string from './rules/string/no-unneeded-to-string'
 import type$no_bigint from './rules/type/no-bigint'
+import type$no_const_enum from './rules/type/no-const-enum'
 import type$no_force_cast_via_top_type from './rules/type/no-force-cast-via-top-type'
 import type$no_instanceof_wrapper from './rules/type/no-instanceof-wrapper'
 import type$no_number_constructor from './rules/type/no-number-constructor'
@@ -65,6 +66,7 @@ export const rules = {
   'string/no-simple-template-literal': string$no_simple_template_literal,
   'string/no-unneeded-to-string': string$no_unneeded_to_string,
   'type/no-bigint': type$no_bigint,
+  'type/no-const-enum': type$no_const_enum,
   'type/no-force-cast-via-top-type': type$no_force_cast_via_top_type,
   'type/no-instanceof-wrapper': type$no_instanceof_wrapper,
   'type/no-number-constructor': type$no_number_constructor,
