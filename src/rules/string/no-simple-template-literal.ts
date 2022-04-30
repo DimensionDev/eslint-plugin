@@ -1,4 +1,4 @@
-import type { Property, TemplateLiteral } from '@typescript-eslint/types/dist/ast-spec'
+import type { Property, TemplateLiteral } from '@typescript-eslint/types/dist/generated/ast-spec'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
 import { closest, isMultiline } from '../../node'
 import { createRule } from '../../rule'

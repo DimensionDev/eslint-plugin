@@ -1,4 +1,4 @@
-import type { JSXExpressionContainer, Node } from '@typescript-eslint/types/dist/ast-spec'
+import type { JSXExpressionContainer, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
 import { createRule } from '../../rule'
 
 const DEFAULT_LIMIT = 2

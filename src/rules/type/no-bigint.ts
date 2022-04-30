@@ -1,5 +1,5 @@
 import type ts from 'typescript'
-import type { CallExpression, NewExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
+import type { CallExpression, NewExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
 import { isIdentifierName, isMemberExpression } from '../../node'
 import { createRule, getParserServices } from '../../rule'
 

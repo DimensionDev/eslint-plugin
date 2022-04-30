@@ -70,7 +70,7 @@
       "error",
       {
         "paths": [
-          { "name": "@typescript-eslint/types/dist/ast-spec", "allowTypeImports": true },
+          { "name": "@typescript-eslint/types/dist/generated/ast-spec", "allowTypeImports": true },
           { "name": "@typescript-eslint/utils/dist/ast-utils", "allowTypeImports": true },
           { "name": "@typescript-eslint/utils/dist/ts-eslint", "allowTypeImports": true }
         ]

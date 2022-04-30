@@ -1,4 +1,4 @@
-import type { CallExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
+import type { CallExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
 import { isAwait, isMemberExpression, isStringLiteral } from '../../node'
 import { createRule, getParserServices } from '../../rule'

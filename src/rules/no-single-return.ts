@@ -1,4 +1,4 @@
-import type { Node, ReturnStatement, Statement } from '@typescript-eslint/types/dist/ast-spec'
+import type { Node, ReturnStatement, Statement } from '@typescript-eslint/types/dist/generated/ast-spec'
 import type { RuleContext } from '@typescript-eslint/utils/dist/ts-eslint'
 import { isFunctionLike, isIdentifier, isSameIdentifier } from '../node'
 import { createRule } from '../rule'

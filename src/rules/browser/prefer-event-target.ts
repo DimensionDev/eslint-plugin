@@ -1,4 +1,4 @@
-import type { Node } from '@typescript-eslint/types/dist/ast-spec'
+import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec'
 import { isBindCall, isFunctionLike, isIdentifierName, isMemberExpression } from '../../node'
 import { createRule, getParserServices } from '../../rule'
 import { isEventTarget } from '../../type-checker'

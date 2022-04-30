@@ -1,4 +1,4 @@
-import type { Node } from '@typescript-eslint/types/dist/ast-spec'
+import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec'
 import { isFunctionLike, isIdentifierName, isLiteralValue, isMemberExpression } from '../node'
 import { createRule } from '../rule'
 

@@ -1,4 +1,4 @@
-import type { MemberExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
+import type { MemberExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
 import { isChainExpression, isIdentifier, isMemberExpression, isStringLiteral } from '../../node'
 import { createRule, getParserServices } from '../../rule'
 import { isElement } from '../../type-checker'

@@ -1,4 +1,4 @@
-import type { JSXAttribute, Node } from '@typescript-eslint/types/dist/ast-spec'
+import type { JSXAttribute, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
 import { createRule } from '../../rule'
 
 interface Options {

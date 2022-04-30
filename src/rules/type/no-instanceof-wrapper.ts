@@ -1,4 +1,4 @@
-import type { BinaryExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
+import type { BinaryExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
 import { createRule } from '../../rule'
 import { quote } from '../../utils'
 

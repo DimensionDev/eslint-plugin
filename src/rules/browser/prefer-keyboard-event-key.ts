@@ -1,4 +1,4 @@
-import type { MemberExpression } from '@typescript-eslint/types/dist/ast-spec'
+import type { MemberExpression } from '@typescript-eslint/types/dist/generated/ast-spec'
 import type { ReportFixFunction } from '@typescript-eslint/utils/dist/ts-eslint'
 import { isIdentifierName, isNumberLiteral } from '../../node'
 import { createRule, getParserServices } from '../../rule'

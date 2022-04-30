@@ -1,4 +1,4 @@
-import type { StringLiteral } from '@typescript-eslint/types/dist/ast-spec'
+import type { StringLiteral } from '@typescript-eslint/types/dist/generated/ast-spec'
 import type { ReportFixFunction } from '@typescript-eslint/utils/dist/ts-eslint'
 import { isLiteralValue, isMemberExpression } from '../../node'
 import { createRule, getParserServices } from '../../rule'

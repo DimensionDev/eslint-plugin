@@ -14,7 +14,7 @@ import type {
   PrivateIdentifier,
   RegExpLiteral,
   StringLiteral,
-} from '@typescript-eslint/types/dist/ast-spec'
+} from '@typescript-eslint/types/dist/generated/ast-spec'
 import type { Predicate } from './utils'
 
 export function closest<T extends Node>(node: Node | undefined, type: string): T | undefined

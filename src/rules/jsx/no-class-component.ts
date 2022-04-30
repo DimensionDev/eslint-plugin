@@ -1,4 +1,4 @@
-import type { ClassBody } from '@typescript-eslint/types/dist/ast-spec'
+import type { ClassBody } from '@typescript-eslint/types/dist/generated/ast-spec'
 import type { Scope } from '@typescript-eslint/utils/dist/ts-eslint'
 import { isIdentifier, isMemberExpression } from '../../node'
 import { createRule } from '../../rule'

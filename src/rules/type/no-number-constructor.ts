@@ -1,4 +1,4 @@
-import type { CallExpression, NewExpression } from '@typescript-eslint/types/dist/ast-spec'
+import type { CallExpression, NewExpression } from '@typescript-eslint/types/dist/generated/ast-spec'
 import { isIdentifierName } from '../../node'
 import { createRule } from '../../rule'
 

@@ -1,4 +1,4 @@
-import type { Node, Range, TSAsExpression, TypeNode } from '@typescript-eslint/types/dist/ast-spec'
+import type { Node, Range, TSAsExpression, TypeNode } from '@typescript-eslint/types/dist/generated/ast-spec'
 import { closest, isFunctionLike, isAwait, isIdentifierName } from '../../node'
 import { createRule } from '../../rule'
 import { wrap } from '../../utils'

@@ -1,4 +1,4 @@
-import type { AssignmentExpression, Node } from '@typescript-eslint/types/dist/ast-spec'
+import type { AssignmentExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
 import { isIdentifier, isIdentifierName, isMemberExpression } from '../../node'
 import { createRule } from '../../rule'

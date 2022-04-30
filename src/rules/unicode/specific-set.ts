@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import type { Program, Token } from '@typescript-eslint/types/dist/ast-spec'
+import type { Program, Token } from '@typescript-eslint/types/dist/generated/ast-spec'
 import type { ReportFixFunction, RuleListener } from '@typescript-eslint/utils/dist/ts-eslint'
 import { createRule } from '../../rule'
 
