@@ -16,14 +16,14 @@ export async function generateRuleDetails(modules: ExportedRuleModule[]) {
 }
 
 async function update(filePath: string, { name, meta }: ExportedRuleModule) {
-  let content = await fs.readFile(filePath, 'utf-8')
+  let content = await fs.readFile(filePath, 'utf8')
 
   content = replace(content, 'title', `# \`${getRuleName(name)}\`\n${meta.docs?.description}`)
   content = replace(content, 'options', await makeOptions(meta))
   content = replace(content, 'attributes', makeAttributes(meta))
 
   const formatted = await format(content, 'markdown')
-  await fs.writeFile(filePath, formatted, 'utf-8')
+  await fs.writeFile(filePath, formatted, 'utf8')
 }
 
 async function exists(filePath: string) {

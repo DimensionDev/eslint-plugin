@@ -13,7 +13,7 @@ export async function generateIndex(modules: ExportedRuleModule[], configNames: 
     // ${configNames.length.toString().padEnd(2, ' ')} Configs\n
   `
   const formatted = await format(header + source, 'typescript')
-  await fs.writeFile(path.join(SOURCE_PATH, 'index.ts'), formatted, 'utf-8')
+  await fs.writeFile(path.join(SOURCE_PATH, 'index.ts'), formatted, 'utf8')
 }
 
 async function makeSourceFile(configs: string[], modules: string[]) {

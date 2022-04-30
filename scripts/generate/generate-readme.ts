@@ -8,12 +8,12 @@ import { format, replace, ROOT_PATH, toReference } from './utils'
 
 export async function generateREADME(modules: ExportedRuleModule[]) {
   const filePath = path.join(ROOT_PATH, 'README.md')
-  let content = await fs.readFile(filePath, 'utf-8')
+  let content = await fs.readFile(filePath, 'utf8')
   modules = modules.filter(({ meta }) => meta.hidden !== true)
   content = replace(content, 'example configure', makeExampleConfigure(modules))
   content = replace(content, 'rule list', makeRuleList(modules))
   const formatted = await format(content, 'markdown')
-  await fs.writeFile(filePath, formatted, 'utf-8')
+  await fs.writeFile(filePath, formatted, 'utf8')
 }
 
 function makeExampleConfigure(modules: ExportedRuleModule[]) {

@@ -51,5 +51,5 @@ export async function generateSchema(modules: ExportedRuleModule[], configNames:
     },
   }
   const formatted = await format(JSON.stringify(schema), 'json')
-  await fs.writeFile(path.join(SOURCE_PATH, 'schema.json'), formatted, 'utf-8')
+  await fs.writeFile(path.join(SOURCE_PATH, 'schema.json'), formatted, 'utf8')
 }

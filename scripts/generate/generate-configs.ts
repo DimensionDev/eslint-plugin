@@ -70,7 +70,7 @@ export async function generateConfigs(modules: ExportedRuleModule[]) {
 
 async function storeConfig(name: string, config: Linter.Config) {
   const formatted = await format(JSON.stringify(config, null, 2), 'json')
-  await fs.writeFile(path.join(CONFIG_PATH, name), formatted, 'utf-8')
+  await fs.writeFile(path.join(CONFIG_PATH, name), formatted, 'utf8')
 }
 
 function filterRules(
