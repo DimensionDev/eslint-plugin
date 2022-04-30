@@ -1,4 +1,4 @@
-// 46 Rules
+// 47 Rules
 // 5  Configs
 import array$no_implicit_sort from './rules/array/no-implicit-sort'
 import array$no_unneeded_flat_map from './rules/array/no-unneeded-flat-map'
@@ -16,6 +16,7 @@ import jsx$no_class_component from './rules/jsx/no-class-component'
 import jsx$no_logical from './rules/jsx/no-logical'
 import jsx$no_set_html from './rules/jsx/no-set-html'
 import jsx$no_template_literal from './rules/jsx/no-template-literal'
+import jsx$no_unneeded_nested from './rules/jsx/no-unneeded-nested'
 import jsx$prefer_test_id from './rules/jsx/prefer-test-id'
 import string$no_interpolation from './rules/string/no-interpolation'
 import string$no_locale_case from './rules/string/no-locale-case'
@@ -63,6 +64,7 @@ export const rules = {
   'jsx/no-logical': jsx$no_logical,
   'jsx/no-set-html': jsx$no_set_html,
   'jsx/no-template-literal': jsx$no_template_literal,
+  'jsx/no-unneeded-nested': jsx$no_unneeded_nested,
   'jsx/prefer-test-id': jsx$prefer_test_id,
   'string/no-interpolation': string$no_interpolation,
   'string/no-locale-case': string$no_locale_case,

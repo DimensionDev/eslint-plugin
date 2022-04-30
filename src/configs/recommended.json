@@ -10,6 +10,7 @@
     "@dimensiondev/jsx/no-class-component": "error",
     "@dimensiondev/jsx/no-set-html": "error",
     "@dimensiondev/jsx/no-template-literal": "error",
+    "@dimensiondev/jsx/no-unneeded-nested": "error",
     "@dimensiondev/string/no-interpolation": "error",
     "@dimensiondev/string/no-locale-case": "error",
     "@dimensiondev/string/no-simple-template-literal": "error",

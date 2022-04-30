@@ -27,6 +27,7 @@
     "@dimensiondev/jsx/no-logical": "off",
     "@dimensiondev/jsx/no-set-html": "error",
     "@dimensiondev/jsx/no-template-literal": "error",
+    "@dimensiondev/jsx/no-unneeded-nested": "error",
     "@dimensiondev/jsx/prefer-test-id": "off",
     "@dimensiondev/string/no-interpolation": "error",
     "@dimensiondev/string/no-locale-case": "error",

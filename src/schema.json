@@ -124,6 +124,10 @@
           "description": "Disallow use template-literal in JSX\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-template-literal",
           "$ref": "#/definitions/rule"
         },
+        "@dimensiondev/jsx/no-unneeded-nested": {
+          "description": "Reduce unneeded JSXFragment nested\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-unneeded-nested",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/jsx/prefer-test-id": {
           "description": "Enforces `data-test-id` attribute is present on interactive DOM elements to help with UI testing\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/jsx/prefer-test-id",
           "oneOf": [

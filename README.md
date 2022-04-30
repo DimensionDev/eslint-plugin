@@ -53,6 +53,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/jsx/no-logical": "off",
     "@dimensiondev/jsx/no-set-html": "error",
     "@dimensiondev/jsx/no-template-literal": "error",
+    "@dimensiondev/jsx/no-unneeded-nested": "error",
     "@dimensiondev/jsx/prefer-test-id": "off",
     "@dimensiondev/string/no-interpolation": "error",
     "@dimensiondev/string/no-locale-case": "error",
@@ -132,6 +133,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallow use `dangerouslySetInnerHTML` jsx attribute
 - [jsx/no-template-literal][jsx$no_template_literal] :white_check_mark: :wrench:\
   Disallow use template-literal in JSX
+- [jsx/no-unneeded-nested][jsx$no_unneeded_nested] :white_check_mark: :wrench:\
+  Reduce unneeded JSXFragment nested
 - [jsx/prefer-test-id][jsx$prefer_test_id] :gear:\
   Enforces `data-test-id` attribute is present on interactive DOM elements to help with UI testing
 - [string/no-interpolation][string$no_interpolation] :white_check_mark:\
@@ -207,6 +210,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [jsx$no_logical]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-logical
 [jsx$no_set_html]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-set-html
 [jsx$no_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-template-literal
+[jsx$no_unneeded_nested]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-unneeded-nested
 [jsx$prefer_test_id]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/prefer-test-id
 [string$no_interpolation]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-interpolation
 [string$no_locale_case]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-locale-case

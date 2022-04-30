@@ -21,6 +21,7 @@
     "unicorn/prefer-dom-node-text-content": "off",
     "@dimensiondev/browser/prefer-text-content": "error",
     "@dimensiondev/jsx/no-template-literal": "error",
+    "@dimensiondev/jsx/no-unneeded-nested": "error",
     "@dimensiondev/string/no-locale-case": "error",
     "@dimensiondev/string/no-simple-template-literal": "error",
     "@dimensiondev/string/no-unneeded-to-string": "error",
