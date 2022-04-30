@@ -50,6 +50,10 @@
           "description": "Prefer `new Array(...)` over `Array.from(...)`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/array/prefer-from",
           "$ref": "#/definitions/rule"
         },
+        "@dimensiondev/browser/no-persistent-storage": {
+          "description": "Disallow use browser persistent storage\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/no-persistent-storage",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/browser/no-set-html": {
           "description": "Disallow use `Element#{inner,outer}HTML`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/no-set-html",
           "$ref": "#/definitions/rule"

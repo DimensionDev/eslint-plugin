@@ -31,6 +31,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/array/no-implicit-sort": "error",
     "@dimensiondev/array/no-unneeded-flat-map": "error",
     "@dimensiondev/array/prefer-from": "error",
+    "@dimensiondev/browser/no-persistent-storage": "error",
     "@dimensiondev/browser/no-set-html": "error",
     "unicorn/prefer-dom-node-dataset": "off",
     "@dimensiondev/browser/prefer-dataset": "error",
@@ -104,6 +105,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallow `Array#flatMap((x) => x)` when simpler alternatives exist
 - [array/prefer-from][array$prefer_from] :white_check_mark: :wrench:\
   Prefer `new Array(...)` over `Array.from(...)`
+- [browser/no-persistent-storage][browser$no_persistent_storage] :white_check_mark:\
+  Disallow use browser persistent storage
 - [browser/no-set-html][browser$no_set_html] :white_check_mark:\
   Disallow use `Element#{inner,outer}HTML`
 - [browser/prefer-dataset][browser$prefer_dataset] :white_check_mark: :wrench: :thought_balloon:\
@@ -188,6 +191,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [array$no_implicit_sort]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/no-implicit-sort
 [array$no_unneeded_flat_map]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/no-unneeded-flat-map
 [array$prefer_from]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/prefer-from
+[browser$no_persistent_storage]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/no-persistent-storage
 [browser$no_set_html]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/no-set-html
 [browser$prefer_dataset]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-dataset
 [browser$prefer_event_target]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-event-target

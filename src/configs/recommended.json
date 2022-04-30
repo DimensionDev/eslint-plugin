@@ -4,6 +4,7 @@
   "rules": {
     "@dimensiondev/array/no-unneeded-flat-map": "error",
     "@dimensiondev/array/prefer-from": "error",
+    "@dimensiondev/browser/no-persistent-storage": "error",
     "@dimensiondev/browser/no-set-html": "error",
     "@dimensiondev/browser/prefer-location-assign": "error",
     "@dimensiondev/jsx/no-class-component": "error",

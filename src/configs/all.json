@@ -5,6 +5,7 @@
     "@dimensiondev/array/no-implicit-sort": "error",
     "@dimensiondev/array/no-unneeded-flat-map": "error",
     "@dimensiondev/array/prefer-from": "error",
+    "@dimensiondev/browser/no-persistent-storage": "error",
     "@dimensiondev/browser/no-set-html": "error",
     "unicorn/prefer-dom-node-dataset": "off",
     "@dimensiondev/browser/prefer-dataset": "error",

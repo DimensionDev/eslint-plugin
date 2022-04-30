@@ -1,8 +1,9 @@
-// 44 Rules
+// 45 Rules
 // 5  Configs
 import array$no_implicit_sort from './rules/array/no-implicit-sort'
 import array$no_unneeded_flat_map from './rules/array/no-unneeded-flat-map'
 import array$prefer_from from './rules/array/prefer-from'
+import browser$no_persistent_storage from './rules/browser/no-persistent-storage'
 import browser$no_set_html from './rules/browser/no-set-html'
 import browser$prefer_dataset from './rules/browser/prefer-dataset'
 import browser$prefer_event_target from './rules/browser/prefer-event-target'
@@ -48,6 +49,7 @@ export const rules = {
   'array/no-implicit-sort': array$no_implicit_sort,
   'array/no-unneeded-flat-map': array$no_unneeded_flat_map,
   'array/prefer-from': array$prefer_from,
+  'browser/no-persistent-storage': browser$no_persistent_storage,
   'browser/no-set-html': browser$no_set_html,
   'browser/prefer-dataset': browser$prefer_dataset,
   'browser/prefer-event-target': browser$prefer_event_target,

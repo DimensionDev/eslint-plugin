@@ -14,6 +14,9 @@ const tester = new RuleTester({
     ecmaVersion: 'latest',
     ecmaFeatures: { jsx: true },
   },
+  env: {
+    browser: true,
+  },
 })
 
 type TestCaseGenerator<T, R = T> = (cast: (input: T) => T) => Generator<R>

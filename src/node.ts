@@ -17,10 +17,10 @@ import type {
 } from '@typescript-eslint/types/dist/ast-spec'
 import type { Predicate } from './utils'
 
-export function closest<T extends Node>(node: Node | undefined | null, type: string): T | undefined
-export function closest<T extends Node>(node: Node | undefined | null, test: (node: Node) => node is T): T | undefined
-export function closest<T extends Node>(node: Node | undefined | null, test: (node: Node) => boolean): T | undefined
-export function closest(node: Node | undefined | null, test: string | ((node: Node) => boolean)): Node | undefined {
+export function closest<T extends Node>(node: Node | undefined, type: string): T | undefined
+export function closest<T extends Node>(node: Node | undefined, test: (node: Node) => node is T): T | undefined
+export function closest<T extends Node>(node: Node | undefined, test: (node: Node) => boolean): T | undefined
+export function closest(node: Node | undefined, test: string | ((node: Node) => boolean)): Node | undefined {
   if (typeof test === 'string') {
     const typeName = test
     test = (node) => node.type === typeName
