@@ -171,6 +171,24 @@
           "description": "Disallow use constants enumerate\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-const-enum",
           "$ref": "#/definitions/rule"
         },
+        "@dimensiondev/type/no-empty-literal": {
+          "description": "Disallow empty {array,object} literal\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-empty-literal",
+          "oneOf": [
+            { "$ref": "#/definitions/rule" },
+            {
+              "type": "array",
+              "items": [
+                { "$ref": "#/definitions/rule" },
+                {
+                  "type": "object",
+                  "properties": { "array": { "type": "string" }, "object": { "type": "object" } },
+                  "additionalProperties": false
+                }
+              ],
+              "minItems": 2
+            }
+          ]
+        },
         "@dimensiondev/type/no-force-cast-via-top-type": {
           "description": "Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-force-cast-via-top-type",
           "$ref": "#/definitions/rule"

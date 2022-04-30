@@ -60,6 +60,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/string/no-unneeded-to-string": "error",
     "@dimensiondev/type/no-bigint": "off",
     "@dimensiondev/type/no-const-enum": "off",
+    "@dimensiondev/type/no-empty-literal": "off",
     "@dimensiondev/type/no-force-cast-via-top-type": "error",
     "unicorn/no-instanceof-array": "off",
     "@dimensiondev/type/no-instanceof-wrapper": "error",
@@ -145,6 +146,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallow use BigInt
 - [type/no-const-enum][type$no_const_enum] :wrench:\
   Disallow use constants enumerate
+- [type/no-empty-literal][type$no_empty_literal] :gear:\
+  Disallow empty {array,object} literal
 - [type/no-force-cast-via-top-type][type$no_force_cast_via_top_type] :white_check_mark:\
   Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`
 - [type/no-instanceof-wrapper][type$no_instanceof_wrapper] :white_check_mark: :wrench:\
@@ -211,6 +214,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [string$no_unneeded_to_string]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-unneeded-to-string
 [type$no_bigint]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-bigint
 [type$no_const_enum]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-const-enum
+[type$no_empty_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-empty-literal
 [type$no_force_cast_via_top_type]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-force-cast-via-top-type
 [type$no_instanceof_wrapper]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-instanceof-wrapper
 [type$no_number_constructor]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-number-constructor
