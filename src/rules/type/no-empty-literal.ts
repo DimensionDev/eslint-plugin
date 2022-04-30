@@ -18,7 +18,7 @@ export default createRule({
         type: 'object',
         properties: {
           array: { type: 'string' },
-          object: { type: 'object' },
+          object: { type: 'string' },
         },
         additionalProperties: false,
       },

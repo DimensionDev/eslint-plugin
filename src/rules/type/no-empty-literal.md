@@ -8,6 +8,23 @@ Disallow empty {array,object} literal
 
 ## Rule Details
 
+Disallow empty {array,object} literal
+
+## Options
+
+<!-- begin options -->
+
+```ts
+export type Options = [
+  {
+    array?: string
+    object?: string
+  }
+]
+```
+
+<!-- end options -->
+
 ### :x: Incorrect
 
 ```ts

@@ -185,7 +185,7 @@
                 { "$ref": "#/definitions/rule" },
                 {
                   "type": "object",
-                  "properties": { "array": { "type": "string" }, "object": { "type": "object" } },
+                  "properties": { "array": { "type": "string" }, "object": { "type": "string" } },
                   "additionalProperties": false
                 }
               ],
