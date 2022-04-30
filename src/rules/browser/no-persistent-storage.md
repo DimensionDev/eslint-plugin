@@ -8,7 +8,7 @@ Disallow use browser persistent storage
 
 ## Rule Details
 
-Disallow use browser persistence storage
+Disallow use browser persistent storage
 
 - [`{local,session}Storage`](https://developer.mozilla.org/docs/Web/API/Web_Storage_API)
 - [`indexedDB`](https://developer.mozilla.org/docs/Web/API/IndexedDB_API)
