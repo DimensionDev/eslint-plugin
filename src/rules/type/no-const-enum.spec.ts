@@ -5,6 +5,7 @@ runTest({
   module,
   *valid() {
     yield 'const enum Foo {}'
+    yield 'const enum Foo {}; export default () => { Foo }'
   },
   *invalid() {
     yield {

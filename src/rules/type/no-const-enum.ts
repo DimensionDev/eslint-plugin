@@ -1,6 +1,5 @@
 import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec'
 import type { Scope } from '@typescript-eslint/utils/dist/ts-eslint'
-import { closest } from '../../node'
 import { createRule } from '../../rule'
 
 export default createRule({
@@ -40,11 +39,12 @@ function isExported(variables: readonly Scope.Variable[]) {
   const definitions = variables.flatMap((variable) => variable.defs)
   const references = variables.flatMap((variable) => variable.references)
   return (
-    definitions.every((definition) => closest(definition.node, isExportNode)) ||
-    (references.length > 0 && references.every((reference) => closest(reference.identifier, isExportNode)))
+    definitions.every((definition) => isExportNode(definition.node.parent)) ||
+    (references.length > 0 && references.every((reference) => isExportNode(reference.identifier.parent)))
   )
 }
 
-function isExportNode(node: Node) {
-  return node.type.startsWith('Export') || node.type.startsWith('TSExport') || node.type.startsWith('TSNamespaceExport')
+function isExportNode(node: Node | undefined) {
+  if (!node) return false
+  return node.type === 'ExportSpecifier' || node.type === 'ExportNamedDeclaration'
 }
