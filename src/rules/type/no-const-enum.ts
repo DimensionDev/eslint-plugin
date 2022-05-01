@@ -1,3 +1,6 @@
+import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec'
+import type { Scope } from '@typescript-eslint/utils/dist/ts-eslint'
+import { closest } from '../../node'
 import { createRule } from '../../rule'
 
 export default createRule({
@@ -18,6 +21,7 @@ export default createRule({
     return {
       TSEnumDeclaration(node) {
         if (!node.const) return
+        if (!isExported(context.getDeclaredVariables(node))) return
         context.report({
           node,
           messageId: 'invalid',
@@ -31,3 +35,16 @@ export default createRule({
     }
   },
 })
+
+function isExported(variables: readonly Scope.Variable[]) {
+  const definitions = variables.flatMap((variable) => variable.defs)
+  const references = variables.flatMap((variable) => variable.references)
+  return (
+    definitions.every((definition) => closest(definition.node, isExportNode)) ||
+    (references.length > 0 && references.every((reference) => closest(reference.identifier, isExportNode)))
+  )
+}
+
+function isExportNode(node: Node) {
+  return node.type.startsWith('Export') || node.type.startsWith('TSExport') || node.type.startsWith('TSNamespaceExport')
+}

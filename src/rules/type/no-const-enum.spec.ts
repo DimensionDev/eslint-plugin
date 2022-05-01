@@ -4,13 +4,18 @@ import module from './no-const-enum'
 runTest({
   module,
   *valid() {
-    yield 'enum Foo {}'
+    yield 'const enum Foo {}'
   },
   *invalid() {
     yield {
-      code: 'const enum Foo {}',
+      code: 'export const enum Foo {}',
       errors: [{ messageId: 'invalid' }],
-      output: 'enum Foo {}',
+      output: 'export enum Foo {}',
+    }
+    yield {
+      code: 'const enum Foo {}; export { Foo }',
+      errors: [{ messageId: 'invalid' }],
+      output: 'enum Foo {}; export { Foo }',
     }
   },
 })
