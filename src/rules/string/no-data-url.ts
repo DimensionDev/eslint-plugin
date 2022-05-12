@@ -5,7 +5,6 @@ export default createRule({
   name: 'string/no-data-url',
   meta: {
     type: 'suggestion',
-    fixable: 'code',
     docs: {
       description: 'Disallow use Data URL',
       recommended: 'error',
