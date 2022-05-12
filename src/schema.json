@@ -151,6 +151,10 @@
             }
           ]
         },
+        "@dimensiondev/string/no-data-url": {
+          "description": "Disallow use Data URL\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/string/no-data-url",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/string/no-interpolation": {
           "description": "Disallow simple string interpolation\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/string/no-interpolation",
           "$ref": "#/definitions/rule"
