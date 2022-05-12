@@ -27,7 +27,7 @@ Please use <https://webpack.js.org/guides/asset-modules/> or other method save b
 <!-- begin attributes -->
 
 - [x] :white_check_mark: Recommended
-- [x] :wrench: Fixable
+- [ ] :wrench: Fixable
 - [ ] :bulb: Suggestions
 - [ ] :gear: Configurable
 - [ ] :thought_balloon: Requires type information

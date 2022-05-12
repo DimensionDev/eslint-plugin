@@ -138,7 +138,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Reduce unneeded JSXFragment nested
 - [jsx/prefer-test-id][jsx$prefer_test_id] :gear:\
   Enforces `data-test-id` attribute is present on interactive DOM elements to help with UI testing
-- [string/no-data-url][string$no_data_url] :white_check_mark: :wrench:\
+- [string/no-data-url][string$no_data_url] :white_check_mark:\
   Disallow use Data URL
 - [string/no-interpolation][string$no_interpolation] :white_check_mark:\
   Disallow simple string interpolation
