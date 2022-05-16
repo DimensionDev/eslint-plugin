@@ -75,6 +75,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
     "@dimensiondev/ban-eslint-disable": "error",
     "@dimensiondev/no-builtin-base64": "error",
     "@dimensiondev/no-default-error": "error",
+    "@dimensiondev/no-for-in": "error",
     "@dimensiondev/no-redundant-variable": "error",
     "@dimensiondev/no-single-return": "error",
     "@dimensiondev/no-then": "error",
@@ -176,6 +177,8 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
   Disallow use built-in base64 function
 - [no-default-error][no_default_error] :white_check_mark: :thought_balloon:\
   Restrict the usage of default (unextended) error
+- [no-for-in][no_for_in] :white_check_mark:\
+  Disallow use for-in
 - [no-redundant-variable][no_redundant_variable] :white_check_mark: :wrench:\
   Disallow redundant variable
 - [no-single-return][no_single_return] :white_check_mark:\
@@ -234,6 +237,7 @@ Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration fil
 [ban_eslint_disable]: https://dimensiondev.github.io/eslint-plugin/src/rules/ban-eslint-disable
 [no_builtin_base64]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-builtin-base64
 [no_default_error]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-default-error
+[no_for_in]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-for-in
 [no_redundant_variable]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-redundant-variable
 [no_single_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-single-return
 [no_then]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-then

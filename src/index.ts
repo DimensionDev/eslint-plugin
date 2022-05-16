@@ -1,4 +1,4 @@
-// 48 Rules
+// 49 Rules
 // 5  Configs
 import array$no_implicit_sort from './rules/array/no-implicit-sort'
 import array$no_unneeded_flat_map from './rules/array/no-unneeded-flat-map'
@@ -37,6 +37,7 @@ import unicode$specific_set from './rules/unicode/specific-set'
 import ban_eslint_disable from './rules/ban-eslint-disable'
 import no_builtin_base64 from './rules/no-builtin-base64'
 import no_default_error from './rules/no-default-error'
+import no_for_in from './rules/no-for-in'
 import no_redundant_variable from './rules/no-redundant-variable'
 import no_single_return from './rules/no-single-return'
 import no_then from './rules/no-then'
@@ -86,6 +87,7 @@ export const rules = {
   'ban-eslint-disable': ban_eslint_disable,
   'no-builtin-base64': no_builtin_base64,
   'no-default-error': no_default_error,
+  'no-for-in': no_for_in,
   'no-redundant-variable': no_redundant_variable,
   'no-single-return': no_single_return,
   'no-then': no_then,

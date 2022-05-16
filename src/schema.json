@@ -269,6 +269,10 @@
           "description": "Restrict the usage of default (unextended) error\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-default-error",
           "$ref": "#/definitions/rule"
         },
+        "@dimensiondev/no-for-in": {
+          "description": "Disallow use for-in\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-for-in",
+          "$ref": "#/definitions/rule"
+        },
         "@dimensiondev/no-redundant-variable": {
           "description": "Disallow redundant variable\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-redundant-variable",
           "$ref": "#/definitions/rule"
