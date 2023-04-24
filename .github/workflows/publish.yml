@@ -9,36 +9,8 @@ on:
       - main
 
 jobs:
-  prettier:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "19"
-      - run: pnpx prettier --check .
-  markdownlint:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "19"
-      - run: pnpx markdownlint-cli .
-  spellcheck:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "19"
-      - run: pnpx cspell lint --relative --no-progress '**'
   publish:
     runs-on: ubuntu-20.04
-    needs: ['prettier', 'markdownlint', 'spellcheck']
     permissions:
       pull-requests: write
       contents: write
@@ -53,10 +25,9 @@ jobs:
           node-version: "19"
           cache: "pnpm"
       - run: pnpm install
-      - run: npm install -g npm
-      - run: pnpm test
+      - run: pnpm run generate
       - run: npx tsc -b
-      - run: pnpm run lint
+      - run: npm install -g npm
       - uses: changesets/action@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
