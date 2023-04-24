@@ -53,6 +53,7 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
     "@masknet/no-single-return": "error",
     "@masknet/no-then": "error",
     "@masknet/no-unsafe-date": "error",
+    "@masknet/prefer-defer-import": "error",
     "@masknet/prefer-early-return": "error",
     "@masknet/prefer-fetch": "error",
     "@masknet/prefer-timer-id": "error"
@@ -145,6 +146,8 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
   Disallow use unsafe Date methods
 - [prefer-default-export][prefer_default_export] :gear:\
   Enforce default export location at top or bottom
+- [prefer-defer-import][prefer_defer_import] :white_check_mark: :wrench: :gear:\
+  Prefer defer import a module.
 - [prefer-early-return][prefer_early_return] :white_check_mark: :wrench: :gear:\
   Prefer early returns over full-body conditional wrapping in function declarations
 - [prefer-fetch][prefer_fetch] :white_check_mark:\
@@ -188,6 +191,7 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
 [no_top_level]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-top-level
 [no_unsafe_date]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-unsafe-date
 [prefer_default_export]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-default-export
+[prefer_defer_import]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-defer-import
 [prefer_early_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-early-return
 [prefer_fetch]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-fetch
 [prefer_timer_id]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-timer-id

@@ -17,6 +17,7 @@
     "@masknet/unicode/no-invisible": "error",
     "@masknet/no-builtin-base64": "error",
     "@masknet/no-redundant-variable": "error",
+    "@masknet/prefer-defer-import": "error",
     "@masknet/prefer-early-return": "error",
     "@masknet/prefer-timer-id": "error"
   }

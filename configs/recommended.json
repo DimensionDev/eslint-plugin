@@ -27,6 +27,7 @@
     "@masknet/no-redundant-variable": "error",
     "@masknet/no-single-return": "error",
     "@masknet/no-then": "error",
+    "@masknet/prefer-defer-import": "error",
     "@masknet/prefer-early-return": "error",
     "@masknet/prefer-fetch": "error",
     "@masknet/prefer-timer-id": "error"

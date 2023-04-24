@@ -1,5 +1,5 @@
 // This file is auto generated.
-// 39 Rules
+// 40 Rules
 // 5  Configs
 import array$no_unneeded_flat_map from './rules/array/no-unneeded-flat-map.js'
 import array$prefer_from from './rules/array/prefer-from.js'
@@ -37,6 +37,7 @@ import no_timer from './rules/no-timer.js'
 import no_top_level from './rules/no-top-level.js'
 import no_unsafe_date from './rules/no-unsafe-date.js'
 import prefer_default_export from './rules/prefer-default-export.js'
+import prefer_defer_import from './rules/prefer-defer-import.js'
 import prefer_early_return from './rules/prefer-early-return.js'
 import prefer_fetch from './rules/prefer-fetch.js'
 import prefer_timer_id from './rules/prefer-timer-id.js'
@@ -77,6 +78,7 @@ export const rules: unknown = {
   'no-top-level': no_top_level,
   'no-unsafe-date': no_unsafe_date,
   'prefer-default-export': prefer_default_export,
+  'prefer-defer-import': prefer_defer_import,
   'prefer-early-return': prefer_early_return,
   'prefer-fetch': prefer_fetch,
   'prefer-timer-id': prefer_timer_id,
