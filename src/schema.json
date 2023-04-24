@@ -38,10 +38,6 @@
     "user-defined-rules": {
       "type": "object",
       "properties": {
-        "@masknet/array/no-implicit-sort": {
-          "description": "Enforce `Array#sort` provide comparator function\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/array/no-implicit-sort",
-          "$ref": "#/definitions/rule"
-        },
         "@masknet/array/no-unneeded-flat-map": {
           "description": "Disallow `Array#flatMap((x) => x)` when simpler alternatives exist\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/array/no-unneeded-flat-map",
           "$ref": "#/definitions/rule"
@@ -58,32 +54,8 @@
           "description": "Disallow use `Element#{inner,outer}HTML`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/no-set-html",
           "$ref": "#/definitions/rule"
         },
-        "@masknet/browser/prefer-dataset": {
-          "description": "Prefer `Element#dataset` over `Element#{get,set,has,remove}Attribute`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-dataset",
-          "$ref": "#/definitions/rule"
-        },
-        "@masknet/browser/prefer-event-target": {
-          "description": "Prefer `EventTarget#{add,remove}EventListener()` over `on`-functions\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-event-target",
-          "$ref": "#/definitions/rule"
-        },
-        "@masknet/browser/prefer-keyboard-event-key": {
-          "description": "Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-keyboard-event-key",
-          "$ref": "#/definitions/rule"
-        },
         "@masknet/browser/prefer-location-assign": {
           "description": "Prefer `location.assign(...)` over `location.*`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-location-assign",
-          "$ref": "#/definitions/rule"
-        },
-        "@masknet/browser/prefer-modern-dom-apis": {
-          "description": "Prefer Modern DOM APIs\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-modern-dom-apis",
-          "$ref": "#/definitions/rule"
-        },
-        "@masknet/browser/prefer-query-selector": {
-          "description": "Prefer `Element#querySelector` over `Element#getElementById`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-query-selector",
-          "$ref": "#/definitions/rule"
-        },
-        "@masknet/browser/prefer-text-content": {
-          "description": "Prefer `Element#textContent` over `Element#innerText`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-text-content",
           "$ref": "#/definitions/rule"
         },
         "@masknet/jsx/no-class-component": {
@@ -171,10 +143,6 @@
           "description": "Disallow `String#toString()` when simpler alternatives exist\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/string/no-unneeded-to-string",
           "$ref": "#/definitions/rule"
         },
-        "@masknet/type/no-bigint": {
-          "description": "Disallow use BigInt\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-bigint",
-          "$ref": "#/definitions/rule"
-        },
         "@masknet/type/no-const-enum": {
           "description": "Disallow use constants enumerate\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-const-enum",
           "$ref": "#/definitions/rule"
@@ -247,20 +215,6 @@
             }
           ]
         },
-        "@masknet/ban-eslint-disable": {
-          "description": "Ban `eslint-disable` comment directive\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/ban-eslint-disable",
-          "oneOf": [
-            { "$ref": "#/definitions/rule" },
-            {
-              "type": "array",
-              "items": [
-                { "$ref": "#/definitions/rule" },
-                { "oneOf": [{ "type": "boolean" }, { "const": "allow-with-description" }] }
-              ],
-              "minItems": 2
-            }
-          ]
-        },
         "@masknet/no-builtin-base64": {
           "description": "Disallow use built-in base64 function\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-builtin-base64",
           "$ref": "#/definitions/rule"
@@ -309,10 +263,6 @@
         },
         "@masknet/no-unsafe-date": {
           "description": "Disallow use unsafe Date methods\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-unsafe-date",
-          "$ref": "#/definitions/rule"
-        },
-        "@masknet/no-vue": {
-          "description": "Disallow Vue.js in this project\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-vue",
           "$ref": "#/definitions/rule"
         },
         "@masknet/prefer-default-export": {

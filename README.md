@@ -25,27 +25,11 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
   "$schema": "https://dimensiondev.github.io/eslint-plugin/src/schema.json",
   "plugins": ["@masknet"],
   "rules": {
-    "@masknet/array/no-implicit-sort": "error",
     "@masknet/array/no-unneeded-flat-map": "error",
     "@masknet/array/prefer-from": "error",
     "@masknet/browser/no-persistent-storage": "error",
     "@masknet/browser/no-set-html": "error",
-    "unicorn/prefer-dom-node-dataset": "off",
-    "@masknet/browser/prefer-dataset": "error",
-    "unicorn/prefer-add-event-listener": "off",
-    "unicorn/no-invalid-remove-event-listener": "off",
-    "@masknet/browser/prefer-event-target": "error",
-    "unicorn/prefer-keyboard-event-key": "off",
-    "@masknet/browser/prefer-keyboard-event-key": "error",
     "@masknet/browser/prefer-location-assign": "error",
-    "unicorn/prefer-dom-node-append": "off",
-    "unicorn/prefer-dom-node-remove": "off",
-    "unicorn/prefer-modern-dom-apis": "off",
-    "@masknet/browser/prefer-modern-dom-apis": "error",
-    "unicorn/prefer-query-selector": "off",
-    "@masknet/browser/prefer-query-selector": "error",
-    "unicorn/prefer-dom-node-text-content": "off",
-    "@masknet/browser/prefer-text-content": "error",
     "@masknet/jsx/no-class-component": "error",
     "@masknet/jsx/no-set-html": "error",
     "@masknet/jsx/no-template-literal": "error",
@@ -62,7 +46,6 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
     "@masknet/type/no-wrapper-type-reference": "error",
     "@masknet/type/prefer-return-type-annotation": "error",
     "@masknet/unicode/no-invisible": "error",
-    "@masknet/ban-eslint-disable": "error",
     "@masknet/no-builtin-base64": "error",
     "@masknet/no-default-error": "error",
     "@masknet/no-for-in": "error",
@@ -90,8 +73,6 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
 
 <!-- begin rule list -->
 
-- [array/no-implicit-sort][array$no_implicit_sort] :white_check_mark: :thought_balloon:\
-  Enforce `Array#sort` provide comparator function
 - [array/no-unneeded-flat-map][array$no_unneeded_flat_map] :white_check_mark: :wrench:\
   Disallow `Array#flatMap((x) => x)` when simpler alternatives exist
 - [array/prefer-from][array$prefer_from] :white_check_mark: :wrench:\
@@ -100,20 +81,8 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
   Disallow use browser persistent storage
 - [browser/no-set-html][browser$no_set_html] :white_check_mark:\
   Disallow use `Element#{inner,outer}HTML`
-- [browser/prefer-dataset][browser$prefer_dataset] :white_check_mark: :wrench: :thought_balloon:\
-  Prefer `Element#dataset` over `Element#{get,set,has,remove}Attribute`
-- [browser/prefer-event-target][browser$prefer_event_target] :white_check_mark: :wrench: :thought_balloon:\
-  Prefer `EventTarget#{add,remove}EventListener()` over `on`-functions
-- [browser/prefer-keyboard-event-key][browser$prefer_keyboard_event_key] :white_check_mark: :wrench: :thought_balloon:\
-  Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`
 - [browser/prefer-location-assign][browser$prefer_location_assign] :white_check_mark: :wrench:\
   Prefer `location.assign(...)` over `location.*`
-- [browser/prefer-modern-dom-apis][browser$prefer_modern_dom_apis] :white_check_mark: :wrench: :thought_balloon:\
-  Prefer Modern DOM APIs
-- [browser/prefer-query-selector][browser$prefer_query_selector] :white_check_mark: :wrench: :thought_balloon:\
-  Prefer `Element#querySelector` over `Element#getElementById`
-- [browser/prefer-text-content][browser$prefer_text_content] :white_check_mark: :bulb: :thought_balloon:\
-  Prefer `Element#textContent` over `Element#innerText`
 - [jsx/no-class-component][jsx$no_class_component] :white_check_mark:\
   Disallow React Class Component
 - [jsx/no-logical][jsx$no_logical] :gear:\
@@ -136,8 +105,6 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
   Disallow simple template-literal
 - [string/no-unneeded-to-string][string$no_unneeded_to_string] :white_check_mark: :wrench: :thought_balloon:\
   Disallow `String#toString()` when simpler alternatives exist
-- [type/no-bigint][type$no_bigint] :thought_balloon:\
-  Disallow use BigInt
 - [type/no-const-enum][type$no_const_enum] :wrench:\
   Disallow use constants enumerate
 - [type/no-empty-literal][type$no_empty_literal] :gear:\
@@ -158,8 +125,6 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
   Disallow invisible characters
 - [unicode/specific-set][unicode$specific_set] :wrench: :gear:\
   Limit the range of literal characters
-- [ban-eslint-disable][ban_eslint_disable] :white_check_mark: :gear:\
-  Ban `eslint-disable` comment directive
 - [no-builtin-base64][no_builtin_base64] :white_check_mark: :wrench:\
   Disallow use built-in base64 function
 - [no-default-error][no_default_error] :white_check_mark: :thought_balloon:\
@@ -187,18 +152,11 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
 - [prefer-timer-id][prefer_timer_id] :white_check_mark: :bulb:\
   Enforce best practice with timer function
 
-[array$no_implicit_sort]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/no-implicit-sort
 [array$no_unneeded_flat_map]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/no-unneeded-flat-map
 [array$prefer_from]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/prefer-from
 [browser$no_persistent_storage]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/no-persistent-storage
 [browser$no_set_html]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/no-set-html
-[browser$prefer_dataset]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-dataset
-[browser$prefer_event_target]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-event-target
-[browser$prefer_keyboard_event_key]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-keyboard-event-key
 [browser$prefer_location_assign]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-location-assign
-[browser$prefer_modern_dom_apis]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-modern-dom-apis
-[browser$prefer_query_selector]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-query-selector
-[browser$prefer_text_content]: https://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-text-content
 [jsx$no_class_component]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-class-component
 [jsx$no_logical]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-logical
 [jsx$no_set_html]: https://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-set-html
@@ -210,7 +168,6 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
 [string$no_locale_case]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-locale-case
 [string$no_simple_template_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-simple-template-literal
 [string$no_unneeded_to_string]: https://dimensiondev.github.io/eslint-plugin/src/rules/string/no-unneeded-to-string
-[type$no_bigint]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-bigint
 [type$no_const_enum]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-const-enum
 [type$no_empty_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-empty-literal
 [type$no_force_cast_via_top_type]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-force-cast-via-top-type
@@ -221,7 +178,6 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
 [unicode$no_bidi]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-bidi
 [unicode$no_invisible]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-invisible
 [unicode$specific_set]: https://dimensiondev.github.io/eslint-plugin/src/rules/unicode/specific-set
-[ban_eslint_disable]: https://dimensiondev.github.io/eslint-plugin/src/rules/ban-eslint-disable
 [no_builtin_base64]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-builtin-base64
 [no_default_error]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-default-error
 [no_for_in]: https://dimensiondev.github.io/eslint-plugin/src/rules/no-for-in

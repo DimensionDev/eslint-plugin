@@ -1,18 +1,11 @@
 // This file is auto generated.
-// 49 Rules
+// 39 Rules
 // 5  Configs
-import array$no_implicit_sort from './rules/array/no-implicit-sort.js'
 import array$no_unneeded_flat_map from './rules/array/no-unneeded-flat-map.js'
 import array$prefer_from from './rules/array/prefer-from.js'
 import browser$no_persistent_storage from './rules/browser/no-persistent-storage.js'
 import browser$no_set_html from './rules/browser/no-set-html.js'
-import browser$prefer_dataset from './rules/browser/prefer-dataset.js'
-import browser$prefer_event_target from './rules/browser/prefer-event-target.js'
-import browser$prefer_keyboard_event_key from './rules/browser/prefer-keyboard-event-key.js'
 import browser$prefer_location_assign from './rules/browser/prefer-location-assign.js'
-import browser$prefer_modern_dom_apis from './rules/browser/prefer-modern-dom-apis.js'
-import browser$prefer_query_selector from './rules/browser/prefer-query-selector.js'
-import browser$prefer_text_content from './rules/browser/prefer-text-content.js'
 import jsx$no_class_component from './rules/jsx/no-class-component.js'
 import jsx$no_logical from './rules/jsx/no-logical.js'
 import jsx$no_set_html from './rules/jsx/no-set-html.js'
@@ -24,7 +17,6 @@ import string$no_interpolation from './rules/string/no-interpolation.js'
 import string$no_locale_case from './rules/string/no-locale-case.js'
 import string$no_simple_template_literal from './rules/string/no-simple-template-literal.js'
 import string$no_unneeded_to_string from './rules/string/no-unneeded-to-string.js'
-import type$no_bigint from './rules/type/no-bigint.js'
 import type$no_const_enum from './rules/type/no-const-enum.js'
 import type$no_empty_literal from './rules/type/no-empty-literal.js'
 import type$no_force_cast_via_top_type from './rules/type/no-force-cast-via-top-type.js'
@@ -35,7 +27,6 @@ import type$prefer_return_type_annotation from './rules/type/prefer-return-type-
 import unicode$no_bidi from './rules/unicode/no-bidi.js'
 import unicode$no_invisible from './rules/unicode/no-invisible.js'
 import unicode$specific_set from './rules/unicode/specific-set.js'
-import ban_eslint_disable from './rules/ban-eslint-disable.js'
 import no_builtin_base64 from './rules/no-builtin-base64.js'
 import no_default_error from './rules/no-default-error.js'
 import no_for_in from './rules/no-for-in.js'
@@ -45,24 +36,16 @@ import no_then from './rules/no-then.js'
 import no_timer from './rules/no-timer.js'
 import no_top_level from './rules/no-top-level.js'
 import no_unsafe_date from './rules/no-unsafe-date.js'
-import no_vue from './rules/no-vue.js'
 import prefer_default_export from './rules/prefer-default-export.js'
 import prefer_early_return from './rules/prefer-early-return.js'
 import prefer_fetch from './rules/prefer-fetch.js'
 import prefer_timer_id from './rules/prefer-timer-id.js'
 export const rules: unknown = {
-  'array/no-implicit-sort': array$no_implicit_sort,
   'array/no-unneeded-flat-map': array$no_unneeded_flat_map,
   'array/prefer-from': array$prefer_from,
   'browser/no-persistent-storage': browser$no_persistent_storage,
   'browser/no-set-html': browser$no_set_html,
-  'browser/prefer-dataset': browser$prefer_dataset,
-  'browser/prefer-event-target': browser$prefer_event_target,
-  'browser/prefer-keyboard-event-key': browser$prefer_keyboard_event_key,
   'browser/prefer-location-assign': browser$prefer_location_assign,
-  'browser/prefer-modern-dom-apis': browser$prefer_modern_dom_apis,
-  'browser/prefer-query-selector': browser$prefer_query_selector,
-  'browser/prefer-text-content': browser$prefer_text_content,
   'jsx/no-class-component': jsx$no_class_component,
   'jsx/no-logical': jsx$no_logical,
   'jsx/no-set-html': jsx$no_set_html,
@@ -74,7 +57,6 @@ export const rules: unknown = {
   'string/no-locale-case': string$no_locale_case,
   'string/no-simple-template-literal': string$no_simple_template_literal,
   'string/no-unneeded-to-string': string$no_unneeded_to_string,
-  'type/no-bigint': type$no_bigint,
   'type/no-const-enum': type$no_const_enum,
   'type/no-empty-literal': type$no_empty_literal,
   'type/no-force-cast-via-top-type': type$no_force_cast_via_top_type,
@@ -85,7 +67,6 @@ export const rules: unknown = {
   'unicode/no-bidi': unicode$no_bidi,
   'unicode/no-invisible': unicode$no_invisible,
   'unicode/specific-set': unicode$specific_set,
-  'ban-eslint-disable': ban_eslint_disable,
   'no-builtin-base64': no_builtin_base64,
   'no-default-error': no_default_error,
   'no-for-in': no_for_in,
@@ -95,7 +76,6 @@ export const rules: unknown = {
   'no-timer': no_timer,
   'no-top-level': no_top_level,
   'no-unsafe-date': no_unsafe_date,
-  'no-vue': no_vue,
   'prefer-default-export': prefer_default_export,
   'prefer-early-return': prefer_early_return,
   'prefer-fetch': prefer_fetch,

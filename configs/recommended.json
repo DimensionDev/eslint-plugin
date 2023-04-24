@@ -22,7 +22,6 @@
     "@masknet/type/no-wrapper-type-reference": "error",
     "@masknet/type/prefer-return-type-annotation": "error",
     "@masknet/unicode/no-invisible": "error",
-    "@masknet/ban-eslint-disable": "error",
     "@masknet/no-builtin-base64": "error",
     "@masknet/no-for-in": "error",
     "@masknet/no-redundant-variable": "error",
