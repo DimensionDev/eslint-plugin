@@ -3,40 +3,62 @@ name: Publish
 on:
   push:
     branches:
-      - master
+      - main
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   prettier:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - run: npx prettier --check .
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "19"
+      - run: pnpx prettier --check .
   markdownlint:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - run: npx markdownlint-cli .
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "19"
+      - run: pnpx markdownlint-cli .
   spellcheck:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - run: npx cspell lint --relative --no-progress '**'
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "19"
+      - run: pnpx cspell lint --relative --no-progress '**'
   publish:
     runs-on: ubuntu-20.04
     needs: ['prettier', 'markdownlint', 'spellcheck']
+    permissions:
+      pull-requests: write
+      contents: write
+      id-token: write
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-      - uses: DimensionDev/github-token-action@latest
+      - uses: actions/checkout@v3
         with:
-          registry: true
-      - run: npm ci
-      - run: npm test
-      - run: npm run lint
-      - run: npm run publish-to-github
+          fetch-depth: 0
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "19"
+          cache: "pnpm"
+      - run: pnpm install
+      - run: npm install -g npm
+      - run: pnpm test
+      - run: pnpx tsc -b
+      - run: pnpm run lint
+      - uses: changesets/action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_CONFIG_PROVENANCE: true

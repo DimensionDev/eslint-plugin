@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/array/prefer-from`
+# `@masknet/array/prefer-from`
 
 Prefer `new Array(...)` over `Array.from(...)`
 

@@ -1,6 +1,6 @@
-import dedent from 'ts-dedent'
-import { runTest } from '../../spec'
-import module from './no-class-component'
+import { dedent } from 'ts-dedent'
+import { runTest } from '../../spec.js'
+import module from './no-class-component.js'
 
 runTest({
   module,

@@ -5,7 +5,7 @@
     "rules": { "$ref": "#/definitions/user-defined-rules" },
     "plugins": {
       "type": "array",
-      "items": { "anyOf": [{ "type": "string" }, { "const": "@dimensiondev" }] },
+      "items": { "anyOf": [{ "type": "string" }, { "const": "@masknet" }] },
       "uniqueItems": true
     },
     "extends": {
@@ -26,11 +26,11 @@
         { "type": "string" },
         {
           "enum": [
-            "plugin:@dimensiondev/all",
-            "plugin:@dimensiondev/base",
-            "plugin:@dimensiondev/fixable",
-            "plugin:@dimensiondev/recommended",
-            "plugin:@dimensiondev/recommended-requires-type-checking"
+            "plugin:@masknet/all",
+            "plugin:@masknet/base",
+            "plugin:@masknet/fixable",
+            "plugin:@masknet/recommended",
+            "plugin:@masknet/recommended-requires-type-checking"
           ]
         }
       ]
@@ -38,59 +38,59 @@
     "user-defined-rules": {
       "type": "object",
       "properties": {
-        "@dimensiondev/array/no-implicit-sort": {
+        "@masknet/array/no-implicit-sort": {
           "description": "Enforce `Array#sort` provide comparator function\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/array/no-implicit-sort",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/array/no-unneeded-flat-map": {
+        "@masknet/array/no-unneeded-flat-map": {
           "description": "Disallow `Array#flatMap((x) => x)` when simpler alternatives exist\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/array/no-unneeded-flat-map",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/array/prefer-from": {
+        "@masknet/array/prefer-from": {
           "description": "Prefer `new Array(...)` over `Array.from(...)`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/array/prefer-from",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/browser/no-persistent-storage": {
+        "@masknet/browser/no-persistent-storage": {
           "description": "Disallow use browser persistent storage\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/no-persistent-storage",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/browser/no-set-html": {
+        "@masknet/browser/no-set-html": {
           "description": "Disallow use `Element#{inner,outer}HTML`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/no-set-html",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/browser/prefer-dataset": {
+        "@masknet/browser/prefer-dataset": {
           "description": "Prefer `Element#dataset` over `Element#{get,set,has,remove}Attribute`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-dataset",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/browser/prefer-event-target": {
+        "@masknet/browser/prefer-event-target": {
           "description": "Prefer `EventTarget#{add,remove}EventListener()` over `on`-functions\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-event-target",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/browser/prefer-keyboard-event-key": {
+        "@masknet/browser/prefer-keyboard-event-key": {
           "description": "Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-keyboard-event-key",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/browser/prefer-location-assign": {
+        "@masknet/browser/prefer-location-assign": {
           "description": "Prefer `location.assign(...)` over `location.*`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-location-assign",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/browser/prefer-modern-dom-apis": {
+        "@masknet/browser/prefer-modern-dom-apis": {
           "description": "Prefer Modern DOM APIs\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-modern-dom-apis",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/browser/prefer-query-selector": {
+        "@masknet/browser/prefer-query-selector": {
           "description": "Prefer `Element#querySelector` over `Element#getElementById`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-query-selector",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/browser/prefer-text-content": {
+        "@masknet/browser/prefer-text-content": {
           "description": "Prefer `Element#textContent` over `Element#innerText`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/browser/prefer-text-content",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/jsx/no-class-component": {
+        "@masknet/jsx/no-class-component": {
           "description": "Disallow React Class Component\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-class-component",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/jsx/no-logical": {
+        "@masknet/jsx/no-logical": {
           "description": "Limit the complexity of JSX logic expression\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-logical",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
@@ -116,19 +116,19 @@
             }
           ]
         },
-        "@dimensiondev/jsx/no-set-html": {
+        "@masknet/jsx/no-set-html": {
           "description": "Disallow use `dangerouslySetInnerHTML` jsx attribute\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-set-html",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/jsx/no-template-literal": {
+        "@masknet/jsx/no-template-literal": {
           "description": "Disallow use template-literal in JSX\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-template-literal",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/jsx/no-unneeded-nested": {
+        "@masknet/jsx/no-unneeded-nested": {
           "description": "Reduce unneeded JSXFragment nested\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/jsx/no-unneeded-nested",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/jsx/prefer-test-id": {
+        "@masknet/jsx/prefer-test-id": {
           "description": "Enforces `data-test-id` attribute is present on interactive DOM elements to help with UI testing\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/jsx/prefer-test-id",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
@@ -151,35 +151,35 @@
             }
           ]
         },
-        "@dimensiondev/string/no-data-url": {
+        "@masknet/string/no-data-url": {
           "description": "Disallow use Data URL\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/string/no-data-url",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/string/no-interpolation": {
+        "@masknet/string/no-interpolation": {
           "description": "Disallow simple string interpolation\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/string/no-interpolation",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/string/no-locale-case": {
+        "@masknet/string/no-locale-case": {
           "description": "Disallow use `String#toLocale{Upper,Lower}Case()`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/string/no-locale-case",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/string/no-simple-template-literal": {
+        "@masknet/string/no-simple-template-literal": {
           "description": "Disallow simple template-literal\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/string/no-simple-template-literal",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/string/no-unneeded-to-string": {
+        "@masknet/string/no-unneeded-to-string": {
           "description": "Disallow `String#toString()` when simpler alternatives exist\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/string/no-unneeded-to-string",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/type/no-bigint": {
+        "@masknet/type/no-bigint": {
           "description": "Disallow use BigInt\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-bigint",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/type/no-const-enum": {
+        "@masknet/type/no-const-enum": {
           "description": "Disallow use constants enumerate\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-const-enum",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/type/no-empty-literal": {
+        "@masknet/type/no-empty-literal": {
           "description": "Disallow empty {array,object} literal\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-empty-literal",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
@@ -197,35 +197,35 @@
             }
           ]
         },
-        "@dimensiondev/type/no-force-cast-via-top-type": {
+        "@masknet/type/no-force-cast-via-top-type": {
           "description": "Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-force-cast-via-top-type",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/type/no-instanceof-wrapper": {
+        "@masknet/type/no-instanceof-wrapper": {
           "description": "Disallow `instanceof` for wrapper objects\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-instanceof-wrapper",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/type/no-number-constructor": {
+        "@masknet/type/no-number-constructor": {
           "description": "Disallow use `Number` constructor\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-number-constructor",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/type/no-wrapper-type-reference": {
+        "@masknet/type/no-wrapper-type-reference": {
           "description": "Disallow wrapper type for type reference\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-wrapper-type-reference",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/type/prefer-return-type-annotation": {
+        "@masknet/type/prefer-return-type-annotation": {
           "description": "Enforce Move return type annotation to function return type\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/prefer-return-type-annotation",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/unicode/no-bidi": {
+        "@masknet/unicode/no-bidi": {
           "description": "Detect and stop Trojan Source attacks\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-bidi",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/unicode/no-invisible": {
+        "@masknet/unicode/no-invisible": {
           "description": "Disallow invisible characters\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/unicode/no-invisible",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/unicode/specific-set": {
+        "@masknet/unicode/specific-set": {
           "description": "Limit the range of literal characters\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/unicode/specific-set",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
@@ -247,7 +247,7 @@
             }
           ]
         },
-        "@dimensiondev/ban-eslint-disable": {
+        "@masknet/ban-eslint-disable": {
           "description": "Ban `eslint-disable` comment directive\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/ban-eslint-disable",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
@@ -261,35 +261,35 @@
             }
           ]
         },
-        "@dimensiondev/no-builtin-base64": {
+        "@masknet/no-builtin-base64": {
           "description": "Disallow use built-in base64 function\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-builtin-base64",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/no-default-error": {
+        "@masknet/no-default-error": {
           "description": "Restrict the usage of default (unextended) error\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-default-error",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/no-for-in": {
+        "@masknet/no-for-in": {
           "description": "Disallow use for-in\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-for-in",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/no-redundant-variable": {
+        "@masknet/no-redundant-variable": {
           "description": "Disallow redundant variable\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-redundant-variable",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/no-single-return": {
+        "@masknet/no-single-return": {
           "description": "Disallow single-return\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-single-return",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/no-then": {
+        "@masknet/no-then": {
           "description": "Disallow `Promise#then(...)`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-then",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/no-timer": {
+        "@masknet/no-timer": {
           "description": "Disallow use timer function\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-timer",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/no-top-level": {
+        "@masknet/no-top-level": {
           "description": "Disallow side-effect at module top-level\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-top-level",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
@@ -307,15 +307,15 @@
             }
           ]
         },
-        "@dimensiondev/no-unsafe-date": {
+        "@masknet/no-unsafe-date": {
           "description": "Disallow use unsafe Date methods\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-unsafe-date",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/no-vue": {
+        "@masknet/no-vue": {
           "description": "Disallow Vue.js in this project\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/no-vue",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/prefer-default-export": {
+        "@masknet/prefer-default-export": {
           "description": "Enforce default export location at top or bottom\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/prefer-default-export",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
@@ -326,7 +326,7 @@
             }
           ]
         },
-        "@dimensiondev/prefer-early-return": {
+        "@masknet/prefer-early-return": {
           "description": "Prefer early returns over full-body conditional wrapping in function declarations\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/prefer-early-return",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
@@ -344,11 +344,11 @@
             }
           ]
         },
-        "@dimensiondev/prefer-fetch": {
+        "@masknet/prefer-fetch": {
           "description": "Enforce fetch\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/prefer-fetch",
           "$ref": "#/definitions/rule"
         },
-        "@dimensiondev/prefer-timer-id": {
+        "@masknet/prefer-timer-id": {
           "description": "Enforce best practice with timer function\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/prefer-timer-id",
           "$ref": "#/definitions/rule"
         }

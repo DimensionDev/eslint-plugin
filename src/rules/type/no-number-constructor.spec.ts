@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './no-number-constructor'
+import { runTest } from '../../spec.js'
+import module from './no-number-constructor.js'
 
 runTest({
   module,

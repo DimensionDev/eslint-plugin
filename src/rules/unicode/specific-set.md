@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/unicode/specific-set`
+# `@masknet/unicode/specific-set`
 
 Limit the range of literal characters
 
@@ -13,6 +13,9 @@ Limit the range of literal characters
 <!-- begin options -->
 
 ```ts
+/**
+ * @minItems Infinity
+ */
 export type Options = [
   {
     pattern?: string

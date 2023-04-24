@@ -1,5 +1,5 @@
-import { runTest } from '../spec'
-import module from './prefer-default-export'
+import { runTest } from '../spec.js'
+import module from './prefer-default-export.js'
 
 runTest({
   module,

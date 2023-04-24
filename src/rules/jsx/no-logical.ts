@@ -1,5 +1,5 @@
-import type { JSXExpressionContainer, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { createRule } from '../../rule'
+import type { JSXExpressionContainer, Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { createRule } from '../../rule.js'
 
 const DEFAULT_LIMIT = 2
 
@@ -46,9 +46,8 @@ export default createRule({
   create(context, options: Options) {
     function report(node: JSXExpressionContainer, limit: number) {
       // prettier-ignore
-      const disallow =
-        node.expression.type === 'ConditionalExpression' ||
-        getLogicalCount(node.expression) > limit
+      const disallow = node.expression.type === "ConditionalExpression" ||
+                getLogicalCount(node.expression) > limit;
       if (!disallow) return
       context.report({ node, messageId: 'invalid' })
     }

@@ -1,8 +1,8 @@
-import type { Node, Range, TSAsExpression, TypeNode } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { closest, isFunctionLike, isAwait, isIdentifierName } from '../../node'
-import { createRule } from '../../rule'
-import { wrap } from '../../utils'
-import { getReturnExpression } from './../no-redundant-variable'
+import type { Node, Range, TSAsExpression, TypeNode } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { closest, isFunctionLike, isAwait, isIdentifierName } from '../../node.js'
+import { createRule } from '../../rule.js'
+import { wrap } from '../../utils.js'
+import { getReturnExpression } from './../no-redundant-variable.js'
 
 export default createRule({
   name: 'type/prefer-return-type-annotation',
@@ -34,12 +34,12 @@ export default createRule({
               if (annotation.startsWith('Promise')) return annotation
               return parent.async || isAwait(argument.expression) ? `Promise<${annotation}>` : annotation
             })
-            if (!parent.returnType) {
+            if (parent.returnType) {
+              yield fixer.insertTextAfter(parent.returnType, ` | ${annotation}`)
+            } else {
               const offset = parent.type === 'ArrowFunctionExpression' ? 4 : 1
               const range = wrap(parent.body.range, ([start, end]): Range => [start - offset, end])
               yield fixer.insertTextBeforeRange(range, `: ${annotation}`)
-            } else {
-              yield fixer.insertTextAfter(parent.returnType, ` | ${annotation}`)
             }
             yield isAwait(argument.expression)
               ? fixer.replaceText(argument, source.getText(getReturnExpression(argument.expression)))

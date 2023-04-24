@@ -1,5 +1,5 @@
-import { isIdentifier, isMemberExpression } from '../../node'
-import { createRule } from '../../rule'
+import { isIdentifier, isMemberExpression } from '../../node.js'
+import { createRule } from '../../rule.js'
 
 const RE_METHOD_NAME = /^toLocale(?<name>Upper|Lower)Case$/g
 

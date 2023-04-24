@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/type/no-instanceof-wrapper`
+# `@masknet/type/no-instanceof-wrapper`
 
 Disallow `instanceof` for wrapper objects
 

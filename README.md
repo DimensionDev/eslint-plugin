@@ -1,4 +1,4 @@
-# @dimensiondev/eslint-plugin
+# @masknet/eslint-plugin
 
 ## Installation
 
@@ -8,84 +8,71 @@ You'll first need to install [eslint](https://eslint.org):
 npm install --save-dev eslint
 ```
 
-Next, install `@dimensiondev/eslint-plugin`:
+Next, install `@masknet/eslint-plugin`:
 
 ```bash
-# for stable version
-npm install --save-dev @dimensiondev/eslint-plugin
-# for unstable version
-npm install --save-dev @dimensiondev/eslint-plugin --registry=https://npm.dimension.im
+npm install --save-dev @masknet/eslint-plugin
 ```
 
 ## Usage
 
-Add `@dimensiondev` to the plugins section of your `.eslintrc` configuration file.
+Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
 
 <!-- begin example configure -->
 
 ```json
 {
   "$schema": "https://dimensiondev.github.io/eslint-plugin/src/schema.json",
-  "plugins": ["@dimensiondev"],
+  "plugins": ["@masknet"],
   "rules": {
-    "@dimensiondev/array/no-implicit-sort": "error",
-    "@dimensiondev/array/no-unneeded-flat-map": "error",
-    "@dimensiondev/array/prefer-from": "error",
-    "@dimensiondev/browser/no-persistent-storage": "error",
-    "@dimensiondev/browser/no-set-html": "error",
+    "@masknet/array/no-implicit-sort": "error",
+    "@masknet/array/no-unneeded-flat-map": "error",
+    "@masknet/array/prefer-from": "error",
+    "@masknet/browser/no-persistent-storage": "error",
+    "@masknet/browser/no-set-html": "error",
     "unicorn/prefer-dom-node-dataset": "off",
-    "@dimensiondev/browser/prefer-dataset": "error",
+    "@masknet/browser/prefer-dataset": "error",
     "unicorn/prefer-add-event-listener": "off",
     "unicorn/no-invalid-remove-event-listener": "off",
-    "@dimensiondev/browser/prefer-event-target": "error",
+    "@masknet/browser/prefer-event-target": "error",
     "unicorn/prefer-keyboard-event-key": "off",
-    "@dimensiondev/browser/prefer-keyboard-event-key": "error",
-    "@dimensiondev/browser/prefer-location-assign": "error",
+    "@masknet/browser/prefer-keyboard-event-key": "error",
+    "@masknet/browser/prefer-location-assign": "error",
     "unicorn/prefer-dom-node-append": "off",
     "unicorn/prefer-dom-node-remove": "off",
     "unicorn/prefer-modern-dom-apis": "off",
-    "@dimensiondev/browser/prefer-modern-dom-apis": "error",
+    "@masknet/browser/prefer-modern-dom-apis": "error",
     "unicorn/prefer-query-selector": "off",
-    "@dimensiondev/browser/prefer-query-selector": "error",
+    "@masknet/browser/prefer-query-selector": "error",
     "unicorn/prefer-dom-node-text-content": "off",
-    "@dimensiondev/browser/prefer-text-content": "error",
-    "@dimensiondev/jsx/no-class-component": "error",
-    "@dimensiondev/jsx/no-logical": "off",
-    "@dimensiondev/jsx/no-set-html": "error",
-    "@dimensiondev/jsx/no-template-literal": "error",
-    "@dimensiondev/jsx/no-unneeded-nested": "error",
-    "@dimensiondev/jsx/prefer-test-id": "off",
-    "@dimensiondev/string/no-data-url": "error",
-    "@dimensiondev/string/no-interpolation": "error",
-    "@dimensiondev/string/no-locale-case": "error",
-    "@dimensiondev/string/no-simple-template-literal": "error",
-    "@dimensiondev/string/no-unneeded-to-string": "error",
-    "@dimensiondev/type/no-bigint": "off",
-    "@dimensiondev/type/no-const-enum": "off",
-    "@dimensiondev/type/no-empty-literal": "off",
-    "@dimensiondev/type/no-force-cast-via-top-type": "error",
+    "@masknet/browser/prefer-text-content": "error",
+    "@masknet/jsx/no-class-component": "error",
+    "@masknet/jsx/no-set-html": "error",
+    "@masknet/jsx/no-template-literal": "error",
+    "@masknet/jsx/no-unneeded-nested": "error",
+    "@masknet/string/no-data-url": "error",
+    "@masknet/string/no-interpolation": "error",
+    "@masknet/string/no-locale-case": "error",
+    "@masknet/string/no-simple-template-literal": "error",
+    "@masknet/string/no-unneeded-to-string": "error",
+    "@masknet/type/no-force-cast-via-top-type": "error",
     "unicorn/no-instanceof-array": "off",
-    "@dimensiondev/type/no-instanceof-wrapper": "error",
-    "@dimensiondev/type/no-number-constructor": "error",
-    "@dimensiondev/type/no-wrapper-type-reference": "error",
-    "@dimensiondev/type/prefer-return-type-annotation": "error",
-    "@dimensiondev/unicode/no-bidi": "off",
-    "@dimensiondev/unicode/no-invisible": "error",
-    "@dimensiondev/unicode/specific-set": "off",
-    "@dimensiondev/ban-eslint-disable": "error",
-    "@dimensiondev/no-builtin-base64": "error",
-    "@dimensiondev/no-default-error": "error",
-    "@dimensiondev/no-for-in": "error",
-    "@dimensiondev/no-redundant-variable": "error",
-    "@dimensiondev/no-single-return": "error",
-    "@dimensiondev/no-then": "error",
-    "@dimensiondev/no-timer": "off",
-    "@dimensiondev/no-top-level": "off",
-    "@dimensiondev/no-unsafe-date": "error",
-    "@dimensiondev/prefer-default-export": "off",
-    "@dimensiondev/prefer-early-return": "error",
-    "@dimensiondev/prefer-fetch": "error",
-    "@dimensiondev/prefer-timer-id": "error"
+    "@masknet/type/no-instanceof-wrapper": "error",
+    "@masknet/type/no-number-constructor": "error",
+    "@masknet/type/no-wrapper-type-reference": "error",
+    "@masknet/type/prefer-return-type-annotation": "error",
+    "@masknet/unicode/no-invisible": "error",
+    "@masknet/ban-eslint-disable": "error",
+    "@masknet/no-builtin-base64": "error",
+    "@masknet/no-default-error": "error",
+    "@masknet/no-for-in": "error",
+    "@masknet/no-redundant-variable": "error",
+    "@masknet/no-single-return": "error",
+    "@masknet/no-then": "error",
+    "@masknet/no-unsafe-date": "error",
+    "@masknet/prefer-early-return": "error",
+    "@masknet/prefer-fetch": "error",
+    "@masknet/prefer-timer-id": "error"
   }
 }
 ```

@@ -1,6 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
-import { runTest } from '../../spec'
-import module from './no-interpolation'
+import { runTest } from '../../spec.js'
+import module from './no-interpolation.js'
 
 runTest({
   module,

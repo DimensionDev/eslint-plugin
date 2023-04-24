@@ -1,12 +1,11 @@
 import fs from 'node:fs/promises'
-import path from 'node:path'
 import type { Linter } from '@typescript-eslint/utils/dist/ts-eslint'
-import type { ExportedRuleModule } from '../../src/rule'
-import { format, getRuleName, CONFIG_PATH } from './utils'
+import type { ExportedRuleModule } from '../../rule.js'
+import { format, getRuleName, CONFIG_PATH } from './utils.js'
 
 const baseConfig: Linter.Config = {
   $schema: '../schema.json',
-  plugins: ['@dimensiondev'],
+  plugins: ['@masknet'],
 }
 
 export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.Config> = {
@@ -18,7 +17,8 @@ export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.C
       ...baseConfig,
       rules: filterRules(modules, ({ meta }) => {
         if (meta.deprecated) return 'off'
-        return meta.docs?.recommended ? meta.docs?.recommended : 'off'
+        if (meta.docs?.recommended === 'strict') return 'error'
+        return meta.docs?.recommended ?? 'off'
       }),
     }
   },
@@ -28,6 +28,7 @@ export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.C
       rules: filterRules(modules, ({ meta }) => {
         if (meta.deprecated) return
         if (!(meta.fixable || meta.hasSuggestions)) return
+        if (meta.docs?.recommended === 'strict') return 'error'
         return meta.docs?.recommended
       }),
     }
@@ -38,6 +39,7 @@ export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.C
       rules: filterRules(modules, ({ meta }) => {
         if (meta.deprecated) return
         if (meta.docs?.requiresTypeChecking) return
+        if (meta.docs?.recommended === 'strict') return 'error'
         return meta.docs?.recommended
       }),
     }
@@ -48,6 +50,7 @@ export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.C
       rules: filterRules(modules, ({ meta }) => {
         if (meta.deprecated) return
         if (!meta.docs?.requiresTypeChecking) return
+        if (meta.docs?.recommended === 'strict') return 'error'
         return meta.docs?.recommended
       }),
     }
@@ -70,7 +73,7 @@ export async function generateConfigs(modules: ExportedRuleModule[]) {
 
 async function storeConfig(name: string, config: Linter.Config) {
   const formatted = await format(JSON.stringify(config, null, 2), 'json')
-  await fs.writeFile(path.join(CONFIG_PATH, name), formatted, 'utf8')
+  await fs.writeFile(new URL(name, CONFIG_PATH), formatted, 'utf8')
 }
 
 function filterRules(

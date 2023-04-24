@@ -1,10 +1,10 @@
-import type { StringLiteral } from '@typescript-eslint/types/dist/generated/ast-spec'
+import type { StringLiteral } from '@typescript-eslint/types/dist/generated/ast-spec.js'
 import type { ReportFixFunction } from '@typescript-eslint/utils/dist/ts-eslint'
-import { isLiteralValue, isMemberExpression } from '../../node'
-import { createRule, getParserServices } from '../../rule'
-import { isElement } from '../../type-checker'
-import { property, quote } from '../../utils'
-import { parseCallee } from './prefer-query-selector'
+import { isLiteralValue, isMemberExpression } from '../../node.js'
+import { createRule, getParserServices } from '../../rule.js'
+import { isElement } from '../../type-checker.js'
+import { property, quote } from '../../utils.js'
+import { parseCallee } from './prefer-query-selector.js'
 
 const METHOD_NAMES = new Set(['getAttribute', 'setAttribute', 'hasAttribute', 'removeAttribute'])
 
@@ -40,14 +40,18 @@ export default createRule({
           if (!isMemberExpression(node.callee)) return null
           const prefix = `${source.getText(node.callee.object)}${node.callee.optional ? '?' : ''}.dataset`
           switch (methodName) {
-            case 'getAttribute':
+            case 'getAttribute': {
               return fixer.replaceText(node, prefix + property(name))
-            case 'setAttribute':
+            }
+            case 'setAttribute': {
               return fixer.replaceText(node, `${prefix}${property(name)} = ${source.getText(node.arguments[1])}`)
-            case 'hasAttribute':
+            }
+            case 'hasAttribute': {
               return fixer.replaceText(node, `Object.hasOwn(${prefix}, ${quote(name)})`)
-            case 'removeAttribute':
+            }
+            case 'removeAttribute': {
               return fixer.replaceText(node, `delete ${prefix}${property(name)}`)
+            }
           }
           return null
         }

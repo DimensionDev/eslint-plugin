@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './no-locale-case'
+import { runTest } from '../../spec.js'
+import module from './no-locale-case.js'
 
 runTest({
   module,

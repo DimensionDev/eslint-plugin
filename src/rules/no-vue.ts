@@ -1,5 +1,5 @@
-import { createRule } from '../rule'
-import { quote } from '../utils'
+import { createRule } from '../rule.js'
+import { quote } from '../utils.js'
 
 export default createRule({
   name: 'no-vue',

@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/string/no-data-url`
+# `@masknet/string/no-data-url`
 
 Disallow use Data URL
 

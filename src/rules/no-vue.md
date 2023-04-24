@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-vue`
+# `@masknet/no-vue`
 
 Disallow Vue.js in this project
 

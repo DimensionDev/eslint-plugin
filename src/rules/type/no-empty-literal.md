@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/type/no-empty-literal`
+# `@masknet/type/no-empty-literal`
 
 Disallow empty {array,object} literal
 
@@ -15,6 +15,9 @@ Disallow empty {array,object} literal
 <!-- begin options -->
 
 ```ts
+/**
+ * @minItems Infinity
+ */
 export type Options = [
   {
     array?: string

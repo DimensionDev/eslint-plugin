@@ -1,6 +1,6 @@
-import type { BinaryExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { createRule } from '../../rule'
-import { quote } from '../../utils'
+import type { BinaryExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { createRule } from '../../rule.js'
+import { quote } from '../../utils.js'
 
 const PRIMITIVE_TYPES = ['BigInt', 'Boolean', 'Function', 'Number', 'Object', 'String', 'Symbol', 'Array']
 

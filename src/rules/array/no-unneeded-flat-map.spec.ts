@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './no-unneeded-flat-map'
+import { runTest } from '../../spec.js'
+import module from './no-unneeded-flat-map.js'
 
 runTest({
   module,

@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/browser/prefer-query-selector`
+# `@masknet/browser/prefer-query-selector`
 
 Prefer `Element#querySelector` over `Element#getElementById`
 

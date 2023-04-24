@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/string/no-interpolation`
+# `@masknet/string/no-interpolation`
 
 Disallow simple string interpolation
 

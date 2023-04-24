@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-top-level`
+# `@masknet/no-top-level`
 
 Disallow side-effect at module top-level
 
@@ -15,6 +15,9 @@ Don't make side effect at top level.
 <!-- begin options -->
 
 ```ts
+/**
+ * @minItems Infinity
+ */
 export type Options = [
   {
     'variable'?: boolean

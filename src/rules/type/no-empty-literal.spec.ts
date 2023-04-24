@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './no-empty-literal'
+import { runTest } from '../../spec.js'
+import module from './no-empty-literal.js'
 
 runTest({
   module,

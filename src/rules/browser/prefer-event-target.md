@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/browser/prefer-event-target`
+# `@masknet/browser/prefer-event-target`
 
 Prefer `EventTarget#{add,remove}EventListener()` over `on`-functions
 

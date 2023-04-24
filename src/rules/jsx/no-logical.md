@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/jsx/no-logical`
+# `@masknet/jsx/no-logical`
 
 Limit the complexity of JSX logic expression
 
@@ -13,6 +13,9 @@ Limit the complexity of JSX logic expression
 <!-- begin options -->
 
 ```ts
+/**
+ * @minItems Infinity
+ */
 export type Options = [
   | number
   | {

@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './specific-set'
+import { runTest } from '../../spec.js'
+import module from './specific-set.js'
 
 runTest({
   module,
@@ -7,30 +7,30 @@ runTest({
     yield `''`
     yield `'ABC'`
     yield '1'
-    yield cast({ code: '// 中文', options: [{ only: 'code' }] })
-    yield cast({ code: '中文', options: [{ only: 'comment' }] })
+    yield cast({ code: '// \u4E2D\u6587', options: [{ only: 'code' }] })
+    yield cast({ code: '\u4E2D\u6587', options: [{ only: 'comment' }] })
   },
   *invalid() {
-    for (const code of ['中文', '#中文', '// 中文']) {
+    for (const code of ['\u4E2D\u6587', '#\u4E2D\u6587', '// \u4E2D\u6587']) {
       yield { code, errors: [{ messageId: 'illegal' }] }
     }
     yield {
-      code: '"中文"',
+      code: '"\u4E2D\u6587"',
       output: '"\\u4E2D\\u6587"',
       errors: [{ messageId: 'illegal', data: { text: '"\\u4E2D\\u6587"' } }],
     }
     yield {
-      code: '`中文`',
+      code: '`\u4E2D\u6587`',
       output: '`\\u4E2D\\u6587`',
       errors: [{ messageId: 'illegal' }],
     }
     yield {
-      code: '<a>中文</a>',
+      code: '<a>\u4E2D\u6587</a>',
       output: '<a>&#x4E2D;&#x6587;</a>',
       errors: [{ messageId: 'illegal' }],
     }
     yield {
-      code: '/—/u',
+      code: '/\u2014/u',
       output: '/\\u2014/u',
       errors: [{ messageId: 'illegal' }],
     }

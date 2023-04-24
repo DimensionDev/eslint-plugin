@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/jsx/no-unneeded-nested`
+# `@masknet/jsx/no-unneeded-nested`
 
 Reduce unneeded JSXFragment nested
 

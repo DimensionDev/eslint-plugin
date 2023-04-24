@@ -1,7 +1,7 @@
 import { AST_NODE_TYPES } from '@typescript-eslint/types'
-import dedent from 'ts-dedent'
-import { runTest } from '../spec'
-import module from './no-single-return'
+import { dedent } from 'ts-dedent'
+import { runTest } from '../spec.js'
+import module from './no-single-return.js'
 
 runTest({
   module,

@@ -1,5 +1,5 @@
-import { isMultiline } from '../../node'
-import { createRule } from '../../rule'
+import { isMultiline } from '../../node.js'
+import { createRule } from '../../rule.js'
 
 export default createRule({
   name: 'string/no-interpolation',

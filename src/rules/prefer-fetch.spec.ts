@@ -1,5 +1,5 @@
-import { runTest } from '../spec'
-import module from './prefer-fetch'
+import { runTest } from '../spec.js'
+import module from './prefer-fetch.js'
 
 runTest({
   module,

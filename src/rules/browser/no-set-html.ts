@@ -1,5 +1,5 @@
-import { isIdentifierName, isMemberExpression } from '../../node'
-import { createRule } from '../../rule'
+import { isIdentifierName, isMemberExpression } from '../../node.js'
+import { createRule } from '../../rule.js'
 
 export default createRule({
   name: 'browser/no-set-html',

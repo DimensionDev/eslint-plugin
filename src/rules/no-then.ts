@@ -1,6 +1,6 @@
-import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { isFunctionLike, isIdentifierName, isLiteralValue, isMemberExpression } from '../node'
-import { createRule } from '../rule'
+import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { isFunctionLike, isIdentifierName, isLiteralValue, isMemberExpression } from '../node.js'
+import { createRule } from '../rule.js'
 
 export default createRule({
   name: 'no-then',

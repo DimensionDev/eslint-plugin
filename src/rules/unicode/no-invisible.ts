@@ -1,5 +1,5 @@
-import { createRule } from '../../rule'
-import { getFixer, makeProgramListener } from './specific-set'
+import { createRule } from '../../rule.js'
+import { getFixer, makeProgramListener } from './specific-set.js'
 
 // Generated using
 // https://github.com/hediet/vscode-unicode-data

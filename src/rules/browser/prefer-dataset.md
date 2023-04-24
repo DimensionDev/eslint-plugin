@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/browser/prefer-dataset`
+# `@masknet/browser/prefer-dataset`
 
 Prefer `Element#dataset` over `Element#{get,set,has,remove}Attribute`
 

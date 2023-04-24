@@ -1,7 +1,7 @@
-import type { Node, ReturnStatement, Statement } from '@typescript-eslint/types/dist/generated/ast-spec'
+import type { Node, ReturnStatement, Statement } from '@typescript-eslint/types/dist/generated/ast-spec.js'
 import type { RuleContext } from '@typescript-eslint/utils/dist/ts-eslint'
-import { isFunctionLike, isIdentifier, isSameIdentifier } from '../node'
-import { createRule } from '../rule'
+import { isFunctionLike, isIdentifier, isSameIdentifier } from '../node.js'
+import { createRule } from '../rule.js'
 
 export default createRule({
   name: 'no-single-return',

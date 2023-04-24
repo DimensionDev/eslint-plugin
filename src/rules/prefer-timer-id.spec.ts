@@ -1,5 +1,5 @@
-import { runTest } from '../spec'
-import module from './prefer-timer-id'
+import { runTest } from '../spec.js'
+import module from './prefer-timer-id.js'
 
 runTest({
   module,

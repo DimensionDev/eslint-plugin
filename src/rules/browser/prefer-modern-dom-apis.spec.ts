@@ -1,6 +1,6 @@
-import dedent from 'ts-dedent'
-import { runTest } from '../../spec'
-import module from './prefer-modern-dom-apis'
+import { dedent } from 'ts-dedent'
+import { runTest } from '../../spec.js'
+import module from './prefer-modern-dom-apis.js'
 
 // cspell:ignore beforebegin afterbegin beforeend afterend
 runTest({

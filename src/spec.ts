@@ -3,7 +3,8 @@
 import path from 'node:path'
 import { RuleTester } from '@typescript-eslint/utils/dist/ts-eslint'
 import type { InvalidTestCase, RuleListener, ValidTestCase } from '@typescript-eslint/utils/dist/ts-eslint'
-import type { ExportedRuleModule } from './rule'
+import { it } from 'vitest'
+import type { ExportedRuleModule } from './rule.js'
 
 const tester = new RuleTester({
   parser: require.resolve('@typescript-eslint/parser'),
@@ -31,9 +32,12 @@ export async function runTest<TOptions extends readonly unknown[], TMessageIds e
   options: RunOptions<TOptions, TMessageIds>
 ) {
   const { module, valid, invalid } = options
-  tester.run(module.name, module, {
-    valid: [...(valid?.(identifier) ?? [])].flat(),
-    invalid: [...(invalid(identifier) ?? [])].flat(),
+  it(module.name, () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    tester.run(module.name, module as any, {
+      valid: [...(valid?.(identifier) ?? [])].flat(),
+      invalid: [...(invalid(identifier) ?? [])].flat(),
+    })
   })
 }
 

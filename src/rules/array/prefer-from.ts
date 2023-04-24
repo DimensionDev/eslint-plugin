@@ -1,5 +1,5 @@
-import { isIdentifierName } from '../../node'
-import { createRule } from '../../rule'
+import { isIdentifierName } from '../../node.js'
+import { createRule } from '../../rule.js'
 
 const types = [
   'Array',

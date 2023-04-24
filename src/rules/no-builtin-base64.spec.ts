@@ -1,5 +1,5 @@
-import { runTest } from '../spec'
-import module from './no-builtin-base64'
+import { runTest } from '../spec.js'
+import module from './no-builtin-base64.js'
 
 runTest({
   module,

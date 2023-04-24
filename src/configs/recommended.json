@@ -1,35 +1,5 @@
 {
   "$schema": "../schema.json",
-  "plugins": ["@dimensiondev"],
-  "rules": {
-    "@dimensiondev/array/no-unneeded-flat-map": "error",
-    "@dimensiondev/array/prefer-from": "error",
-    "@dimensiondev/browser/no-persistent-storage": "error",
-    "@dimensiondev/browser/no-set-html": "error",
-    "@dimensiondev/browser/prefer-location-assign": "error",
-    "@dimensiondev/jsx/no-class-component": "error",
-    "@dimensiondev/jsx/no-set-html": "error",
-    "@dimensiondev/jsx/no-template-literal": "error",
-    "@dimensiondev/jsx/no-unneeded-nested": "error",
-    "@dimensiondev/string/no-data-url": "error",
-    "@dimensiondev/string/no-interpolation": "error",
-    "@dimensiondev/string/no-locale-case": "error",
-    "@dimensiondev/string/no-simple-template-literal": "error",
-    "@dimensiondev/type/no-force-cast-via-top-type": "error",
-    "unicorn/no-instanceof-array": "off",
-    "@dimensiondev/type/no-instanceof-wrapper": "error",
-    "@dimensiondev/type/no-number-constructor": "error",
-    "@dimensiondev/type/no-wrapper-type-reference": "error",
-    "@dimensiondev/type/prefer-return-type-annotation": "error",
-    "@dimensiondev/unicode/no-invisible": "error",
-    "@dimensiondev/ban-eslint-disable": "error",
-    "@dimensiondev/no-builtin-base64": "error",
-    "@dimensiondev/no-for-in": "error",
-    "@dimensiondev/no-redundant-variable": "error",
-    "@dimensiondev/no-single-return": "error",
-    "@dimensiondev/no-then": "error",
-    "@dimensiondev/prefer-early-return": "error",
-    "@dimensiondev/prefer-fetch": "error",
-    "@dimensiondev/prefer-timer-id": "error"
-  }
+  "plugins": ["@masknet"],
+  "rules": {}
 }

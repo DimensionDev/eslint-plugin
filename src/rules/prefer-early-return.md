@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/prefer-early-return`
+# `@masknet/prefer-early-return`
 
 Prefer early returns over full-body conditional wrapping in function declarations
 
@@ -13,6 +13,9 @@ Prefer early returns over full-body conditional wrapping in function declaration
 <!-- begin options -->
 
 ```ts
+/**
+ * @minItems Infinity
+ */
 export type Options = [
   {
     maximumStatements?: number

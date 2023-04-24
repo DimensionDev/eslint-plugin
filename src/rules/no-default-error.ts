@@ -1,6 +1,6 @@
-import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { createRule, getParserServices } from '../rule'
-import { isConstructor } from '../type-checker'
+import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { createRule, getParserServices } from '../rule.js'
+import { isConstructor } from '../type-checker.js'
 
 export default createRule({
   name: 'no-default-error',

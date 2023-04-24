@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/type/no-wrapper-type-reference`
+# `@masknet/type/no-wrapper-type-reference`
 
 Disallow wrapper type for type reference
 

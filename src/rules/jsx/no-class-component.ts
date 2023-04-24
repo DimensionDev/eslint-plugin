@@ -1,7 +1,7 @@
-import type { ClassBody } from '@typescript-eslint/types/dist/generated/ast-spec'
+import type { ClassBody } from '@typescript-eslint/types/dist/generated/ast-spec.js'
 import type { Scope } from '@typescript-eslint/utils/dist/ts-eslint'
-import { isIdentifier, isMemberExpression } from '../../node'
-import { createRule } from '../../rule'
+import { isIdentifier, isMemberExpression } from '../../node.js'
+import { createRule } from '../../rule.js'
 
 const CLASS_NAMES = new Set(['PureComponent', 'Component'])
 const EXEMPT_FIELDS = new Set(['getDerivedStateFromError'])
@@ -52,12 +52,10 @@ function isReactComponentReference({ isValueReference, identifier, resolved, fro
 
 function isExempt({ body }: ClassBody): boolean {
   // prettier-ignore
-  return body.some((element) => (
-    'key' in element &&
-    element.static &&
-    element.key.type === 'Identifier' &&
-    EXEMPT_FIELDS.has(element.key.name)
-  ))
+  return body.some((element) => ("key" in element &&
+        element.static &&
+        element.key.type === "Identifier" &&
+        EXEMPT_FIELDS.has(element.key.name)));
 }
 
 function isDefinitionGood(variable: Scope.Variable | null) {

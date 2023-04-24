@@ -1,5 +1,5 @@
-import { runTest } from '../spec'
-import module from './no-then'
+import { runTest } from '../spec.js'
+import module from './no-then.js'
 
 runTest({
   module,

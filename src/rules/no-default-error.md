@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-default-error`
+# `@masknet/no-default-error`
 
 Restrict the usage of default (unextended) error
 

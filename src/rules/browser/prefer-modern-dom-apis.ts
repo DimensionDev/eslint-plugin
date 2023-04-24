@@ -1,10 +1,10 @@
-import type { CallExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
+import type { CallExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
-import { isAwait, isMemberExpression, isStringLiteral } from '../../node'
-import { createRule, getParserServices } from '../../rule'
-import { isElement } from '../../type-checker'
-import { wrap } from '../../utils'
-import { parseCallee } from './prefer-query-selector'
+import { isAwait, isMemberExpression, isStringLiteral } from '../../node.js'
+import { createRule, getParserServices } from '../../rule.js'
+import { isElement } from '../../type-checker.js'
+import { wrap } from '../../utils.js'
+import { parseCallee } from './prefer-query-selector.js'
 
 const METHOD_NAMES = new Set([
   'appendChild',
@@ -70,9 +70,10 @@ function getFixer(
   const { callee } = node
   if (!isMemberExpression(callee)) return
   switch (methodName) {
-    case 'appendChild':
+    case 'appendChild': {
       return (fixer) => fixer.replaceText(callee.property, 'append')
-    case 'removeChild':
+    }
+    case 'removeChild': {
       return (fixer) => {
         const prefix = wrap(node.arguments[0], (node) => {
           const text = source.getText(node)
@@ -80,16 +81,18 @@ function getFixer(
         })
         return fixer.replaceText(node, prefix + '.remove()')
       }
+    }
     case 'replaceChild':
-    case 'insertBefore':
+    case 'insertBefore': {
       return (fixer) => {
         const newNode = source.getText(node.arguments[0])
         const oldNode = source.getText(node.arguments[1])
         const method = methodName === 'replaceChild' ? 'replaceWith' : 'before'
         return fixer.replaceText(node, `${oldNode}.${method}(${newNode})`)
       }
+    }
     case 'insertAdjacentText':
-    case 'insertAdjacentElement':
+    case 'insertAdjacentElement': {
       return (fixer) => {
         if (!isStringLiteral(node.arguments[0])) return null
         const position = METHOD_OF_WHERE[node.arguments[0].value]
@@ -98,24 +101,30 @@ function getFixer(
         const insert = source.getText(node.arguments[1])
         return fixer.replaceText(node, `${baseNode}${callee.optional ? '?' : ''}.${position}(${insert})`)
       }
+    }
   }
   return
 }
 
 function getModernMethodName(node: Node, methodName: string) {
   switch (methodName) {
-    case 'appendChild':
+    case 'appendChild': {
       return 'append'
-    case 'removeChild':
+    }
+    case 'removeChild': {
       return 'remove'
-    case 'replaceChild':
+    }
+    case 'replaceChild': {
       return 'replaceWith'
-    case 'insertBefore':
+    }
+    case 'insertBefore': {
       return 'before'
+    }
     case 'insertAdjacentText':
-    case 'insertAdjacentElement':
+    case 'insertAdjacentElement': {
       if (!isStringLiteral(node)) return
       return METHOD_OF_WHERE[node.value]
+    }
   }
   return
 }

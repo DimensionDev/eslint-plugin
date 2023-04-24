@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-redundant-variable`
+# `@masknet/no-redundant-variable`
 
 Disallow redundant variable
 

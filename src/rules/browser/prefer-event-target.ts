@@ -1,9 +1,9 @@
-import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { isBindCall, isFunctionLike, isIdentifierName, isMemberExpression } from '../../node'
-import { createRule, getParserServices } from '../../rule'
-import { isEventTarget } from '../../type-checker'
-import { quote } from '../../utils'
-import { parseCallee } from './prefer-query-selector'
+import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { isBindCall, isFunctionLike, isIdentifierName, isMemberExpression } from '../../node.js'
+import { createRule, getParserServices } from '../../rule.js'
+import { isEventTarget } from '../../type-checker.js'
+import { quote } from '../../utils.js'
+import { parseCallee } from './prefer-query-selector.js'
 
 export default createRule({
   name: 'browser/prefer-event-target',

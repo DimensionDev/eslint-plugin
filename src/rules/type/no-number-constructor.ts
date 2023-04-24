@@ -1,6 +1,6 @@
-import type { CallExpression, NewExpression } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { isIdentifierName } from '../../node'
-import { createRule } from '../../rule'
+import type { CallExpression, NewExpression } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { isIdentifierName } from '../../node.js'
+import { createRule } from '../../rule.js'
 
 export default createRule({
   name: 'type/no-number-constructor',

@@ -1,8 +1,7 @@
 import fs from 'node:fs/promises'
-import path from 'node:path'
-import type { JSONSchema4 } from '@typescript-eslint/utils/dist/json-schema'
-import type { ExportedRuleModule } from '../../src/rule'
-import { format, getRuleName, PACKAGE_NAME, SOURCE_PATH } from './utils'
+import type { JSONSchema4 } from '@typescript-eslint/utils/dist/json-schema.js'
+import type { ExportedRuleModule } from '../../rule.js'
+import { format, getRuleName, PACKAGE_NAME, SOURCE_PATH } from './utils.js'
 
 export async function generateSchema(modules: ExportedRuleModule[], configNames: string[]) {
   const rules = modules.map(({ name, meta }): [string, JSONSchema4] => {
@@ -51,5 +50,5 @@ export async function generateSchema(modules: ExportedRuleModule[], configNames:
     },
   }
   const formatted = await format(JSON.stringify(schema), 'json')
-  await fs.writeFile(path.join(SOURCE_PATH, 'schema.json'), formatted, 'utf8')
+  await fs.writeFile(new URL('schema.json', SOURCE_PATH), formatted, 'utf8')
 }

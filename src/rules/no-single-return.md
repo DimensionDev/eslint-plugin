@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-single-return`
+# `@masknet/no-single-return`
 
 Disallow single-return
 

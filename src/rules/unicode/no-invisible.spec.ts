@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './no-invisible'
+import { runTest } from '../../spec.js'
+import module from './no-invisible.js'
 
 runTest({
   module,
@@ -9,7 +9,7 @@ runTest({
   },
   *invalid() {
     yield {
-      code: '"\u{E0100}example\u{E0100}"',
+      code: '"\uDB40\uDD00example\uDB40\uDD00"',
       output: '"\\u{E0100}example\\u{E0100}"',
       errors: [{ messageId: 'illegal' }],
     }

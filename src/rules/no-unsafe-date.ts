@@ -1,6 +1,6 @@
-import { isIdentifier, isMemberExpression } from '../node'
-import { createRule, getParserServices } from '../rule'
-import { isConstructor } from '../type-checker'
+import { isIdentifier, isMemberExpression } from '../node.js'
+import { createRule, getParserServices } from '../rule.js'
+import { isConstructor } from '../type-checker.js'
 
 const ALLOWED_METHOD_NAMES = new Set([
   'getTime',

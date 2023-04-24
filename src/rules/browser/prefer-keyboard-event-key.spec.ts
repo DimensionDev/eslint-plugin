@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './prefer-keyboard-event-key'
+import { runTest } from '../../spec.js'
+import module from './prefer-keyboard-event-key.js'
 
 // cspell:ignore keydown
 runTest({

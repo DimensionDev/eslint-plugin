@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/prefer-default-export`
+# `@masknet/prefer-default-export`
 
 Enforce default export location at top or bottom
 
@@ -13,6 +13,9 @@ Enforce default export location at top or bottom
 <!-- begin options -->
 
 ```ts
+/**
+ * @minItems Infinity
+ */
 export type Options = ['at-top' | 'at-bottom']
 ```
 
@@ -21,7 +24,7 @@ export type Options = ['at-top' | 'at-bottom']
 ### :x: Incorrect
 
 ```ts
-/* eslint @dimensiondev/prefer-default-export: 'at-top' */
+/* eslint @masknet/prefer-default-export: 'at-top' */
 export const foo = ''
 export default {}
 export const bar = ''
@@ -30,7 +33,7 @@ export const bar = ''
 ### :white_check_mark: Correct
 
 ```ts
-/* eslint @dimensiondev/prefer-default-export: 'at-top' */
+/* eslint @masknet/prefer-default-export: 'at-top' */
 export default {}
 export const foo = ''
 export const bar = ''

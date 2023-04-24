@@ -1,6 +1,6 @@
-import { isIdentifierName, isMemberExpression } from '../../node'
-import { createRule, getParserServices } from '../../rule'
-import { isConstructor } from '../../type-checker'
+import { isIdentifierName, isMemberExpression } from '../../node.js'
+import { createRule, getParserServices } from '../../rule.js'
+import { isConstructor } from '../../type-checker.js'
 
 export default createRule({
   name: 'array/no-implicit-sort',

@@ -1,5 +1,5 @@
-import { isIdentifierFunction, isIdentifierName } from '../../node'
-import { createRule } from '../../rule'
+import { isIdentifierFunction, isIdentifierName } from '../../node.js'
+import { createRule } from '../../rule.js'
 
 export default createRule({
   name: 'array/no-unneeded-flat-map',

@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-unsafe-date`
+# `@masknet/no-unsafe-date`
 
 Disallow use unsafe Date methods
 

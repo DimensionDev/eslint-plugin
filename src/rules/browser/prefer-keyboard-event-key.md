@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/browser/prefer-keyboard-event-key`
+# `@masknet/browser/prefer-keyboard-event-key`
 
 Prefer `KeyboardEvent#key` over `KeyboardEvent#{keyCode,charCode,which}`
 

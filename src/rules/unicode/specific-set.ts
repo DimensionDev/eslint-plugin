@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import type { Program, Token } from '@typescript-eslint/types/dist/generated/ast-spec'
+import type { Program, Token } from '@typescript-eslint/types/dist/generated/ast-spec.js'
 import type { ReportFixFunction, RuleListener } from '@typescript-eslint/utils/dist/ts-eslint'
-import { createRule } from '../../rule'
+import { createRule } from '../../rule.js'
 
 // https://unicode.org/reports/tr18
 // https://unicode.org/reports/tr51
@@ -76,25 +76,28 @@ export function makeProgramListener(pattern: RegExp, onReport: (node: Token, kin
 export function getFixer(token: Token, pattern: RegExp): ReportFixFunction | undefined {
   switch (token.type) {
     case 'String':
-    case 'Template':
+    case 'Template': {
       return (fixer) => {
         const prefix = token.value.slice(0, 1)
         const suffix = token.value.slice(-1)
         const modified = escape(token.value.slice(1, -1), pattern)
         return fixer.replaceText(token, `${prefix}${modified}${suffix}`)
       }
-    case 'JSXText':
+    }
+    case 'JSXText': {
       return (fixer) => {
         const modified = token.value.replace(pattern, (match) => `&#x${toString(match.codePointAt(0)!)};`)
         return fixer.replaceText(token, modified)
       }
-    case 'RegularExpression':
+    }
+    case 'RegularExpression': {
       return (fixer) => {
         const flags = new Set(token.regex.flags)
         flags.add('u')
         const re = new RegExp(escape(token.regex.pattern, pattern), [...flags].join(''))
         return fixer.replaceText(token, re.toString())
       }
+    }
   }
   return
 }
@@ -102,7 +105,7 @@ export function getFixer(token: Token, pattern: RegExp): ReportFixFunction | und
 export function escape(input: string, pattern: RegExp) {
   return input.replace(pattern, (match) => {
     const point = match.codePointAt(0)!
-    return point > 0xff_ff ? `\\u{${toString(point)}}` : `\\u${toString(point)}`
+    return point > 65_535 ? `\\u{${toString(point)}}` : `\\u${toString(point)}`
   })
 }
 
@@ -113,18 +116,22 @@ function toString(point: number) {
 function getValue(token: Token) {
   switch (token.type) {
     case 'String':
-    case 'Template':
+    case 'Template': {
       return token.value.slice(1, -1)
-    case 'Identifier':
+    }
+    case 'Identifier': {
       if (token.value.startsWith('#')) {
         return token.value.slice(1)
       }
       return token.value
-    case 'RegularExpression':
+    }
+    case 'RegularExpression': {
       return token.regex.pattern
+    }
     case 'JSXText':
-    case 'JSXIdentifier':
+    case 'JSXIdentifier': {
       return token.value
+    }
   }
   return false
 }

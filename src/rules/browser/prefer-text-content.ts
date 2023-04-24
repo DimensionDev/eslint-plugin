@@ -1,6 +1,6 @@
-import { isIdentifierName } from '../../node'
-import { createRule, getParserServices } from '../../rule'
-import { isElement } from '../../type-checker'
+import { isIdentifierName } from '../../node.js'
+import { createRule, getParserServices } from '../../rule.js'
+import { isElement } from '../../type-checker.js'
 
 export default createRule({
   name: 'browser/prefer-text-content',

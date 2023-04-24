@@ -1,21 +1,20 @@
 /* eslint-disable unicorn/no-useless-undefined */
-import path from 'node:path'
 import fs from 'node:fs/promises'
 import type { RuleMetaData } from '@typescript-eslint/utils/dist/ts-eslint'
-import { compile as toJSONSchema, JSONSchema } from 'json-schema-to-typescript'
-import type { ExportedRuleModule } from '../../src/rule'
-import { format, getRuleName, replace, RULE_PATH } from './utils'
+import { compile as toJSONSchema, type JSONSchema } from 'json-schema-to-typescript'
+import type { ExportedRuleModule } from '../../rule.js'
+import { format, getRuleName, replace, RULE_PATH } from './utils.js'
 
 export async function generateRuleDetails(modules: ExportedRuleModule[]) {
   for (const module of modules) {
-    const documentationPath = path.join(RULE_PATH, `${module.name}.md`)
+    const documentationPath = new URL(`${module.name}.md`, RULE_PATH)
     if (await exists(documentationPath)) {
       await update(documentationPath, module)
     }
   }
 }
 
-async function update(filePath: string, { name, meta }: ExportedRuleModule) {
+async function update(filePath: URL, { name, meta }: ExportedRuleModule) {
   let content = await fs.readFile(filePath, 'utf8')
 
   content = replace(content, 'title', `# \`${getRuleName(name)}\`\n${meta.docs?.description}`)
@@ -26,7 +25,7 @@ async function update(filePath: string, { name, meta }: ExportedRuleModule) {
   await fs.writeFile(filePath, formatted, 'utf8')
 }
 
-async function exists(filePath: string) {
+async function exists(filePath: URL) {
   try {
     await fs.stat(filePath)
     return true

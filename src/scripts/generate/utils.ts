@@ -1,16 +1,15 @@
-import path from 'node:path'
-import { promisify } from 'node:util'
+import { fileURLToPath } from 'node:url'
 import { glob } from 'glob'
 import prettier from 'prettier'
-import type { ExportedRuleModule } from '../../src/rule'
+import type { ExportedRuleModule } from '../../rule.js'
 
-export const PACKAGE_NAME = '@dimensiondev'
+export const PACKAGE_NAME = '@masknet'
 
 // eslint-disable-next-line unicorn/prefer-module
-export const ROOT_PATH = path.resolve(__dirname, '..', '..')
-export const SOURCE_PATH = path.join(ROOT_PATH, 'src')
-export const RULE_PATH = path.join(SOURCE_PATH, 'rules')
-export const CONFIG_PATH = path.join(SOURCE_PATH, 'configs')
+export const ROOT_PATH = new URL('../../../', import.meta.url)
+export const SOURCE_PATH = new URL('src/', ROOT_PATH)
+export const RULE_PATH = new URL('rules/', SOURCE_PATH)
+export const CONFIG_PATH = new URL('configs/', ROOT_PATH)
 
 export function getRuleName(name: string) {
   if (name.startsWith(PACKAGE_NAME)) return name
@@ -27,7 +26,7 @@ export function replace(content: string, name: string, replaced: string) {
 }
 
 export async function getRuleModules() {
-  const filePaths = await promisify(glob)('**/*.ts', {
+  const filePaths = await glob('**/*.ts', {
     cwd: RULE_PATH,
     ignore: ['**/*.spec.ts'],
   })
@@ -38,7 +37,7 @@ export async function getRuleModules() {
   ]
   return Promise.all(
     fileNames.map(async (filePath): Promise<ExportedRuleModule> => {
-      const module: { default: ExportedRuleModule } = await import(path.join(RULE_PATH, filePath))
+      const module: { default: ExportedRuleModule } = await import(new URL(filePath, RULE_PATH).href)
       if (filePath !== module.default.name + '.ts') {
         throw new Error(`Please check ${filePath} rule name`)
       }
@@ -48,7 +47,7 @@ export async function getRuleModules() {
 }
 
 export async function format(source: string, parser: prettier.Config['parser']) {
-  const config = await prettier.resolveConfig(ROOT_PATH, {
+  const config = await prettier.resolveConfig(fileURLToPath(ROOT_PATH), {
     editorconfig: true,
   })
   return prettier.format(source, { parser, ...config })

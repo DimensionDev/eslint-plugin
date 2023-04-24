@@ -1,9 +1,9 @@
-import type { MemberExpression } from '@typescript-eslint/types/dist/generated/ast-spec'
+import type { MemberExpression } from '@typescript-eslint/types/dist/generated/ast-spec.js'
 import type { ReportFixFunction } from '@typescript-eslint/utils/dist/ts-eslint'
-import { isIdentifierName, isNumberLiteral } from '../../node'
-import { createRule, getParserServices } from '../../rule'
-import { isKeyboardEvent } from '../../type-checker'
-import { quote } from '../../utils'
+import { isIdentifierName, isNumberLiteral } from '../../node.js'
+import { createRule, getParserServices } from '../../rule.js'
+import { isKeyboardEvent } from '../../type-checker.js'
+import { quote } from '../../utils.js'
 
 const fieldNames = ['keyCode', 'charCode', 'which']
 

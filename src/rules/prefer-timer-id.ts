@@ -1,14 +1,14 @@
-import type { CallExpression } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { isIdentifierName, isLiteralValue } from '../node'
-import { createRule } from '../rule'
+import type { CallExpression } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { isIdentifierName, isLiteralValue } from '../node.js'
+import { createRule } from '../rule.js'
 
 // prettier-ignore
 const methodNames = new Set([
-  'setTimeout',
-  'setInterval',
-  'requestAnimationFrame',
-  'requestIdleCallback',
-])
+    "setTimeout",
+    "setInterval",
+    "requestAnimationFrame",
+    "requestIdleCallback",
+]);
 
 export default createRule({
   name: 'prefer-timer-id',

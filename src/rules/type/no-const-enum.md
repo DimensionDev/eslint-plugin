@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/type/no-const-enum`
+# `@masknet/type/no-const-enum`
 
 Disallow use constants enumerate
 

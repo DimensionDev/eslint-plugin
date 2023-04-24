@@ -1,6 +1,6 @@
-import dedent from 'ts-dedent'
-import { runTest } from '../../spec'
-import module from './prefer-query-selector'
+import { dedent } from 'ts-dedent'
+import { runTest } from '../../spec.js'
+import module from './prefer-query-selector.js'
 
 runTest({
   module,

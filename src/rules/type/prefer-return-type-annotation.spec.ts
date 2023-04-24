@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './prefer-return-type-annotation'
+import { runTest } from '../../spec.js'
+import module from './prefer-return-type-annotation.js'
 
 runTest({
   module,

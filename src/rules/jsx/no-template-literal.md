@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/jsx/no-template-literal`
+# `@masknet/jsx/no-template-literal`
 
 Disallow use template-literal in JSX
 

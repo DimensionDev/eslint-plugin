@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './no-wrapper-type-reference'
+import { runTest } from '../../spec.js'
+import module from './no-wrapper-type-reference.js'
 
 runTest({
   module,

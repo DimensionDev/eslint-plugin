@@ -1,7 +1,7 @@
-import type { AssignmentExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
+import type { AssignmentExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
-import { isIdentifier, isIdentifierName, isMemberExpression } from '../../node'
-import { createRule } from '../../rule'
+import { isIdentifier, isIdentifierName, isMemberExpression } from '../../node.js'
+import { createRule } from '../../rule.js'
 
 const fieldNames = new Set(['href', 'pathname', 'search', 'hash', 'origin'])
 

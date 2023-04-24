@@ -1,8 +1,8 @@
-import type { Node, ReturnStatement, VariableDeclaration } from '@typescript-eslint/types/dist/generated/ast-spec'
+import type { Node, ReturnStatement, VariableDeclaration } from '@typescript-eslint/types/dist/generated/ast-spec.js'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
-import { closest, isAwait, isIdentifier, isSameIdentifier } from '../node'
-import { createRule } from '../rule'
-import { wrap } from '../utils'
+import { closest, isAwait, isIdentifier, isSameIdentifier } from '../node.js'
+import { createRule } from '../rule.js'
+import { wrap } from '../utils.js'
 
 export default createRule({
   name: 'no-redundant-variable',

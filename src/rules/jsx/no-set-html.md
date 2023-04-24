@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/jsx/no-set-html`
+# `@masknet/jsx/no-set-html`
 
 Disallow use `dangerouslySetInnerHTML` jsx attribute
 

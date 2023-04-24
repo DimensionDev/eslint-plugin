@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/browser/prefer-location-assign`
+# `@masknet/browser/prefer-location-assign`
 
 Prefer `location.assign(...)` over `location.*`
 

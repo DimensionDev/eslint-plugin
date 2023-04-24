@@ -1,5 +1,5 @@
-import type { Node, VariableDeclaration } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { createRule } from '../rule'
+import type { Node, VariableDeclaration } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { createRule } from '../rule.js'
 
 interface Options {
   'variable': boolean

@@ -17,7 +17,7 @@
   "env": { "node": true },
   "overrides": [
     { "files": ["src/**/*.spec.ts"], "env": { "mocha": true } },
-    { "files": ["scripts/**/*.ts"], "rules": { "node/shebang": "off" } }
+    { "files": ["src/scripts/**/*.ts"], "rules": { "node/shebang": "off" } }
   ],
   "rules": {
     "constructor-super": "error",

@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './no-simple-template-literal'
+import { runTest } from '../../spec.js'
+import module from './no-simple-template-literal.js'
 
 runTest({
   module,

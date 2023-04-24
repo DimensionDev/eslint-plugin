@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/prefer-fetch`
+# `@masknet/prefer-fetch`
 
 Enforce fetch
 

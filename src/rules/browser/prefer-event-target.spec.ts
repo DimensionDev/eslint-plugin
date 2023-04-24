@@ -1,6 +1,6 @@
-import dedent from 'ts-dedent'
-import { runTest } from '../../spec'
-import module from './prefer-event-target'
+import { dedent } from 'ts-dedent'
+import { runTest } from '../../spec.js'
+import module from './prefer-event-target.js'
 
 runTest({
   module,

@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/browser/prefer-modern-dom-apis`
+# `@masknet/browser/prefer-modern-dom-apis`
 
 Prefer Modern DOM APIs
 

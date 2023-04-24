@@ -1,5 +1,5 @@
-import { runTest } from '../spec'
-import module from './no-vue'
+import { runTest } from '../spec.js'
+import module from './no-vue.js'
 
 runTest({
   module,

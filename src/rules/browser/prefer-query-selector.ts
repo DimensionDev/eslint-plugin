@@ -1,8 +1,8 @@
-import type { MemberExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { isChainExpression, isIdentifier, isMemberExpression, isStringLiteral } from '../../node'
-import { createRule, getParserServices } from '../../rule'
-import { isElement } from '../../type-checker'
-import { wrap } from '../../utils'
+import type { MemberExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { isChainExpression, isIdentifier, isMemberExpression, isStringLiteral } from '../../node.js'
+import { createRule, getParserServices } from '../../rule.js'
+import { isElement } from '../../type-checker.js'
+import { wrap } from '../../utils.js'
 
 const METHOD_NAMES = <const>['getElementById', 'getElementsByClassName', 'getElementsByTagName']
 
@@ -38,7 +38,7 @@ export default createRule({
   },
 })
 
-function isMethodName(name: string): name is typeof METHOD_NAMES[number] {
+function isMethodName(name: string): name is (typeof METHOD_NAMES)[number] {
   return (METHOD_NAMES as readonly string[]).includes(name)
 }
 

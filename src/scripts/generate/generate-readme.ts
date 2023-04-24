@@ -1,13 +1,12 @@
 import fs from 'node:fs/promises'
-import path from 'node:path'
 import type { Linter } from '@typescript-eslint/utils/dist/ts-eslint'
 import { dedent } from 'ts-dedent'
-import type { ExportedRuleModule } from '../../src/rule'
-import { configs } from './generate-configs'
-import { format, replace, ROOT_PATH, toReference } from './utils'
+import type { ExportedRuleModule } from '../../rule.js'
+import { configs } from './generate-configs.js'
+import { format, replace, ROOT_PATH, toReference } from './utils.js'
 
 export async function generateREADME(modules: ExportedRuleModule[]) {
-  const filePath = path.join(ROOT_PATH, 'README.md')
+  const filePath = new URL('README.md', ROOT_PATH)
   let content = await fs.readFile(filePath, 'utf8')
   modules = modules.filter(({ meta }) => meta.hidden !== true)
   content = replace(content, 'example configure', makeExampleConfigure(modules))

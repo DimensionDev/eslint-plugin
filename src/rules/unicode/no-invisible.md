@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/unicode/no-invisible`
+# `@masknet/unicode/no-invisible`
 
 Disallow invisible characters
 

@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './no-data-url'
+import { runTest } from '../../spec.js'
+import module from './no-data-url.js'
 
 runTest({
   module,

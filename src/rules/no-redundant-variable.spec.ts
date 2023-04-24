@@ -1,5 +1,5 @@
-import { runTest } from '../spec'
-import module from './no-redundant-variable'
+import { runTest } from '../spec.js'
+import module from './no-redundant-variable.js'
 
 runTest({
   module,

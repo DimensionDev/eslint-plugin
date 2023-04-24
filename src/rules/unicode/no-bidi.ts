@@ -1,5 +1,5 @@
-import { createRule } from '../../rule'
-import { escape, getFixer, makeProgramListener } from './specific-set'
+import { createRule } from '../../rule.js'
+import { escape, getFixer, makeProgramListener } from './specific-set.js'
 
 const BIDI_PATTERN = /[\u061C\u202A-\u202E\u2066-\u2069]/
 

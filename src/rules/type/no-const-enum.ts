@@ -1,6 +1,6 @@
-import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec'
+import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
 import type { Scope } from '@typescript-eslint/utils/dist/ts-eslint'
-import { createRule } from '../../rule'
+import { createRule } from '../../rule.js'
 
 export default createRule({
   name: 'type/no-const-enum',

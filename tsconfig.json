@@ -1,18 +1,9 @@
 {
+  "extends": "@masknet/config",
   "compilerOptions": {
-    "target": "ES2021",
-    "module": "CommonJS",
-    "moduleResolution": "node",
-    "strict": true,
-    "importsNotUsedAsValues": "error",
     "resolveJsonModule": true,
-    "strictNullChecks": true,
-    "noImplicitOverride": true,
-    "noFallthroughCasesInSwitch": true,
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "esModuleInterop": true,
-    "outDir": "lib"
-  }
+    "outDir": "./lib",
+    "rootDir": "./src"
+  },
+  "include": ["./src", "./src/**/*.json"]
 }

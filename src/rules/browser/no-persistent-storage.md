@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/browser/no-persistent-storage`
+# `@masknet/browser/no-persistent-storage`
 
 Disallow use browser persistent storage
 

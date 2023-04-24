@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './no-force-cast-via-top-type'
+import { runTest } from '../../spec.js'
+import module from './no-force-cast-via-top-type.js'
 
 runTest({
   module,

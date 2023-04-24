@@ -1,4 +1,4 @@
-import { createRule } from '../../rule'
+import { createRule } from '../../rule.js'
 
 export default createRule({
   name: 'jsx/no-unneeded-nested',

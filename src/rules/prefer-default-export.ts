@@ -1,6 +1,6 @@
-import type { Node, Program } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { createRule } from '../rule'
-import { findLastIndex } from '../utils'
+import type { Node, Program } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { createRule } from '../rule.js'
+import { findLastIndex } from '../utils.js'
 
 type Location = 'at-top' | 'at-bottom'
 

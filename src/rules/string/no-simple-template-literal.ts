@@ -1,8 +1,8 @@
-import type { Property, TemplateLiteral } from '@typescript-eslint/types/dist/generated/ast-spec'
+import type { Property, TemplateLiteral } from '@typescript-eslint/types/dist/generated/ast-spec.js'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
-import { closest, isMultiline } from '../../node'
-import { createRule } from '../../rule'
-import { quote } from '../../utils'
+import { closest, isMultiline } from '../../node.js'
+import { createRule } from '../../rule.js'
+import { quote } from '../../utils.js'
 
 // cspell:ignore quasis
 

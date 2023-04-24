@@ -1,7 +1,7 @@
 import type ts from 'typescript'
-import type { CallExpression, NewExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { isIdentifierName, isMemberExpression } from '../../node'
-import { createRule, getParserServices } from '../../rule'
+import type { CallExpression, NewExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { isIdentifierName, isMemberExpression } from '../../node.js'
+import { createRule, getParserServices } from '../../rule.js'
 
 const symbolNames = [
   'BigInt',

@@ -1,4 +1,4 @@
-import { createRule } from '../rule'
+import { createRule } from '../rule.js'
 
 type Options = boolean | 'allow-with-description'
 

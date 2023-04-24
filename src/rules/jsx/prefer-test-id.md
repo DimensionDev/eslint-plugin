@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/jsx/prefer-test-id`
+# `@masknet/jsx/prefer-test-id`
 
 Enforces `data-test-id` attribute is present on interactive DOM elements to help with UI testing
 
@@ -13,6 +13,9 @@ Enforces `data-test-id` attribute is present on interactive DOM elements to help
 <!-- begin options -->
 
 ```ts
+/**
+ * @minItems Infinity
+ */
 export type Options = [
   {
     'id'?: string

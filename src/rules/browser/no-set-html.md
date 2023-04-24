@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/browser/no-set-html`
+# `@masknet/browser/no-set-html`
 
 Disallow use `Element#{inner,outer}HTML`
 

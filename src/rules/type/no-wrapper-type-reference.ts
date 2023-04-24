@@ -1,4 +1,4 @@
-import { createRule } from '../../rule'
+import { createRule } from '../../rule.js'
 
 const PRIMITIVE_TYPES = new Set(['BigInt', 'Boolean', 'Number', 'String', 'Symbol'])
 

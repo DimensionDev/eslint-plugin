@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-then`
+# `@masknet/no-then`
 
 Disallow `Promise#then(...)`
 

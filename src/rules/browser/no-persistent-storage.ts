@@ -1,6 +1,6 @@
 import type { Scope } from '@typescript-eslint/utils/dist/ts-eslint'
-import { closest } from '../../node'
-import { createRule } from '../../rule'
+import { closest } from '../../node.js'
+import { createRule } from '../../rule.js'
 
 export default createRule({
   name: 'browser/no-persistent-storage',
@@ -43,11 +43,9 @@ function* getDocumentCookieReferences(globalScope: Scope.Scope) {
   const references = ['window', 'document'].flatMap((name) => globalScope.set.get(name)?.references ?? [])
   for (const reference of references) {
     // prettier-ignore
-    const parent = closest(reference.identifier, (node) => (
-      node.type === 'MemberExpression' &&
-      node.property.type === 'Identifier' &&
-      node.property.name === 'cookie'
-    ))
+    const parent = closest(reference.identifier, (node) => (node.type === "MemberExpression" &&
+            node.property.type === "Identifier" &&
+            node.property.name === "cookie"));
     if (parent) yield parent
   }
 }

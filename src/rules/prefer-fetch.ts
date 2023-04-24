@@ -1,6 +1,6 @@
-import type { CallExpression, NewExpression } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { isIdentifierName, isLiteralValue, isMemberExpression } from '../node'
-import { createRule } from '../rule'
+import type { CallExpression, NewExpression } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { isIdentifierName, isLiteralValue, isMemberExpression } from '../node.js'
+import { createRule } from '../rule.js'
 
 export default createRule({
   name: 'prefer-fetch',

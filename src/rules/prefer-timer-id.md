@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/prefer-timer-id`
+# `@masknet/prefer-timer-id`
 
 Enforce best practice with timer function
 

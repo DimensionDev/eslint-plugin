@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/string/no-unneeded-to-string`
+# `@masknet/string/no-unneeded-to-string`
 
 Disallow `String#toString()` when simpler alternatives exist
 

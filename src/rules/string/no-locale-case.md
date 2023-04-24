@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/string/no-locale-case`
+# `@masknet/string/no-locale-case`
 
 Disallow use `String#toLocale{Upper,Lower}Case()`
 

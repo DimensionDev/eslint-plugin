@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/jsx/no-class-component`
+# `@masknet/jsx/no-class-component`
 
 Disallow React Class Component
 

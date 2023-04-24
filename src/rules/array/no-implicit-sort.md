@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/array/no-implicit-sort`
+# `@masknet/array/no-implicit-sort`
 
 Enforce `Array#sort` provide comparator function
 

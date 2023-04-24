@@ -1,5 +1,5 @@
-import { runTest } from '../spec'
-import module from './no-for-in'
+import { runTest } from '../spec.js'
+import module from './no-for-in.js'
 
 runTest({
   module,

@@ -1,8 +1,8 @@
-import type { Statement, Node, BlockStatement } from '@typescript-eslint/types/dist/generated/ast-spec'
+import type { Statement, Node, BlockStatement } from '@typescript-eslint/types/dist/generated/ast-spec.js'
 import type { ReportFixFunction, RuleContext } from '@typescript-eslint/utils/dist/ts-eslint'
-import { isFunctionLike } from '../node'
-import { createRule } from '../rule'
-import { wrap } from '../utils'
+import { isFunctionLike } from '../node.js'
+import { createRule } from '../rule.js'
+import { wrap } from '../utils.js'
 
 interface Options {
   maximumStatements: number

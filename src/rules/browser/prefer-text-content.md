@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/browser/prefer-text-content`
+# `@masknet/browser/prefer-text-content`
 
 Prefer `Element#textContent` over `Element#innerText`
 

@@ -1,5 +1,5 @@
-import type { JSXAttribute, Node } from '@typescript-eslint/types/dist/generated/ast-spec'
-import { createRule } from '../../rule'
+import type { JSXAttribute, Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import { createRule } from '../../rule.js'
 
 interface Options {
   'id': string
@@ -89,10 +89,12 @@ function shouldIgnore(attributes: Map<string, JSXAttribute['value']>, ignore: st
 function isValid(node?: Node | null): boolean {
   if (!node) return false
   switch (node.type) {
-    case 'Literal':
+    case 'Literal': {
       return Boolean(node.value)
-    case 'JSXExpressionContainer':
+    }
+    case 'JSXExpressionContainer': {
       return true
+    }
   }
   return false
 }

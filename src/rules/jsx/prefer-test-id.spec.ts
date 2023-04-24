@@ -1,6 +1,6 @@
 /* eslint-disable no-template-curly-in-string */
-import { runTest } from '../../spec'
-import module from './prefer-test-id'
+import { runTest } from '../../spec.js'
+import module from './prefer-test-id.js'
 
 runTest({
   module,

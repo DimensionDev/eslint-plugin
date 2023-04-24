@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-for-in`
+# `@masknet/no-for-in`
 
 Disallow use for-in
 

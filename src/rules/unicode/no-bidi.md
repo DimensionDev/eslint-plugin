@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/unicode/no-bidi`
+# `@masknet/unicode/no-bidi`
 
 Detect and stop Trojan Source attacks
 

@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-timer`
+# `@masknet/no-timer`
 
 Disallow use timer function
 

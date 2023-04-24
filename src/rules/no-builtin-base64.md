@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/no-builtin-base64`
+# `@masknet/no-builtin-base64`
 
 Disallow use built-in base64 function
 

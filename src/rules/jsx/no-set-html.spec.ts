@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './no-set-html'
+import { runTest } from '../../spec.js'
+import module from './no-set-html.js'
 
 runTest({
   module,

@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/string/no-simple-template-literal`
+# `@masknet/string/no-simple-template-literal`
 
 Disallow simple template-literal
 

@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './prefer-location-assign'
+import { runTest } from '../../spec.js'
+import module from './prefer-location-assign.js'
 
 runTest({
   module,

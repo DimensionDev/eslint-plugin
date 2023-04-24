@@ -1,5 +1,5 @@
-import { runTest } from '../../spec'
-import module from './no-const-enum'
+import { runTest } from '../../spec.js'
+import module from './no-const-enum.js'
 
 runTest({
   module,

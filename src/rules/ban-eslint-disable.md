@@ -1,6 +1,6 @@
 <!-- begin title -->
 
-# `@dimensiondev/ban-eslint-disable`
+# `@masknet/ban-eslint-disable`
 
 Ban `eslint-disable` comment directive
 
@@ -17,6 +17,9 @@ TypeScript Support: <https://typescript-eslint.io/rules/ban-ts-comment>
 <!-- begin options -->
 
 ```ts
+/**
+ * @minItems Infinity
+ */
 export type Options = [boolean | 'allow-with-description']
 ```
 
