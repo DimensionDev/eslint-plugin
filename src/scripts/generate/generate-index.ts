@@ -78,7 +78,10 @@ function createPropertyAssignment(name: string) {
   if (/^\p{ID_Start}\p{ID_Continue}+$/u.test(name)) {
     return ts.factory.createShorthandPropertyAssignment(name)
   }
-  return ts.factory.createPropertyAssignment(ts.factory.createStringLiteral(name), toCamelCase(name))
+  return ts.factory.createPropertyAssignment(
+    ts.factory.createStringLiteral(name.replaceAll('/', '-')),
+    toCamelCase(name)
+  )
 }
 
 function toCamelCase(name: string) {
