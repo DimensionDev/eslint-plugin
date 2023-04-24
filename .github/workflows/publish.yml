@@ -32,7 +32,7 @@ jobs:
         with:
           title: "ci: draft a new release"
           commit: "ci: draft a new release"
-          publish: npx changesets publish
+          publish: npx changeset publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
