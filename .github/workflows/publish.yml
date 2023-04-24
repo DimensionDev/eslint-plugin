@@ -55,7 +55,7 @@ jobs:
       - run: pnpm install
       - run: npm install -g npm
       - run: pnpm test
-      - run: pnpx tsc -b
+      - run: npx tsc -b
       - run: pnpm run lint
       - uses: changesets/action@v1
         env:
