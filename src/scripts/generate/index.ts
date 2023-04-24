@@ -7,7 +7,6 @@ import { generateRuleDetails } from './generate-rule-details.js'
 import { generateSchema } from './generate-schema.js'
 import { getRuleModules } from './utils.js'
 
-
 const rules = await time('load rules', getRuleModules)
 const configNames = getConfigNames()
 console.log('rules', rules.length)
