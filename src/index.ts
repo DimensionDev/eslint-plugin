@@ -95,3 +95,4 @@ export const configs = {
   recommended,
   'recommended-requires-type-checking': recommended_requires_type_checking,
 } as const
+export * as default from './index.js'

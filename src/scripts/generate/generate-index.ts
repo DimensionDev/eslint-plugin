@@ -22,6 +22,12 @@ async function makeSourceFile(configs: string[], modules: string[]) {
     makeExportVariable('rules', makeObjectLiteral(modules)),
     ...makeImports(configs, (name) => `./configs/${name}.json`),
     makeExportVariable('configs', makeObjectLiteral(configs)),
+    ts.factory.createExportDeclaration(
+      undefined,
+      false,
+      ts.factory.createNamespaceExport(ts.factory.createIdentifier('default')),
+      ts.factory.createStringLiteral('./index.js')
+    ),
   ])
   const source = ts.factory.createSourceFile(
     statements,
