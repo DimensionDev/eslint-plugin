@@ -17,7 +17,7 @@
     "url": "git+https://github.com/DimensionDev/eslint-plugin"
   },
   "license": "MIT",
-  "main": "lib/src/index.js",
+  "main": "lib/index.js",
   "files": [
     "src/",
     "lib/",
