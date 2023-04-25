@@ -80,6 +80,9 @@ function needFix(
   if (!node.source) return false
   if (node.type === AST_NODE_TYPES.ImportDeclaration && (node.importKind === 'type' || node.specifiers.length === 0))
     return false
+  const [char] = node.source.value
+  // nodejs import map, relative url, absolute url
+  if (char === '#' || char === '.' || char === '/') return false
   if (
     node.type === AST_NODE_TYPES.ExportNamedDeclaration &&
     (node.exportKind === 'type' || node.specifiers.length === 0)
