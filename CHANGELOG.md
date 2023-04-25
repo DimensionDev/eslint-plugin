@@ -1,5 +1,11 @@
 # @masknet/eslint-plugin
 
+## 0.1.1
+
+### Patch Changes
+
+- f12019d: filter project local url from defer import rule
+
 ## 0.1.0
 
 ### Minor Changes
