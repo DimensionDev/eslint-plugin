@@ -18,11 +18,23 @@
   },
   "license": "MIT",
   "main": "lib/index.js",
+  "exports": {
+    "./schema.json": "./lib/schema.json",
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./configs/": "./lib/configs/",
+    "./rules/": "./lib/rules/"
+  },
   "files": [
     "src/",
     "lib/",
     "!src/scripts",
     "!lib/scripts",
+    "!src/spec.ts",
+    "!lib/spec.*",
     "!lib/**/*.spec.js",
     "!lib/**/*.spec.d.ts"
   ],

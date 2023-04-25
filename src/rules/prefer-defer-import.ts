@@ -10,7 +10,7 @@ import type { ReportFixFunction, RuleContext, RuleFixer, SourceCode } from '@typ
 import { AST_NODE_TYPES } from '@typescript-eslint/types'
 import { createRule } from '../rule.js'
 
-interface Options {
+export interface Options {
   deferPackages?: string[]
   eagerPackages?: string[]
   syntax: 'webpack-magic-comment'
@@ -22,7 +22,8 @@ export default createRule({
     type: 'problem',
     fixable: 'code',
     docs: {
-      description: 'Prefer defer import a module.',
+      description:
+        'Prefer defer import a module. See <https://github.com/tc39/proposal-defer-import-eval> and <https://github.com/webpack/webpack/pull/16567/>.',
       recommended: 'error',
     },
     schema: [

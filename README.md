@@ -147,7 +147,7 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
 - [prefer-default-export][prefer_default_export] :gear:\
   Enforce default export location at top or bottom
 - [prefer-defer-import][prefer_defer_import] :white_check_mark: :wrench: :gear:\
-  Prefer defer import a module.
+  Prefer defer import a module. See <https://github.com/tc39/proposal-defer-import-eval> and <https://github.com/webpack/webpack/pull/16567/>.
 - [prefer-early-return][prefer_early_return] :white_check_mark: :wrench: :gear:\
   Prefer early returns over full-body conditional wrapping in function declarations
 - [prefer-fetch][prefer_fetch] :white_check_mark:\

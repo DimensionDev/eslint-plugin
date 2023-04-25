@@ -1,7 +1,7 @@
 import type { Node, VariableDeclaration } from '@typescript-eslint/types/dist/generated/ast-spec.js'
 import { createRule } from '../rule.js'
 
-interface Options {
+export interface Options {
   'variable': boolean
   'side-effect': boolean
 }

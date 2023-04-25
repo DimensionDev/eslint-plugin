@@ -277,7 +277,7 @@
           ]
         },
         "@masknet/prefer-defer-import": {
-          "description": "Prefer defer import a module.\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/prefer-defer-import",
+          "description": "Prefer defer import a module. See <https://github.com/tc39/proposal-defer-import-eval> and <https://github.com/webpack/webpack/pull/16567/>.\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/prefer-defer-import",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {

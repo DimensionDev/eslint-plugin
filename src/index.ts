@@ -41,7 +41,7 @@ import prefer_defer_import from './rules/prefer-defer-import.js'
 import prefer_early_return from './rules/prefer-early-return.js'
 import prefer_fetch from './rules/prefer-fetch.js'
 import prefer_timer_id from './rules/prefer-timer-id.js'
-export const rules: unknown = {
+export const rules = {
   'array-no-unneeded-flat-map': array$no_unneeded_flat_map,
   'array-prefer-from': array$prefer_from,
   'browser-no-persistent-storage': browser$no_persistent_storage,
@@ -82,16 +82,16 @@ export const rules: unknown = {
   'prefer-early-return': prefer_early_return,
   'prefer-fetch': prefer_fetch,
   'prefer-timer-id': prefer_timer_id,
-}
-import all from './configs/all.json' assert { type: 'json' }
-import base from './configs/base.json' assert { type: 'json' }
-import fixable from './configs/fixable.json' assert { type: 'json' }
-import recommended from './configs/recommended.json' assert { type: 'json' }
-import recommended_requires_type_checking from './configs/recommended-requires-type-checking.json' assert { type: 'json' }
-export const configs: unknown = {
+} as const
+import all = require('./configs/all.json')
+import base = require('./configs/base.json')
+import fixable = require('./configs/fixable.json')
+import recommended = require('./configs/recommended.json')
+import recommended_requires_type_checking = require('./configs/recommended-requires-type-checking.json')
+export const configs = {
   all,
   base,
   fixable,
   recommended,
   'recommended-requires-type-checking': recommended_requires_type_checking,
-}
+} as const

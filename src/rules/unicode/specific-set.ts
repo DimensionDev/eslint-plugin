@@ -7,7 +7,7 @@ import { createRule } from '../../rule.js'
 // https://unicode.org/reports/tr51
 const BUILT_PATTERN = /\P{ASCII}/u
 
-interface Options {
+export interface Options {
   pattern: RegExp['source']
   flags: RegExp['flags']
   only: 'code' | 'comment'

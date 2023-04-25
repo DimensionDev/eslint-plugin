@@ -1,7 +1,7 @@
 import type { JSXAttribute, Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
 import { createRule } from '../../rule.js'
 
-interface Options {
+export interface Options {
   'id': string
   'elements': string[]
   'attributes': string[]

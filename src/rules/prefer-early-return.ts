@@ -4,7 +4,7 @@ import { isFunctionLike } from '../node.js'
 import { createRule } from '../rule.js'
 import { wrap } from '../utils.js'
 
-interface Options {
+export interface Options {
   maximumStatements: number
 }
 

@@ -36,14 +36,7 @@ function makeExportVariable(name: string, expression: ts.Expression) {
   return ts.factory.createVariableStatement(
     [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
     ts.factory.createVariableDeclarationList(
-      [
-        ts.factory.createVariableDeclaration(
-          ts.factory.createIdentifier(name),
-          undefined,
-          ts.factory.createKeywordTypeNode(ts.SyntaxKind.UnknownKeyword),
-          expression
-        ),
-      ],
+      [ts.factory.createVariableDeclaration(ts.factory.createIdentifier(name), undefined, undefined, expression)],
       ts.NodeFlags.Const
     )
   )
@@ -54,23 +47,27 @@ function makeImports(names: string[], onFile: (name: string) => string) {
 }
 
 function makeObjectLiteral(names: string[]) {
-  return ts.factory.createObjectLiteralExpression(names.map(createPropertyAssignment), true)
+  return ts.factory.createAsExpression(
+    ts.factory.createObjectLiteralExpression(names.map(createPropertyAssignment), true),
+    ts.factory.createTypeReferenceNode(ts.factory.createIdentifier('const'))
+  )
 }
 
 function createImportDeclaration(name: string, onFile: (name: string) => string) {
   const fileName = onFile(name)
+  if (fileName.endsWith('.json')) {
+    return ts.factory.createImportEqualsDeclaration(
+      undefined,
+      false,
+      toCamelCase(name),
+      ts.factory.createExternalModuleReference(ts.factory.createStringLiteral(fileName))
+    )
+  }
   return ts.factory.createImportDeclaration(
     undefined,
     // eslint-disable-next-line unicorn/no-useless-undefined
     ts.factory.createImportClause(false, toCamelCase(name), undefined),
-    ts.factory.createStringLiteral(fileName),
-    fileName.endsWith('.json')
-      ? ts.factory.createAssertClause(
-          ts.factory.createNodeArray([
-            ts.factory.createAssertEntry(ts.factory.createIdentifier('type'), ts.factory.createStringLiteral('json')),
-          ])
-        )
-      : undefined
+    ts.factory.createStringLiteral(fileName)
   )
 }
 

@@ -3,7 +3,7 @@ import { createRule } from '../../rule.js'
 
 const DEFAULT_LIMIT = 2
 
-interface Options {
+export interface Options {
   attribute: number
   element: number
 }
