@@ -1,5 +1,11 @@
 # @masknet/eslint-plugin
 
+## 0.1.2
+
+### Patch Changes
+
+- d97838d: fix package.json config error
+
 ## 0.1.1
 
 ### Patch Changes
