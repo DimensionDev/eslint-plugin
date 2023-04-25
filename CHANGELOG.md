@@ -1,5 +1,11 @@
 # @masknet/eslint-plugin
 
+## 0.1.3
+
+### Patch Changes
+
+- 9bf4cb3: improve package.json and type definitions
+
 ## 0.1.2
 
 ### Patch Changes
