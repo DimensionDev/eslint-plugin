@@ -1,5 +1,16 @@
 # @masknet/eslint-plugin
 
+## 0.2.0
+
+### Minor Changes
+
+- 299fd56: change the default ruleset
+- 299fd56: upgrade to typescript-eslint v6
+
+### Patch Changes
+
+- 472677a: add default export
+
 ## 0.1.3
 
 ### Patch Changes
