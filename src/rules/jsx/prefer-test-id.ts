@@ -1,4 +1,4 @@
-import type { JSXAttribute, Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { createRule } from '../../rule.js'
 
 export interface Options {
@@ -18,7 +18,6 @@ export default createRule({
     type: 'suggestion',
     docs: {
       description: 'Enforces `data-test-id` attribute is present on interactive DOM elements to help with UI testing',
-      recommended: false,
     },
     schema: [
       {
@@ -52,7 +51,7 @@ export default createRule({
         const element = source.getText(node.name)
         const attributes = new Map(
           node.attributes
-            .filter((node): node is JSXAttribute => node.type === 'JSXAttribute')
+            .filter((node): node is TSESTree.JSXAttribute => node.type === 'JSXAttribute')
             .map(({ name, value }) => [source.getText(name), value] as const)
         )
         if (isValid(attributes.get(options.id))) return
@@ -77,7 +76,7 @@ export default createRule({
   },
 })
 
-function shouldIgnore(attributes: Map<string, JSXAttribute['value']>, ignore: string[]) {
+function shouldIgnore(attributes: Map<string, TSESTree.JSXAttribute['value']>, ignore: string[]) {
   return ignore.some((name) => {
     const node = attributes.get(name)
     if (node === null) return true
@@ -86,7 +85,7 @@ function shouldIgnore(attributes: Map<string, JSXAttribute['value']>, ignore: st
   })
 }
 
-function isValid(node?: Node | null): boolean {
+function isValid(node?: TSESTree.Node | null): boolean {
   if (!node) return false
   switch (node.type) {
     case 'Literal': {

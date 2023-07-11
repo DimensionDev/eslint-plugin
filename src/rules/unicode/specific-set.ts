@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import type { Program, Token } from '@typescript-eslint/types/dist/generated/ast-spec.js'
-import type { ReportFixFunction, RuleListener } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { TSESTree } from '@typescript-eslint/types'
+import type { ReportFixFunction, RuleListener } from '@typescript-eslint/utils/ts-eslint'
 import { createRule } from '../../rule.js'
 
 // https://unicode.org/reports/tr18
@@ -25,7 +25,6 @@ export default createRule({
     fixable: 'code',
     docs: {
       description: 'Limit the range of literal characters',
-      recommended: false,
     },
     schema: [
       {
@@ -33,7 +32,7 @@ export default createRule({
         properties: {
           pattern: { type: 'string' },
           flags: { type: 'string' },
-          only: { enum: ['code', 'comment'] },
+          only: { type: 'string', enum: ['code', 'comment'] },
         },
         additionalProperties: false,
       },
@@ -56,9 +55,12 @@ export default createRule({
   },
 })
 
-export function makeProgramListener(pattern: RegExp, onReport: (node: Token, kind: string) => void): RuleListener {
+export function makeProgramListener(
+  pattern: RegExp,
+  onReport: (node: TSESTree.Token, kind: string) => void,
+): RuleListener {
   return {
-    Program(program: Program) {
+    Program(program: TSESTree.Program) {
       for (const token of program.tokens ?? []) {
         const value = getValue(token)
         if (value === false) continue
@@ -73,7 +75,7 @@ export function makeProgramListener(pattern: RegExp, onReport: (node: Token, kin
   }
 }
 
-export function getFixer(token: Token, pattern: RegExp): ReportFixFunction | undefined {
+export function getFixer(token: TSESTree.Token, pattern: RegExp): ReportFixFunction | undefined {
   switch (token.type) {
     case 'String':
     case 'Template': {
@@ -113,7 +115,7 @@ function toString(point: number) {
   return point.toString(16).padStart(4, '0').toUpperCase()
 }
 
-function getValue(token: Token) {
+function getValue(token: TSESTree.Token) {
   switch (token.type) {
     case 'String':
     case 'Template': {

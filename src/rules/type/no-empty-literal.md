@@ -22,7 +22,7 @@ export type Options = [
   {
     array?: string
     object?: string
-  }
+  },
 ]
 ```
 

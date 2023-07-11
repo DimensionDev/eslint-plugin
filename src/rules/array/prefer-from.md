@@ -2,7 +2,7 @@
 
 # `@masknet/array/prefer-from`
 
-Prefer `new Array(...)` over `Array.from(...)`
+Prefer `Array.from(...)` over `new Array(...)`
 
 <!-- end title -->
 

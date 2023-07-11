@@ -22,7 +22,7 @@ export type Options = [
   {
     'variable'?: boolean
     'side-effect'?: boolean
-  }
+  },
 ]
 ```
 

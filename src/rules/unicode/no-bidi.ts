@@ -10,7 +10,7 @@ export default createRule({
     fixable: 'code',
     docs: {
       description: 'Detect and stop Trojan Source attacks',
-      recommended: false,
+      recommended: 'recommended',
     },
     schema: [],
     messages: {

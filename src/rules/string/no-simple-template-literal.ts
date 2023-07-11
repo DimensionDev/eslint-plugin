@@ -1,5 +1,5 @@
-import type { Property, TemplateLiteral } from '@typescript-eslint/types/dist/generated/ast-spec.js'
-import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { TSESTree } from '@typescript-eslint/types'
+import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/ts-eslint'
 import { closest, isMultiline } from '../../node.js'
 import { createRule } from '../../rule.js'
 import { quote } from '../../utils.js'
@@ -9,11 +9,11 @@ import { quote } from '../../utils.js'
 export default createRule({
   name: 'string/no-simple-template-literal',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     fixable: 'code',
     docs: {
       description: 'Disallow simple template-literal',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [],
     messages: {
@@ -32,11 +32,14 @@ export default createRule({
   },
 })
 
-function getFixer(source: Readonly<SourceCode>, node: TemplateLiteral): ReportFixFunction | undefined {
+function getFixer(source: Readonly<SourceCode>, node: TSESTree.TemplateLiteral): ReportFixFunction | undefined {
   if (isNoTemplateExpression(node)) {
     return (fixer) => {
       const key = quote(node.quasis[0].value.cooked)
-      const property = closest<Property>(node, (property) => property.type === 'Property' && property.key === node)
+      const property = closest<TSESTree.Property>(
+        node,
+        (property) => property.type === 'Property' && property.key === node,
+      )
       return property
         ? fixer.replaceText(property, `${key}: ${source.getText(property.value)}`)
         : fixer.replaceText(node, key)
@@ -47,7 +50,7 @@ function getFixer(source: Readonly<SourceCode>, node: TemplateLiteral): ReportFi
   return
 }
 
-function isNoTemplateExpression(node: TemplateLiteral) {
+function isNoTemplateExpression(node: TSESTree.TemplateLiteral) {
   return (
     node.parent?.type !== 'TaggedTemplateExpression' &&
     node.quasis.length === 1 &&
@@ -56,7 +59,7 @@ function isNoTemplateExpression(node: TemplateLiteral) {
   )
 }
 
-function isToString(node: TemplateLiteral) {
+function isToString(node: TSESTree.TemplateLiteral) {
   return (
     node.quasis.length === 2 && node.quasis.every(({ value }) => value.cooked === '') && node.expressions.length === 1
   )

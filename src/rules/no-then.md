@@ -13,7 +13,7 @@ Disallow `Promise#then(...)`
 ```ts
 promise.then(
   () => 1,
-  () => 2
+  () => 2,
 )
 ```
 

@@ -1,4 +1,4 @@
-import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { isIdentifierName, isLiteralValue, isMemberExpression } from '../node.js'
 import { createRule } from '../rule.js'
 
@@ -22,7 +22,6 @@ export default createRule({
     type: 'problem',
     docs: {
       description: 'Disallow use timer function',
-      recommended: false,
     },
     schema: [],
     messages: {
@@ -39,7 +38,7 @@ export default createRule({
   },
 })
 
-function detect(node: Node): boolean {
+function detect(node: TSESTree.Node): boolean {
   if (isIdentifierName(node, methodNames)) return true
   while (isMemberExpression(node)) {
     if (isIdentifierName(node.property, methodNames)) return true

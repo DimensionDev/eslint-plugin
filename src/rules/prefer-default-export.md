@@ -43,7 +43,7 @@ export const bar = ''
 
 <!-- begin attributes -->
 
-- [ ] :white_check_mark: Recommended
+- [x] :white_check_mark: Recommended
 - [ ] :wrench: Fixable
 - [ ] :bulb: Suggestions
 - [x] :gear: Configurable

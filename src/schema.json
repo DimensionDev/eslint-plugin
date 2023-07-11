@@ -3,11 +3,7 @@
   "allOf": [{ "$ref": "https://json.schemastore.org/eslintrc.json" }],
   "properties": {
     "rules": { "$ref": "#/definitions/user-defined-rules" },
-    "plugins": {
-      "type": "array",
-      "items": { "anyOf": [{ "type": "string" }, { "const": "@masknet" }] },
-      "uniqueItems": true
-    },
+    "plugins": { "type": "array", "items": { "anyOf": [{ "type": "string" }] }, "uniqueItems": true },
     "extends": {
       "oneOf": [
         { "$ref": "#/definitions/preset-configs" },
@@ -20,11 +16,12 @@
     }
   },
   "definitions": {
-    "rule": { "enum": ["off", "warn", "error"] },
+    "rule": { "type": "string", "enum": ["off", "warn", "error"] },
     "preset-configs": {
       "anyOf": [
         { "type": "string" },
         {
+          "type": "string",
           "enum": [
             "plugin:@masknet/all",
             "plugin:@masknet/base",
@@ -43,7 +40,7 @@
           "$ref": "#/definitions/rule"
         },
         "@masknet/array/prefer-from": {
-          "description": "Prefer `new Array(...)` over `Array.from(...)`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/array/prefer-from",
+          "description": "Prefer `Array.from(...)` over `new Array(...)`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/array/prefer-from",
           "$ref": "#/definitions/rule"
         },
         "@masknet/browser/no-persistent-storage": {
@@ -206,7 +203,7 @@
                   "properties": {
                     "pattern": { "type": "string" },
                     "flags": { "type": "string" },
-                    "only": { "enum": ["code", "comment"] }
+                    "only": { "type": "string", "enum": ["code", "comment"] }
                   },
                   "additionalProperties": false
                 }
@@ -271,7 +268,7 @@
             { "$ref": "#/definitions/rule" },
             {
               "type": "array",
-              "items": [{ "$ref": "#/definitions/rule" }, { "enum": ["at-top", "at-bottom"] }],
+              "items": [{ "$ref": "#/definitions/rule" }, { "type": "string", "enum": ["at-top", "at-bottom"] }],
               "minItems": 2
             }
           ]

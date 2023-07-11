@@ -1,4 +1,4 @@
-import type { Node, Program } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { createRule } from '../rule.js'
 import { findLastIndex } from '../utils.js'
 
@@ -7,12 +7,12 @@ type Location = 'at-top' | 'at-bottom'
 export default createRule({
   name: 'prefer-default-export',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     docs: {
       description: 'Enforce default export location at top or bottom',
-      recommended: false,
+      recommended: 'stylistic',
     },
-    schema: [{ enum: ['at-top', 'at-bottom'] }],
+    schema: [{ type: 'string', enum: ['at-top', 'at-bottom'] }],
     messages: {
       'at-top': 'Move default export to top',
       'at-bottom': 'Move default export to bottom',
@@ -22,7 +22,7 @@ export default createRule({
     return location ?? 'at-bottom'
   },
   create(context, location: Location) {
-    function onProgram(program: Program) {
+    function onProgram(program: TSESTree.Program) {
       const index = program.body.findIndex(isDefaultExport)
       if (index === -1) return
       const node = program.body[index]
@@ -36,22 +36,22 @@ export default createRule({
   },
 })
 
-function isTop(program: Program, index: number) {
+function isTop(program: TSESTree.Program, index: number) {
   const firstIndex = program.body.findIndex(isNonDefaultExport)
   if (firstIndex === -1) return true
   return index < firstIndex
 }
 
-function isBottom(program: Program, index: number) {
+function isBottom(program: TSESTree.Program, index: number) {
   const lastIndex = findLastIndex(program.body, isNonDefaultExport)
   if (lastIndex === -1) return true
   return index > lastIndex
 }
 
-function isDefaultExport(node: Node) {
+function isDefaultExport(node: TSESTree.Node) {
   return node.type === 'ExportDefaultDeclaration'
 }
 
-function isNonDefaultExport(node: Node) {
+function isNonDefaultExport(node: TSESTree.Node) {
   return node.type === 'ExportAllDeclaration' || node.type === 'ExportNamedDeclaration'
 }

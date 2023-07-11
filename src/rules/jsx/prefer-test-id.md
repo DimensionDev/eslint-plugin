@@ -22,7 +22,7 @@ export type Options = [
     'elements'?: string[]
     'attributes'?: string[]
     'ignore-attributes'?: string[]
-  }
+  },
 ]
 ```
 

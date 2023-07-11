@@ -1,4 +1,4 @@
-import type { Node, TypeNode } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { createRule } from '../../rule.js'
 
 export default createRule({
@@ -7,7 +7,7 @@ export default createRule({
     type: 'problem',
     docs: {
       description: 'Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     schema: [],
     messages: {
@@ -26,10 +26,10 @@ export default createRule({
   },
 })
 
-function isTypeReference(node: Node | undefined) {
+function isTypeReference(node: TSESTree.Node | undefined) {
   return node && node.type === 'TSAsExpression' && node.typeAnnotation.type === 'TSTypeReference'
 }
 
-function isTopType(node: TypeNode) {
+function isTopType(node: TSESTree.TypeNode) {
   return node.type === 'TSAnyKeyword' || node.type === 'TSUnknownKeyword'
 }

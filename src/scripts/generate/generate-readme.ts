@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises'
-import type { Linter } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { Linter } from '@typescript-eslint/utils/ts-eslint'
 import { dedent } from 'ts-dedent'
 import type { ExportedRuleModule } from '../../rule.js'
 import { configs } from './generate-configs.js'
@@ -27,7 +27,7 @@ function makeRuleList(modules: ExportedRuleModule[]) {
       ':white_check_mark:': meta.docs?.recommended,
       ':wrench:': meta.fixable,
       ':bulb:': meta.hasSuggestions,
-      ':gear:': meta.schema.length > 0,
+      ':gear:': !Array.isArray(meta.schema) || meta.schema.length > 0,
       ':thought_balloon:': meta.docs?.requiresTypeChecking,
     })
     return dedent`

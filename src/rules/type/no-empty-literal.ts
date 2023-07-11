@@ -8,10 +8,9 @@ interface MessageOptions {
 export default createRule({
   name: 'type/no-empty-literal',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     docs: {
       description: 'Disallow empty {array,object} literal',
-      recommended: false,
     },
     schema: [
       {

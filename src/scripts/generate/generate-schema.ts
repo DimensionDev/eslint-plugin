@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises'
-import type { JSONSchema4 } from '@typescript-eslint/utils/dist/json-schema.js'
+import type { JSONSchema4 } from '@typescript-eslint/utils/json-schema'
 import type { ExportedRuleModule } from '../../rule.js'
-import { format, getRuleName, PACKAGE_NAME, SOURCE_PATH } from './utils.js'
+import { format, getRuleName, SOURCE_PATH } from './utils.js'
 
 export async function generateSchema(modules: ExportedRuleModule[], configNames: string[]) {
   const rules = modules.map(({ name, meta }): [string, JSONSchema4] => {
@@ -18,30 +18,30 @@ export async function generateSchema(modules: ExportedRuleModule[], configNames:
     properties: {
       rules: { $ref: '#/definitions/user-defined-rules' },
       plugins: {
-        type: 'array',
+        type: 'array' as const,
         items: {
-          anyOf: [{ type: 'string' }, { const: PACKAGE_NAME }],
+          anyOf: [{ type: 'string' as const }],
         },
         uniqueItems: true,
       },
       extends: {
         oneOf: [
           { $ref: '#/definitions/preset-configs' },
-          { type: 'array', items: { $ref: '#/definitions/preset-configs' }, uniqueItems: true },
+          { type: 'array' as const, items: { $ref: '#/definitions/preset-configs' }, uniqueItems: true },
         ],
       },
       overrides: {
-        type: 'array',
+        type: 'array' as const,
         items: {
-          type: 'object',
+          type: 'object' as const,
           properties: { rules: { $ref: '#/definitions/user-defined-rules' } },
         },
       },
     },
     definitions: {
-      'rule': { enum: ['off', 'warn', 'error'] },
+      'rule': { type: 'string', enum: ['off', 'warn', 'error'] },
       'preset-configs': {
-        anyOf: [{ type: 'string' }, { enum: configNames.map((name) => `plugin:${getRuleName(name)}`) }],
+        anyOf: [{ type: 'string' }, { type: 'string', enum: configNames.map((name) => `plugin:${getRuleName(name)}`) }],
       },
       'user-defined-rules': {
         type: 'object',

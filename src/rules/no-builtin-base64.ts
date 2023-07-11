@@ -1,4 +1,4 @@
-import type { CallExpression } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { isIdentifier, isMemberExpression } from '../node.js'
 import { createRule } from '../rule.js'
 import { wrap } from '../utils.js'
@@ -10,7 +10,6 @@ export default createRule({
     fixable: 'code',
     docs: {
       description: 'Disallow use built-in base64 function',
-      recommended: 'error',
     },
     schema: [],
     messages: {
@@ -41,7 +40,7 @@ export default createRule({
   },
 })
 
-function getCalleeName({ callee }: CallExpression) {
+function getCalleeName({ callee }: TSESTree.CallExpression) {
   if (isIdentifier(callee)) {
     return callee.name
   } else if (isMemberExpression(callee) && isIdentifier(callee.property)) {

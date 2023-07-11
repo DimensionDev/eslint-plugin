@@ -1,5 +1,5 @@
-import type { ClassBody } from '@typescript-eslint/types/dist/generated/ast-spec.js'
-import type { Scope } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { Scope } from '@typescript-eslint/utils/ts-eslint'
+import type { TSESTree } from '@typescript-eslint/types'
 import { isIdentifier, isMemberExpression } from '../../node.js'
 import { createRule } from '../../rule.js'
 
@@ -12,7 +12,7 @@ export default createRule({
     type: 'problem',
     docs: {
       description: 'Disallow React Class Component',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [],
     messages: {
@@ -50,7 +50,7 @@ function isReactComponentReference({ isValueReference, identifier, resolved, fro
   )
 }
 
-function isExempt({ body }: ClassBody): boolean {
+function isExempt({ body }: TSESTree.ClassBody): boolean {
   // prettier-ignore
   return body.some((element) => ("key" in element &&
         element.static &&

@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises'
-import type { Linter } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { Linter } from '@typescript-eslint/utils/ts-eslint'
 import type { ExportedRuleModule } from '../../rule.js'
 import { format, getRuleName, CONFIG_PATH } from './utils.js'
 
@@ -15,43 +15,55 @@ export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.C
   'all'(modules) {
     return {
       ...baseConfig,
-      rules: filterRules(modules, ({ meta }) => {
-        if (meta.deprecated) return 'off'
-        if (meta.docs?.recommended === 'strict') return 'error'
-        return meta.docs?.recommended ?? 'off'
+      rules: filterRules(modules, ({ meta }): Linter.RuleEntry | undefined => {
+        if (meta.deprecated) return
+        if (!meta.docs?.recommended) return 'error'
+        else if (meta.docs?.recommended === 'recommended') return 'error'
+        else if (meta.docs?.recommended === 'strict') return 'error'
+        else if (meta.docs?.recommended === 'stylistic') return 'warn'
+        throw new TypeError('Unreachable')
       }),
     }
   },
   'fixable'(modules) {
     return {
       ...baseConfig,
-      rules: filterRules(modules, ({ meta }) => {
+      rules: filterRules(modules, ({ meta }): Linter.RuleEntry | undefined => {
         if (meta.deprecated) return
-        if (!(meta.fixable || meta.hasSuggestions)) return
-        if (meta.docs?.recommended === 'strict') return 'error'
-        return meta.docs?.recommended
+        if (!meta.fixable && !meta.hasSuggestions) return
+        if (!meta.docs?.recommended) return 'error'
+        else if (meta.docs?.recommended === 'recommended') return 'error'
+        else if (meta.docs?.recommended === 'strict') return
+        else if (meta.docs?.recommended === 'stylistic') return
+        throw new TypeError('Unreachable')
       }),
     }
   },
   'recommended'(modules) {
     return {
       ...baseConfig,
-      rules: filterRules(modules, ({ meta }) => {
+      rules: filterRules(modules, ({ meta }): Linter.RuleEntry | undefined => {
         if (meta.deprecated) return
         if (meta.docs?.requiresTypeChecking) return
-        if (meta.docs?.recommended === 'strict') return 'error'
-        return meta.docs?.recommended
+        if (!meta.docs?.recommended) return 'error'
+        else if (meta.docs?.recommended === 'recommended') return 'error'
+        else if (meta.docs?.recommended === 'strict') return
+        else if (meta.docs?.recommended === 'stylistic') return
+        throw new TypeError('Unreachable')
       }),
     }
   },
   'recommended-requires-type-checking'(modules) {
     return {
       ...baseConfig,
-      rules: filterRules(modules, ({ meta }) => {
+      rules: filterRules(modules, ({ meta }): Linter.RuleEntry | undefined => {
         if (meta.deprecated) return
         if (!meta.docs?.requiresTypeChecking) return
-        if (meta.docs?.recommended === 'strict') return 'error'
-        return meta.docs?.recommended
+        if (!meta.docs?.recommended) return 'error'
+        else if (meta.docs?.recommended === 'recommended') return 'error'
+        else if (meta.docs?.recommended === 'strict') return
+        else if (meta.docs?.recommended === 'stylistic') return
+        throw new TypeError('Unreachable')
       }),
     }
   },

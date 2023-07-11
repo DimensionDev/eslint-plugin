@@ -1,4 +1,4 @@
-import type { BinaryExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { createRule } from '../../rule.js'
 import { quote } from '../../utils.js'
 
@@ -11,7 +11,7 @@ export default createRule({
     fixable: 'code',
     docs: {
       description: 'Disallow `instanceof` for wrapper objects',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     schema: [],
     messages: {
@@ -54,6 +54,6 @@ export default createRule({
   },
 })
 
-function isInstanceOf(node: Node | undefined, identifier: Node): node is BinaryExpression {
+function isInstanceOf(node: TSESTree.Node | undefined, identifier: TSESTree.Node): node is TSESTree.BinaryExpression {
   return node?.type === 'BinaryExpression' && node.operator === 'instanceof' && node.right === identifier
 }

@@ -1,6 +1,5 @@
-import type { ParserServices } from '@typescript-eslint/utils'
-import type ts from 'typescript'
-import type { RuleContext, RuleListener, RuleMetaData } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { ParserServices, ParserServicesWithTypeInformation } from '@typescript-eslint/utils'
+import type { RuleContext, RuleListener, RuleMetaData } from '@typescript-eslint/utils/ts-eslint'
 
 const BASE_URL = 'https://dimensiondev.github.io/eslint-plugin/src/rules/'
 
@@ -12,7 +11,7 @@ export interface RuleModule<
   TResolvedOptions,
   TOptions extends readonly unknown[],
   TMessageIDs extends string,
-  TRuleListener extends RuleListener
+  TRuleListener extends RuleListener,
 > {
   readonly name: string
   readonly meta: Metadata<TMessageIDs>
@@ -23,19 +22,21 @@ export interface RuleModule<
 export interface ExportedRuleModule<
   TOptions extends readonly unknown[] = unknown[],
   TMessageIDs extends string = string,
-  TRuleListener extends RuleListener = RuleListener
+  TRuleListener extends RuleListener = RuleListener,
 > {
   readonly name: string
   readonly meta: Metadata<TMessageIDs>
   create(context: Readonly<RuleContext<TMessageIDs, TOptions>>): TRuleListener
 }
+export type { RuleContext } from '@typescript-eslint/utils/ts-eslint'
 
 export function createRule<
   TResolvedOptions,
   TOptions extends unknown[],
   TMessageIDs extends string,
-  TRuleListener extends RuleListener = RuleListener
->({ name, meta, create, resolveOptions }: RuleModule<TResolvedOptions, TOptions, TMessageIDs, TRuleListener>) {
+  TRuleListener extends RuleListener = RuleListener,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+>({ name, meta, create, resolveOptions }: RuleModule<TResolvedOptions, TOptions, TMessageIDs, TRuleListener>): any {
   if (meta?.docs) {
     meta.docs.url ??= new URL(name, BASE_URL).toString()
   }
@@ -50,20 +51,10 @@ export function createRule<
   })
 }
 
-interface ModifiedParserServices extends ParserServices {
-  typeChecker: ts.TypeChecker
-}
-
-export function getParserServices(context: Readonly<RuleContext<string, unknown[]>>): Readonly<ModifiedParserServices> {
-  if (!context.parserServices) {
+export function ensureParserWithTypeInformation(
+  parserServices: ParserServices | undefined,
+): asserts parserServices is ParserServicesWithTypeInformation {
+  if (!parserServices?.program) {
     throw new Error('see https://typescript-eslint.io/docs/linting/type-linting')
-  }
-  const { program, esTreeNodeToTSNodeMap, tsNodeToESTreeNodeMap, hasFullTypeInformation } = context.parserServices
-  return {
-    program,
-    typeChecker: program.getTypeChecker(),
-    esTreeNodeToTSNodeMap,
-    tsNodeToESTreeNodeMap,
-    hasFullTypeInformation,
   }
 }

@@ -4,11 +4,11 @@ import { createRule } from '../../rule.js'
 export default createRule({
   name: 'array/no-unneeded-flat-map',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     fixable: 'code',
     docs: {
       description: 'Disallow `Array#flatMap((x) => x)` when simpler alternatives exist',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [],
     messages: {

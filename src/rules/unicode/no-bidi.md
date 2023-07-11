@@ -16,7 +16,7 @@ If you're unaware of what Trojan Source attacks are, or how unicode characters i
 
 <!-- begin attributes -->
 
-- [ ] :white_check_mark: Recommended
+- [x] :white_check_mark: Recommended
 - [x] :wrench: Fixable
 - [ ] :bulb: Suggestions
 - [ ] :gear: Configurable

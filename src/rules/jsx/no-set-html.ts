@@ -6,7 +6,7 @@ export default createRule({
     type: 'problem',
     docs: {
       description: 'Disallow use `dangerouslySetInnerHTML` jsx attribute',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     schema: [],
     messages: {

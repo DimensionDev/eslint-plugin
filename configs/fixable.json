@@ -2,23 +2,17 @@
   "$schema": "../schema.json",
   "plugins": ["@masknet"],
   "rules": {
-    "@masknet/array/no-unneeded-flat-map": "error",
     "@masknet/array/prefer-from": "error",
-    "@masknet/browser/prefer-location-assign": "error",
-    "@masknet/jsx/no-template-literal": "error",
-    "@masknet/jsx/no-unneeded-nested": "error",
     "@masknet/string/no-locale-case": "error",
-    "@masknet/string/no-simple-template-literal": "error",
-    "@masknet/string/no-unneeded-to-string": "error",
+    "@masknet/type/no-const-enum": "error",
     "unicorn/no-instanceof-array": "off",
     "@masknet/type/no-instanceof-wrapper": "error",
     "@masknet/type/no-wrapper-type-reference": "error",
-    "@masknet/type/prefer-return-type-annotation": "error",
+    "@masknet/unicode/no-bidi": "error",
     "@masknet/unicode/no-invisible": "error",
+    "@masknet/unicode/specific-set": "error",
     "@masknet/no-builtin-base64": "error",
-    "@masknet/no-redundant-variable": "error",
     "@masknet/prefer-defer-import": "error",
-    "@masknet/prefer-early-return": "error",
     "@masknet/prefer-timer-id": "error"
   }
 }

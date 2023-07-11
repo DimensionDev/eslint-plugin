@@ -1,15 +1,14 @@
-import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
-import type { Scope } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { TSESTree } from '@typescript-eslint/types'
+import type { Scope } from '@typescript-eslint/utils/ts-eslint'
 import { createRule } from '../../rule.js'
 
 export default createRule({
   name: 'type/no-const-enum',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     fixable: 'code',
     docs: {
       description: 'Disallow use constants enumerate',
-      recommended: false,
     },
     schema: [],
     messages: {
@@ -44,7 +43,7 @@ function isExported(variables: readonly Scope.Variable[]) {
   )
 }
 
-function isExportNode(node: Node | undefined) {
+function isExportNode(node: TSESTree.Node | undefined) {
   if (!node) return false
   return node.type === 'ExportSpecifier' || node.type === 'ExportNamedDeclaration'
 }

@@ -19,7 +19,7 @@ Prefer early returns over full-body conditional wrapping in function declaration
 export type Options = [
   {
     maximumStatements?: number
-  }
+  },
 ]
 ```
 

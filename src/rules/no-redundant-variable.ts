@@ -1,5 +1,5 @@
-import type { Node, ReturnStatement, VariableDeclaration } from '@typescript-eslint/types/dist/generated/ast-spec.js'
-import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { TSESTree } from '@typescript-eslint/types'
+import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/ts-eslint'
 import { closest, isAwait, isIdentifier, isSameIdentifier } from '../node.js'
 import { createRule } from '../rule.js'
 import { wrap } from '../utils.js'
@@ -11,7 +11,7 @@ export default createRule({
     fixable: 'code',
     docs: {
       description: 'Disallow redundant variable',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [],
     messages: {
@@ -35,11 +35,14 @@ export default createRule({
   },
 })
 
-function isReturnStatement(node: Node): node is ReturnStatement {
+function isReturnStatement(node: TSESTree.Node): node is TSESTree.ReturnStatement {
   return node.type === 'ReturnStatement' && isIdentifier(node.argument)
 }
 
-function isRedundantVariable(node: Node | undefined, exit: ReturnStatement): node is VariableDeclaration {
+function isRedundantVariable(
+  node: TSESTree.Node | undefined,
+  exit: TSESTree.ReturnStatement,
+): node is TSESTree.VariableDeclaration {
   if (!node) return false
   return (
     node.type === 'VariableDeclaration' &&
@@ -50,8 +53,8 @@ function isRedundantVariable(node: Node | undefined, exit: ReturnStatement): nod
 
 function getFixer(
   source: Readonly<SourceCode>,
-  variable: VariableDeclaration,
-  exit: ReturnStatement
+  variable: TSESTree.VariableDeclaration,
+  exit: TSESTree.ReturnStatement,
 ): ReportFixFunction {
   return (fixer) => {
     const { init, id } = variable.declarations[0]
@@ -66,7 +69,7 @@ function getFixer(
   }
 }
 
-export function getReturnExpression(node: Node) {
+export function getReturnExpression(node: TSESTree.Node) {
   if (!isAwait(node)) return node
   if (closest(node, 'TryStatement')) return node
   return node.argument

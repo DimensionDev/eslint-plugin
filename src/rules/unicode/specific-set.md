@@ -21,7 +21,7 @@ export type Options = [
     pattern?: string
     flags?: string
     only?: 'code' | 'comment'
-  }
+  },
 ]
 ```
 

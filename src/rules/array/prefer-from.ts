@@ -22,12 +22,12 @@ export default createRule({
     type: 'problem',
     fixable: 'code',
     docs: {
-      description: 'Prefer `new Array(...)` over `Array.from(...)`',
-      recommended: 'error',
+      description: 'Prefer `Array.from(...)` over `new Array(...)`',
+      recommended: 'recommended',
     },
     schema: [],
     messages: {
-      instead: 'Use `new {{type}}(...)` instead of `{{type}}.from(...)`',
+      instead: 'Use`{{type}}.from(...)` instead of `new {{type}}(...)`',
     },
   },
   create(context) {

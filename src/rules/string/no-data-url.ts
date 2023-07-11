@@ -1,13 +1,13 @@
-import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { createRule } from '../../rule.js'
 
 export default createRule({
   name: 'string/no-data-url',
   meta: {
-    type: 'suggestion',
+    type: 'problem',
     docs: {
       description: 'Disallow use Data URL',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     schema: [],
     messages: {
@@ -30,7 +30,7 @@ export default createRule({
   },
 })
 
-function isXMLNS(node: Node | undefined) {
+function isXMLNS(node: TSESTree.Node | undefined) {
   if (!node) return false
   return node.type === 'JSXAttribute' && node.name.name === 'xmlns'
 }

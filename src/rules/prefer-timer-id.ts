@@ -1,4 +1,4 @@
-import type { CallExpression } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { isIdentifierName, isLiteralValue } from '../node.js'
 import { createRule } from '../rule.js'
 
@@ -13,10 +13,10 @@ const methodNames = new Set([
 export default createRule({
   name: 'prefer-timer-id',
   meta: {
-    type: 'suggestion',
+    type: 'problem',
     docs: {
       description: 'Enforce best practice with timer function',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     schema: [],
     messages: {
@@ -51,7 +51,7 @@ export default createRule({
   },
 })
 
-function isZeroDelay(expr: CallExpression) {
+function isZeroDelay(expr: TSESTree.CallExpression) {
   if (!isIdentifierName(expr.callee, 'setTimeout')) return false
   const delay = expr.arguments[1]
   return delay ? isLiteralValue(delay, 0) : true

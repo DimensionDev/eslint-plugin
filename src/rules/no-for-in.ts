@@ -6,7 +6,7 @@ export default createRule({
     type: 'problem',
     docs: {
       description: 'Disallow use for-in',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [],
     messages: {

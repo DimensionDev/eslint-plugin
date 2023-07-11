@@ -1,4 +1,4 @@
-import type { JSXExpressionContainer, Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { createRule } from '../../rule.js'
 
 const DEFAULT_LIMIT = 2
@@ -14,7 +14,6 @@ export default createRule({
     type: 'problem',
     docs: {
       description: 'Limit the complexity of JSX logic expression',
-      recommended: false,
     },
     schema: [
       {
@@ -44,7 +43,7 @@ export default createRule({
     return { attribute, element }
   },
   create(context, options: Options) {
-    function report(node: JSXExpressionContainer, limit: number) {
+    function report(node: TSESTree.JSXExpressionContainer, limit: number) {
       // prettier-ignore
       const disallow = node.expression.type === "ConditionalExpression" ||
                 getLogicalCount(node.expression) > limit;
@@ -64,7 +63,7 @@ export default createRule({
   },
 })
 
-function getLogicalCount(node: Node) {
+function getLogicalCount(node: TSESTree.Node) {
   if (node.type !== 'LogicalExpression') return 0
   let count = 1
   while (node.type === 'LogicalExpression') {

@@ -10,7 +10,7 @@ export default createRule({
     fixable: 'code',
     docs: {
       description: 'Disallow use `String#toLocale{Upper,Lower}Case()`',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     schema: [],
     messages: {

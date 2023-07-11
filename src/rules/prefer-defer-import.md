@@ -30,7 +30,7 @@ export type Options = [
        */
       eagerPackages?: string[]
       syntax?: 'webpack-magic-comment'
-    }
+    },
 ]
 ```
 
@@ -54,7 +54,7 @@ foo.foo
 
 <!-- begin attributes -->
 
-- [x] :white_check_mark: Recommended
+- [ ] :white_check_mark: Recommended
 - [x] :wrench: Fixable
 - [ ] :bulb: Suggestions
 - [x] :gear: Configurable

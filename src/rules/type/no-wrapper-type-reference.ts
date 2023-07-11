@@ -5,11 +5,11 @@ const PRIMITIVE_TYPES = new Set(['BigInt', 'Boolean', 'Number', 'String', 'Symbo
 export default createRule({
   name: 'type/no-wrapper-type-reference',
   meta: {
-    type: 'suggestion',
+    type: 'problem',
     fixable: 'code',
     docs: {
       description: 'Disallow wrapper type for type reference',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     schema: [],
     messages: {

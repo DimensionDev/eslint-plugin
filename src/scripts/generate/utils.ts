@@ -25,7 +25,8 @@ export function replace(content: string, name: string, replaced: string) {
   return content.replace(pattern, `$1\n\n${replaced}\n\n$3`)
 }
 
-export async function getRuleModules() {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export async function getRuleModules(): Promise<any> {
   const filePaths = await glob('**/*.ts', {
     cwd: RULE_PATH,
     ignore: ['**/*.spec.ts'],
@@ -42,7 +43,7 @@ export async function getRuleModules() {
         throw new Error(`Please check ${filePath} rule name`)
       }
       return module.default
-    })
+    }),
   )
 }
 

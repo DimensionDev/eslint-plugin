@@ -1,5 +1,5 @@
-import type { Statement, Node, BlockStatement } from '@typescript-eslint/types/dist/generated/ast-spec.js'
-import type { ReportFixFunction, RuleContext } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { TSESTree } from '@typescript-eslint/types'
+import type { ReportFixFunction, RuleContext } from '@typescript-eslint/utils/ts-eslint'
 import { isFunctionLike } from '../node.js'
 import { createRule } from '../rule.js'
 import { wrap } from '../utils.js'
@@ -15,7 +15,7 @@ export default createRule({
     fixable: 'code',
     docs: {
       description: 'Prefer early returns over full-body conditional wrapping in function declarations',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [
       {
@@ -32,7 +32,7 @@ export default createRule({
     return options?.maximumStatements ?? 1
   },
   create(context, maximumStatements: number) {
-    function handle({ body, parent }: BlockStatement) {
+    function handle({ body, parent }: TSESTree.BlockStatement) {
       if (!isFunctionLike(parent)) return
       // cspell:words simplifiable
       const simplifiable = body.length === 1 && isOffending(body[0], maximumStatements)
@@ -46,7 +46,7 @@ export default createRule({
   },
 })
 
-function makeFixer(context: Readonly<RuleContext<string, unknown[]>>, parent: Statement): ReportFixFunction {
+function makeFixer(context: Readonly<RuleContext<string, unknown[]>>, parent: TSESTree.Statement): ReportFixFunction {
   return function* (fixer) {
     if (parent.type !== 'IfStatement') return
     const source = context.getSourceCode()
@@ -55,13 +55,13 @@ function makeFixer(context: Readonly<RuleContext<string, unknown[]>>, parent: St
     yield fixer.insertTextAfter(test, ')')
     yield fixer.replaceText(consequent, 'return;')
     const modified = wrap(source.getText(consequent), (input) =>
-      consequent.type === 'BlockStatement' ? input.slice(1, -1) : input
+      consequent.type === 'BlockStatement' ? input.slice(1, -1) : input,
     )
     yield fixer.insertTextAfter(parent, modified)
   }
 }
 
-function isOffending(node: Node, maximumStatements: number) {
+function isOffending(node: TSESTree.Node, maximumStatements: number) {
   if (!(node.type === 'IfStatement' && node.alternate === null)) {
     return false
   }

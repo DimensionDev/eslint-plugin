@@ -1,4 +1,4 @@
-import type { Node, VariableDeclaration } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { createRule } from '../rule.js'
 
 export interface Options {
@@ -12,7 +12,6 @@ export default createRule({
     type: 'problem',
     docs: {
       description: 'Disallow side-effect at module top-level',
-      recommended: false,
     },
     schema: [
       {
@@ -37,14 +36,14 @@ export default createRule({
   },
   create(context, options: Options) {
     const handleVariable = options.variable
-      ? (node: VariableDeclaration) => {
+      ? (node: TSESTree.VariableDeclaration) => {
           if (node.kind === 'const') return
           if (!isTopLevel(node)) return
           context.report({ node, messageId: 'variable', data: { kind: node.kind } })
         }
       : undefined
     const handleSideEffect = options['side-effect']
-      ? (node: Node) => {
+      ? (node: TSESTree.Node) => {
           if (!isTopLevel(node)) return
           context.report({ node, messageId: 'side-effect' })
         }
@@ -63,7 +62,7 @@ export default createRule({
   },
 })
 
-function isTopLevel(node: Node) {
+function isTopLevel(node: TSESTree.Node) {
   let { parent } = node
   while (parent?.type === 'BlockStatement') {
     parent = parent.parent

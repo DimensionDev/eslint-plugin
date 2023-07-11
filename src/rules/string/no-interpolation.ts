@@ -4,10 +4,10 @@ import { createRule } from '../../rule.js'
 export default createRule({
   name: 'string/no-interpolation',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     docs: {
       description: 'Disallow simple string interpolation',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [],
     messages: {

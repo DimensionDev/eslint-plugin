@@ -1,26 +1,19 @@
-import type {
-  ArrowFunctionExpression,
-  AwaitExpression,
-  BigIntLiteral,
-  CallExpression,
-  ChainExpression,
-  FunctionDeclaration,
-  FunctionExpression,
-  Identifier,
-  Literal,
-  MemberExpression,
-  Node,
-  NumberLiteral,
-  PrivateIdentifier,
-  RegExpLiteral,
-  StringLiteral,
-} from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import type { Predicate } from './utils.js'
 
-export function closest<T extends Node>(node: Node | undefined, type: string): T | undefined
-export function closest<T extends Node>(node: Node | undefined, test: (node: Node) => node is T): T | undefined
-export function closest<T extends Node>(node: Node | undefined, test: (node: Node) => boolean): T | undefined
-export function closest(node: Node | undefined, test: string | ((node: Node) => boolean)): Node | undefined {
+export function closest<T extends TSESTree.Node>(node: TSESTree.Node | undefined, type: string): T | undefined
+export function closest<T extends TSESTree.Node>(
+  node: TSESTree.Node | undefined,
+  test: (node: TSESTree.Node) => node is T,
+): T | undefined
+export function closest<T extends TSESTree.Node>(
+  node: TSESTree.Node | undefined,
+  test: (node: TSESTree.Node) => boolean,
+): T | undefined
+export function closest(
+  node: TSESTree.Node | undefined,
+  test: string | ((node: TSESTree.Node) => boolean),
+): TSESTree.Node | undefined {
   if (typeof test === 'string') {
     const typeName = test
     test = (node) => node.type === typeName
@@ -32,70 +25,76 @@ export function closest(node: Node | undefined, test: string | ((node: Node) => 
   return undefined
 }
 
-export function isMultiline({ loc }: Node) {
+export function isMultiline({ loc }: TSESTree.Node) {
   if (!loc) return false
   return loc.start.line !== loc.end.line
 }
 
-export function isIdentifier(node?: Node | null): node is Identifier | PrivateIdentifier {
+export function isIdentifier(node?: TSESTree.Node | null): node is TSESTree.Identifier | TSESTree.PrivateIdentifier {
   return node?.type === 'Identifier' || node?.type === 'PrivateIdentifier'
 }
 
-export function isMemberExpression(node?: Node | null): node is MemberExpression {
+export function isMemberExpression(node?: TSESTree.Node | null): node is TSESTree.MemberExpression {
   return node?.type === 'MemberExpression'
 }
 
-export function isChainExpression(node?: Node | null): node is ChainExpression {
+export function isChainExpression(node?: TSESTree.Node | null): node is TSESTree.ChainExpression {
   return node?.type === 'ChainExpression'
 }
 
-export function isCallExpression(node?: Node | null): node is CallExpression {
+export function isCallExpression(node?: TSESTree.Node | null): node is TSESTree.CallExpression {
   return node?.type === 'CallExpression'
 }
 
-export function isBindCall(node?: Node | null): node is CallExpression {
+export function isBindCall(node?: TSESTree.Node | null): node is TSESTree.CallExpression {
   return isCallExpression(node) && isMemberExpression(node.callee) && isIdentifierName(node.callee.property, 'bind')
 }
 
-export function isLiteral(node?: Node | null): node is Literal {
+export function isLiteral(node?: TSESTree.Node | null): node is TSESTree.Literal {
   return node?.type === 'Literal'
 }
 
-export function isAwait(node?: Node | null): node is AwaitExpression {
+export function isAwait(node?: TSESTree.Node | null): node is TSESTree.AwaitExpression {
   return node?.type === 'AwaitExpression'
 }
 
-export function isStringLiteral(node?: Node | null): node is StringLiteral {
+export function isStringLiteral(node?: TSESTree.Node | null): node is TSESTree.StringLiteral {
   return node?.type === 'Literal' && typeof node.value === 'string'
 }
 
-export function isNumberLiteral(node?: Node | null): node is NumberLiteral {
+export function isNumberLiteral(node?: TSESTree.Node | null): node is TSESTree.NumberLiteral {
   return node?.type === 'Literal' && typeof node.value === 'number'
 }
 
-export function isBigIntLiteral(node?: Node | null): node is BigIntLiteral {
+export function isBigIntLiteral(node?: TSESTree.Node | null): node is TSESTree.BigIntLiteral {
   return node?.type === 'Literal' && Reflect.has(node, 'bigint')
 }
 
-export function isRegExpLiteral(node?: Node | null): node is RegExpLiteral {
+export function isRegExpLiteral(node?: TSESTree.Node | null): node is TSESTree.RegExpLiteral {
   return node?.type === 'Literal' && Reflect.has(node, 'regex')
 }
 
-export function isIdentifierName(node: Node | undefined | null, name: string): node is Identifier
-export function isIdentifierName(node: Node | undefined | null, names: string[]): node is Identifier
-export function isIdentifierName(node: Node | undefined | null, test: Predicate<string>): node is Identifier
-export function isIdentifierName(node: Node | undefined | null, name: unknown) {
+export function isIdentifierName(node: TSESTree.Node | undefined | null, name: string): node is TSESTree.Identifier
+export function isIdentifierName(node: TSESTree.Node | undefined | null, names: string[]): node is TSESTree.Identifier
+export function isIdentifierName(
+  node: TSESTree.Node | undefined | null,
+  test: Predicate<string>,
+): node is TSESTree.Identifier
+export function isIdentifierName(node: TSESTree.Node | undefined | null, name: unknown) {
   if (!isIdentifier(node)) return false
   if (typeof name === 'function') return name(node.name)
   if (Array.isArray(name)) return name.includes(node.name)
   return node.name === name
 }
 
-export function isLiteralValue(node: Node | undefined | null, value: number): node is NumberLiteral
-export function isLiteralValue(node: Node | undefined | null, value: string): node is StringLiteral
-export function isLiteralValue(node: Node | undefined | null, value: Literal['value'][]): node is Literal
-export function isLiteralValue(node: Node | undefined | null, pattern: RegExp): node is StringLiteral
-export function isLiteralValue(node: Node | undefined | null, value: unknown) {
+export function isLiteralValue(node: TSESTree.Node | undefined | null, value: number): node is TSESTree.NumberLiteral
+export function isLiteralValue(node: TSESTree.Node | undefined | null, value: string): node is TSESTree.StringLiteral
+export function isLiteralValue(
+  node: TSESTree.Node | undefined | null,
+  value: TSESTree.Literal['value'][],
+): node is TSESTree.Literal
+export function isLiteralValue(node: TSESTree.Node | undefined | null, pattern: RegExp): node is TSESTree.StringLiteral
+export function isLiteralValue(node: TSESTree.Node | undefined | null, value: unknown) {
   if (node?.type !== 'Literal') return false
   if (Array.isArray(value)) return value.includes(node.value)
   if (typeof node.value === 'string' && value instanceof RegExp) return value.test(node.value)
@@ -103,13 +102,13 @@ export function isLiteralValue(node: Node | undefined | null, value: unknown) {
 }
 
 export function isFunctionLike(
-  node?: Node | null
-): node is ArrowFunctionExpression | FunctionDeclaration | FunctionExpression {
+  node?: TSESTree.Node | null,
+): node is TSESTree.ArrowFunctionExpression | TSESTree.FunctionDeclaration | TSESTree.FunctionExpression {
   const ALLOWED_TYPES = ['ArrowFunctionExpression', 'FunctionDeclaration', 'FunctionExpression']
   return node ? ALLOWED_TYPES.includes(node.type) : false
 }
 
-export function isIdentifierFunction(node: Node) {
+export function isIdentifierFunction(node: TSESTree.Node) {
   if (!isFunctionLike(node)) return false
   if (node.params.length !== 1) return false
   if (node.params[0].type !== 'Identifier') return false
@@ -123,6 +122,6 @@ export function isIdentifierFunction(node: Node) {
   )
 }
 
-export function isSameIdentifier(a: Node | undefined | null, b: Node | undefined | null) {
+export function isSameIdentifier(a: TSESTree.Node | undefined | null, b: TSESTree.Node | undefined | null) {
   return a?.type === 'Identifier' && b?.type === a.type && a.name === b.name
 }

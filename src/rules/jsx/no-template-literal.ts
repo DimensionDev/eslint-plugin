@@ -5,11 +5,11 @@ import { createRule } from '../../rule.js'
 export default createRule({
   name: 'jsx/no-template-literal',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     fixable: 'code',
     docs: {
       description: 'Disallow use template-literal in JSX',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [],
     messages: {

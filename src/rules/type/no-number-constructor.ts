@@ -1,4 +1,4 @@
-import type { CallExpression, NewExpression } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { isIdentifierName } from '../../node.js'
 import { createRule } from '../../rule.js'
 
@@ -8,7 +8,7 @@ export default createRule({
     type: 'problem',
     docs: {
       description: 'Disallow use `Number` constructor',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     schema: [],
     messages: {
@@ -16,7 +16,7 @@ export default createRule({
     },
   },
   create(context) {
-    function handle(node: NewExpression | CallExpression) {
+    function handle(node: TSESTree.NewExpression | TSESTree.CallExpression) {
       if (!isIdentifierName(node.callee, 'Number')) return
       context.report({ node, messageId: 'invalid' })
     }

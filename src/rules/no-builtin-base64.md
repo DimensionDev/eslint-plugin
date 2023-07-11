@@ -33,7 +33,7 @@ When you don't want to include the "buffer" module in your bundle.
 
 <!-- begin attributes -->
 
-- [x] :white_check_mark: Recommended
+- [ ] :white_check_mark: Recommended
 - [x] :wrench: Fixable
 - [ ] :bulb: Suggestions
 - [ ] :gear: Configurable

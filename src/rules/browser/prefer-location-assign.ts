@@ -1,5 +1,5 @@
-import type { AssignmentExpression, Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
-import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { TSESTree } from '@typescript-eslint/types'
+import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/ts-eslint'
 import { isIdentifier, isIdentifierName, isMemberExpression } from '../../node.js'
 import { createRule } from '../../rule.js'
 
@@ -12,7 +12,7 @@ export default createRule({
     fixable: 'code',
     docs: {
       description: 'Prefer `location.assign(...)` over `location.*`',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [],
     messages: {
@@ -37,7 +37,7 @@ export default createRule({
   },
 })
 
-function getMemberProperty(node: Node, name: string): Node | undefined {
+function getMemberProperty(node: TSESTree.Node, name: string): TSESTree.Node | undefined {
   if (isIdentifierName(node, name)) return node
   while (isMemberExpression(node)) {
     if (isIdentifierName(node.property, name)) return node
@@ -46,7 +46,7 @@ function getMemberProperty(node: Node, name: string): Node | undefined {
   return
 }
 
-function getPropertyName(node: Node | undefined) {
+function getPropertyName(node: TSESTree.Node | undefined) {
   if (!isMemberExpression(node)) return
   if (!isIdentifier(node.property)) return
   return node.property.name
@@ -54,8 +54,8 @@ function getPropertyName(node: Node | undefined) {
 
 function getFixer(
   source: Readonly<SourceCode>,
-  location: Node,
-  node: AssignmentExpression
+  location: TSESTree.Node,
+  node: TSESTree.AssignmentExpression,
 ): ReportFixFunction | undefined {
   const name = getPropertyName(location.parent)
   if (!fieldNames.has(name ?? 'href')) return

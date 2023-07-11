@@ -1,12 +1,5 @@
-import type {
-  ExportNamedDeclaration,
-  ImportDeclaration,
-  ExportAllDeclaration,
-  ImportNamespaceSpecifier,
-  ImportDefaultSpecifier,
-  Node,
-} from '@typescript-eslint/types/dist/generated/ast-spec.js'
-import type { ReportFixFunction, RuleContext, RuleFixer, SourceCode } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { TSESTree } from '@typescript-eslint/types'
+import type { ReportFixFunction, RuleContext, RuleFixer, SourceCode } from '@typescript-eslint/utils/ts-eslint'
 import { AST_NODE_TYPES } from '@typescript-eslint/types'
 import { createRule } from '../rule.js'
 
@@ -24,7 +17,6 @@ export default createRule({
     docs: {
       description:
         'Prefer defer import a module. See <https://github.com/tc39/proposal-defer-import-eval> and <https://github.com/webpack/webpack/pull/16567/>.',
-      recommended: 'error',
     },
     schema: [
       {
@@ -60,7 +52,9 @@ export default createRule({
   },
   create(context, options: Options) {
     const source = context.getSourceCode()
-    function handle(node: ImportDeclaration | ExportAllDeclaration | ExportNamedDeclaration) {
+    function handle(
+      node: TSESTree.ImportDeclaration | TSESTree.ExportAllDeclaration | TSESTree.ExportNamedDeclaration,
+    ) {
       if (!needFix(node, source, options)) return
       const fix = makeFixer(context, node)
       context.report({ node, messageId: 'prefer', fix })
@@ -74,9 +68,9 @@ export default createRule({
 })
 
 function needFix(
-  node: ImportDeclaration | ExportAllDeclaration | ExportNamedDeclaration,
+  node: TSESTree.ImportDeclaration | TSESTree.ExportAllDeclaration | TSESTree.ExportNamedDeclaration,
   code: Readonly<SourceCode>,
-  options: Options
+  options: Options,
 ) {
   if (!node.source) return false
   if (node.type === AST_NODE_TYPES.ImportDeclaration && (node.importKind === 'type' || node.specifiers.length === 0))
@@ -101,7 +95,7 @@ function needFix(
 
 function makeFixer(
   context: Readonly<RuleContext<string, unknown[]>>,
-  node: ImportDeclaration | ExportAllDeclaration | ExportNamedDeclaration
+  node: TSESTree.ImportDeclaration | TSESTree.ExportAllDeclaration | TSESTree.ExportNamedDeclaration,
 ): ReportFixFunction | null {
   if (node.type === AST_NODE_TYPES.ExportNamedDeclaration || !node.source) return null
   if (
@@ -121,12 +115,12 @@ function makeFixer(
     const suggestedName =
       (
         node.specifiers.find((x) => x.type === AST_NODE_TYPES.ImportNamespaceSpecifier) as
-          | ImportNamespaceSpecifier
+          | TSESTree.ImportNamespaceSpecifier
           | undefined
       )?.local.name ??
       (
         node.specifiers.find((x) => x.type === AST_NODE_TYPES.ImportDefaultSpecifier) as
-          | ImportDefaultSpecifier
+          | TSESTree.ImportDefaultSpecifier
           | undefined
       )?.local.name ??
       node.source.value.replaceAll(/[^\dA-Za-z]/g, '_')
@@ -141,7 +135,7 @@ function makeFixer(
           assertionList.push(
             ` ${assertion.key.type === AST_NODE_TYPES.Literal ? assertion.key.raw : assertion.key.name}: ${
               assertion.value.raw
-            }`
+            }`,
           )
         }
         assertions += assertionList.join(', ') + ' }'
@@ -156,7 +150,7 @@ function makeFixer(
         if (spec.type === AST_NODE_TYPES.ImportSpecifier && spec.importKind === 'type') {
           useTypeOnlyImports = true
           typeOnlyImportList.push(
-            spec.imported.name === spec.local.name ? spec.imported.name : `${spec.imported.name} as ${spec.local.name}`
+            spec.imported.name === spec.local.name ? spec.imported.name : `${spec.imported.name} as ${spec.local.name}`,
           )
         }
       }
@@ -179,14 +173,15 @@ function makeFixer(
       } else {
         if (spec.importKind === 'type') continue
         const imported = spec.imported.name
-        yield* replaceAllReference(
-          context,
-          spec,
-          /^\p{ID_Start}\p{ID_Continue}{0,}$/u.test(imported)
-            ? `${suggestedName}.${imported}`
-            : `${suggestedName}[${JSON.stringify(imported)}]`,
-          fixer
-        )
+        yield *
+          replaceAllReference(
+            context,
+            spec,
+            /^\p{ID_Start}\p{ID_Continue}{0,}$/u.test(imported)
+              ? `${suggestedName}.${imported}`
+              : `${suggestedName}[${JSON.stringify(imported)}]`,
+            fixer,
+          )
       }
     }
   }
@@ -194,9 +189,9 @@ function makeFixer(
 
 function* replaceAllReference(
   context: Readonly<RuleContext<string, unknown[]>>,
-  node: Node,
+  node: TSESTree.Node,
   replacement: string,
-  fixer: RuleFixer
+  fixer: RuleFixer,
 ) {
   const variables = context.getDeclaredVariables(node)
   if (variables.length !== 1) throw new Error('Expected exactly one reference')

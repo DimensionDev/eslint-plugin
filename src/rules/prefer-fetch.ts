@@ -1,4 +1,4 @@
-import type { CallExpression, NewExpression } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { isIdentifierName, isLiteralValue, isMemberExpression } from '../node.js'
 import { createRule } from '../rule.js'
 
@@ -8,7 +8,7 @@ export default createRule({
     type: 'problem',
     docs: {
       description: 'Enforce fetch',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [],
     messages: {
@@ -37,25 +37,25 @@ export default createRule({
   },
 })
 
-function isXMLHttpRequest({ callee }: NewExpression) {
+function isXMLHttpRequest({ callee }: TSESTree.NewExpression) {
   return isIdentifierName(callee, 'XMLHttpRequest')
 }
 
-function isActiveXObject(expr: NewExpression) {
+function isActiveXObject(expr: TSESTree.NewExpression) {
   // cspell:ignore XMLHTTP
   return isIdentifierName(expr.callee, 'ActiveXObject') && isLiteralValue(expr.arguments[0], /xmlhttp/i)
 }
 
-function isRequire(node: CallExpression, value: string) {
+function isRequire(node: TSESTree.CallExpression, value: string) {
   return isIdentifierName(node.callee, 'require') && isLiteralValue(node.arguments[0], value)
 }
 
-function is$HTTP({ callee }: CallExpression) {
+function is$HTTP({ callee }: TSESTree.CallExpression) {
   const SYMBOL = '$http'
   return isIdentifierName(callee, SYMBOL) || (isMemberExpression(callee) && isIdentifierName(callee.object, SYMBOL))
 }
 
-function isJQuery({ callee, parent }: CallExpression) {
+function isJQuery({ callee, parent }: TSESTree.CallExpression) {
   const SYMBOLS = ['$', 'jQuery']
   const methods = ['ajax', 'get', 'post', 'getJSON', 'getScript']
   return (

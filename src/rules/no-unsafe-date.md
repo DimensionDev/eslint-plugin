@@ -35,7 +35,7 @@ expiration.setSeconds(30)
 
 <!-- begin attributes -->
 
-- [x] :white_check_mark: Recommended
+- [ ] :white_check_mark: Recommended
 - [ ] :wrench: Fixable
 - [ ] :bulb: Suggestions
 - [ ] :gear: Configurable

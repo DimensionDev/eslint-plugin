@@ -1,5 +1,5 @@
-import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
-import { createRule, getParserServices } from '../rule.js'
+import type { TSESTree } from '@typescript-eslint/types'
+import { createRule, ensureParserWithTypeInformation } from '../rule.js'
 import { isConstructor } from '../type-checker.js'
 
 export default createRule({
@@ -8,7 +8,7 @@ export default createRule({
     type: 'problem',
     docs: {
       description: 'Restrict the usage of default (unextended) error',
-      recommended: 'error',
+      recommended: 'strict',
       requiresTypeChecking: true,
     },
     schema: [],
@@ -17,8 +17,10 @@ export default createRule({
     },
   },
   create(context) {
-    const { typeChecker, esTreeNodeToTSNodeMap } = getParserServices(context)
-    function report(node: Node) {
+    ensureParserWithTypeInformation(context.parserServices)
+    const {esTreeNodeToTSNodeMap, program} = context.parserServices
+    const typeChecker = program.getTypeChecker()
+    function report(node: TSESTree.Node) {
       if (!isConstructor(typeChecker, esTreeNodeToTSNodeMap.get(node), 'ErrorConstructor')) return
       context.report({ node, messageId: 'invalid' })
     }

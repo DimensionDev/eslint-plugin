@@ -1,4 +1,4 @@
-import type { Node, Range, TSAsExpression, TypeNode } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { closest, isFunctionLike, isAwait, isIdentifierName } from '../../node.js'
 import { createRule } from '../../rule.js'
 import { wrap } from '../../utils.js'
@@ -7,11 +7,11 @@ import { getReturnExpression } from './../no-redundant-variable.js'
 export default createRule({
   name: 'type/prefer-return-type-annotation',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     fixable: 'code',
     docs: {
       description: 'Enforce Move return type annotation to function return type',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [],
     messages: {
@@ -38,7 +38,7 @@ export default createRule({
               yield fixer.insertTextAfter(parent.returnType, ` | ${annotation}`)
             } else {
               const offset = parent.type === 'ArrowFunctionExpression' ? 4 : 1
-              const range = wrap(parent.body.range, ([start, end]): Range => [start - offset, end])
+              const range = wrap(parent.body.range, ([start, end]): TSESTree.Range => [start - offset, end])
               yield fixer.insertTextBeforeRange(range, `: ${annotation}`)
             }
             yield isAwait(argument.expression)
@@ -51,10 +51,10 @@ export default createRule({
   },
 })
 
-function isAs(node?: Node | null): node is TSAsExpression {
+function isAs(node?: TSESTree.Node | null): node is TSESTree.TSAsExpression {
   return node?.type === 'TSAsExpression'
 }
 
-function isAsConstType(node: TypeNode) {
+function isAsConstType(node: TSESTree.TypeNode) {
   return node?.type === 'TSTypeReference' && isIdentifierName(node.typeName, 'const')
 }

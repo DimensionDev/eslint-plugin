@@ -24,7 +24,7 @@ export default createRule({
     fixable: 'code',
     docs: {
       description: 'Disallow invisible characters',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     schema: [],
     messages: {

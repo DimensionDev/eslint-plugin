@@ -1,6 +1,6 @@
 /* eslint-disable unicorn/no-useless-undefined */
 import fs from 'node:fs/promises'
-import type { RuleMetaData } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { RuleMetaData } from '@typescript-eslint/utils/ts-eslint'
 import { compile as toJSONSchema, type JSONSchema } from 'json-schema-to-typescript'
 import type { ExportedRuleModule } from '../../rule.js'
 import { format, getRuleName, replace, RULE_PATH } from './utils.js'
@@ -39,7 +39,7 @@ function makeAttributes(meta: RuleMetaData<string>) {
     ':white_check_mark: Recommended': meta.docs?.recommended,
     ':wrench: Fixable': meta.fixable,
     ':bulb: Suggestions': meta.hasSuggestions,
-    ':gear: Configurable': meta.schema.length > 0,
+    ':gear: Configurable': !Array.isArray(meta.schema) || meta.schema.length > 0,
     ':thought_balloon: Requires type information': meta.docs?.requiresTypeChecking,
   }
   const lines: string[] = []

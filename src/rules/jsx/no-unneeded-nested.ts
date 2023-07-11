@@ -3,11 +3,11 @@ import { createRule } from '../../rule.js'
 export default createRule({
   name: 'jsx/no-unneeded-nested',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     fixable: 'code',
     docs: {
       description: 'Reduce unneeded JSXFragment nested',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [],
     messages: {

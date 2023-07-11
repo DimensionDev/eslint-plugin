@@ -1,15 +1,15 @@
 import type ts from 'typescript'
 import { isIdentifierName, isLiteralValue } from '../../node.js'
-import { createRule, getParserServices } from '../../rule.js'
+import { createRule, ensureParserWithTypeInformation } from '../../rule.js'
 
 export default createRule({
   name: 'string/no-unneeded-to-string',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     fixable: 'code',
     docs: {
       description: 'Disallow `String#toString()` when simpler alternatives exist',
-      recommended: 'error',
+      recommended: 'stylistic',
       requiresTypeChecking: true,
     },
     schema: [],
@@ -18,7 +18,9 @@ export default createRule({
     },
   },
   create(context) {
-    const { typeChecker, esTreeNodeToTSNodeMap } = getParserServices(context)
+    ensureParserWithTypeInformation(context.parserServices)
+    const { program, esTreeNodeToTSNodeMap } = context.parserServices
+    const typeChecker = program.getTypeChecker()
     return {
       CallExpression(node) {
         if (node.callee.type !== 'MemberExpression') return

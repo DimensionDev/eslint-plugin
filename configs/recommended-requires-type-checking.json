@@ -2,8 +2,6 @@
   "$schema": "../schema.json",
   "plugins": ["@masknet"],
   "rules": {
-    "@masknet/string/no-unneeded-to-string": "error",
-    "@masknet/no-default-error": "error",
     "@masknet/no-unsafe-date": "error"
   }
 }

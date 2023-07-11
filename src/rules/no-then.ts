@@ -1,14 +1,14 @@
-import type { Node } from '@typescript-eslint/types/dist/generated/ast-spec.js'
+import type { TSESTree } from '@typescript-eslint/types'
 import { isFunctionLike, isIdentifierName, isLiteralValue, isMemberExpression } from '../node.js'
 import { createRule } from '../rule.js'
 
 export default createRule({
   name: 'no-then',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     docs: {
       description: 'Disallow `Promise#then(...)`',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [],
     messages: {
@@ -27,6 +27,6 @@ export default createRule({
   },
 })
 
-function isThen(node: Node) {
+function isThen(node: TSESTree.Node) {
   return isIdentifierName(node, 'then') || isLiteralValue(node, 'then')
 }

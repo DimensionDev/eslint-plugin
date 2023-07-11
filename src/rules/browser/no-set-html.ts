@@ -7,7 +7,7 @@ export default createRule({
     type: 'problem',
     docs: {
       description: 'Disallow use `Element#{inner,outer}HTML`',
-      recommended: 'error',
+      recommended: 'recommended',
     },
     schema: [],
     messages: {

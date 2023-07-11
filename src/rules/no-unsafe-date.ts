@@ -1,5 +1,5 @@
 import { isIdentifier, isMemberExpression } from '../node.js'
-import { createRule, getParserServices } from '../rule.js'
+import { createRule, ensureParserWithTypeInformation } from '../rule.js'
 import { isConstructor } from '../type-checker.js'
 
 const ALLOWED_METHOD_NAMES = new Set([
@@ -22,7 +22,6 @@ export default createRule({
     type: 'problem',
     docs: {
       description: 'Disallow use unsafe Date methods',
-      recommended: 'error',
       requiresTypeChecking: true,
     },
     schema: [],
@@ -31,7 +30,9 @@ export default createRule({
     },
   },
   create(context) {
-    const { typeChecker, esTreeNodeToTSNodeMap } = getParserServices(context)
+    ensureParserWithTypeInformation(context.parserServices)
+    const { program, esTreeNodeToTSNodeMap } = context.parserServices
+    const typeChecker = program.getTypeChecker()
     return {
       CallExpression(node) {
         if (!isMemberExpression(node.callee)) return

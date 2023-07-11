@@ -21,7 +21,7 @@ export type Options = [
   | {
       attribute?: number
       element?: number
-    }
+    },
 ]
 ```
 

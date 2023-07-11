@@ -1,15 +1,15 @@
-import type { Node, ReturnStatement, Statement } from '@typescript-eslint/types/dist/generated/ast-spec.js'
-import type { RuleContext } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { TSESTree } from '@typescript-eslint/types'
+import type { RuleContext } from '@typescript-eslint/utils/ts-eslint'
 import { isFunctionLike, isIdentifier, isSameIdentifier } from '../node.js'
 import { createRule } from '../rule.js'
 
 export default createRule({
   name: 'no-single-return',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     docs: {
       description: 'Disallow single-return',
-      recommended: 'error',
+      recommended: 'stylistic',
     },
     schema: [],
     messages: {
@@ -30,7 +30,7 @@ export default createRule({
   },
 })
 
-function getSingleReturnVariable(context: Readonly<RuleContext<string, unknown[]>>, body: Statement[]) {
+function getSingleReturnVariable(context: Readonly<RuleContext<string, unknown[]>>, body: TSESTree.Statement[]) {
   const exit = body.find(isReturnStatement)
   if (!exit) return
   const variableNode = body.find((node) => isVariableDeclaration(node, exit))
@@ -42,11 +42,11 @@ function getSingleReturnVariable(context: Readonly<RuleContext<string, unknown[]
   })
 }
 
-function isReturnStatement(node: Node): node is ReturnStatement {
+function isReturnStatement(node: TSESTree.Node): node is TSESTree.ReturnStatement {
   return node.type === 'ReturnStatement' && isIdentifier(node.argument)
 }
 
-function isVariableDeclaration(node: Node, exit: ReturnStatement) {
+function isVariableDeclaration(node: TSESTree.Node, exit: TSESTree.ReturnStatement) {
   return (
     node.type === 'VariableDeclaration' &&
     node.kind !== 'const' &&

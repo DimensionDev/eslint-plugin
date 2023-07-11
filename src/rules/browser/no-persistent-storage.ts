@@ -1,14 +1,14 @@
-import type { Scope } from '@typescript-eslint/utils/dist/ts-eslint'
+import type { Scope } from '@typescript-eslint/utils/ts-eslint'
 import { closest } from '../../node.js'
 import { createRule } from '../../rule.js'
 
 export default createRule({
   name: 'browser/no-persistent-storage',
   meta: {
-    type: 'problem',
+    type: 'suggestion',
     docs: {
       description: 'Disallow use browser persistent storage',
-      recommended: 'error',
+      recommended: 'strict',
     },
     schema: [],
     messages: {
