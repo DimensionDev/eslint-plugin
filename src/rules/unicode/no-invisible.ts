@@ -14,7 +14,7 @@ const INVISIBLE_PATTERN = combinePattern(
   /\uFFF0-\uFFF8/,
   /\u{1D173}-\u{1D17A}/u,
   /\u{E0000}-\u{E007F}/u,
-  /\u{E0100}-\u{E01EF}/u
+  /\u{E0100}-\u{E01EF}/u,
 )
 
 export default createRule({

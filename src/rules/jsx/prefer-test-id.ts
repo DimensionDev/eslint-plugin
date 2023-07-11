@@ -52,7 +52,7 @@ export default createRule({
         const attributes = new Map(
           node.attributes
             .filter((node): node is TSESTree.JSXAttribute => node.type === 'JSXAttribute')
-            .map(({ name, value }) => [source.getText(name), value] as const)
+            .map(({ name, value }) => [source.getText(name), value] as const),
         )
         if (isValid(attributes.get(options.id))) return
         if (shouldIgnore(attributes, options['ignore-attributes'])) return

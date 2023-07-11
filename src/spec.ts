@@ -29,7 +29,7 @@ interface RunOptions<TOptions extends readonly unknown[], TMessageIds extends st
 }
 
 export async function runTest<TOptions extends readonly unknown[], TMessageIds extends string>(
-  options: RunOptions<TOptions, TMessageIds>
+  options: RunOptions<TOptions, TMessageIds>,
 ) {
   const { module, valid, invalid } = options
   it(module.name, () => {

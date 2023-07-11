@@ -26,13 +26,13 @@ async function makeSourceFile(configs: string[], modules: string[]) {
       undefined,
       false,
       ts.factory.createNamespaceExport(ts.factory.createIdentifier('default')),
-      ts.factory.createStringLiteral('./index.js')
+      ts.factory.createStringLiteral('./index.js'),
     ),
   ])
   const source = ts.factory.createSourceFile(
     statements,
     ts.factory.createToken(ts.SyntaxKind.EndOfFileToken),
-    ts.NodeFlags.JavaScriptFile
+    ts.NodeFlags.JavaScriptFile,
   )
   const printer = ts.createPrinter()
   return printer.printFile(source)
@@ -43,8 +43,8 @@ function makeExportVariable(name: string, expression: ts.Expression) {
     [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
     ts.factory.createVariableDeclarationList(
       [ts.factory.createVariableDeclaration(ts.factory.createIdentifier(name), undefined, undefined, expression)],
-      ts.NodeFlags.Const
-    )
+      ts.NodeFlags.Const,
+    ),
   )
 }
 
@@ -55,7 +55,7 @@ function makeImports(names: string[], onFile: (name: string) => string) {
 function makeObjectLiteral(names: string[]) {
   return ts.factory.createAsExpression(
     ts.factory.createObjectLiteralExpression(names.map(createPropertyAssignment), true),
-    ts.factory.createTypeReferenceNode(ts.factory.createIdentifier('const'))
+    ts.factory.createTypeReferenceNode(ts.factory.createIdentifier('const')),
   )
 }
 
@@ -66,14 +66,14 @@ function createImportDeclaration(name: string, onFile: (name: string) => string)
       undefined,
       false,
       toCamelCase(name),
-      ts.factory.createExternalModuleReference(ts.factory.createStringLiteral(fileName))
+      ts.factory.createExternalModuleReference(ts.factory.createStringLiteral(fileName)),
     )
   }
   return ts.factory.createImportDeclaration(
     undefined,
     // eslint-disable-next-line unicorn/no-useless-undefined
     ts.factory.createImportClause(false, toCamelCase(name), undefined),
-    ts.factory.createStringLiteral(fileName)
+    ts.factory.createStringLiteral(fileName),
   )
 }
 
@@ -83,7 +83,7 @@ function createPropertyAssignment(name: string) {
   }
   return ts.factory.createPropertyAssignment(
     ts.factory.createStringLiteral(name.replaceAll('/', '-')),
-    toCamelCase(name)
+    toCamelCase(name),
   )
 }
 

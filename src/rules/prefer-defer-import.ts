@@ -173,15 +173,14 @@ function makeFixer(
       } else {
         if (spec.importKind === 'type') continue
         const imported = spec.imported.name
-        yield *
-          replaceAllReference(
-            context,
-            spec,
-            /^\p{ID_Start}\p{ID_Continue}{0,}$/u.test(imported)
-              ? `${suggestedName}.${imported}`
-              : `${suggestedName}[${JSON.stringify(imported)}]`,
-            fixer,
-          )
+        yield* replaceAllReference(
+          context,
+          spec,
+          /^\p{ID_Start}\p{ID_Continue}{0,}$/u.test(imported)
+            ? `${suggestedName}.${imported}`
+            : `${suggestedName}[${JSON.stringify(imported)}]`,
+          fixer,
+        )
       }
     }
   }
