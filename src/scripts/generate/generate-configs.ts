@@ -17,11 +17,22 @@ export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.C
       ...baseConfig,
       rules: filterRules(modules, ({ meta }): Linter.RuleEntry | undefined => {
         if (meta.deprecated) return
-        if (!meta.docs?.recommended) return 'error'
-        else if (meta.docs?.recommended === 'recommended') return 'error'
-        else if (meta.docs?.recommended === 'strict') return 'error'
-        else if (meta.docs?.recommended === 'stylistic') return 'warn'
-        throw new TypeError('Unreachable')
+        if (meta.docs?.recommended) {
+          switch (meta.docs?.recommended) {
+            case 'recommended': {
+              return 'error'
+            }
+            case 'strict': {
+              return 'error'
+            }
+            case 'stylistic': {
+              return 'warn'
+            }
+            // No default
+          }
+        } else {
+          return 'error'
+        }
       }),
     }
   },
@@ -31,11 +42,22 @@ export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.C
       rules: filterRules(modules, ({ meta }): Linter.RuleEntry | undefined => {
         if (meta.deprecated) return
         if (!meta.fixable && !meta.hasSuggestions) return
-        if (!meta.docs?.recommended) return 'error'
-        else if (meta.docs?.recommended === 'recommended') return 'error'
-        else if (meta.docs?.recommended === 'strict') return
-        else if (meta.docs?.recommended === 'stylistic') return
-        throw new TypeError('Unreachable')
+        if (meta.docs?.recommended) {
+          switch (meta.docs?.recommended) {
+            case 'recommended': {
+              return 'error'
+            }
+            case 'strict': {
+              return
+            }
+            case 'stylistic': {
+              return
+            }
+            // No default
+          }
+        } else {
+          return 'error'
+        }
       }),
     }
   },
@@ -45,11 +67,22 @@ export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.C
       rules: filterRules(modules, ({ meta }): Linter.RuleEntry | undefined => {
         if (meta.deprecated) return
         if (meta.docs?.requiresTypeChecking) return
-        if (!meta.docs?.recommended) return 'error'
-        else if (meta.docs?.recommended === 'recommended') return 'error'
-        else if (meta.docs?.recommended === 'strict') return
-        else if (meta.docs?.recommended === 'stylistic') return
-        throw new TypeError('Unreachable')
+        if (meta.docs?.recommended) {
+          switch (meta.docs?.recommended) {
+            case 'recommended': {
+              return 'error'
+            }
+            case 'strict': {
+              return
+            }
+            case 'stylistic': {
+              return
+            }
+            // No default
+          }
+        } else {
+          return 'error'
+        }
       }),
     }
   },
@@ -59,11 +92,22 @@ export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.C
       rules: filterRules(modules, ({ meta }): Linter.RuleEntry | undefined => {
         if (meta.deprecated) return
         if (!meta.docs?.requiresTypeChecking) return
-        if (!meta.docs?.recommended) return 'error'
-        else if (meta.docs?.recommended === 'recommended') return 'error'
-        else if (meta.docs?.recommended === 'strict') return
-        else if (meta.docs?.recommended === 'stylistic') return
-        throw new TypeError('Unreachable')
+        if (meta.docs?.recommended) {
+          switch (meta.docs?.recommended) {
+            case 'recommended': {
+              return 'error'
+            }
+            case 'strict': {
+              return
+            }
+            case 'stylistic': {
+              return
+            }
+            // No default
+          }
+        } else {
+          return 'error'
+        }
       }),
     }
   },

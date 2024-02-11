@@ -4,7 +4,7 @@
 
 ### Minor Changes
 
-- 299fd56: change the default ruleset
+- 299fd56: change the default rule set
 - 299fd56: upgrade to typescript-eslint v6
 
 ### Patch Changes
