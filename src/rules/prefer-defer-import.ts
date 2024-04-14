@@ -51,11 +51,10 @@ export default createRule({
     return options
   },
   create(context, options: Options) {
-    const source = context.getSourceCode()
     function handle(
       node: TSESTree.ImportDeclaration | TSESTree.ExportAllDeclaration | TSESTree.ExportNamedDeclaration,
     ) {
-      if (!needFix(node, source, options)) return
+      if (!needFix(node, context.sourceCode, options)) return
       const fix = makeFixer(context, node)
       context.report({ node, messageId: 'prefer', fix })
     }
@@ -100,6 +99,7 @@ function makeFixer(
   if (node.type === AST_NODE_TYPES.ExportNamedDeclaration || !node.source) return null
   if (
     context
+      .sourceCode
       .getDeclaredVariables(node)
       .some((x) => x.references.some((x) => x.identifier.parent?.type === AST_NODE_TYPES.ExportSpecifier))
   )
@@ -115,13 +115,13 @@ function makeFixer(
     const suggestedName =
       (
         node.specifiers.find((x) => x.type === AST_NODE_TYPES.ImportNamespaceSpecifier) as
-          | TSESTree.ImportNamespaceSpecifier
-          | undefined
+        | TSESTree.ImportNamespaceSpecifier
+        | undefined
       )?.local.name ??
       (
         node.specifiers.find((x) => x.type === AST_NODE_TYPES.ImportDefaultSpecifier) as
-          | TSESTree.ImportDefaultSpecifier
-          | undefined
+        | TSESTree.ImportDefaultSpecifier
+        | undefined
       )?.local.name ??
       node.source.value.replaceAll(/[^\dA-Za-z]/g, '_')
 
@@ -133,8 +133,7 @@ function makeFixer(
         assertions += ` assert {`
         for (const assertion of node.assertions) {
           assertionList.push(
-            ` ${assertion.key.type === AST_NODE_TYPES.Literal ? assertion.key.raw : assertion.key.name}: ${
-              assertion.value.raw
+            ` ${assertion.key.type === AST_NODE_TYPES.Literal ? assertion.key.raw : assertion.key.name}: ${assertion.value.raw
             }`,
           )
         }
@@ -192,7 +191,7 @@ function* replaceAllReference(
   replacement: string,
   fixer: RuleFixer,
 ) {
-  const variables = context.getDeclaredVariables(node)
+  const variables = context.sourceCode.getDeclaredVariables(node)
   if (variables.length !== 1) throw new Error('Expected exactly one reference')
   if (replacement === variables[0].name) return
 

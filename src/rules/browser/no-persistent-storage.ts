@@ -1,6 +1,7 @@
 import type { Scope } from '@typescript-eslint/utils/ts-eslint'
 import { closest } from '../../node.js'
 import { createRule } from '../../rule.js'
+import { getGlobalScope } from '../../utils.js'
 
 export default createRule({
   name: 'browser/no-persistent-storage',
@@ -16,11 +17,13 @@ export default createRule({
     },
   },
   create(context) {
-    const globalScope = context.getScope()
+    const globalScope = getGlobalScope(context.sourceCode)
     return {
       Program() {
-        for (const node of getStorageReferences(globalScope)) {
-          context.report({ node, messageId: 'invalid' })
+        if (globalScope) {
+          for (const node of getStorageReferences(globalScope)) {
+            context.report({ node, messageId: 'invalid' })
+          }
         }
       },
     }
@@ -44,8 +47,8 @@ function* getDocumentCookieReferences(globalScope: Scope.Scope) {
   for (const reference of references) {
     // prettier-ignore
     const parent = closest(reference.identifier, (node) => (node.type === "MemberExpression" &&
-            node.property.type === "Identifier" &&
-            node.property.name === "cookie"));
+      node.property.type === "Identifier" &&
+      node.property.name === "cookie"));
     if (parent) yield parent
   }
 }

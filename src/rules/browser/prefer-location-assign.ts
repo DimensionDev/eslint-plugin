@@ -20,7 +20,6 @@ export default createRule({
     },
   },
   create(context) {
-    const source = context.getSourceCode()
     return {
       AssignmentExpression(node) {
         const location = getMemberProperty(node.left, 'location')
@@ -30,7 +29,7 @@ export default createRule({
           node,
           messageId: 'instead',
           data: { name },
-          fix: getFixer(source, location, node),
+          fix: getFixer(context.sourceCode, location, node),
         })
       },
     }

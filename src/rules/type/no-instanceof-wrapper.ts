@@ -1,6 +1,6 @@
 import type { TSESTree } from '@typescript-eslint/types'
 import { createRule } from '../../rule.js'
-import { quote } from '../../utils.js'
+import { getGlobalScope, quote } from '../../utils.js'
 
 const PRIMITIVE_TYPES = ['BigInt', 'Boolean', 'Function', 'Number', 'Object', 'String', 'Symbol', 'Array']
 
@@ -21,10 +21,10 @@ export default createRule({
     replacedBy: ['unicorn/no-instanceof-array'],
   },
   create(context) {
-    const source = context.getSourceCode()
-    const globalScope = context.getScope()
+    const source = context.sourceCode
+    const globalScope = getGlobalScope(source)
     const references = PRIMITIVE_TYPES.flatMap((name) => {
-      const variable = globalScope.set.get(name)
+      const variable = globalScope?.set.get(name)
       if (!variable || variable.defs.length > 0) return []
       return variable.references ?? []
     })

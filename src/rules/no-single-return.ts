@@ -35,7 +35,7 @@ function getSingleReturnVariable(context: Readonly<RuleContext<string, unknown[]
   if (!exit) return
   const variableNode = body.find((node) => isVariableDeclaration(node, exit))
   if (!variableNode) return
-  return context.getDeclaredVariables(variableNode).find(({ references }) => {
+  return context.sourceCode.getDeclaredVariables(variableNode).find(({ references }) => {
     return references.every((reference) => {
       return reference.isWriteOnly() || reference.identifier.parent === exit
     })

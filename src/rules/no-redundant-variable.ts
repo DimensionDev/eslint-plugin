@@ -28,7 +28,7 @@ export default createRule({
         context.report({
           node: exit,
           messageId: 'invalid',
-          fix: getFixer(context.getSourceCode(), previous, exit),
+          fix: getFixer(context.sourceCode, previous, exit),
         })
       },
     }

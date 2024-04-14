@@ -28,10 +28,9 @@ export default createRule({
           fix(fixer) {
             const tokens = [...expression.expressions, ...expression.quasis]
             tokens.sort((a, b) => a.range[0] - b.range[0])
-            const source = context.getSourceCode()
             const modified = tokens.map((token) => {
               if (token.type === 'TemplateElement') return token.value.cooked
-              return '{' + source.getText(token) + '}'
+              return '{' + context.sourceCode.getText(token) + '}'
             })
             return fixer.replaceText(node, modified.join(''))
           },

@@ -18,8 +18,8 @@ export default createRule({
     },
   },
   create(context) {
-    ensureParserWithTypeInformation(context.parserServices)
-    const { program, esTreeNodeToTSNodeMap } = context.parserServices
+    ensureParserWithTypeInformation(context.sourceCode.parserServices)
+    const { program, esTreeNodeToTSNodeMap } = context.sourceCode.parserServices
     const typeChecker = program.getTypeChecker()
     return {
       CallExpression(node) {
@@ -31,8 +31,7 @@ export default createRule({
           node: property,
           messageId: 'invalid',
           fix(fixer) {
-            const source = context.getSourceCode()
-            return fixer.replaceText(node, source.getText(object))
+            return fixer.replaceText(node, context.sourceCode.getText(object))
           },
         })
       },

@@ -45,7 +45,7 @@ export default createRule({
     }
   },
   create(context, options: Options) {
-    const source = context.getSourceCode()
+    const source = context.sourceCode
     return {
       JSXOpeningElement(node) {
         const element = source.getText(node.name)

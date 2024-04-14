@@ -35,7 +35,7 @@ export function createRule<
   TOptions extends unknown[],
   TMessageIDs extends string,
   TRuleListener extends RuleListener = RuleListener,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 >({ name, meta, create, resolveOptions }: RuleModule<TResolvedOptions, TOptions, TMessageIDs, TRuleListener>): any {
   if (meta?.docs) {
     meta.docs.url ??= new URL(name, BASE_URL).toString()
@@ -52,7 +52,7 @@ export function createRule<
 }
 
 export function ensureParserWithTypeInformation(
-  parserServices: ParserServices | undefined,
+  parserServices: Partial<ParserServices> | undefined,
 ): asserts parserServices is ParserServicesWithTypeInformation {
   if (!parserServices?.program) {
     throw new Error('see https://typescript-eslint.io/docs/linting/type-linting')

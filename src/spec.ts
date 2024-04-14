@@ -15,7 +15,7 @@ const tester = new RuleTester({
     parser: tsEsLintParser,
     parserOptions: {
       tsconfigRootDir: path.join(__dirname, '..', 'tests', 'fixtures'),
-      project: 'tsconfig.json',
+      project: true,
       ecmaFeatures: { jsx: true },
     }
   }
