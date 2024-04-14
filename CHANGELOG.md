@@ -1,5 +1,11 @@
 # @masknet/eslint-plugin
 
+## 0.3.0
+
+### Minor Changes
+
+- efe4d00: upgrade to eslint 9
+
 ## 0.2.0
 
 ### Minor Changes
