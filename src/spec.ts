@@ -6,19 +6,22 @@ import type { InvalidTestCase, RuleListener, ValidTestCase } from '@typescript-e
 import { it } from 'vitest'
 import type { ExportedRuleModule } from './rule.js'
 
+import tsEsLintParser from '@typescript-eslint/parser'
+
 const tester = new RuleTester({
-  parser: require.resolve('@typescript-eslint/parser'),
-  parserOptions: {
-    tsconfigRootDir: path.join(__dirname, '..', 'tests', 'fixtures'),
-    project: 'tsconfig.json',
+  languageOptions: {
     sourceType: 'module',
     ecmaVersion: 'latest',
-    ecmaFeatures: { jsx: true },
-  },
-  env: {
-    browser: true,
-  },
-})
+    parser: tsEsLintParser,
+    parserOptions: {
+      tsconfigRootDir: path.join(__dirname, '..', 'tests', 'fixtures'),
+      project: 'tsconfig.json',
+      ecmaFeatures: { jsx: true },
+    }
+  }
+} as any)
+// TODO: remove this any once ts-eslint v7 has implemented type for the ESLint v9 FlatRuleTester
+// https://github.com/typescript-eslint/typescript-eslint/issues/8211
 
 type TestCaseGenerator<T, R = T> = (cast: (input: T) => T) => Generator<R>
 
