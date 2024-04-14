@@ -1,5 +1,5 @@
-import type { SourceCode } from "@typescript-eslint/utils/ts-eslint"
-import type { Scope } from "@typescript-eslint/scope-manager"
+import type { SourceCode } from '@typescript-eslint/utils/ts-eslint'
+import type { Scope } from '@typescript-eslint/scope-manager'
 
 export type Predicate<T> = (value: T) => boolean
 
@@ -37,5 +37,5 @@ export function findLastIndex<T>(elements: T[], predicate: Predicate<T>): number
  * https://github.com/ota-meshi/eslint-compat-utils/blob/96387ca53dc08306d773c33b3b003582721084a1/src/get-source-code.ts#L36
  */
 export function getGlobalScope(sourceCode: Readonly<SourceCode>): Scope | null {
-  return sourceCode.scopeManager?.scopes[0] ?? null;
+  return sourceCode.scopeManager?.scopes[0] ?? null
 }

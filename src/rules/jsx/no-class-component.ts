@@ -24,7 +24,7 @@ export default createRule({
       ImportDeclaration(node) {
         if (node.source.value !== 'react') return
         const references = node.specifiers
-          .flatMap(importClause => {
+          .flatMap((importClause) => {
             if (context.sourceCode.scopeManager) {
               return context.sourceCode.scopeManager.getDeclaredVariables(importClause)
             }

@@ -33,6 +33,8 @@ export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.C
         } else {
           return 'error'
         }
+
+        return undefined
       }),
     }
   },
@@ -58,6 +60,8 @@ export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.C
         } else {
           return 'error'
         }
+
+        return undefined
       }),
     }
   },
@@ -83,6 +87,8 @@ export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.C
         } else {
           return 'error'
         }
+
+        return undefined
       }),
     }
   },
@@ -108,6 +114,8 @@ export const configs: Record<string, (modules: ExportedRuleModule[]) => Linter.C
         } else {
           return 'error'
         }
+
+        return undefined
       }),
     }
   },

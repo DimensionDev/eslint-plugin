@@ -14,10 +14,23 @@
     "plugin:@typescript-eslint/recommended",
     "prettier"
   ],
-  "env": { "node": true },
+  "ignorePatterns": ["lib/**/*", "vitest.config.ts", "estree.tsx"],
+  "env": {
+    "node": true
+  },
   "overrides": [
-    { "files": ["src/**/*.spec.ts"], "env": { "mocha": true } },
-    { "files": ["src/scripts/**/*.ts"], "rules": { "node/shebang": "off" } }
+    {
+      "files": ["src/**/*.spec.ts"],
+      "env": {
+        "mocha": true
+      }
+    },
+    {
+      "files": ["src/scripts/**/*.ts"],
+      "rules": {
+        "node/shebang": "off"
+      }
+    }
   ],
   "rules": {
     "constructor-super": "error",
@@ -70,9 +83,18 @@
       "error",
       {
         "paths": [
-          { "name": "@typescript-eslint/types/dist/generated/ast-spec", "allowTypeImports": true },
-          { "name": "@typescript-eslint/utils/dist/ast-utils", "allowTypeImports": true },
-          { "name": "@typescript-eslint/utils/dist/ts-eslint", "allowTypeImports": true }
+          {
+            "name": "@typescript-eslint/types/dist/generated/ast-spec",
+            "allowTypeImports": true
+          },
+          {
+            "name": "@typescript-eslint/utils/dist/ast-utils",
+            "allowTypeImports": true
+          },
+          {
+            "name": "@typescript-eslint/utils/dist/ts-eslint",
+            "allowTypeImports": true
+          }
         ]
       }
     ]

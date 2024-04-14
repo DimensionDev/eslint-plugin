@@ -14,14 +14,14 @@ const tester = new RuleTester({
     ecmaVersion: 'latest',
     parser: tsEsLintParser,
     globals: {
-      ...globals.browser
+      ...globals.browser,
     },
     parserOptions: {
       tsconfigRootDir: path.join(__dirname, '..', 'tests', 'fixtures'),
       project: true,
       ecmaFeatures: { jsx: true },
-    }
-  }
+    },
+  },
 
   // https://github.com/typescript-eslint/typescript-eslint/issues/8211
   // TODO: remove this any once ts-eslint v7 has implemented type for the ESLint v9 FlatRuleTester

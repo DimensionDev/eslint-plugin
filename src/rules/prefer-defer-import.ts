@@ -98,8 +98,7 @@ function makeFixer(
 ): ReportFixFunction | null {
   if (node.type === AST_NODE_TYPES.ExportNamedDeclaration || !node.source) return null
   if (
-    context
-      .sourceCode
+    context.sourceCode
       .getDeclaredVariables(node)
       .some((x) => x.references.some((x) => x.identifier.parent?.type === AST_NODE_TYPES.ExportSpecifier))
   )
@@ -115,13 +114,13 @@ function makeFixer(
     const suggestedName =
       (
         node.specifiers.find((x) => x.type === AST_NODE_TYPES.ImportNamespaceSpecifier) as
-        | TSESTree.ImportNamespaceSpecifier
-        | undefined
+          | TSESTree.ImportNamespaceSpecifier
+          | undefined
       )?.local.name ??
       (
         node.specifiers.find((x) => x.type === AST_NODE_TYPES.ImportDefaultSpecifier) as
-        | TSESTree.ImportDefaultSpecifier
-        | undefined
+          | TSESTree.ImportDefaultSpecifier
+          | undefined
       )?.local.name ??
       node.source.value.replaceAll(/[^\dA-Za-z]/g, '_')
 
@@ -133,7 +132,8 @@ function makeFixer(
         assertions += ` assert {`
         for (const assertion of node.assertions) {
           assertionList.push(
-            ` ${assertion.key.type === AST_NODE_TYPES.Literal ? assertion.key.raw : assertion.key.name}: ${assertion.value.raw
+            ` ${assertion.key.type === AST_NODE_TYPES.Literal ? assertion.key.raw : assertion.key.name}: ${
+              assertion.value.raw
             }`,
           )
         }
