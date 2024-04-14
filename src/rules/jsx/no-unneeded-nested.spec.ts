@@ -6,6 +6,6 @@ runTest({
   module,
   *invalid() {
     yield { code: '<>123</>', output: '123', errors: [{ messageId: 'invalid' }] }
-    yield { code: '<>{}</>', output: '<>{}</>', errors: [{ messageId: 'invalid' }] }
+    yield { code: '<>{}</>', errors: [{ messageId: 'invalid' }] }
   },
 })
