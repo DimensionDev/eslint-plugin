@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: "21"
-      - run: pnpx prettier --check .
+      - run: pnpx prettier --check src tests configs
   markdownlint:
     runs-on: ubuntu-latest
     steps:
