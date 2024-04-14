@@ -34,7 +34,7 @@ async function exists(filePath: URL) {
   }
 }
 
-function makeAttributes(meta: RuleMetaData<string>) {
+function makeAttributes(meta: RuleMetaData<string, unknown[]>) {
   const attributes = {
     ':white_check_mark: Recommended': meta.docs?.recommended,
     ':wrench: Fixable': meta.fixable,
@@ -49,7 +49,7 @@ function makeAttributes(meta: RuleMetaData<string>) {
   return lines.join('\n')
 }
 
-async function makeOptions(meta: RuleMetaData<string>) {
+async function makeOptions(meta: RuleMetaData<string, unknown[]>) {
   const schema: JSONSchema = Array.isArray(meta.schema)
     ? { type: 'array', items: meta.schema, minItems: Number.POSITIVE_INFINITY }
     : meta.schema

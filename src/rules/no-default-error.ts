@@ -17,8 +17,8 @@ export default createRule({
     },
   },
   create(context) {
-    ensureParserWithTypeInformation(context.parserServices)
-    const { esTreeNodeToTSNodeMap, program } = context.parserServices
+    ensureParserWithTypeInformation(context.sourceCode.parserServices)
+    const { esTreeNodeToTSNodeMap, program } = context.sourceCode.parserServices
     const typeChecker = program.getTypeChecker()
     function report(node: TSESTree.Node) {
       if (!isConstructor(typeChecker, esTreeNodeToTSNodeMap.get(node), 'ErrorConstructor')) return

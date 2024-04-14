@@ -3,7 +3,8 @@ import type { RuleContext, RuleListener, RuleMetaData } from '@typescript-eslint
 
 const BASE_URL = 'https://dimensiondev.github.io/eslint-plugin/src/rules/'
 
-interface Metadata<TMessageIDs extends string> extends RuleMetaData<TMessageIDs> {
+interface Metadata<TMessageIDs extends string, TOptions extends readonly unknown[]>
+  extends RuleMetaData<TMessageIDs, TOptions> {
   hidden?: boolean
 }
 
@@ -14,7 +15,7 @@ export interface RuleModule<
   TRuleListener extends RuleListener,
 > {
   readonly name: string
-  readonly meta: Metadata<TMessageIDs>
+  readonly meta: Metadata<TMessageIDs, TOptions>
   resolveOptions?(...options: TOptions): TResolvedOptions
   create(context: Readonly<RuleContext<TMessageIDs, TOptions>>, options: TResolvedOptions): TRuleListener
 }
@@ -25,7 +26,7 @@ export interface ExportedRuleModule<
   TRuleListener extends RuleListener = RuleListener,
 > {
   readonly name: string
-  readonly meta: Metadata<TMessageIDs>
+  readonly meta: Metadata<TMessageIDs, TOptions>
   create(context: Readonly<RuleContext<TMessageIDs, TOptions>>): TRuleListener
 }
 export type { RuleContext } from '@typescript-eslint/utils/ts-eslint'
@@ -52,7 +53,7 @@ export function createRule<
 }
 
 export function ensureParserWithTypeInformation(
-  parserServices: ParserServices | undefined,
+  parserServices: Partial<ParserServices> | undefined,
 ): asserts parserServices is ParserServicesWithTypeInformation {
   if (!parserServices?.program) {
     throw new Error('see https://typescript-eslint.io/docs/linting/type-linting')

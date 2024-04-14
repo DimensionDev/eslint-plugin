@@ -26,8 +26,7 @@ export default createRule({
           messageId: 'invalid',
           data: { name },
           fix(fixer) {
-            const source = context.getSourceCode()
-            const modified = wrap(source.getText(node.arguments[0]), (input) => {
+            const modified = wrap(context.sourceCode.getText(node.arguments[0]), (input) => {
               const a = name === 'atob' ? '"base64"' : '"binary"'
               const b = name === 'btoa' ? '"base64"' : '"binary"'
               return `Buffer.from(${input}, ${a}).toString(${b})`

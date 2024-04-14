@@ -51,11 +51,10 @@ export default createRule({
     return options
   },
   create(context, options: Options) {
-    const source = context.getSourceCode()
     function handle(
       node: TSESTree.ImportDeclaration | TSESTree.ExportAllDeclaration | TSESTree.ExportNamedDeclaration,
     ) {
-      if (!needFix(node, source, options)) return
+      if (!needFix(node, context.sourceCode, options)) return
       const fix = makeFixer(context, node)
       context.report({ node, messageId: 'prefer', fix })
     }
@@ -99,7 +98,7 @@ function makeFixer(
 ): ReportFixFunction | null {
   if (node.type === AST_NODE_TYPES.ExportNamedDeclaration || !node.source) return null
   if (
-    context
+    context.sourceCode
       .getDeclaredVariables(node)
       .some((x) => x.references.some((x) => x.identifier.parent?.type === AST_NODE_TYPES.ExportSpecifier))
   )
@@ -192,7 +191,7 @@ function* replaceAllReference(
   replacement: string,
   fixer: RuleFixer,
 ) {
-  const variables = context.getDeclaredVariables(node)
+  const variables = context.sourceCode.getDeclaredVariables(node)
   if (variables.length !== 1) throw new Error('Expected exactly one reference')
   if (replacement === variables[0].name) return
 

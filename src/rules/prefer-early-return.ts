@@ -49,12 +49,11 @@ export default createRule({
 function makeFixer(context: Readonly<RuleContext<string, unknown[]>>, parent: TSESTree.Statement): ReportFixFunction {
   return function* (fixer) {
     if (parent.type !== 'IfStatement') return
-    const source = context.getSourceCode()
     const { test, consequent } = parent
     yield fixer.insertTextBefore(test, '!(')
     yield fixer.insertTextAfter(test, ')')
     yield fixer.replaceText(consequent, 'return;')
-    const modified = wrap(source.getText(consequent), (input) =>
+    const modified = wrap(context.sourceCode.getText(consequent), (input) =>
       consequent.type === 'BlockStatement' ? input.slice(1, -1) : input,
     )
     yield fixer.insertTextAfter(parent, modified)

@@ -4,10 +4,10 @@ import { createRule } from '../rule.js'
 
 // prettier-ignore
 const methodNames = new Set([
-    "setTimeout",
-    "setInterval",
-    "requestAnimationFrame",
-    "requestIdleCallback",
+  "setTimeout",
+  "setInterval",
+  "requestAnimationFrame",
+  "requestIdleCallback",
 ]);
 
 export default createRule({

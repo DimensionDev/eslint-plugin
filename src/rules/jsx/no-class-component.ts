@@ -24,7 +24,12 @@ export default createRule({
       ImportDeclaration(node) {
         if (node.source.value !== 'react') return
         const references = node.specifiers
-          .flatMap(context.getDeclaredVariables)
+          .flatMap((importClause) => {
+            if (context.sourceCode.scopeManager) {
+              return context.sourceCode.scopeManager.getDeclaredVariables(importClause)
+            }
+            return []
+          })
           .flatMap((variable) => variable.references)
           .filter(isReactComponentReference)
         for (const reference of references) {
@@ -53,9 +58,9 @@ function isReactComponentReference({ isValueReference, identifier, resolved, fro
 function isExempt({ body }: TSESTree.ClassBody): boolean {
   // prettier-ignore
   return body.some((element) => ("key" in element &&
-        element.static &&
-        element.key.type === "Identifier" &&
-        EXEMPT_FIELDS.has(element.key.name)));
+    element.static &&
+    element.key.type === "Identifier" &&
+    EXEMPT_FIELDS.has(element.key.name)));
 }
 
 function isDefinitionGood(variable: Scope.Variable | null) {

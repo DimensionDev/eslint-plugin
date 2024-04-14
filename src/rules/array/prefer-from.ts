@@ -31,7 +31,6 @@ export default createRule({
     },
   },
   create(context) {
-    const source = context.getSourceCode()
     return {
       NewExpression(node) {
         if (!isIdentifierName(node.callee, types)) return
@@ -42,7 +41,7 @@ export default createRule({
           messageId: 'instead',
           data: { type: arrayType },
           fix(fixer) {
-            return fixer.replaceText(node, `${arrayType}.from(${source.getText(node.arguments[0])})`)
+            return fixer.replaceText(node, `${arrayType}.from(${context.sourceCode.getText(node.arguments[0])})`)
           },
         })
       },

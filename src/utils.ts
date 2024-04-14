@@ -1,3 +1,6 @@
+import type { SourceCode } from '@typescript-eslint/utils/ts-eslint'
+import type { Scope } from '@typescript-eslint/scope-manager'
+
 export type Predicate<T> = (value: T) => boolean
 
 export function wrap<T, R = T>(input: T, callback: (input: T) => R) {
@@ -23,4 +26,16 @@ export function findLastIndex<T>(elements: T[], predicate: Predicate<T>): number
     if (predicate(elements[index])) return index
   }
   return -1
+}
+
+/** ----- ESLint Helper ----- */
+
+/**
+ * `context.sourceCode.getScope()` requires at least one argument, no-argument usage (global scope)
+ * is no longer supported.
+ *
+ * https://github.com/ota-meshi/eslint-compat-utils/blob/96387ca53dc08306d773c33b3b003582721084a1/src/get-source-code.ts#L36
+ */
+export function getGlobalScope(sourceCode: Readonly<SourceCode>): Scope | null {
+  return sourceCode.scopeManager?.scopes[0] ?? null
 }

@@ -19,7 +19,7 @@ export default createRule({
     },
   },
   create(context) {
-    const source = context.getSourceCode()
+    const source = context.sourceCode
     return {
       ReturnStatement(node) {
         const { argument } = node

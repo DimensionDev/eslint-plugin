@@ -15,7 +15,7 @@ export default createRule({
     },
   },
   create(context) {
-    const source = context.getSourceCode()
+    const source = context.sourceCode
     return {
       JSXFragment(node) {
         if (node.children.length !== 1) return

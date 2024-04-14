@@ -19,7 +19,7 @@ export default createRule({
     return {
       TSEnumDeclaration(node) {
         if (!node.const) return
-        if (!isExported(context.getDeclaredVariables(node))) return
+        if (!isExported(context.sourceCode.getDeclaredVariables(node))) return
         context.report({
           node,
           messageId: 'invalid',

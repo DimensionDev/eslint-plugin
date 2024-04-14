@@ -21,10 +21,9 @@ export default createRule({
     },
   },
   create(context) {
-    const source = context.getSourceCode()
     return {
       TemplateLiteral(node) {
-        const fix = getFixer(source, node)
+        const fix = getFixer(context.sourceCode, node)
         if (!fix) return
         context.report({ node, messageId: 'invalid', fix })
       },

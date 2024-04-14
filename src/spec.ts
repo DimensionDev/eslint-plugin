@@ -4,21 +4,29 @@ import path from 'node:path'
 import { RuleTester } from '@typescript-eslint/utils/ts-eslint'
 import type { InvalidTestCase, RuleListener, ValidTestCase } from '@typescript-eslint/utils/ts-eslint'
 import { it } from 'vitest'
+import globals from 'globals'
+import tsEsLintParser from '@typescript-eslint/parser'
 import type { ExportedRuleModule } from './rule.js'
 
 const tester = new RuleTester({
-  parser: require.resolve('@typescript-eslint/parser'),
-  parserOptions: {
-    tsconfigRootDir: path.join(__dirname, '..', 'tests', 'fixtures'),
-    project: 'tsconfig.json',
+  languageOptions: {
     sourceType: 'module',
     ecmaVersion: 'latest',
-    ecmaFeatures: { jsx: true },
+    parser: tsEsLintParser,
+    globals: {
+      ...globals.browser,
+    },
+    parserOptions: {
+      tsconfigRootDir: path.join(__dirname, '..', 'tests', 'fixtures'),
+      project: true,
+      ecmaFeatures: { jsx: true },
+    },
   },
-  env: {
-    browser: true,
-  },
-})
+
+  // https://github.com/typescript-eslint/typescript-eslint/issues/8211
+  // TODO: remove this any once ts-eslint v7 has implemented type for the ESLint v9 FlatRuleTester
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any -- see above
+} as any)
 
 type TestCaseGenerator<T, R = T> = (cast: (input: T) => T) => Generator<R>
 
