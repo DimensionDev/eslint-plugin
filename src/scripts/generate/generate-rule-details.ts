@@ -1,4 +1,3 @@
-/* eslint-disable unicorn/no-useless-undefined */
 import fs from 'node:fs/promises'
 import type { RuleMetaData } from '@typescript-eslint/utils/ts-eslint'
 import { compile as toJSONSchema, type JSONSchema } from 'json-schema-to-typescript'

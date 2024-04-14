@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-restricted-imports */
-/* eslint-disable unicorn/prefer-module */
 import path from 'node:path'
 import { RuleTester } from '@typescript-eslint/utils/ts-eslint'
 import type { InvalidTestCase, RuleListener, ValidTestCase } from '@typescript-eslint/utils/ts-eslint'

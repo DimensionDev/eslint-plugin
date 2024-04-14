@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import type { TSESTree } from '@typescript-eslint/types'
 import type { ReportFixFunction, RuleListener } from '@typescript-eslint/utils/ts-eslint'
 import { createRule } from '../../rule.js'

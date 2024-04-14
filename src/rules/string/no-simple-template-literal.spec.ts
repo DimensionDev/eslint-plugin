@@ -10,7 +10,6 @@ runTest({
       errors: [{ messageId: 'invalid' }],
     }
     yield {
-      // eslint-disable-next-line no-template-curly-in-string
       code: '`${example}`',
       output: 'example',
       errors: [{ messageId: 'invalid' }],

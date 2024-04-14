@@ -5,7 +5,6 @@ import type { ExportedRuleModule } from '../../rule.js'
 
 export const PACKAGE_NAME = '@masknet'
 
-// eslint-disable-next-line unicorn/prefer-module
 export const ROOT_PATH = new URL('../../../', import.meta.url)
 export const SOURCE_PATH = new URL('src/', ROOT_PATH)
 export const RULE_PATH = new URL('rules/', SOURCE_PATH)

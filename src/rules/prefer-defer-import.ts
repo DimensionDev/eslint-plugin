@@ -197,7 +197,6 @@ function* replaceAllReference(
 
   for (const reference of variables[0].references) {
     const id = reference.identifier
-    // eslint-disable-next-line unicorn/prefer-ternary
     if (id.parent?.type === AST_NODE_TYPES.Property && id.parent.shorthand && id.parent.value === id) {
       yield fixer.replaceText(id.parent, `${id.name}: ${replacement}`)
     } else {

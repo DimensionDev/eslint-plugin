@@ -1,4 +1,3 @@
-/* eslint-disable no-template-curly-in-string */
 import { runTest } from '../../spec.js'
 import module from './no-template-literal.js'
 

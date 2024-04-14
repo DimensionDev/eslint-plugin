@@ -142,7 +142,6 @@ async function storeConfig(name: string, config: Linter.Config) {
 
 function filterRules(
   modules: ExportedRuleModule[],
-  // eslint-disable-next-line unicorn/prefer-module
   onEntry: (module: ExportedRuleModule) => Linter.RuleEntry | false | undefined,
 ): Record<string, Linter.RuleEntry> {
   const rules: [string, Linter.RuleEntry][] = []

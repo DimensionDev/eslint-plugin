@@ -1,5 +1,4 @@
 #!npx ts-node
-/* eslint-disable no-console */
 import { generateConfigs, getConfigNames } from './generate-configs.js'
 import { generateIndex } from './generate-index.js'
 import { generateREADME } from './generate-readme.js'

@@ -71,7 +71,6 @@ function createImportDeclaration(name: string, onFile: (name: string) => string)
   }
   return ts.factory.createImportDeclaration(
     undefined,
-    // eslint-disable-next-line unicorn/no-useless-undefined
     ts.factory.createImportClause(false, toCamelCase(name), undefined),
     ts.factory.createStringLiteral(fileName),
   )
