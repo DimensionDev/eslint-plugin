@@ -4,6 +4,7 @@ import path from 'node:path'
 import { RuleTester } from '@typescript-eslint/utils/ts-eslint'
 import type { InvalidTestCase, RuleListener, ValidTestCase } from '@typescript-eslint/utils/ts-eslint'
 import { it } from 'vitest'
+import globals from 'globals'
 import type { ExportedRuleModule } from './rule.js'
 
 import tsEsLintParser from '@typescript-eslint/parser'
@@ -13,6 +14,9 @@ const tester = new RuleTester({
     sourceType: 'module',
     ecmaVersion: 'latest',
     parser: tsEsLintParser,
+    globals: {
+      ...globals.browser
+    },
     parserOptions: {
       tsconfigRootDir: path.join(__dirname, '..', 'tests', 'fixtures'),
       project: true,

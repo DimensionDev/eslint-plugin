@@ -72,6 +72,7 @@
     "eslint-plugin-unicorn": "^51.0.1",
     "eslint-plugin-unused-imports": "^3.0.0",
     "glob": "^10.3.10",
+    "globals": "^15.0.0",
     "husky": "^9.0.10",
     "json-schema-to-typescript": "^13.1.2",
     "lint-staged": "^15.2.2",
