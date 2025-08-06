@@ -13,37 +13,37 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "21"
-      - run: pnpx prettier --check src tests configs
+          node-version: "22"
+      - run: pnpx prettier --check src scripts configs
   markdownlint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "21"
+          node-version: "22"
       - run: pnpx markdownlint-cli .
   spellcheck:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "21"
+          node-version: "22"
       - run: pnpx cspell lint --relative --no-progress '**'
   test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v3
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "21"
+          node-version: "22"
           cache: "pnpm"
       - run: pnpm install
       - run: pnpm run lint
