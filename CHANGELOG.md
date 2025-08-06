@@ -1,5 +1,17 @@
 # @masknet/eslint-plugin
 
+## 0.4.0
+
+### Minor Changes
+
+- c737772: Bump Node.js version requirement to 22
+- c737772: Bump eslint version requirement to 9
+- c737772: prefer-defer-import rule drops the webpack magic comment syntax and adopts the native syntax
+
+### Patch Changes
+
+- c737772: Support string as import name
+
 ## 0.3.0
 
 ### Minor Changes
