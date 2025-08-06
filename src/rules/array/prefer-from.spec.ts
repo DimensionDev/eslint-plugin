@@ -1,13 +1,12 @@
-import { runTest } from '../../spec.js'
-import module from './prefer-from.js'
+import { tester } from '../../spec.ts'
+import module from './prefer-from.ts'
 
-runTest({
-  module,
-  *invalid() {
-    yield {
+tester.test(module, {
+  invalid: [
+    {
       code: 'new Uint8Array([])',
       output: 'Uint8Array.from([])',
       errors: [{ messageId: 'instead' }],
-    }
-  },
+    },
+  ],
 })

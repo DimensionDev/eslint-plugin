@@ -1,6 +1,6 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { createRule, ensureParserWithTypeInformation } from '../rule.js'
-import { isConstructor } from '../type-checker.js'
+import { createRule, ensureParserWithTypeInformation } from '../rule.ts'
+import { isConstructor } from '../type-checker.ts'
 
 export default createRule({
   name: 'no-default-error',
@@ -16,6 +16,7 @@ export default createRule({
       invalid: 'Default error object should not be used in this project',
     },
   },
+  defaultOptions: [],
   create(context) {
     ensureParserWithTypeInformation(context.sourceCode.parserServices)
     const { esTreeNodeToTSNodeMap, program } = context.sourceCode.parserServices

@@ -1,5 +1,5 @@
-import { createRule } from '../../rule.js'
-import { escape, getFixer, makeProgramListener } from './specific-set.js'
+import { createRule } from '../../rule.ts'
+import { escape, getFixer, makeProgramListener } from './specific-set.ts'
 
 const BIDI_PATTERN = /[\u061C\u202A-\u202E\u2066-\u2069]/
 
@@ -17,6 +17,7 @@ export default createRule({
       detected: 'Detected potential trojan source attack with unicode bidi introduced in this {{kind}}: {{text}}.',
     },
   },
+  defaultOptions: [],
   create(context) {
     return makeProgramListener(BIDI_PATTERN, (node, kind) => {
       const matcher = new RegExp(BIDI_PATTERN.source, 'gu')

@@ -1,9 +1,9 @@
 import fs from 'node:fs/promises'
 import type { JSONSchema4 } from '@typescript-eslint/utils/json-schema'
-import type { ExportedRuleModule } from '../../rule.js'
-import { format, getRuleName, SOURCE_PATH } from './utils.js'
+import type { RuleModuleWithNameDefault } from '../src/rule.ts'
+import { format, getRuleName, SOURCE_PATH } from './utils.ts'
 
-export async function generateSchema(modules: ExportedRuleModule[], configNames: string[]) {
+export async function generateSchema(modules: RuleModuleWithNameDefault[], configNames: string[]) {
   const rules = modules.map(({ name, meta }): [string, JSONSchema4] => {
     const { schema, docs } = meta
     const rule: JSONSchema4 = { $ref: '#/definitions/rule' }

@@ -1,6 +1,6 @@
 import type { TSESTree } from '@typescript-eslint/types'
 import type { Scope } from '@typescript-eslint/utils/ts-eslint'
-import { createRule } from '../../rule.js'
+import { createRule } from '../../rule.ts'
 
 export default createRule({
   name: 'type/no-const-enum',
@@ -15,6 +15,7 @@ export default createRule({
       invalid: 'Disallow use constants enumerate',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       TSEnumDeclaration(node) {

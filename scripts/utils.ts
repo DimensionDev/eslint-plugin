@@ -1,11 +1,11 @@
 import { fileURLToPath } from 'node:url'
 import { glob } from 'glob'
 import prettier from 'prettier'
-import type { ExportedRuleModule } from '../../rule.js'
+import type { RuleModuleWithNameDefault } from '../src/rule.ts'
 
 export const PACKAGE_NAME = '@masknet'
 
-export const ROOT_PATH = new URL('../../../', import.meta.url)
+export const ROOT_PATH = new URL('../', import.meta.url)
 export const SOURCE_PATH = new URL('src/', ROOT_PATH)
 export const RULE_PATH = new URL('rules/', SOURCE_PATH)
 export const CONFIG_PATH = new URL('configs/', ROOT_PATH)
@@ -36,8 +36,8 @@ export async function getRuleModules(): Promise<any> {
     ...filePaths.filter((name) => !name.includes('/')),
   ]
   return Promise.all(
-    fileNames.map(async (filePath): Promise<ExportedRuleModule> => {
-      const module: { default: ExportedRuleModule } = await import(new URL(filePath, RULE_PATH).href)
+    fileNames.map(async (filePath): Promise<RuleModuleWithNameDefault> => {
+      const module: { default: RuleModuleWithNameDefault } = await import(new URL(filePath, RULE_PATH).href)
       if (filePath !== module.default.name + '.ts') {
         throw new Error(`Please check ${filePath} rule name`)
       }

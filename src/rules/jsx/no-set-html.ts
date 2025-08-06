@@ -1,4 +1,4 @@
-import { createRule } from '../../rule.js'
+import { createRule } from '../../rule.ts'
 
 export default createRule({
   name: 'jsx/no-set-html',
@@ -13,6 +13,7 @@ export default createRule({
       invalid: 'Disallow use `dangerouslySetInnerHTML` jsx attribute',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       JSXAttribute(node) {

@@ -1,6 +1,6 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { isIdentifierName, isLiteralValue } from '../node.js'
-import { createRule } from '../rule.js'
+import { isIdentifierName, isLiteralValue } from '../node.ts'
+import { createRule } from '../rule.ts'
 
 // prettier-ignore
 const methodNames = new Set([
@@ -25,6 +25,7 @@ export default createRule({
     },
     hasSuggestions: true,
   },
+  defaultOptions: [],
   create(context) {
     return {
       CallExpression(node) {

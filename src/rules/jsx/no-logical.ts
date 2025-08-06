@@ -1,5 +1,5 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { createRule } from '../../rule.js'
+import { createRule } from '../../rule.ts'
 
 const DEFAULT_LIMIT = 2
 
@@ -34,19 +34,10 @@ export default createRule({
       invalid: 'Limit the complexity of JSX logic expression',
     },
   },
-  resolveOptions(options?: number | Partial<Options>) {
-    if (typeof options === 'number') {
-      const limit = options ?? DEFAULT_LIMIT
-      return { attribute: limit, element: limit }
-    }
-    const { attribute = DEFAULT_LIMIT, element = DEFAULT_LIMIT } = options ?? {}
-    return { attribute, element }
-  },
-  create(context, options: Options) {
+  defaultOptions: [DEFAULT_LIMIT] as readonly [Options | number],
+  create(context, [options]: readonly [Options | number]) {
     function report(node: TSESTree.JSXExpressionContainer, limit: number) {
-      // prettier-ignore
-      const disallow = node.expression.type === "ConditionalExpression" ||
-                getLogicalCount(node.expression) > limit;
+      const disallow = node.expression.type === 'ConditionalExpression' || getLogicalCount(node.expression) > limit
       if (!disallow) return
       context.report({ node, messageId: 'invalid' })
     }
@@ -54,9 +45,9 @@ export default createRule({
       JSXExpressionContainer(node) {
         const { parent } = node
         if (parent?.type === 'JSXAttribute') {
-          report(node, options.attribute)
+          report(node, typeof options === 'number' ? options : options.attribute)
         } else if (parent?.type === 'JSXElement') {
-          report(node, options.element)
+          report(node, typeof options === 'number' ? options : options.element)
         }
       },
     }

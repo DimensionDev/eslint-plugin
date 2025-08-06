@@ -1,38 +1,38 @@
-import { runTest } from '../../spec.js'
-import module from './specific-set.js'
+import { tester } from '../../spec.ts'
+import module from './specific-set.ts'
 
-runTest({
-  module,
-  *valid(cast) {
-    yield `''`
-    yield `'ABC'`
-    yield '1'
-    yield cast({ code: '// \u4E2D\u6587', options: [{ only: 'code' }] })
-    yield cast({ code: '\u4E2D\u6587', options: [{ only: 'comment' }] })
-  },
-  *invalid() {
-    for (const code of ['\u4E2D\u6587', '#\u4E2D\u6587', '// \u4E2D\u6587']) {
-      yield { code, errors: [{ messageId: 'illegal' }] }
-    }
-    yield {
+tester.test(module, {
+  valid: [
+    `''`,
+    `'ABC'`,
+    '1',
+    { code: '// \u4E2D\u6587', options: [{ only: 'code' }] },
+    { code: '\u4E2D\u6587', options: [{ only: 'comment' }] },
+  ],
+  invalid: [
+    { code: '\u4E2D\u6587', errors: [{ messageId: 'illegal' }] },
+    { code: 'class T { #\u4E2D\u6587 }', errors: [{ messageId: 'illegal' }] },
+    { code: '#\u4E2D\u6587', errors: [{ messageId: 'illegal' }] },
+    { code: '// \u4E2D\u6587', errors: [{ messageId: 'illegal' }] },
+    {
       code: '"\u4E2D\u6587"',
       output: '"\\u4E2D\\u6587"',
       errors: [{ messageId: 'illegal', data: { text: '"\\u4E2D\\u6587"' } }],
-    }
-    yield {
+    },
+    {
       code: '`\u4E2D\u6587`',
       output: '`\\u4E2D\\u6587`',
       errors: [{ messageId: 'illegal' }],
-    }
-    yield {
+    },
+    {
       code: '<a>\u4E2D\u6587</a>',
       output: '<a>&#x4E2D;&#x6587;</a>',
       errors: [{ messageId: 'illegal' }],
-    }
-    yield {
+    },
+    {
       code: '/\u2014/u',
       output: '/\\u2014/u',
       errors: [{ messageId: 'illegal' }],
-    }
-  },
+    },
+  ],
 })

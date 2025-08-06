@@ -1,6 +1,6 @@
-import { isIdentifier, isMemberExpression } from '../node.js'
-import { createRule, ensureParserWithTypeInformation } from '../rule.js'
-import { isConstructor } from '../type-checker.js'
+import { isIdentifier, isMemberExpression } from '../node.ts'
+import { createRule, ensureParserWithTypeInformation } from '../rule.ts'
+import { isConstructor } from '../type-checker.ts'
 
 const ALLOWED_METHOD_NAMES = new Set([
   'getTime',
@@ -29,6 +29,7 @@ export default createRule({
       disallow: 'Disallow use Date#{{name}}',
     },
   },
+  defaultOptions: [],
   create(context) {
     ensureParserWithTypeInformation(context.sourceCode.parserServices)
     const { program, esTreeNodeToTSNodeMap } = context.sourceCode.parserServices

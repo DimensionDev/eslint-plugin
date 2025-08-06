@@ -1,22 +1,21 @@
-import { runTest } from '../spec.js'
-import module from './prefer-default-export.js'
+import { tester } from '../spec.ts'
+import module from './prefer-default-export.ts'
 
-runTest({
-  module,
-  *valid(cast) {
-    yield cast({ code: 'export default 1; export const example = 1;', options: ['at-top'] })
-    yield cast({ code: 'export const example = 1; export default 1;', options: ['at-bottom'] })
-  },
-  *invalid(cast) {
-    yield cast({
+tester.test(module, {
+  valid: [
+    { code: 'export default 1; export const example = 1;', options: ['at-top'] },
+    { code: 'export const example = 1; export default 1;', options: ['at-bottom'] },
+  ],
+  invalid: [
+    {
       code: 'export default 1; export const example = 1;',
       options: ['at-bottom'],
       errors: [{ messageId: 'at-bottom' }],
-    })
-    yield cast({
+    },
+    {
       code: 'export const example = 1; export default 1;',
       options: ['at-top'],
       errors: [{ messageId: 'at-top' }],
-    })
-  },
+    },
+  ],
 })

@@ -1,8 +1,8 @@
 import type { TSESTree } from '@typescript-eslint/types'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/ts-eslint'
-import { closest, isAwait, isIdentifier, isSameIdentifier } from '../node.js'
-import { createRule } from '../rule.js'
-import { wrap } from '../utils.js'
+import { closest, isAwait, isIdentifier, isSameIdentifier } from '../node.ts'
+import { createRule } from '../rule.ts'
+import { wrap } from '../utils.ts'
 
 export default createRule({
   name: 'no-redundant-variable',
@@ -18,6 +18,7 @@ export default createRule({
       invalid: 'Disallow Redundant Variable',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       BlockStatement({ body }) {

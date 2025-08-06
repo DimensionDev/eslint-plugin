@@ -1,6 +1,6 @@
 import type ts from 'typescript'
-import { isIdentifierName, isLiteralValue } from '../../node.js'
-import { createRule, ensureParserWithTypeInformation } from '../../rule.js'
+import { isIdentifierName, isLiteralValue } from '../../node.ts'
+import { createRule, ensureParserWithTypeInformation } from '../../rule.ts'
 
 export default createRule({
   name: 'string/no-unneeded-to-string',
@@ -17,6 +17,7 @@ export default createRule({
       invalid: 'Disallow use `.toString()` in string',
     },
   },
+  defaultOptions: [],
   create(context) {
     ensureParserWithTypeInformation(context.sourceCode.parserServices)
     const { program, esTreeNodeToTSNodeMap } = context.sourceCode.parserServices

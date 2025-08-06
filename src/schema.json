@@ -3,16 +3,29 @@
   "allOf": [{ "$ref": "https://json.schemastore.org/eslintrc.json" }],
   "properties": {
     "rules": { "$ref": "#/definitions/user-defined-rules" },
-    "plugins": { "type": "array", "items": { "anyOf": [{ "type": "string" }] }, "uniqueItems": true },
+    "plugins": {
+      "type": "array",
+      "items": { "anyOf": [{ "type": "string" }] },
+      "uniqueItems": true
+    },
     "extends": {
       "oneOf": [
         { "$ref": "#/definitions/preset-configs" },
-        { "type": "array", "items": { "$ref": "#/definitions/preset-configs" }, "uniqueItems": true }
+        {
+          "type": "array",
+          "items": { "$ref": "#/definitions/preset-configs" },
+          "uniqueItems": true
+        }
       ]
     },
     "overrides": {
       "type": "array",
-      "items": { "type": "object", "properties": { "rules": { "$ref": "#/definitions/user-defined-rules" } } }
+      "items": {
+        "type": "object",
+        "properties": {
+          "rules": { "$ref": "#/definitions/user-defined-rules" }
+        }
+      }
     }
   },
   "definitions": {
@@ -109,9 +122,21 @@
                   "type": "object",
                   "properties": {
                     "id": { "type": "string" },
-                    "elements": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-                    "attributes": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
-                    "ignore-attributes": { "type": "array", "items": { "type": "string" }, "uniqueItems": true }
+                    "elements": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "uniqueItems": true
+                    },
+                    "attributes": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "uniqueItems": true
+                    },
+                    "ignore-attributes": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "uniqueItems": true
+                    }
                   },
                   "additionalProperties": false
                 }
@@ -154,7 +179,10 @@
                 { "$ref": "#/definitions/rule" },
                 {
                   "type": "object",
-                  "properties": { "array": { "type": "string" }, "object": { "type": "string" } },
+                  "properties": {
+                    "array": { "type": "string" },
+                    "object": { "type": "string" }
+                  },
                   "additionalProperties": false
                 }
               ],
@@ -164,10 +192,6 @@
         },
         "@masknet/type/no-force-cast-via-top-type": {
           "description": "Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-force-cast-via-top-type",
-          "$ref": "#/definitions/rule"
-        },
-        "@masknet/type/no-instanceof-wrapper": {
-          "description": "Disallow `instanceof` for wrapper objects\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/type/no-instanceof-wrapper",
           "$ref": "#/definitions/rule"
         },
         "@masknet/type/no-number-constructor": {
@@ -250,7 +274,10 @@
                 { "$ref": "#/definitions/rule" },
                 {
                   "type": "object",
-                  "properties": { "variable": { "type": "boolean" }, "side-effect": { "type": "boolean" } },
+                  "properties": {
+                    "variable": { "type": "boolean" },
+                    "side-effect": { "type": "boolean" }
+                  },
                   "additionalProperties": false
                 }
               ],
@@ -274,7 +301,7 @@
           ]
         },
         "@masknet/prefer-defer-import": {
-          "description": "Prefer defer import a module. See <https://github.com/tc39/proposal-defer-import-eval> and <https://github.com/webpack/webpack/pull/16567/>.\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/prefer-defer-import",
+          "description": "Prefer defer import a module.\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/prefer-defer-import",
           "oneOf": [
             { "$ref": "#/definitions/rule" },
             {
@@ -288,16 +315,22 @@
                       "type": "object",
                       "additionalProperties": false,
                       "properties": {
-                        "deferPackages": { "type": "array", "items": { "type": "string" }, "minItems": 0 },
-                        "syntax": { "type": "string", "enum": ["webpack-magic-comment"] }
+                        "deferPackages": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "minItems": 0
+                        }
                       }
                     },
                     {
                       "type": "object",
                       "additionalProperties": false,
                       "properties": {
-                        "eagerPackages": { "type": "array", "items": { "type": "string" }, "minItems": 0 },
-                        "syntax": { "type": "string", "enum": ["webpack-magic-comment"] }
+                        "eagerPackages": {
+                          "type": "array",
+                          "items": { "type": "string" },
+                          "minItems": 0
+                        }
                       }
                     }
                   ]
@@ -317,7 +350,9 @@
                 { "$ref": "#/definitions/rule" },
                 {
                   "type": "object",
-                  "properties": { "maximumStatements": { "type": "integer", "minimum": 0 } },
+                  "properties": {
+                    "maximumStatements": { "type": "integer", "minimum": 0 }
+                  },
                   "additionalProperties": false
                 }
               ],

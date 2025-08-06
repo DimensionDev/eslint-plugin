@@ -1,6 +1,6 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { isIdentifierName } from '../../node.js'
-import { createRule } from '../../rule.js'
+import { isIdentifierName } from '../../node.ts'
+import { createRule } from '../../rule.ts'
 
 export default createRule({
   name: 'type/no-number-constructor',
@@ -15,6 +15,7 @@ export default createRule({
       invalid: 'Disallow use `Number` constructor',
     },
   },
+  defaultOptions: [],
   create(context) {
     function handle(node: TSESTree.NewExpression | TSESTree.CallExpression) {
       if (!isIdentifierName(node.callee, 'Number')) return

@@ -1,8 +1,8 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { closest, isFunctionLike, isAwait, isIdentifierName } from '../../node.js'
-import { createRule } from '../../rule.js'
-import { wrap } from '../../utils.js'
-import { getReturnExpression } from './../no-redundant-variable.js'
+import { closest, isFunctionLike, isAwait, isIdentifierName } from '../../node.ts'
+import { createRule } from '../../rule.ts'
+import { wrap } from '../../utils.ts'
+import { getReturnExpression } from './../no-redundant-variable.ts'
 
 export default createRule({
   name: 'type/prefer-return-type-annotation',
@@ -18,6 +18,7 @@ export default createRule({
       'move-type': 'Move return type annotation to return type',
     },
   },
+  defaultOptions: [],
   create(context) {
     const source = context.sourceCode
     return {

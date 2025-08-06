@@ -1,5 +1,5 @@
-import { isIdentifier, isMemberExpression } from '../../node.js'
-import { createRule } from '../../rule.js'
+import { isIdentifier, isMemberExpression } from '../../node.ts'
+import { createRule } from '../../rule.ts'
 
 const RE_METHOD_NAME = /^toLocale(?<name>Upper|Lower)Case$/g
 
@@ -17,6 +17,7 @@ export default createRule({
       instead: 'Use `.to{{name}}Case(...)` instead of `.toLocale{{name}}Case()`',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       CallExpression(node) {

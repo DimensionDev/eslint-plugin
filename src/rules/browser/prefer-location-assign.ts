@@ -1,7 +1,7 @@
 import type { TSESTree } from '@typescript-eslint/types'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/ts-eslint'
-import { isIdentifier, isIdentifierName, isMemberExpression } from '../../node.js'
-import { createRule } from '../../rule.js'
+import { isIdentifier, isIdentifierName, isMemberExpression } from '../../node.ts'
+import { createRule } from '../../rule.ts'
 
 const fieldNames = new Set(['href', 'pathname', 'search', 'hash', 'origin'])
 
@@ -19,6 +19,7 @@ export default createRule({
       instead: 'Use `location.assign(...)` instead of `location.{{name}}`',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       AssignmentExpression(node) {

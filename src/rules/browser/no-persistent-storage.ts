@@ -1,7 +1,7 @@
 import type { Scope } from '@typescript-eslint/utils/ts-eslint'
-import { closest } from '../../node.js'
-import { createRule } from '../../rule.js'
-import { getGlobalScope } from '../../utils.js'
+import { closest } from '../../node.ts'
+import { createRule } from '../../rule.ts'
+import { getGlobalScope } from '../../utils.ts'
 
 export default createRule({
   name: 'browser/no-persistent-storage',
@@ -16,6 +16,7 @@ export default createRule({
       invalid: 'Disallow use browser persistent storage',
     },
   },
+  defaultOptions: [],
   create(context) {
     const globalScope = getGlobalScope(context.sourceCode)
     return {

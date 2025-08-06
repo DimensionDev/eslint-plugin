@@ -1,42 +1,24 @@
-import { runTest } from '../spec.js'
-import module from './prefer-fetch.js'
+import { tester } from '../spec.ts'
+import module from './prefer-fetch.ts'
 
-runTest({
-  module,
-  *invalid() {
-    yield { code: 'import "axios"', errors: [{ messageId: 'callee' }] }
-    yield { code: 'import "request"', errors: [{ messageId: 'callee' }] }
-    // cspell:ignore MSXML XMLHTTP
-    {
-      const segments = [
-        'new XMLHttpRequest()',
-        'new ActiveXObject("MSXML2.XMLHTTP")',
-        'new ActiveXObject("Microsoft.XMLHTTP")',
-      ]
-      for (const segment of segments) {
-        yield { code: segment, errors: [{ messageId: 'callee' }] }
-      }
-    }
-    {
-      const segments = [
-        // axios
-        'require("axios")',
-        // request
-        'require("request")',
-        // angular
-        '$http()',
-        // jQuery
-        '$(element).load()',
-        'jQuery(element).load()',
-        'jQuery.ajax()',
-        'jQuery.get()',
-        'jQuery.post()',
-        'jQuery.getJSON()',
-        'jQuery.getScript()',
-      ]
-      for (const segment of segments) {
-        yield { code: segment, errors: [{ messageId: 'callee' }] }
-      }
-    }
-  },
+tester.test(module, {
+  invalid: [
+    { code: 'import "axios"', errors: [{ messageId: 'callee' }] },
+    { code: 'import "request"', errors: [{ messageId: 'callee' }] },
+    { code: 'new XMLHttpRequest()', errors: [{ messageId: 'callee' }] },
+    // cspell:disable-next-line
+    { code: 'new ActiveXObject("MSXML2.XMLHTTP")', errors: [{ messageId: 'callee' }] },
+    // cspell:disable-next-line
+    { code: 'new ActiveXObject("Microsoft.XMLHTTP")', errors: [{ messageId: 'callee' }] },
+    { code: 'require("axios")', errors: [{ messageId: 'callee' }] },
+    { code: 'require("request")', errors: [{ messageId: 'callee' }] },
+    { code: '$http()', errors: [{ messageId: 'callee' }] },
+    { code: '$(element).load()', errors: [{ messageId: 'callee' }] },
+    { code: 'jQuery(element).load()', errors: [{ messageId: 'callee' }] },
+    { code: 'jQuery.ajax()', errors: [{ messageId: 'callee' }] },
+    { code: 'jQuery.get()', errors: [{ messageId: 'callee' }] },
+    { code: 'jQuery.post()', errors: [{ messageId: 'callee' }] },
+    { code: 'jQuery.getJSON()', errors: [{ messageId: 'callee' }] },
+    { code: 'jQuery.getScript()', errors: [{ messageId: 'callee' }] },
+  ],
 })

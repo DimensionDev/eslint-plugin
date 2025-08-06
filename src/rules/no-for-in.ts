@@ -1,4 +1,4 @@
-import { createRule } from '../rule.js'
+import { createRule } from '../rule.ts'
 
 export default createRule({
   name: 'no-for-in',
@@ -13,6 +13,7 @@ export default createRule({
       invalid: 'Disallow use for-in',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       ForInStatement(node) {

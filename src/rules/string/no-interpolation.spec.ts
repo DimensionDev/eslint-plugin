@@ -1,15 +1,12 @@
-import { runTest } from '../../spec.js'
-import module from './no-interpolation.js'
+import { tester } from '../../spec.ts'
+import module from './no-interpolation.ts'
 
-runTest({
-  module,
-  *valid() {
-    yield '`${test.test()}`'
-  },
-  *invalid() {
-    yield {
+tester.test(module, {
+  valid: ['`${test.test()}`'],
+  invalid: [
+    {
       code: '`${test.\ntest()}`',
       errors: [{ messageId: 'variable' }],
-    }
-  },
+    },
+  ],
 })

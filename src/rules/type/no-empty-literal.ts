@@ -1,4 +1,4 @@
-import { createRule } from '../../rule.js'
+import { createRule } from '../../rule.ts'
 
 interface MessageOptions {
   array?: string
@@ -27,7 +27,8 @@ export default createRule({
       instead: '{{ message }}',
     },
   },
-  create(context, options: MessageOptions = {}) {
+  defaultOptions: [{} as MessageOptions],
+  create(context, [options]) {
     return {
       ArrayExpression(node) {
         if (node?.elements.length > 0) return

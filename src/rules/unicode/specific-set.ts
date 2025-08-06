@@ -1,20 +1,15 @@
 import type { TSESTree } from '@typescript-eslint/types'
 import type { ReportFixFunction, RuleListener } from '@typescript-eslint/utils/ts-eslint'
-import { createRule } from '../../rule.js'
+import { createRule } from '../../rule.ts'
 
 // https://unicode.org/reports/tr18
 // https://unicode.org/reports/tr51
 const BUILT_PATTERN = /\P{ASCII}/u
 
 export interface Options {
-  pattern: RegExp['source']
-  flags: RegExp['flags']
-  only: 'code' | 'comment'
-}
-
-interface ResolvedOptions {
-  only?: Options['only']
-  pattern: RegExp
+  pattern?: RegExp['source']
+  flags?: RegExp['flags']
+  only?: 'code' | 'comment' | undefined
 }
 
 export default createRule({
@@ -40,14 +35,12 @@ export default createRule({
       illegal: 'Illegal character detected',
     },
   },
-  resolveOptions(options?: Partial<Options>): ResolvedOptions {
-    const pattern = options?.pattern ? new RegExp(options.pattern, options.flags ?? 'u') : BUILT_PATTERN
-    return { pattern, only: options?.only }
-  },
-  create(context, { pattern, only }: ResolvedOptions) {
-    return makeProgramListener(pattern, (node, kind) => {
+  defaultOptions: [{ pattern: BUILT_PATTERN.source, flags: 'u', only: undefined } as Options],
+  create(context, [{ pattern, flags, only }]) {
+    const regex = pattern ? new RegExp(pattern, flags) : BUILT_PATTERN
+    return makeProgramListener(regex, (node, kind) => {
       if (only && only !== kind) return
-      const matcher = new RegExp(pattern.source, 'gu')
+      const matcher = new RegExp(regex.source, 'gu')
       const fix = getFixer(node, matcher)
       context.report({ node, messageId: 'illegal', fix })
     })
@@ -124,6 +117,9 @@ function getValue(token: TSESTree.Token) {
       if (token.value.startsWith('#')) {
         return token.value.slice(1)
       }
+      return token.value
+    }
+    case 'PrivateIdentifier': {
       return token.value
     }
     case 'RegularExpression': {

@@ -1,9 +1,6 @@
-import { runTest } from '../../spec.js'
-import module from './no-set-html.js'
+import { tester } from '../../spec.ts'
+import module from './no-set-html.ts'
 
-runTest({
-  module,
-  *invalid() {
-    yield { code: '<a dangerouslySetInnerHTML />', errors: [{ messageId: 'invalid' }] }
-  },
+tester.test(module, {
+  invalid: [{ code: '<a dangerouslySetInnerHTML />', errors: [{ messageId: 'invalid' }] }],
 })

@@ -1,13 +1,12 @@
-import { runTest } from '../../spec.js'
-import module from './no-wrapper-type-reference.js'
+import { tester } from '../../spec.ts'
+import module from './no-wrapper-type-reference.ts'
 
-runTest({
-  module,
-  *invalid() {
-    yield {
+tester.test(module, {
+  invalid: [
+    {
       code: 'declare const n: BigInt',
       output: 'declare const n: bigint',
       errors: [{ messageId: 'instead', data: { name: 'bigint' } }],
-    }
-  },
+    },
+  ],
 })

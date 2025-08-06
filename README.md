@@ -44,8 +44,6 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
     "@masknet/type/no-const-enum": "error",
     "@masknet/type/no-empty-literal": "error",
     "@masknet/type/no-force-cast-via-top-type": "error",
-    "unicorn/no-instanceof-array": "off",
-    "@masknet/type/no-instanceof-wrapper": "error",
     "@masknet/type/no-number-constructor": "error",
     "@masknet/type/no-wrapper-type-reference": "error",
     "@masknet/type/prefer-return-type-annotation": "warn",
@@ -121,8 +119,6 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
   Disallow empty {array,object} literal
 - [type/no-force-cast-via-top-type][type$no_force_cast_via_top_type] :white_check_mark:\
   Disallowing cast a type `T` to unrelated or incompatible type `Q` via `T as any as Q`
-- [type/no-instanceof-wrapper][type$no_instanceof_wrapper] :white_check_mark: :wrench:\
-  Disallow `instanceof` for wrapper objects
 - [type/no-number-constructor][type$no_number_constructor] :white_check_mark:\
   Disallow use `Number` constructor
 - [type/no-wrapper-type-reference][type$no_wrapper_type_reference] :white_check_mark: :wrench:\
@@ -156,7 +152,7 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
 - [prefer-default-export][prefer_default_export] :white_check_mark: :gear:\
   Enforce default export location at top or bottom
 - [prefer-defer-import][prefer_defer_import] :wrench: :gear:\
-  Prefer defer import a module. See <https://github.com/tc39/proposal-defer-import-eval> and <https://github.com/webpack/webpack/pull/16567/>.
+  Prefer defer import a module.
 - [prefer-early-return][prefer_early_return] :white_check_mark: :wrench: :gear:\
   Prefer early returns over full-body conditional wrapping in function declarations
 - [prefer-fetch][prefer_fetch] :white_check_mark:\
@@ -183,7 +179,6 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
 [type$no_const_enum]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-const-enum
 [type$no_empty_literal]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-empty-literal
 [type$no_force_cast_via_top_type]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-force-cast-via-top-type
-[type$no_instanceof_wrapper]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-instanceof-wrapper
 [type$no_number_constructor]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-number-constructor
 [type$no_wrapper_type_reference]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/no-wrapper-type-reference
 [type$prefer_return_type_annotation]: https://dimensiondev.github.io/eslint-plugin/src/rules/type/prefer-return-type-annotation

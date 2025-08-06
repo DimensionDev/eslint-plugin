@@ -1,5 +1,5 @@
-import { createRule } from '../../rule.js'
-import { getFixer, makeProgramListener } from './specific-set.js'
+import { createRule } from '../../rule.ts'
+import { getFixer, makeProgramListener } from './specific-set.ts'
 
 // Generated using
 // https://github.com/hediet/vscode-unicode-data
@@ -31,6 +31,7 @@ export default createRule({
       illegal: 'Illegal character detected',
     },
   },
+  defaultOptions: [],
   create(context) {
     return makeProgramListener(INVISIBLE_PATTERN, (node) => {
       const matcher = new RegExp(INVISIBLE_PATTERN.source, 'gu')

@@ -1,21 +1,20 @@
 import { AST_NODE_TYPES } from '@typescript-eslint/types'
 import { dedent } from 'ts-dedent'
-import { runTest } from '../spec.js'
-import module from './no-single-return.js'
+import { tester } from '../spec.ts'
+import module from './no-single-return.ts'
 
-runTest({
-  module,
-  *valid() {
-    yield dedent`
+tester.test(module, {
+  valid: [
+    dedent`
       function example() {
         if (1) return true
         if (2) return true
         return false;
       }
-    `
-  },
-  *invalid() {
-    yield {
+    `,
+  ],
+  invalid: [
+    {
       code: dedent`
         function example() {
           let out = false;
@@ -30,6 +29,6 @@ runTest({
         { messageId: 'invalid', type: AST_NODE_TYPES.AssignmentExpression },
         { messageId: 'invalid', type: AST_NODE_TYPES.ReturnStatement },
       ],
-    }
-  },
+    },
+  ],
 })

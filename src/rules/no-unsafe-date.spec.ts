@@ -1,22 +1,21 @@
 import { dedent } from 'ts-dedent'
-import { runTest } from '../spec.js'
-import module from './no-unsafe-date.js'
+import { tester } from '../spec.ts'
+import module from './no-unsafe-date.ts'
 
-runTest({
-  module,
-  *valid() {
-    yield dedent`
+tester.test(module, {
+  valid: [
+    dedent`
       declare const time: Date
       time.toISOString()
-    `
-  },
-  *invalid() {
-    yield {
+    `,
+  ],
+  invalid: [
+    {
       code: dedent`
         declare const time: Date
         time.setSeconds(1)
       `,
       errors: [{ messageId: 'disallow', data: { name: 'setSeconds' } }],
-    }
-  },
+    },
+  ],
 })

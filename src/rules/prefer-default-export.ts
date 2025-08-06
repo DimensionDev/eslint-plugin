@@ -1,6 +1,6 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { createRule } from '../rule.js'
-import { findLastIndex } from '../utils.js'
+import { createRule } from '../rule.ts'
+import { findLastIndex } from '../utils.ts'
 
 type Location = 'at-top' | 'at-bottom'
 
@@ -18,10 +18,8 @@ export default createRule({
       'at-bottom': 'Move default export to bottom',
     },
   },
-  resolveOptions(location?: Location) {
-    return location ?? 'at-bottom'
-  },
-  create(context, location: Location) {
+  defaultOptions: ['at-bottom'] as [Location],
+  create(context, [location]) {
     function onProgram(program: TSESTree.Program) {
       const index = program.body.findIndex(isDefaultExport)
       if (index === -1) return

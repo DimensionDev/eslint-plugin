@@ -1,5 +1,5 @@
-import { isIdentifierFunction, isIdentifierName } from '../../node.js'
-import { createRule } from '../../rule.js'
+import { isIdentifierFunction, isIdentifierName } from '../../node.ts'
+import { createRule } from '../../rule.ts'
 
 export default createRule({
   name: 'array/no-unneeded-flat-map',
@@ -15,6 +15,7 @@ export default createRule({
       invalid: 'Disallow simple `Array#flatMap()` in array',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       CallExpression(node) {

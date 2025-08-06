@@ -1,7 +1,7 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { isIdentifier, isMemberExpression } from '../node.js'
-import { createRule } from '../rule.js'
-import { wrap } from '../utils.js'
+import { isIdentifier, isMemberExpression } from '../node.ts'
+import { createRule } from '../rule.ts'
+import { wrap } from '../utils.ts'
 
 export default createRule({
   name: 'no-builtin-base64',
@@ -16,6 +16,7 @@ export default createRule({
       invalid: 'Disallow use {{name}}(...)',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       CallExpression(node) {

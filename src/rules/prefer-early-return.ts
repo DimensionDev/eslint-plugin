@@ -1,8 +1,8 @@
 import type { TSESTree } from '@typescript-eslint/types'
 import type { ReportFixFunction, RuleContext } from '@typescript-eslint/utils/ts-eslint'
-import { isFunctionLike } from '../node.js'
-import { createRule } from '../rule.js'
-import { wrap } from '../utils.js'
+import { isFunctionLike } from '../node.ts'
+import { createRule } from '../rule.ts'
+import { wrap } from '../utils.ts'
 
 export interface Options {
   maximumStatements: number
@@ -28,10 +28,8 @@ export default createRule({
       prefer: 'Prefer an early return to a conditionally-wrapped function body',
     },
   },
-  resolveOptions(options?: Options) {
-    return options?.maximumStatements ?? 1
-  },
-  create(context, maximumStatements: number) {
+  defaultOptions: [{ maximumStatements: 0 }] as [Options],
+  create(context, [{ maximumStatements }]) {
     function handle({ body, parent }: TSESTree.BlockStatement) {
       if (!isFunctionLike(parent)) return
       // cspell:words simplifiable

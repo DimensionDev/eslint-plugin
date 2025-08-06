@@ -1,5 +1,5 @@
-import { isMultiline } from '../../node.js'
-import { createRule } from '../../rule.js'
+import { isMultiline } from '../../node.ts'
+import { createRule } from '../../rule.ts'
 
 export default createRule({
   name: 'string/no-interpolation',
@@ -14,6 +14,7 @@ export default createRule({
       variable: 'Please extract this expression into a variable',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       TemplateLiteral(node) {

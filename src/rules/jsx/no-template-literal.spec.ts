@@ -1,27 +1,23 @@
-import { runTest } from '../../spec.js'
-import module from './no-template-literal.js'
+import { tester } from '../../spec.ts'
+import module from './no-template-literal.ts'
 
-runTest({
-  module,
-  *valid() {
-    yield '<a>123 456</a>'
-    yield '<a href={`Test`} />'
-  },
-  *invalid() {
-    yield {
+tester.test(module, {
+  valid: ['<a>123 456</a>', '<a href={`Test`} />'],
+  invalid: [
+    {
       code: '<a>123 {`4${5}6`} 789</a>',
       output: '<a>123 4{5}6 789</a>',
       errors: [{ messageId: 'invalid' }],
-    }
-    yield {
+    },
+    {
       code: '<a>{`123`} {`456`}</a>',
       output: '<a>123 456</a>',
       errors: [{ messageId: 'invalid' }, { messageId: 'invalid' }],
-    }
-    yield {
+    },
+    {
       code: '<a>{`123 456`}</a>',
       output: '<a>123 456</a>',
       errors: [{ messageId: 'invalid' }],
-    }
-  },
+    },
+  ],
 })

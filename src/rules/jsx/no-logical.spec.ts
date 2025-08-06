@@ -1,16 +1,11 @@
-import { runTest } from '../../spec.js'
-import module from './no-logical.js'
+import { tester } from '../../spec.ts'
+import module from './no-logical.ts'
 
-runTest({
-  module,
-  *valid(cast) {
-    yield cast({ code: '<a href />', options: [0] })
-    yield cast({ code: '<a href={1} />', options: [3] })
-    yield '<a>{1 || 2}</a>'
-  },
-  *invalid() {
-    yield { code: '<a href={1 ? 2 : 3} />', errors: [{ messageId: 'invalid' }] }
-    yield { code: '<a href={1 || 2 || 3} />', errors: [{ messageId: 'invalid' }] }
-    yield { code: '<a>{1 || 2 || 3}</a>', errors: [{ messageId: 'invalid' }] }
-  },
+tester.test(module, {
+  valid: [{ code: '<a href />', options: [0] }, { code: '<a href={1} />', options: [3] }, '<a>{1 || 2}</a>'],
+  invalid: [
+    { code: '<a href={1 ? 2 : 3} />', errors: [{ messageId: 'invalid' }] },
+    { code: '<a href={1 || 2 || 3} />', errors: [{ messageId: 'invalid' }] },
+    { code: '<a>{1 || 2 || 3}</a>', errors: [{ messageId: 'invalid' }] },
+  ],
 })

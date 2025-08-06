@@ -1,6 +1,6 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { isIdentifierName, isLiteralValue, isMemberExpression } from '../node.js'
-import { createRule } from '../rule.js'
+import { isIdentifierName, isLiteralValue, isMemberExpression } from '../node.ts'
+import { createRule } from '../rule.ts'
 
 const methodNames = [
   'setTimeout',
@@ -28,6 +28,7 @@ export default createRule({
       invalid: 'Disallow use timer function',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       CallExpression(node) {

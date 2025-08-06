@@ -3,7 +3,11 @@
   "compilerOptions": {
     "resolveJsonModule": true,
     "outDir": "./lib",
-    "rootDir": "./src"
+    "rootDir": "./src",
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    "module": "node20",
+    "moduleResolution": "node16"
   },
   "include": ["./src", "./src/**/*.json"]
 }

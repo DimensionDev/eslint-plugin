@@ -1,12 +1,11 @@
-import { runTest } from '../spec.js'
-import module from './no-timer.js'
+import { tester } from '../spec.ts'
+import module from './no-timer.ts'
 
-runTest({
-  module,
-  *invalid() {
-    yield { code: 'setTimeout()', errors: [{ messageId: 'invalid' }] }
-    yield { code: 'window.setTimeout()', errors: [{ messageId: 'invalid' }] }
-    yield { code: 'window["setTimeout"]()', errors: [{ messageId: 'invalid' }] }
-    yield { code: 'process.nextTick()', errors: [{ messageId: 'invalid' }] }
-  },
+tester.test(module, {
+  invalid: [
+    { code: 'setTimeout()', errors: [{ messageId: 'invalid' }] },
+    { code: 'window.setTimeout()', errors: [{ messageId: 'invalid' }] },
+    { code: 'window["setTimeout"]()', errors: [{ messageId: 'invalid' }] },
+    { code: 'process.nextTick()', errors: [{ messageId: 'invalid' }] },
+  ],
 })

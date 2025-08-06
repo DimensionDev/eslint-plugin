@@ -1,5 +1,5 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { createRule } from '../../rule.js'
+import { createRule } from '../../rule.ts'
 
 export default createRule({
   name: 'string/no-data-url',
@@ -14,6 +14,7 @@ export default createRule({
       disallow: 'Disallow use Data URL',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       Literal(node) {

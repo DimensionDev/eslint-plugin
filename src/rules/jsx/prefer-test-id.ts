@@ -1,5 +1,5 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { createRule } from '../../rule.js'
+import { createRule } from '../../rule.ts'
 
 export interface Options {
   'id': string
@@ -10,7 +10,7 @@ export interface Options {
 
 const DEFAULT_ELEMENT_LIST = ['a', 'button', 'input', 'textarea']
 const DEFAULT_ATTRIBUTE_LIST = ['editable', 'onInput', 'onChange', 'onClick', 'onKeyDown', 'onKeyUp', 'onSubmit']
-const DEFAULT_IGNORE_ATTRIBUTE_LIST = ['hidden', 'disabled', 'readonly']
+const DEFAULT_IGNORE_ATTRIBUTE_LIST = ['disabled', 'readonly']
 
 export default createRule({
   name: 'jsx/prefer-test-id',
@@ -36,15 +36,15 @@ export default createRule({
       attribute: '<{{element}}> with an `{{name}}` handler must have a `{{id}}` attribute',
     },
   },
-  resolveOptions(options?: Partial<Options>): Options {
-    return {
-      'id': options?.id ?? 'data-test-id',
-      'elements': options?.elements ?? DEFAULT_ELEMENT_LIST,
-      'attributes': options?.attributes ?? DEFAULT_ATTRIBUTE_LIST,
-      'ignore-attributes': options?.['ignore-attributes'] ?? DEFAULT_IGNORE_ATTRIBUTE_LIST,
-    }
-  },
-  create(context, options: Options) {
+  defaultOptions: [
+    {
+      'id': 'data-test-id',
+      'elements': DEFAULT_ELEMENT_LIST,
+      'attributes': DEFAULT_ATTRIBUTE_LIST,
+      'ignore-attributes': DEFAULT_IGNORE_ATTRIBUTE_LIST,
+    },
+  ],
+  create(context, [options]) {
     const source = context.sourceCode
     return {
       JSXOpeningElement(node) {

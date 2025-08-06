@@ -1,9 +1,9 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { createRule } from '../rule.js'
+import { createRule } from '../rule.ts'
 
 export interface Options {
-  'variable': boolean
-  'side-effect': boolean
+  'variable'?: boolean
+  'side-effect'?: boolean
 }
 
 export default createRule({
@@ -28,13 +28,8 @@ export default createRule({
       'side-effect': 'Side effects in top-level are not allowed.',
     },
   },
-  resolveOptions(options?: Partial<Options>): Options {
-    return {
-      'variable': options?.variable ?? true,
-      'side-effect': options?.['side-effect'] ?? true,
-    }
-  },
-  create(context, options: Options) {
+  defaultOptions: [{ 'variable': true, 'side-effect': true } as Options],
+  create(context, [options]) {
     const handleVariable = options.variable
       ? (node: TSESTree.VariableDeclaration) => {
           if (node.kind === 'const') return

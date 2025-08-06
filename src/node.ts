@@ -1,5 +1,5 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import type { Predicate } from './utils.js'
+import type { Predicate } from './utils.ts'
 
 export function closest<T extends TSESTree.Node>(node: TSESTree.Node | undefined, type: string): T | undefined
 export function closest<T extends TSESTree.Node>(

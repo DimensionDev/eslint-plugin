@@ -1,20 +1,10 @@
-import { runTest } from '../../spec.js'
-import module from './no-data-url.js'
+import { tester } from '../../spec.ts'
+import module from './no-data-url.ts'
 
-runTest({
-  module,
-  *invalid() {
-    yield {
-      code: '<a href="data:" />',
-      errors: [{ messageId: 'disallow' }],
-    }
-    yield {
-      code: '"data:"',
-      errors: [{ messageId: 'disallow' }],
-    }
-    yield {
-      code: '`data:`',
-      errors: [{ messageId: 'disallow' }],
-    }
-  },
+tester.test(module, {
+  invalid: [
+    { code: '<a href="data:" />', errors: [{ messageId: 'disallow' }] },
+    { code: '"data:"', errors: [{ messageId: 'disallow' }] },
+    { code: '`data:`', errors: [{ messageId: 'disallow' }] },
+  ],
 })

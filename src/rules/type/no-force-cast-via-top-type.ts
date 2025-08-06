@@ -1,5 +1,5 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { createRule } from '../../rule.js'
+import { createRule } from '../../rule.ts'
 
 export default createRule({
   name: 'type/no-force-cast-via-top-type',
@@ -14,6 +14,7 @@ export default createRule({
       invalid: "Don't cast this expression to another type by `as {{type}} as T`",
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       TSAsExpression(node) {

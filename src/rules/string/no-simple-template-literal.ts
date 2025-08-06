@@ -1,8 +1,8 @@
 import type { TSESTree } from '@typescript-eslint/types'
 import type { ReportFixFunction, SourceCode } from '@typescript-eslint/utils/ts-eslint'
-import { closest, isMultiline } from '../../node.js'
-import { createRule } from '../../rule.js'
-import { quote } from '../../utils.js'
+import { closest, isMultiline } from '../../node.ts'
+import { createRule } from '../../rule.ts'
+import { quote } from '../../utils.ts'
 
 // cspell:ignore quasis
 
@@ -20,6 +20,7 @@ export default createRule({
       invalid: 'Disallow simple template-literal',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       TemplateLiteral(node) {

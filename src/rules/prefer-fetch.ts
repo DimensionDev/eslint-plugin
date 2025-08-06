@@ -1,6 +1,6 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { isIdentifierName, isLiteralValue, isMemberExpression } from '../node.js'
-import { createRule } from '../rule.js'
+import { isIdentifierName, isLiteralValue, isMemberExpression } from '../node.ts'
+import { createRule } from '../rule.ts'
 
 export default createRule({
   name: 'prefer-fetch',
@@ -15,6 +15,7 @@ export default createRule({
       callee: "Should use 'fetch' instead",
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       ImportDeclaration(node) {

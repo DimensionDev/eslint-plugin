@@ -1,21 +1,20 @@
 import { dedent } from 'ts-dedent'
-import { runTest } from '../../spec.js'
-import module from './no-unneeded-to-string.js'
+import { tester } from '../../spec.ts'
+import module from './no-unneeded-to-string.ts'
 
-runTest({
-  module,
-  *invalid() {
-    yield {
+tester.test(module, {
+  invalid: [
+    {
       code: '"".toString()',
       output: '""',
       errors: [{ messageId: 'invalid' }],
-    }
-    yield {
+    },
+    {
       code: '``.toString()',
       output: '``',
       errors: [{ messageId: 'invalid' }],
-    }
-    yield {
+    },
+    {
       code: dedent`
         declare const input: String
         input.toString()
@@ -25,8 +24,8 @@ runTest({
         input
       `,
       errors: [{ messageId: 'invalid' }],
-    }
-    yield {
+    },
+    {
       code: dedent`
         declare const input: string
         input.toString()
@@ -36,6 +35,6 @@ runTest({
         input
       `,
       errors: [{ messageId: 'invalid' }],
-    }
-  },
+    },
+  ],
 })

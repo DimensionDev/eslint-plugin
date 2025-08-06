@@ -1,4 +1,4 @@
-import { createRule } from '../../rule.js'
+import { createRule } from '../../rule.ts'
 
 export default createRule({
   name: 'jsx/no-unneeded-nested',
@@ -14,6 +14,7 @@ export default createRule({
       invalid: 'Reduce unneeded JSXFragment nested',
     },
   },
+  defaultOptions: [],
   create(context) {
     const source = context.sourceCode
     return {

@@ -12,8 +12,6 @@
     "@masknet/type/no-const-enum": "error",
     "@masknet/type/no-empty-literal": "error",
     "@masknet/type/no-force-cast-via-top-type": "error",
-    "unicorn/no-instanceof-array": "off",
-    "@masknet/type/no-instanceof-wrapper": "error",
     "@masknet/type/no-number-constructor": "error",
     "@masknet/type/no-wrapper-type-reference": "error",
     "@masknet/unicode/no-bidi": "error",

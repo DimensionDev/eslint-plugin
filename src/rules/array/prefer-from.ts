@@ -1,5 +1,5 @@
-import { isIdentifierName } from '../../node.js'
-import { createRule } from '../../rule.js'
+import { isIdentifierName } from '../../node.ts'
+import { createRule } from '../../rule.ts'
 
 const types = [
   'Array',
@@ -30,6 +30,7 @@ export default createRule({
       instead: 'Use`{{type}}.from(...)` instead of `new {{type}}(...)`',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       NewExpression(node) {

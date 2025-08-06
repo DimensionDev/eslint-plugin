@@ -1,55 +1,48 @@
 import type { ParserServices, ParserServicesWithTypeInformation } from '@typescript-eslint/utils'
-import type { RuleContext, RuleListener, RuleMetaData } from '@typescript-eslint/utils/ts-eslint'
+import { applyDefault, type RuleWithMetaAndName } from '@typescript-eslint/utils/eslint-utils'
+import type { RuleContext, RuleListener, RuleModule } from '@typescript-eslint/utils/ts-eslint'
 
 const BASE_URL = 'https://dimensiondev.github.io/eslint-plugin/src/rules/'
 
-interface Metadata<TMessageIDs extends string, TOptions extends readonly unknown[]>
-  extends RuleMetaData<TMessageIDs, TOptions> {
-  hidden?: boolean
-}
-
-export interface RuleModule<
-  TResolvedOptions,
-  TOptions extends readonly unknown[],
-  TMessageIDs extends string,
-  TRuleListener extends RuleListener,
-> {
+export interface RuleModuleWithName<
+  MessageIds extends string = string,
+  Options extends readonly unknown[] = [],
+  Docs = unknown,
+  ExtendedRuleListener extends RuleListener = RuleListener,
+> extends RuleModule<MessageIds, Options, Docs, ExtendedRuleListener> {
   readonly name: string
-  readonly meta: Metadata<TMessageIDs, TOptions>
-  resolveOptions?(...options: TOptions): TResolvedOptions
-  create(context: Readonly<RuleContext<TMessageIDs, TOptions>>, options: TResolvedOptions): TRuleListener
 }
+export type RuleModuleWithNameDefault = RuleModuleWithName<string, [], DocType>
 
-export interface ExportedRuleModule<
-  TOptions extends readonly unknown[] = unknown[],
-  TMessageIDs extends string = string,
-  TRuleListener extends RuleListener = RuleListener,
-> {
-  readonly name: string
-  readonly meta: Metadata<TMessageIDs, TOptions>
-  create(context: Readonly<RuleContext<TMessageIDs, TOptions>>): TRuleListener
-}
 export type { RuleContext } from '@typescript-eslint/utils/ts-eslint'
+export type DocType = {
+  recommended?: 'recommended' | 'strict' | 'stylistic'
+  requiresTypeChecking?: boolean
+}
 
-export function createRule<
-  TResolvedOptions,
-  TOptions extends unknown[],
-  TMessageIDs extends string,
-  TRuleListener extends RuleListener = RuleListener,
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
->({ name, meta, create, resolveOptions }: RuleModule<TResolvedOptions, TOptions, TMessageIDs, TRuleListener>): any {
-  if (meta?.docs) {
-    meta.docs.url ??= new URL(name, BASE_URL).toString()
+export function createRule<Options extends readonly unknown[], MessageIds extends string, PluginDocs = unknown>({
+  create,
+  defaultOptions,
+  meta,
+  name,
+}: Readonly<RuleWithMetaAndName<Options, MessageIds, PluginDocs>>): RuleModuleWithName<
+  MessageIds,
+  Options,
+  PluginDocs
+> {
+  if (meta.docs && !meta.docs.url) {
+    meta.docs.url = new URL(name, BASE_URL).href
   }
-  return Object.freeze<ExportedRuleModule<TOptions, TMessageIDs, TRuleListener>>({
-    name,
-    meta,
-    create(context) {
-      const options = resolveOptions?.(...context.options) ?? (context.options[0] as TResolvedOptions)
-      const listener = Object.entries(create(context, options))
-      return Object.fromEntries(listener.filter((pair) => pair[1])) as TRuleListener
+  const rule = {
+    create(context: Readonly<RuleContext<MessageIds, Options>>): RuleListener {
+      const optionsWithDefault = applyDefault(defaultOptions, context.options)
+      return create(context, optionsWithDefault)
     },
-  })
+    defaultOptions,
+    meta,
+    name,
+  }
+  return rule
 }
 
 export function ensureParserWithTypeInformation(

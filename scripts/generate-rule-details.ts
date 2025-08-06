@@ -1,10 +1,10 @@
 import fs from 'node:fs/promises'
 import type { RuleMetaData } from '@typescript-eslint/utils/ts-eslint'
 import { compile as toJSONSchema, type JSONSchema } from 'json-schema-to-typescript'
-import type { ExportedRuleModule } from '../../rule.js'
-import { format, getRuleName, replace, RULE_PATH } from './utils.js'
+import type { DocType, RuleModuleWithNameDefault } from '../src/rule.ts'
+import { format, getRuleName, replace, RULE_PATH } from './utils.ts'
 
-export async function generateRuleDetails(modules: ExportedRuleModule[]) {
+export async function generateRuleDetails(modules: RuleModuleWithNameDefault[]) {
   for (const module of modules) {
     const documentationPath = new URL(`${module.name}.md`, RULE_PATH)
     if (await exists(documentationPath)) {
@@ -13,7 +13,7 @@ export async function generateRuleDetails(modules: ExportedRuleModule[]) {
   }
 }
 
-async function update(filePath: URL, { name, meta }: ExportedRuleModule) {
+async function update(filePath: URL, { name, meta }: RuleModuleWithNameDefault) {
   let content = await fs.readFile(filePath, 'utf8')
 
   content = replace(content, 'title', `# \`${getRuleName(name)}\`\n${meta.docs?.description}`)
@@ -33,7 +33,7 @@ async function exists(filePath: URL) {
   }
 }
 
-function makeAttributes(meta: RuleMetaData<string, unknown[]>) {
+function makeAttributes(meta: RuleMetaData<string, DocType>) {
   const attributes = {
     ':white_check_mark: Recommended': meta.docs?.recommended,
     ':wrench: Fixable': meta.fixable,
@@ -48,7 +48,7 @@ function makeAttributes(meta: RuleMetaData<string, unknown[]>) {
   return lines.join('\n')
 }
 
-async function makeOptions(meta: RuleMetaData<string, unknown[]>) {
+async function makeOptions(meta: RuleMetaData<string, DocType>) {
   const schema: JSONSchema = Array.isArray(meta.schema)
     ? { type: 'array', items: meta.schema, minItems: Number.POSITIVE_INFINITY }
     : meta.schema

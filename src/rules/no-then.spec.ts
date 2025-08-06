@@ -1,17 +1,12 @@
-import { runTest } from '../spec.js'
-import module from './no-then.js'
+import { tester } from '../spec.ts'
+import module from './no-then.ts'
 
-runTest({
-  module,
-  *valid() {
-    yield 'promise.then'
-    yield 'promise.then()'
-    yield 'promise.then(resolver, rejecter)'
-  },
-  *invalid() {
-    yield {
+tester.test(module, {
+  valid: ['promise.then', 'promise.then()', 'promise.then(resolver, rejecter)'],
+  invalid: [
+    {
       code: 'promise.then(() => 1, () => new Error())',
       errors: [{ messageId: 'invalid' }],
-    }
-  },
+    },
+  ],
 })

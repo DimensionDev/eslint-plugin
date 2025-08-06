@@ -1,7 +1,7 @@
 import type { TSESTree } from '@typescript-eslint/types'
 import type { RuleContext } from '@typescript-eslint/utils/ts-eslint'
-import { isFunctionLike, isIdentifier, isSameIdentifier } from '../node.js'
-import { createRule } from '../rule.js'
+import { isFunctionLike, isIdentifier, isSameIdentifier } from '../node.ts'
+import { createRule } from '../rule.ts'
 
 export default createRule({
   name: 'no-single-return',
@@ -16,6 +16,7 @@ export default createRule({
       invalid: 'Disallow Single Return',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       BlockStatement({ parent, body }) {

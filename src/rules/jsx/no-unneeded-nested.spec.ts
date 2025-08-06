@@ -1,10 +1,9 @@
-import { runTest } from '../../spec.js'
-import module from './no-unneeded-nested.js'
+import { tester } from '../../spec.ts'
+import module from './no-unneeded-nested.ts'
 
-runTest({
-  module,
-  *invalid() {
-    yield { code: '<>123</>', output: '123', errors: [{ messageId: 'invalid' }] }
-    yield { code: '<>{}</>', errors: [{ messageId: 'invalid' }] }
-  },
+tester.test(module, {
+  invalid: [
+    { code: '<>123</>', output: '123', errors: [{ messageId: 'invalid' }] },
+    { code: '<>{}</>', errors: [{ messageId: 'invalid' }] },
+  ],
 })

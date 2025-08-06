@@ -1,7 +1,7 @@
 import type { Scope } from '@typescript-eslint/utils/ts-eslint'
-import type { TSESTree } from '@typescript-eslint/types'
-import { isIdentifier, isMemberExpression } from '../../node.js'
-import { createRule } from '../../rule.js'
+import { AST_NODE_TYPES, type TSESTree } from '@typescript-eslint/types'
+import { isIdentifier, isMemberExpression } from '../../node.ts'
+import { createRule } from '../../rule.ts'
 
 const CLASS_NAMES = new Set(['PureComponent', 'Component'])
 const EXEMPT_FIELDS = new Set(['getDerivedStateFromError'])
@@ -19,6 +19,7 @@ export default createRule({
       invalid: 'Disallow React Class Component',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       ImportDeclaration(node) {
@@ -66,7 +67,10 @@ function isExempt({ body }: TSESTree.ClassBody): boolean {
 function isDefinitionGood(variable: Scope.Variable | null) {
   return variable?.defs.every(({ node }) => {
     if (node.type === 'ImportDefaultSpecifier') return true
-    if (node.type === 'ImportSpecifier') return CLASS_NAMES.has(node.imported.name)
+    if (node.type === 'ImportSpecifier')
+      return CLASS_NAMES.has(
+        node.imported.type === AST_NODE_TYPES.Identifier ? node.imported.name : node.imported.value,
+      )
     return false
   })
 }

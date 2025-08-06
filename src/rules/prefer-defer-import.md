@@ -2,7 +2,7 @@
 
 # `@masknet/prefer-defer-import`
 
-Prefer defer import a module. See <https://github.com/tc39/proposal-defer-import-eval> and <https://github.com/webpack/webpack/pull/16567/>.
+Prefer defer import a module.
 
 <!-- end title -->
 
@@ -22,14 +22,12 @@ export type Options = [
        * @minItems 0
        */
       deferPackages?: string[]
-      syntax?: 'webpack-magic-comment'
     }
   | {
       /**
        * @minItems 0
        */
       eagerPackages?: string[]
-      syntax?: 'webpack-magic-comment'
     },
 ]
 ```
@@ -46,8 +44,8 @@ foo
 ### :white_check_mark: Correct
 
 ```ts
-import * as foo from /* webpackDefer: true */ 'bar'
-foo.foo
+import defer * as foo from "bar";
+foo.foo;
 ```
 
 ## Attributes

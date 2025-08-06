@@ -1,12 +1,11 @@
-import { runTest } from '../spec.js'
-import module from './no-for-in.js'
+import { tester } from '../spec.ts'
+import module from './no-for-in.ts'
 
-runTest({
-  module,
-  *invalid() {
-    yield {
+tester.test(module, {
+  invalid: [
+    {
       code: 'for (element in object) {}',
       errors: [{ messageId: 'invalid' }],
-    }
-  },
+    },
+  ],
 })

@@ -1,10 +1,10 @@
 import fs from 'node:fs/promises'
 import { dedent } from 'ts-dedent'
 import ts from 'typescript'
-import type { ExportedRuleModule } from '../../rule.js'
-import { format, SOURCE_PATH, toReference } from './utils.js'
+import type { RuleModuleWithNameDefault } from '../src/rule.ts'
+import { format, SOURCE_PATH, toReference } from './utils.ts'
 
-export async function generateIndex(modules: ExportedRuleModule[], configNames: string[]) {
+export async function generateIndex(modules: RuleModuleWithNameDefault[], configNames: string[]) {
   const moduleNames = modules.map(({ name }) => name)
   const source = await makeSourceFile(configNames, moduleNames)
   const header = dedent`
@@ -18,7 +18,7 @@ export async function generateIndex(modules: ExportedRuleModule[], configNames: 
 
 async function makeSourceFile(configs: string[], modules: string[]) {
   const statements = ts.factory.createNodeArray([
-    ...makeImports(modules, (name) => `./rules/${name}.js`),
+    ...makeImports(modules, (name) => `./rules/${name}.ts`),
     makeExportVariable('rules', makeObjectLiteral(modules)),
     ...makeImports(configs, (name) => `./configs/${name}.json`),
     makeExportVariable('configs', makeObjectLiteral(configs)),
@@ -26,7 +26,7 @@ async function makeSourceFile(configs: string[], modules: string[]) {
       undefined,
       false,
       ts.factory.createNamespaceExport(ts.factory.createIdentifier('default')),
-      ts.factory.createStringLiteral('./index.js'),
+      ts.factory.createStringLiteral('./index.ts'),
     ),
   ])
   const source = ts.factory.createSourceFile(
@@ -42,7 +42,14 @@ function makeExportVariable(name: string, expression: ts.Expression) {
   return ts.factory.createVariableStatement(
     [ts.factory.createModifier(ts.SyntaxKind.ExportKeyword)],
     ts.factory.createVariableDeclarationList(
-      [ts.factory.createVariableDeclaration(ts.factory.createIdentifier(name), undefined, undefined, expression)],
+      [
+        ts.factory.createVariableDeclaration(
+          ts.factory.createIdentifier(name),
+          undefined,
+          ts.factory.createTypeReferenceNode('unknown'),
+          expression,
+        ),
+      ],
       ts.NodeFlags.Const,
     ),
   )
@@ -61,18 +68,20 @@ function makeObjectLiteral(names: string[]) {
 
 function createImportDeclaration(name: string, onFile: (name: string) => string) {
   const fileName = onFile(name)
-  if (fileName.endsWith('.json')) {
-    return ts.factory.createImportEqualsDeclaration(
-      undefined,
-      false,
-      toCamelCase(name),
-      ts.factory.createExternalModuleReference(ts.factory.createStringLiteral(fileName)),
-    )
-  }
   return ts.factory.createImportDeclaration(
     undefined,
-    ts.factory.createImportClause(false, toCamelCase(name), undefined),
+    ts.factory.createImportClause(undefined, toCamelCase(name), undefined),
     ts.factory.createStringLiteral(fileName),
+    fileName.endsWith('.json')
+      ? ts.factory.createImportAttributes(
+          ts.factory.createNodeArray([
+            ts.factory.createImportAttribute(
+              ts.factory.createIdentifier('type'),
+              ts.factory.createStringLiteral('json'),
+            ),
+          ]),
+        )
+      : undefined,
   )
 }
 

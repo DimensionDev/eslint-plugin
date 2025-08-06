@@ -1,43 +1,42 @@
 import { dedent } from 'ts-dedent'
-import { runTest } from '../../spec.js'
-import module from './no-class-component.js'
+import { tester } from '../../spec.ts'
+import module from './no-class-component.ts'
 
-runTest({
-  module,
-  *valid() {
-    yield dedent`
+tester.test(module, {
+  valid: [
+    dedent`
       class Component {}
       class Example extends Component {}
-    `
-    yield dedent`
+    `,
+    dedent`
       import { Component } from "react";
       class Example extends Component {
         static getDerivedStateFromError() {}
       }
-    `
-    yield dedent`
+    `,
+    dedent`
       import { Component } from "react";
       class Example extends Component {
         static getDerivedStateFromError = () => {}
       }
-    `
-    yield 'class Example extends Component {}'
-    yield 'class Example extends React.Component {}'
-  },
-  *invalid() {
-    yield {
+    `,
+    'class Example extends Component {}',
+    'class Example extends React.Component {}',
+  ],
+  invalid: [
+    {
       code: dedent`
         import { Component } from "react";
         class Example extends Component {}
       `,
       errors: [{ messageId: 'invalid' }],
-    }
-    yield {
+    },
+    {
       code: dedent`
         import React from "react";
         class Example extends React.Component {}
       `,
       errors: [{ messageId: 'invalid' }],
-    }
-  },
+    },
+  ],
 })

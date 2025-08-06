@@ -1,23 +1,22 @@
-import { runTest } from '../../spec.js'
-import module from './no-unneeded-flat-map.js'
+import { tester } from '../../spec.ts'
+import module from './no-unneeded-flat-map.ts'
 
-runTest({
-  module,
-  *invalid() {
-    yield {
+tester.test(module, {
+  invalid: [
+    {
       code: '[].flatMap((x) => x)',
       output: '[].flat()',
       errors: [{ messageId: 'invalid' }],
-    }
-    yield {
+    },
+    {
       code: '[].flatMap((x) => { return x })',
       output: '[].flat()',
       errors: [{ messageId: 'invalid' }],
-    }
-    yield {
+    },
+    {
       code: '[].flatMap(function (x) { return x })',
       output: '[].flat()',
       errors: [{ messageId: 'invalid' }],
-    }
-  },
+    },
+  ],
 })

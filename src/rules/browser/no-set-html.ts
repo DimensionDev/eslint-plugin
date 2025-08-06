@@ -1,5 +1,5 @@
-import { isIdentifierName, isMemberExpression } from '../../node.js'
-import { createRule } from '../../rule.js'
+import { isIdentifierName, isMemberExpression } from '../../node.ts'
+import { createRule } from '../../rule.ts'
 
 export default createRule({
   name: 'browser/no-set-html',
@@ -14,6 +14,7 @@ export default createRule({
       invalid: 'Disallow use `.{{property}}` inject HTML',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       AssignmentExpression(node) {

@@ -1,15 +1,10 @@
-import { runTest } from '../spec.js'
-import module from './prefer-timer-id.js'
+import { tester } from '../spec.ts'
+import module from './prefer-timer-id.ts'
 
-runTest({
-  module,
-  *valid() {
-    yield 'const timer = setTimeout(() => {}, 1000)'
-    yield 'setTimeout(() => {})'
-    yield 'setTimeout(() => {}, 0)'
-  },
-  *invalid() {
-    yield {
+tester.test(module, {
+  valid: ['const timer = setTimeout(() => {}, 1000)', 'setTimeout(() => {})', 'setTimeout(() => {}, 0)'],
+  invalid: [
+    {
       code: 'setTimeout(() => {}, 1000)',
       errors: [
         {
@@ -17,8 +12,8 @@ runTest({
           suggestions: [{ messageId: 'fix', output: 'const timer = setTimeout(() => {}, 1000)' }],
         },
       ],
-    }
-    yield {
+    },
+    {
       code: 'setInterval(() => {})',
       errors: [
         {
@@ -26,8 +21,8 @@ runTest({
           suggestions: [{ messageId: 'fix', output: 'const timer = setInterval(() => {})' }],
         },
       ],
-    }
-    yield {
+    },
+    {
       code: 'setInterval(() => {}, 0)',
       errors: [
         {
@@ -35,8 +30,8 @@ runTest({
           suggestions: [{ messageId: 'fix', output: 'const timer = setInterval(() => {}, 0)' }],
         },
       ],
-    }
-    yield {
+    },
+    {
       code: 'setInterval(() => {}, 1000)',
       errors: [
         {
@@ -44,6 +39,6 @@ runTest({
           suggestions: [{ messageId: 'fix', output: 'const timer = setInterval(() => {}, 1000)' }],
         },
       ],
-    }
-  },
+    },
+  ],
 })

@@ -1,11 +1,10 @@
 import { dedent } from 'ts-dedent'
-import { runTest } from '../../spec.js'
-import module from './no-bidi.js'
+import { tester } from '../../spec.ts'
+import module from './no-bidi.ts'
 
-runTest({
-  module,
-  *invalid() {
-    yield {
+tester.test(module, {
+  invalid: [
+    {
       code: dedent`
         const accessLevel = "user";
         if (accessLevel != "user\u202E \u2066// Check if admin\u2069 \u2066") {
@@ -24,6 +23,6 @@ runTest({
           data: { kind: 'code', text: '"user\\u202E \\u2066// Check if admin\\u2069 \\u2066"' },
         },
       ],
-    }
-  },
+    },
+  ],
 })

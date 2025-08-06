@@ -1,22 +1,18 @@
-import { runTest } from '../../spec.js'
-import module from './no-const-enum.js'
+import { tester } from '../../spec.ts'
+import module from './no-const-enum.ts'
 
-runTest({
-  module,
-  *valid() {
-    yield 'const enum Foo {}'
-    yield 'const enum Foo {}; export default () => { Foo }'
-  },
-  *invalid() {
-    yield {
+tester.test(module, {
+  valid: ['const enum Foo {}', 'const enum Foo {}; export default () => { Foo }'],
+  invalid: [
+    {
       code: 'export const enum Foo {}',
       errors: [{ messageId: 'invalid' }],
       output: 'export enum Foo {}',
-    }
-    yield {
+    },
+    {
       code: 'const enum Foo {}; export { Foo }',
       errors: [{ messageId: 'invalid' }],
       output: 'enum Foo {}; export { Foo }',
-    }
-  },
+    },
+  ],
 })

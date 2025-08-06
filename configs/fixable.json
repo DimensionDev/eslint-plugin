@@ -5,8 +5,6 @@
     "@masknet/array/prefer-from": "error",
     "@masknet/string/no-locale-case": "error",
     "@masknet/type/no-const-enum": "error",
-    "unicorn/no-instanceof-array": "off",
-    "@masknet/type/no-instanceof-wrapper": "error",
     "@masknet/type/no-wrapper-type-reference": "error",
     "@masknet/unicode/no-bidi": "error",
     "@masknet/unicode/no-invisible": "error",

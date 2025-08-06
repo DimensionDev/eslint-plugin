@@ -1,23 +1,14 @@
-import { runTest } from '../../spec.js'
-import module from './no-simple-template-literal.js'
+import { tester } from '../../spec.ts'
+import module from './no-simple-template-literal.ts'
 
-runTest({
-  module,
-  *invalid() {
-    yield {
-      code: '`example\\t`',
-      output: '"example\\t"',
-      errors: [{ messageId: 'invalid' }],
-    }
-    yield {
-      code: '`${example}`',
-      output: 'example',
-      errors: [{ messageId: 'invalid' }],
-    }
-    yield {
+tester.test(module, {
+  invalid: [
+    { code: '`example\\t`', output: '"example\\t"', errors: [{ messageId: 'invalid' }] },
+    { code: '`${example}`', output: 'example', errors: [{ messageId: 'invalid' }] },
+    {
       code: '({ [`example`]: null, foo: null })',
       output: '({ "example": null, foo: null })',
       errors: [{ messageId: 'invalid' }],
-    }
-  },
+    },
+  ],
 })

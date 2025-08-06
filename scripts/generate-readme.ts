@@ -1,28 +1,29 @@
 import fs from 'node:fs/promises'
 import type { Linter } from '@typescript-eslint/utils/ts-eslint'
 import { dedent } from 'ts-dedent'
-import type { ExportedRuleModule } from '../../rule.js'
-import { configs } from './generate-configs.js'
-import { format, replace, ROOT_PATH, toReference } from './utils.js'
+import type { RuleModuleWithNameDefault } from '../src/rule.ts'
+import { configs } from './generate-configs.ts'
+import { format, replace, ROOT_PATH, toReference } from './utils.ts'
 
-export async function generateREADME(modules: ExportedRuleModule[]) {
+export async function generateREADME(modules: RuleModuleWithNameDefault[]) {
   const filePath = new URL('README.md', ROOT_PATH)
   let content = await fs.readFile(filePath, 'utf8')
-  modules = modules.filter(({ meta }) => meta.hidden !== true)
   content = replace(content, 'example configure', makeExampleConfigure(modules))
   content = replace(content, 'rule list', makeRuleList(modules))
   const formatted = await format(content, 'markdown')
   await fs.writeFile(filePath, formatted, 'utf8')
 }
 
-function makeExampleConfigure(modules: ExportedRuleModule[]) {
-  const config: Linter.Config = configs.all(modules)
-  config.$schema = 'https://dimensiondev.github.io/eslint-plugin/src/schema.json'
+function makeExampleConfigure(modules: RuleModuleWithNameDefault[]) {
+  const config: Linter.ConfigType = configs.all(modules)
+  Object.assign(config, {
+    $schema: 'https://dimensiondev.github.io/eslint-plugin/src/schema.json',
+  })
   return '```json\n' + JSON.stringify(config) + '\n```'
 }
 
-function makeRuleList(modules: ExportedRuleModule[]) {
-  const makeRow = ({ name, meta }: ExportedRuleModule) => {
+function makeRuleList(modules: RuleModuleWithNameDefault[]) {
+  const makeRow = ({ name, meta }: RuleModuleWithNameDefault) => {
     const flags = toEmojiSymbols({
       ':white_check_mark:': meta.docs?.recommended,
       ':wrench:': meta.fixable,
@@ -35,7 +36,7 @@ function makeRuleList(modules: ExportedRuleModule[]) {
         ${meta.docs?.description}
     `
   }
-  const makeLink = ({ name, meta }: ExportedRuleModule) => {
+  const makeLink = ({ name, meta }: RuleModuleWithNameDefault) => {
     return `[${toReference(name)}]: ${meta.docs?.url}`
   }
   const lines = [...modules.map(makeRow), '', ...modules.map(makeLink)]

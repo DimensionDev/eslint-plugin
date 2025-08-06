@@ -1,20 +1,16 @@
-import { runTest } from '../../spec.js'
-import module from './no-empty-literal.js'
+import { tester } from '../../spec.ts'
+import module from './no-empty-literal.ts'
 
-runTest({
-  module,
-  *valid() {
-    yield 'const foo = [bar]'
-    yield 'const foo = { bar }'
-  },
-  *invalid() {
-    yield {
+tester.test(module, {
+  valid: ['const foo = [bar]', 'const foo = { bar }'],
+  invalid: [
+    {
       code: 'const foo = []',
       errors: [{ messageId: 'invalid', data: { type: 'array' } }],
-    }
-    yield {
+    },
+    {
       code: 'const foo = {}',
       errors: [{ messageId: 'invalid', data: { type: 'object' } }],
-    }
-  },
+    },
+  ],
 })

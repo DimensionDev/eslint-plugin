@@ -1,10 +1,9 @@
-#!npx ts-node
-import { generateConfigs, getConfigNames } from './generate-configs.js'
-import { generateIndex } from './generate-index.js'
-import { generateREADME } from './generate-readme.js'
-import { generateRuleDetails } from './generate-rule-details.js'
-import { generateSchema } from './generate-schema.js'
-import { getRuleModules } from './utils.js'
+import { generateConfigs, getConfigNames } from './generate-configs.ts'
+import { generateIndex } from './generate-index.ts'
+import { generateREADME } from './generate-readme.ts'
+import { generateRuleDetails } from './generate-rule-details.ts'
+import { generateSchema } from './generate-schema.ts'
+import { getRuleModules } from './utils.ts'
 
 const rules = await time('load rules', getRuleModules)
 const configNames = getConfigNames()

@@ -1,19 +1,18 @@
-import { runTest } from '../spec.js'
-import module from './prefer-early-return.js'
+import { tester } from '../spec.ts'
+import module from './prefer-early-return.ts'
 
-runTest({
-  module,
-  *invalid(cast) {
-    yield cast({
+tester.test(module, {
+  invalid: [
+    {
       code: 'function foo() { if (foo) bar(); }',
       output: 'function foo() { if (!(foo)) return;bar(); }',
       options: [{ maximumStatements: 0 }],
       errors: [{ messageId: 'prefer' }],
-    })
-    yield {
+    },
+    {
       code: 'function foo() { if (foo) { bar(); baz(); } }',
       output: 'function foo() { if (!(foo)) return; bar(); baz();  }',
       errors: [{ messageId: 'prefer' }],
-    }
-  },
+    },
+  ],
 })

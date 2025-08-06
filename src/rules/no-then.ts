@@ -1,6 +1,6 @@
 import type { TSESTree } from '@typescript-eslint/types'
-import { isFunctionLike, isIdentifierName, isLiteralValue, isMemberExpression } from '../node.js'
-import { createRule } from '../rule.js'
+import { isFunctionLike, isIdentifierName, isLiteralValue, isMemberExpression } from '../node.ts'
+import { createRule } from '../rule.ts'
 
 export default createRule({
   name: 'no-then',
@@ -15,6 +15,7 @@ export default createRule({
       invalid: 'Found `then` usage. You should usually use async / await instead.',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       CallExpression(node) {

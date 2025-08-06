@@ -1,4 +1,4 @@
-import { createRule } from '../../rule.js'
+import { createRule } from '../../rule.ts'
 
 const PRIMITIVE_TYPES = new Set(['BigInt', 'Boolean', 'Number', 'String', 'Symbol'])
 
@@ -16,6 +16,7 @@ export default createRule({
       instead: 'Use {{name}} instead',
     },
   },
+  defaultOptions: [],
   create(context) {
     return {
       TSTypeReference(node) {
