@@ -16,7 +16,7 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "24"
       - run: pnpx prettier --check src scripts configs
   markdownlint:
     runs-on: ubuntu-latest
@@ -25,7 +25,7 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "24"
       - run: pnpx markdownlint-cli .
   spellcheck:
     runs-on: ubuntu-latest
@@ -34,7 +34,7 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "24"
       - run: pnpx cspell lint --relative --no-progress '**'
   test:
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
       - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "24"
           cache: "pnpm"
       - run: pnpm install
       - run: pnpm run lint
