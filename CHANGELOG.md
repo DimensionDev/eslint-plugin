@@ -7,10 +7,11 @@
 - c737772: Bump Node.js version requirement to 22
 - c737772: Bump eslint version requirement to 9
 - c737772: prefer-defer-import rule drops the webpack magic comment syntax and adopts the native syntax
+- c737772: Remove rule `type/no-instanceof-wrapper`, use [`unicorn/no-instanceof-array`](https://www.npmjs.com/package/eslint-plugin-unicorn) instead. 
 
 ### Patch Changes
 
-- c737772: Support string as import name
+- c737772: Support `import { "string" as name } from '...'` syntax
 
 ## 0.3.0
 
