@@ -20,6 +20,9 @@ importers:
       '@masknet/config':
         specifier: ^0.2.1
         version: 0.2.1
+      '@types/node':
+        specifier: ^24.10.0
+        version: 24.10.0
       '@typescript-eslint/parser':
         specifier: ^8.46.3
         version: 8.46.3(eslint@9.39.1(jiti@2.6.1))(typescript@5.9.3)
