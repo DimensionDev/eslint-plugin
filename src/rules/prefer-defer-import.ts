@@ -1,6 +1,5 @@
 import type { TSESTree } from '@typescript-eslint/types'
 import type { ReportFixFunction, RuleContext, RuleFixer, SourceCode } from '@typescript-eslint/utils/ts-eslint'
-import { AST_NODE_TYPES } from '@typescript-eslint/types'
 import { createRule } from '../rule.ts'
 import { SyntaxKind } from 'typescript'
 
@@ -70,20 +69,16 @@ function needFix(
   options: Options,
 ) {
   if (!node.source) return false
-  if (node.type === AST_NODE_TYPES.ImportDeclaration && (node.importKind === 'type' || node.specifiers.length === 0))
-    return false
+  if (node.type === 'ImportDeclaration' && (node.importKind === 'type' || node.specifiers.length === 0)) return false
   const [char] = node.source.value
   // nodejs import map, relative url, absolute url
   if (char === '#' || char === '.' || char === '/') return false
-  if (
-    node.type === AST_NODE_TYPES.ExportNamedDeclaration &&
-    (node.exportKind === 'type' || node.specifiers.length === 0)
-  )
+  if (node.type === 'ExportNamedDeclaration' && (node.exportKind === 'type' || node.specifiers.length === 0))
     return false
   if (options.deferPackages && !options.deferPackages.includes(node.source.value)) return false
   if (options.eagerPackages?.includes(node.source.value)) return false
 
-  if (node.type === AST_NODE_TYPES.ImportDeclaration) {
+  if (node.type === 'ImportDeclaration') {
     // TODO: https://github.com/typescript-eslint/typescript-eslint/issues/11389
     // typescript-eslint does not provide phaseModifier yet.
     const tsNode = code.parserServices?.esTreeNodeToTSNodeMap?.get(node)
@@ -103,29 +98,26 @@ function makeFixer(
   context: Readonly<RuleContext<'prefer', readonly [options?: Options | undefined]>>,
   node: TSESTree.ImportDeclaration | TSESTree.ExportAllDeclaration | TSESTree.ExportNamedDeclaration,
 ): ReportFixFunction | null {
-  if (node.type === AST_NODE_TYPES.ExportNamedDeclaration || !node.source) return null
+  if (node.type === 'ExportNamedDeclaration' || !node.source) return null
   if (
     context.sourceCode
       .getDeclaredVariables(node)
-      .some((x) => x.references.some((x) => x.identifier.parent?.type === AST_NODE_TYPES.ExportSpecifier))
+      .some((x) => x.references.some((x) => x.identifier.parent?.type === 'ExportSpecifier'))
   )
     return null
 
   return function* (fixer) {
-    if (node.type !== AST_NODE_TYPES.ImportDeclaration) return
+    if (node.type !== 'ImportDeclaration') return
 
     // reuse the name from the original import if possible
     const suggestedName =
       (
-        node.specifiers.find((x) => x.type === AST_NODE_TYPES.ImportNamespaceSpecifier) as
+        node.specifiers.find((x) => x.type === 'ImportNamespaceSpecifier') as
           | TSESTree.ImportNamespaceSpecifier
           | undefined
       )?.local.name ??
-      (
-        node.specifiers.find((x) => x.type === AST_NODE_TYPES.ImportDefaultSpecifier) as
-          | TSESTree.ImportDefaultSpecifier
-          | undefined
-      )?.local.name ??
+      (node.specifiers.find((x) => x.type === 'ImportDefaultSpecifier') as TSESTree.ImportDefaultSpecifier | undefined)
+        ?.local.name ??
       node.source.value.replaceAll(/[^\dA-Za-z]/g, '_')
 
     {
@@ -136,9 +128,7 @@ function makeFixer(
         attributes += ` assert {`
         for (const assertion of node.attributes) {
           assertionList.push(
-            ` ${assertion.key.type === AST_NODE_TYPES.Literal ? assertion.key.raw : assertion.key.name}: ${
-              assertion.value.raw
-            }`,
+            ` ${assertion.key.type === 'Literal' ? assertion.key.raw : assertion.key.name}: ${assertion.value.raw}`,
           )
         }
         attributes += assertionList.join(', ') + ' }'
@@ -150,12 +140,12 @@ function makeFixer(
       const typeOnlyImportList: string[] = []
       let useTypeOnlyImports = false
       for (const spec of node.specifiers) {
-        if (spec.type === AST_NODE_TYPES.ImportSpecifier && spec.importKind === 'type') {
+        if (spec.type === 'ImportSpecifier' && spec.importKind === 'type') {
           useTypeOnlyImports = true
           typeOnlyImportList.push(
-            spec.imported.type === AST_NODE_TYPES.Identifier && spec.imported.name === spec.local.name
+            spec.imported.type === 'Identifier' && spec.imported.name === spec.local.name
               ? spec.imported.name
-              : `${spec.imported.type === AST_NODE_TYPES.Identifier ? spec.imported.name : JSON.stringify(spec.imported.value)} as ${spec.local.name}`,
+              : `${spec.imported.type === 'Identifier' ? spec.imported.name : JSON.stringify(spec.imported.value)} as ${spec.local.name}`,
           )
         }
       }
@@ -164,7 +154,7 @@ function makeFixer(
         imports += ' '
         imports += typeOnlyImports
       }
-      if (node.specifiers.every((x) => x.type === AST_NODE_TYPES.ImportSpecifier && x.importKind === 'type')) {
+      if (node.specifiers.every((x) => x.type === 'ImportSpecifier' && x.importKind === 'type')) {
         yield fixer.replaceText(node, typeOnlyImports)
         return
       }
@@ -172,8 +162,8 @@ function makeFixer(
     }
 
     for (const spec of node.specifiers) {
-      if (spec.type === AST_NODE_TYPES.ImportNamespaceSpecifier) continue
-      if (spec.type === AST_NODE_TYPES.ImportDefaultSpecifier) {
+      if (spec.type === 'ImportNamespaceSpecifier') continue
+      if (spec.type === 'ImportDefaultSpecifier') {
         yield* replaceAllReference(context, spec, `${suggestedName}.default`, fixer)
       } else {
         if (spec.importKind === 'type') continue
@@ -181,9 +171,9 @@ function makeFixer(
         yield* replaceAllReference(
           context,
           spec,
-          imported.type === AST_NODE_TYPES.Identifier && /^\p{ID_Start}\p{ID_Continue}{0,}$/u.test(imported.name)
+          imported.type === 'Identifier' && /^\p{ID_Start}\p{ID_Continue}{0,}$/u.test(imported.name)
             ? `${suggestedName}.${imported.name}`
-            : `${suggestedName}[${JSON.stringify(imported.type === AST_NODE_TYPES.Identifier ? imported.name : imported.value)}]`,
+            : `${suggestedName}[${JSON.stringify(imported.type === 'Identifier' ? imported.name : imported.value)}]`,
           fixer,
         )
       }
@@ -203,7 +193,7 @@ function* replaceAllReference(
 
   for (const reference of variables[0].references) {
     const id = reference.identifier
-    if (id.parent?.type === AST_NODE_TYPES.Property && id.parent.shorthand && id.parent.value === id) {
+    if (id.parent?.type === 'Property' && id.parent.shorthand && id.parent.value === id) {
       yield fixer.replaceText(id.parent, `${id.name}: ${replacement}`)
     } else {
       yield fixer.replaceText(id, replacement)

@@ -1,5 +1,5 @@
 import type { Scope } from '@typescript-eslint/utils/ts-eslint'
-import { AST_NODE_TYPES, type TSESTree } from '@typescript-eslint/types'
+import type { TSESTree } from '@typescript-eslint/types'
 import { isIdentifier, isMemberExpression } from '../../node.ts'
 import { createRule } from '../../rule.ts'
 
@@ -68,9 +68,7 @@ function isDefinitionGood(variable: Scope.Variable | null) {
   return variable?.defs.every(({ node }) => {
     if (node.type === 'ImportDefaultSpecifier') return true
     if (node.type === 'ImportSpecifier')
-      return CLASS_NAMES.has(
-        node.imported.type === AST_NODE_TYPES.Identifier ? node.imported.name : node.imported.value,
-      )
+      return CLASS_NAMES.has(node.imported.type === 'Identifier' ? node.imported.name : node.imported.value)
     return false
   })
 }
