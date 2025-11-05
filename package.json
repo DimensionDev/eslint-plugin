@@ -2,7 +2,7 @@
   "name": "@masknet/eslint-plugin",
   "packageManager": "pnpm@10.14.0",
   "type": "module",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "eslint plugin for masknet",
   "publishConfig": {
     "access": "public"
