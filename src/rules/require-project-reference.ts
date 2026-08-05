@@ -53,7 +53,13 @@ export default createRule({
 
         if (DECLARATION_FILE.test(resolvedFileName)) {
           const redirect = getProjectReferenceRedirect(program, resolvedModule.resolvedFileName)
-          if (redirect && TYPESCRIPT_SOURCE_FILE.test(redirect.source)) return
+          if (
+            redirect &&
+            TYPESCRIPT_SOURCE_FILE.test(redirect.source) &&
+            isProjectReferenceSource(program, realpath(redirect.source))
+          ) {
+            return
+          }
         } else if (TYPESCRIPT_SOURCE_FILE.test(resolvedFileName)) {
           if (isProjectReferenceSource(program, resolvedFileName)) return
         } else {
