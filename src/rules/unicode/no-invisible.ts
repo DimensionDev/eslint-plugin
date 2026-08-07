@@ -31,7 +31,7 @@ export default createRule({
       illegal: 'Illegal character detected',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return makeProgramListener(INVISIBLE_PATTERN, (node) => {
       const matcher = new RegExp(INVISIBLE_PATTERN.source, 'gu')

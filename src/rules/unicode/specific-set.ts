@@ -34,8 +34,8 @@ export default createRule({
     messages: {
       illegal: 'Illegal character detected',
     },
+    defaultOptions: [{ pattern: BUILT_PATTERN.source, flags: 'u', only: undefined } as Options],
   },
-  defaultOptions: [{ pattern: BUILT_PATTERN.source, flags: 'u', only: undefined } as Options],
   create(context, [{ pattern, flags, only }]) {
     const regex = pattern ? new RegExp(pattern, flags) : BUILT_PATTERN
     return makeProgramListener(regex, (node, kind) => {

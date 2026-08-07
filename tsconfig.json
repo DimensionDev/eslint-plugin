@@ -7,7 +7,8 @@
     "allowImportingTsExtensions": true,
     "rewriteRelativeImportExtensions": true,
     "module": "node20",
-    "moduleResolution": "node16"
+    "moduleResolution": "node16",
+    "types": ["node"]
   },
   "include": ["./src", "./src/**/*.json"]
 }

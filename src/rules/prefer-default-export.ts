@@ -17,8 +17,8 @@ export default createRule({
       'at-top': 'Move default export to top',
       'at-bottom': 'Move default export to bottom',
     },
+    defaultOptions: ['at-bottom'] as [Location],
   },
-  defaultOptions: ['at-bottom'] as [Location],
   create(context, [location]) {
     function onProgram(program: TSESTree.Program) {
       const index = program.body.findIndex(isDefaultExport)

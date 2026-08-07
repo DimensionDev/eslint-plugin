@@ -27,8 +27,8 @@ export default createRule({
       'variable': 'Unexpected {{kind}} in top-level, use const.',
       'side-effect': 'Side effects in top-level are not allowed.',
     },
+    defaultOptions: [{ 'variable': true, 'side-effect': true } as Options],
   },
-  defaultOptions: [{ 'variable': true, 'side-effect': true } as Options],
   create(context, [options]) {
     const handleVariable = options.variable
       ? (node: TSESTree.VariableDeclaration) => {

@@ -17,7 +17,7 @@ export default createRule({
       instead: 'Use `.to{{name}}Case(...)` instead of `.toLocale{{name}}Case()`',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       CallExpression(node) {

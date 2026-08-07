@@ -13,7 +13,7 @@ export default createRule({
       invalid: 'Disallow use for-in',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       ForInStatement(node) {

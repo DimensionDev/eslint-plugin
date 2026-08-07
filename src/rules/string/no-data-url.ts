@@ -14,7 +14,7 @@ export default createRule({
       disallow: 'Disallow use Data URL',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       Literal(node) {
@@ -24,7 +24,7 @@ export default createRule({
         context.report({ node, messageId: 'disallow' })
       },
       TemplateElement(node) {
-        if (!isDataURL(node.value.cooked)) return
+        if (!isDataURL(node.value.cooked || '')) return
         context.report({ node, messageId: 'disallow' })
       },
     }

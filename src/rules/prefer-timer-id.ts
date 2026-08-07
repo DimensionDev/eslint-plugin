@@ -8,7 +8,7 @@ const methodNames = new Set([
   "setInterval",
   "requestAnimationFrame",
   "requestIdleCallback",
-]);
+])
 
 export default createRule({
   name: 'prefer-timer-id',
@@ -25,7 +25,7 @@ export default createRule({
     },
     hasSuggestions: true,
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       CallExpression(node) {

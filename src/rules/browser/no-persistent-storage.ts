@@ -16,7 +16,6 @@ export default createRule({
       invalid: 'Disallow use browser persistent storage',
     },
   },
-  defaultOptions: [],
   create(context) {
     const globalScope = getGlobalScope(context.sourceCode)
     return {
@@ -49,7 +48,7 @@ function* getDocumentCookieReferences(globalScope: Scope.Scope) {
     // prettier-ignore
     const parent = closest(reference.identifier, (node) => (node.type === "MemberExpression" &&
       node.property.type === "Identifier" &&
-      node.property.name === "cookie"));
+      node.property.name === "cookie"))
     if (parent) yield parent
   }
 }

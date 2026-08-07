@@ -15,7 +15,7 @@ export default createRule({
       callee: "Should use 'fetch' instead",
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       ImportDeclaration(node) {

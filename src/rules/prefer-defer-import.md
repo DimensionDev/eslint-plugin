@@ -17,18 +17,16 @@ Prefer defer import a module.
  * @minItems Infinity
  */
 export type Options = [
-  | {
-      /**
-       * @minItems 0
-       */
-      deferPackages?: string[]
-    }
-  | {
-      /**
-       * @minItems 0
-       */
-      eagerPackages?: string[]
-    },
+  {
+    /**
+     * @minItems 0
+     */
+    deferPackages?: string[]
+    /**
+     * @minItems 0
+     */
+    eagerPackages?: string[]
+  },
 ]
 ```
 
@@ -44,8 +42,8 @@ foo
 ### :white_check_mark: Correct
 
 ```ts
-import defer * as foo from "bar";
-foo.foo;
+import defer * as foo from 'bar'
+foo.foo
 ```
 
 ## Attributes

@@ -16,7 +16,7 @@ export default createRule({
       invalid: 'Disallow Single Return',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       BlockStatement({ parent, body }) {
@@ -31,7 +31,10 @@ export default createRule({
   },
 })
 
-function getSingleReturnVariable(context: Readonly<RuleContext<string, unknown[]>>, body: TSESTree.Statement[]) {
+function getSingleReturnVariable(
+  context: Readonly<RuleContext<string, readonly unknown[]>>,
+  body: TSESTree.Statement[],
+) {
   const exit = body.find(isReturnStatement)
   if (!exit) return
   const variableNode = body.find((node) => isVariableDeclaration(node, exit))

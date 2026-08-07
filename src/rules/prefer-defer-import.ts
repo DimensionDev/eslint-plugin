@@ -19,29 +19,18 @@ export default createRule({
     schema: [
       {
         type: 'object',
-        oneOf: [
-          {
-            type: 'object',
-            additionalProperties: false,
-            properties: {
-              deferPackages: { type: 'array', items: { type: 'string' }, minItems: 0 },
-            },
-          },
-          {
-            type: 'object',
-            additionalProperties: false,
-            properties: {
-              eagerPackages: { type: 'array', items: { type: 'string' }, minItems: 0 },
-            },
-          },
-        ],
+        additionalProperties: false,
+        properties: {
+          deferPackages: { type: 'array', items: { type: 'string' }, minItems: 0 },
+          eagerPackages: { type: 'array', items: { type: 'string' }, minItems: 0 },
+        },
       },
     ],
     messages: {
       prefer: 'Prefer import the package with defer syntax.',
     },
+    defaultOptions: [{} as Options],
   },
-  defaultOptions: [{ deferPackages: undefined, eagerPackages: undefined } as Options],
   create(context, [options]) {
     if (options.deferPackages === undefined && options.eagerPackages === undefined) {
       return {}
@@ -95,7 +84,7 @@ function needFix(
 }
 
 function makeFixer(
-  context: Readonly<RuleContext<'prefer', readonly [options?: Options | undefined]>>,
+  context: Readonly<RuleContext<'prefer', Options[]>>,
   node: TSESTree.ImportDeclaration | TSESTree.ExportAllDeclaration | TSESTree.ExportNamedDeclaration,
 ): ReportFixFunction | null {
   if (node.type === 'ExportNamedDeclaration' || !node.source) return null
@@ -113,8 +102,7 @@ function makeFixer(
     const suggestedName =
       (
         node.specifiers.find((x) => x.type === 'ImportNamespaceSpecifier') as
-          | TSESTree.ImportNamespaceSpecifier
-          | undefined
+          TSESTree.ImportNamespaceSpecifier | undefined
       )?.local.name ??
       (node.specifiers.find((x) => x.type === 'ImportDefaultSpecifier') as TSESTree.ImportDefaultSpecifier | undefined)
         ?.local.name ??
@@ -182,7 +170,7 @@ function makeFixer(
 }
 
 function* replaceAllReference(
-  context: Readonly<RuleContext<'prefer', readonly [options?: Options | undefined]>>,
+  context: Readonly<RuleContext<'prefer', Options[]>>,
   node: TSESTree.Node,
   replacement: string,
   fixer: RuleFixer,

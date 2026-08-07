@@ -16,7 +16,7 @@ export default createRule({
       invalid: 'Disallow use {{name}}(...)',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       CallExpression(node) {

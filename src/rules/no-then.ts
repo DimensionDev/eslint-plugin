@@ -15,7 +15,7 @@ export default createRule({
       invalid: 'Found `then` usage. You should usually use async / await instead.',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       CallExpression(node) {

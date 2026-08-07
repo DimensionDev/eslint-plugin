@@ -19,7 +19,7 @@ export default createRule({
       instead: 'Use `location.assign(...)` instead of `location.{{name}}`',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       AssignmentExpression(node) {

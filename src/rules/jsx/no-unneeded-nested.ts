@@ -14,7 +14,7 @@ export default createRule({
       invalid: 'Reduce unneeded JSXFragment nested',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     const source = context.sourceCode
     return {

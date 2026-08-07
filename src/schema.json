@@ -310,30 +310,19 @@
                 { "$ref": "#/definitions/rule" },
                 {
                   "type": "object",
-                  "oneOf": [
-                    {
-                      "type": "object",
-                      "additionalProperties": false,
-                      "properties": {
-                        "deferPackages": {
-                          "type": "array",
-                          "items": { "type": "string" },
-                          "minItems": 0
-                        }
-                      }
+                  "additionalProperties": false,
+                  "properties": {
+                    "deferPackages": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "minItems": 0
                     },
-                    {
-                      "type": "object",
-                      "additionalProperties": false,
-                      "properties": {
-                        "eagerPackages": {
-                          "type": "array",
-                          "items": { "type": "string" },
-                          "minItems": 0
-                        }
-                      }
+                    "eagerPackages": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "minItems": 0
                     }
-                  ]
+                  }
                 }
               ],
               "minItems": 2

@@ -17,7 +17,7 @@ export default createRule({
       invalid: 'Disallow use `.toString()` in string',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     ensureParserWithTypeInformation(context.sourceCode.parserServices)
     const { program, esTreeNodeToTSNodeMap } = context.sourceCode.parserServices

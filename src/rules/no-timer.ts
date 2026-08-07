@@ -28,7 +28,7 @@ export default createRule({
       invalid: 'Disallow use timer function',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       CallExpression(node) {

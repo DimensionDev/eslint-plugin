@@ -27,8 +27,8 @@ export default createRule({
     messages: {
       prefer: 'Prefer an early return to a conditionally-wrapped function body',
     },
+    defaultOptions: [{ maximumStatements: 0 }] as [Options],
   },
-  defaultOptions: [{ maximumStatements: 0 }] as [Options],
   create(context, [{ maximumStatements }]) {
     function handle({ body, parent }: TSESTree.BlockStatement) {
       if (!isFunctionLike(parent)) return

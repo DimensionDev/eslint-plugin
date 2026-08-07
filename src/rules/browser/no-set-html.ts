@@ -14,7 +14,7 @@ export default createRule({
       invalid: 'Disallow use `.{{property}}` inject HTML',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       AssignmentExpression(node) {

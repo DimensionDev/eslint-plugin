@@ -20,7 +20,7 @@ export default createRule({
       invalid: 'Disallow simple template-literal',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       TemplateLiteral(node) {
@@ -35,7 +35,7 @@ export default createRule({
 function getFixer(source: Readonly<SourceCode>, node: TSESTree.TemplateLiteral): ReportFixFunction | undefined {
   if (isNoTemplateExpression(node)) {
     return (fixer) => {
-      const key = quote(node.quasis[0].value.cooked)
+      const key = quote(node.quasis[0].value.cooked || '')
       const property = closest<TSESTree.Property>(
         node,
         (property) => property.type === 'Property' && property.key === node,

@@ -16,7 +16,7 @@ export default createRule({
       instead: 'Use {{name}} instead',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       TSTypeReference(node) {

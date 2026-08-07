@@ -30,7 +30,6 @@ export default createRule({
       instead: 'Use`{{type}}.from(...)` instead of `new {{type}}(...)`',
     },
   },
-  defaultOptions: [],
   create(context) {
     return {
       NewExpression(node) {

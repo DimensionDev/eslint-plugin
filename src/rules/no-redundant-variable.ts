@@ -18,7 +18,7 @@ export default createRule({
       invalid: 'Disallow Redundant Variable',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       BlockStatement({ body }) {

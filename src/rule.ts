@@ -22,7 +22,6 @@ export type DocType = {
 
 export function createRule<Options extends readonly unknown[], MessageIds extends string, PluginDocs = unknown>({
   create,
-  defaultOptions,
   meta,
   name,
 }: Readonly<RuleWithMetaAndName<Options, MessageIds, PluginDocs>>): RuleModuleWithName<
@@ -35,10 +34,9 @@ export function createRule<Options extends readonly unknown[], MessageIds extend
   }
   const rule = {
     create(context: Readonly<RuleContext<MessageIds, Options>>): RuleListener {
-      const optionsWithDefault = applyDefault(defaultOptions, context.options)
-      return create(context, optionsWithDefault)
+      const optionsWithDefault = applyDefault(meta.defaultOptions || [], context.options)
+      return create(context, optionsWithDefault as Readonly<Options>)
     },
-    defaultOptions,
     meta,
     name,
   }
@@ -61,6 +59,8 @@ function deepMerge(
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   second: any = {},
 ): Record<string, unknown> {
+  if (!first) return second
+  if (!second) return first
   // get the unique set of keys across both objects
   const keys = new Set([...Object.keys(first), ...Object.keys(second)])
 

@@ -35,15 +35,15 @@ export default createRule({
       element: '<{{element}}> elements must have a `{{id}}` attribute',
       attribute: '<{{element}}> with an `{{name}}` handler must have a `{{id}}` attribute',
     },
+    defaultOptions: [
+      {
+        'id': 'data-test-id',
+        'elements': DEFAULT_ELEMENT_LIST,
+        'attributes': DEFAULT_ATTRIBUTE_LIST,
+        'ignore-attributes': DEFAULT_IGNORE_ATTRIBUTE_LIST,
+      },
+    ],
   },
-  defaultOptions: [
-    {
-      'id': 'data-test-id',
-      'elements': DEFAULT_ELEMENT_LIST,
-      'attributes': DEFAULT_ATTRIBUTE_LIST,
-      'ignore-attributes': DEFAULT_IGNORE_ATTRIBUTE_LIST,
-    },
-  ],
   create(context, [options]) {
     const source = context.sourceCode
     return {

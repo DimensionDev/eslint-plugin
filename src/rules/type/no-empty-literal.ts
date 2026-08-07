@@ -26,8 +26,8 @@ export default createRule({
       invalid: 'Disallow empty {{ type }} literal',
       instead: '{{ message }}',
     },
+    defaultOptions: [{} as MessageOptions],
   },
-  defaultOptions: [{} as MessageOptions],
   create(context, [options]) {
     return {
       ArrayExpression(node) {

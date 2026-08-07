@@ -16,7 +16,7 @@ export default createRule({
       invalid: 'Default error object should not be used in this project',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     ensureParserWithTypeInformation(context.sourceCode.parserServices)
     const { esTreeNodeToTSNodeMap, program } = context.sourceCode.parserServices

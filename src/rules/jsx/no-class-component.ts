@@ -19,7 +19,7 @@ export default createRule({
       invalid: 'Disallow React Class Component',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       ImportDeclaration(node) {
@@ -61,7 +61,7 @@ function isExempt({ body }: TSESTree.ClassBody): boolean {
   return body.some((element) => ("key" in element &&
     element.static &&
     element.key.type === "Identifier" &&
-    EXEMPT_FIELDS.has(element.key.name)));
+    EXEMPT_FIELDS.has(element.key.name)))
 }
 
 function isDefinitionGood(variable: Scope.Variable | null) {

@@ -15,7 +15,7 @@ export default createRule({
       invalid: 'Disallow use `Number` constructor',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     function handle(node: TSESTree.NewExpression | TSESTree.CallExpression) {
       if (!isIdentifierName(node.callee, 'Number')) return

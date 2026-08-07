@@ -17,7 +17,7 @@ export default createRule({
       detected: 'Detected potential trojan source attack with unicode bidi introduced in this {{kind}}: {{text}}.',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return makeProgramListener(BIDI_PATTERN, (node, kind) => {
       const matcher = new RegExp(BIDI_PATTERN.source, 'gu')

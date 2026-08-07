@@ -13,7 +13,7 @@ export default createRule({
       invalid: 'Disallow use `dangerouslySetInnerHTML` jsx attribute',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       JSXAttribute(node) {

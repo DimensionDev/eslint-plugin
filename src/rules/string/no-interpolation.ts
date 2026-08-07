@@ -14,7 +14,7 @@ export default createRule({
       variable: 'Please extract this expression into a variable',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       TemplateLiteral(node) {

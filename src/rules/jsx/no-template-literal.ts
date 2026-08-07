@@ -16,7 +16,7 @@ export default createRule({
       invalid: 'Disallow use template-literal in JSX',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       JSXExpressionContainer(node) {

@@ -14,7 +14,7 @@ export default createRule({
       invalid: "Don't cast this expression to another type by `as {{type}} as T`",
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       TSAsExpression(node) {

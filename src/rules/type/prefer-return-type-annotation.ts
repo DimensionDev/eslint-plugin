@@ -18,7 +18,7 @@ export default createRule({
       'move-type': 'Move return type annotation to return type',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     const source = context.sourceCode
     return {

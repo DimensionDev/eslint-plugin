@@ -33,8 +33,8 @@ export default createRule({
     messages: {
       invalid: 'Limit the complexity of JSX logic expression',
     },
+    defaultOptions: [DEFAULT_LIMIT] as readonly [Options | number],
   },
-  defaultOptions: [DEFAULT_LIMIT] as readonly [Options | number],
   create(context, [options]: readonly [Options | number]) {
     function report(node: TSESTree.JSXExpressionContainer, limit: number) {
       const disallow = node.expression.type === 'ConditionalExpression' || getLogicalCount(node.expression) > limit

@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- 149da1c: Remove runtime depepdency of @typescript-eslint packages
+- 149da1c: Remove runtime dependency of @typescript-eslint packages
 
 ## 0.4.0
 

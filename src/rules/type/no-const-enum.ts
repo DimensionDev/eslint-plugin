@@ -15,7 +15,7 @@ export default createRule({
       invalid: 'Disallow use constants enumerate',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     return {
       TSEnumDeclaration(node) {

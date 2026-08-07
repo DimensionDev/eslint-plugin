@@ -29,7 +29,7 @@ export default createRule({
       disallow: 'Disallow use Date#{{name}}',
     },
   },
-  defaultOptions: [],
+
   create(context) {
     ensureParserWithTypeInformation(context.sourceCode.parserServices)
     const { program, esTreeNodeToTSNodeMap } = context.sourceCode.parserServices

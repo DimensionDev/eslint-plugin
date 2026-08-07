@@ -15,7 +15,6 @@ export default createRule({
       invalid: 'Disallow simple `Array#flatMap()` in array',
     },
   },
-  defaultOptions: [],
   create(context) {
     return {
       CallExpression(node) {
