@@ -1,5 +1,12 @@
 # @masknet/eslint-plugin
 
+## 0.5.1
+
+### Patch Changes
+
+- 047480b: fix: require-project-reference
+- 738809e: add ignore to require-project-reference
+
 ## 0.5.0
 
 ### Minor Changes
