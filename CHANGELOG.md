@@ -1,5 +1,11 @@
 # @masknet/eslint-plugin
 
+## 0.5.4
+
+### Patch Changes
+
+- d7d9eaf: fix relative import as imports alias ("#x")
+
 ## 0.5.3
 
 ### Patch Changes
