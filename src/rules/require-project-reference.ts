@@ -51,6 +51,8 @@ export default createRule({
         const resolvedFileName = realpath(resolvedModule.resolvedFileName)
         if (isInNodeModules(resolvedFileName)) return
 
+        if (isCurrentProjectSource(program, resolvedFileName)) return
+
         if (DECLARATION_FILE.test(resolvedFileName)) {
           const redirect = getProjectReferenceRedirect(program, resolvedModule.resolvedFileName)
           if (
@@ -74,6 +76,10 @@ export default createRule({
 
 function isPackageImport(specifier: string) {
   return !specifier.startsWith('.') && !specifier.startsWith('/') && !specifier.startsWith('node:')
+}
+
+function isCurrentProjectSource(program: ts.Program, fileName: string) {
+  return program.getRootFileNames().some((rootFile) => realpath(rootFile) === fileName)
 }
 
 function realpath(fileName: string) {

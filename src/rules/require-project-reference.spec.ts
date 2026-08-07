@@ -27,6 +27,10 @@ tester.test(module, {
       code: `import { data } from 'lib'`,
       options: [{ ignore: ['lib'] }],
     },
+    {
+      filename: `${fixture}missing/app/src/index.ts`,
+      code: `import { data } from '#services'`,
+    },
   ],
   invalid: [
     {
