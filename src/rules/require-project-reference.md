@@ -8,7 +8,7 @@ Require project references for local package imports
 
 ## Rule Details
 
-This rule detects local package imports that TypeScript resolves to a declaration file instead of the referenced project's source. Add the referenced project to the importing project's `tsconfig.json` `references`.
+This rule detects local package imports that TypeScript resolves to a local declaration or TypeScript source file. Add the referenced project to the importing project's `tsconfig.json` `references`.
 
 All referenced projects must enable both `declaration` and `declarationMap` so TypeScript can redirect navigation from emitted declarations to source files.
 

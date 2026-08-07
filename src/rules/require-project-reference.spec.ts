@@ -11,6 +11,10 @@ tester.test(module, {
       code: `import { data } from 'lib'`,
     },
     {
+      filename: `${fixture}referenced/app/src/index.ts`,
+      code: `import { data } from 'source-lib'`,
+    },
+    {
       filename: `${fixture}third-party/app/src/index.ts`,
       code: `import { data } from 'lib'`,
     },
@@ -28,6 +32,11 @@ tester.test(module, {
     {
       filename: `${fixture}missing/app/src/index.ts`,
       code: `import { data } from 'lib'`,
+      errors: [{ messageId: 'missingReference' }],
+    },
+    {
+      filename: `${fixture}missing/app/src/index.ts`,
+      code: `import { data } from 'source-lib'`,
       errors: [{ messageId: 'missingReference' }],
     },
   ],

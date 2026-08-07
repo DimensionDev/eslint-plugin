@@ -28,7 +28,7 @@ export default createRule({
     ],
     messages: {
       missingReference:
-        'This local package resolves to a declaration file. Add its project to this tsconfig.json references and enable declarationMap.',
+        'This local package is not covered by a project reference. Add its project to this tsconfig.json references and enable declarationMap.',
     },
     defaultOptions: [{ ignore: [] }] as [Options],
   },
@@ -46,13 +46,19 @@ export default createRule({
         const resolvedModule = getProgramNavigation(program).getResolvedModuleFromModuleSpecifier(
           moduleSpecifier as ts.StringLiteralLike,
         )?.resolvedModule
-        if (!resolvedModule || !DECLARATION_FILE.test(resolvedModule.resolvedFileName)) return
+        if (!resolvedModule) return
 
         const resolvedFileName = realpath(resolvedModule.resolvedFileName)
         if (isInNodeModules(resolvedFileName)) return
 
-        const redirect = getProjectReferenceRedirect(program, resolvedModule.resolvedFileName)
-        if (redirect && TYPESCRIPT_SOURCE_FILE.test(redirect.source)) return
+        if (DECLARATION_FILE.test(resolvedFileName)) {
+          const redirect = getProjectReferenceRedirect(program, resolvedModule.resolvedFileName)
+          if (redirect && TYPESCRIPT_SOURCE_FILE.test(redirect.source)) return
+        } else if (TYPESCRIPT_SOURCE_FILE.test(resolvedFileName)) {
+          if (isProjectReferenceSource(program, resolvedFileName)) return
+        } else {
+          return
+        }
 
         context.report({ node: node.source, messageId: 'missingReference' })
       },
@@ -79,6 +85,14 @@ function isInNodeModules(fileName: string) {
 function getProjectReferenceRedirect(program: ts.Program, fileName: string) {
   const navigation = getProgramNavigation(program)
   return navigation.getRedirectFromOutput(navigation.getCanonicalFileName(fileName))
+}
+
+function isProjectReferenceSource(program: ts.Program, fileName: string) {
+  return (
+    program
+      .getResolvedProjectReferences()
+      ?.some((reference) => reference?.commandLine.fileNames.some((source) => realpath(source) === fileName)) ?? false
+  )
 }
 
 function getProgramNavigation(program: ts.Program): ProgramWithNavigation {
