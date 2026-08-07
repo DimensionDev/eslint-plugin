@@ -1,5 +1,11 @@
 # @masknet/eslint-plugin
 
+## 0.5.3
+
+### Patch Changes
+
+- 97ed316: fix: require-project-reference rule again
+
 ## 0.5.2
 
 ### Patch Changes
