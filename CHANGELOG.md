@@ -1,5 +1,12 @@
 # @masknet/eslint-plugin
 
+## 0.5.0
+
+### Minor Changes
+
+- 86f4697: add a new rule "require-project-reference"
+- 43512ca: Upgrade to eslint 10
+
 ## 0.4.1
 
 ### Patch Changes
