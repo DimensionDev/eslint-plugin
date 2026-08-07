@@ -2,6 +2,10 @@ import { realpathSync } from 'node:fs'
 import type ts from 'typescript'
 import { createRule, ensureParserWithTypeInformation } from '../rule.ts'
 
+export interface Options {
+  ignore: string[]
+}
+
 const TYPESCRIPT_SOURCE_FILE = /\.(?:[cm]?ts|tsx)$/i
 const DECLARATION_FILE = /\.d\.(?:[cm]?ts|ts)$/i
 
@@ -13,20 +17,30 @@ export default createRule({
       description: 'Require project references for local package imports',
       requiresTypeChecking: true,
     },
-    schema: [],
+    schema: [
+      {
+        type: 'object',
+        properties: {
+          ignore: { type: 'array', items: { type: 'string' }, uniqueItems: true },
+        },
+        additionalProperties: false,
+      },
+    ],
     messages: {
       missingReference:
         'This local package resolves to a declaration file. Add its project to this tsconfig.json references and enable declarationMap.',
     },
+    defaultOptions: [{ ignore: [] }] as [Options],
   },
 
-  create(context) {
+  create(context, [{ ignore }]) {
     ensureParserWithTypeInformation(context.sourceCode.parserServices)
     const { esTreeNodeToTSNodeMap, program } = context.sourceCode.parserServices
 
     return {
       ImportDeclaration(node) {
         if (!isPackageImport(node.source.value)) return
+        if (ignore.some((prefix) => node.source.value.startsWith(prefix))) return
 
         const moduleSpecifier = esTreeNodeToTSNodeMap.get(node.source)
         const resolvedModule = getProgramNavigation(program).getResolvedModuleFromModuleSpecifier(

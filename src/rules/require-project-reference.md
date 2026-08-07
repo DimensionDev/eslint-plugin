@@ -12,6 +12,16 @@ This rule detects local package imports that TypeScript resolves to a declaratio
 
 All referenced projects must enable both `declaration` and `declarationMap` so TypeScript can redirect navigation from emitted declarations to source files.
 
+## Options
+
+Use `ignore` to skip imports whose module specifier starts with one of the configured strings.
+
+```json
+{
+  "@masknet/require-project-reference": ["error", { "ignore": ["@generated/"] }]
+}
+```
+
 ### :x: Incorrect
 
 ```ts
@@ -42,7 +52,7 @@ import { data } from 'lib'
 - [ ] :white_check_mark: Recommended
 - [ ] :wrench: Fixable
 - [ ] :bulb: Suggestions
-- [ ] :gear: Configurable
+- [x] :gear: Configurable
 - [x] :thought_balloon: Requires type information
 
 <!-- end attributes -->

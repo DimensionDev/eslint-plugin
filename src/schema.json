@@ -359,7 +359,27 @@
         },
         "@masknet/require-project-reference": {
           "description": "Require project references for local package imports\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/require-project-reference",
-          "$ref": "#/definitions/rule"
+          "oneOf": [
+            { "$ref": "#/definitions/rule" },
+            {
+              "type": "array",
+              "items": [
+                { "$ref": "#/definitions/rule" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "ignore": {
+                      "type": "array",
+                      "items": { "type": "string" },
+                      "uniqueItems": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              ],
+              "minItems": 2
+            }
+          ]
         }
       }
     }

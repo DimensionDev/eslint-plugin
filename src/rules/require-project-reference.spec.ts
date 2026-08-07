@@ -18,6 +18,11 @@ tester.test(module, {
       filename: `${fixture}missing/app/src/index.ts`,
       code: `import { data } from '../local.ts'`,
     },
+    {
+      filename: `${fixture}missing/app/src/index.ts`,
+      code: `import { data } from 'lib'`,
+      options: [{ ignore: ['lib'] }],
+    },
   ],
   invalid: [
     {

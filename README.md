@@ -160,7 +160,7 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
   Enforce fetch
 - [prefer-timer-id][prefer_timer_id] :white_check_mark: :bulb:\
   Enforce best practice with timer function
-- [require-project-reference][require_project_reference] :thought_balloon:\
+- [require-project-reference][require_project_reference] :gear: :thought_balloon:\
   Require project references for local package imports
 
 [array$no_unneeded_flat_map]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/no-unneeded-flat-map
