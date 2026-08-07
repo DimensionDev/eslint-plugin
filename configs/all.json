@@ -40,6 +40,7 @@
     "@masknet/prefer-defer-import": "error",
     "@masknet/prefer-early-return": "warn",
     "@masknet/prefer-fetch": "warn",
-    "@masknet/prefer-timer-id": "error"
+    "@masknet/prefer-timer-id": "error",
+    "@masknet/require-project-reference": "error"
   }
 }

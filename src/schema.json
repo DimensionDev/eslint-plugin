@@ -356,6 +356,10 @@
         "@masknet/prefer-timer-id": {
           "description": "Enforce best practice with timer function\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/prefer-timer-id",
           "$ref": "#/definitions/rule"
+        },
+        "@masknet/require-project-reference": {
+          "description": "Require project references for local package imports\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/require-project-reference",
+          "$ref": "#/definitions/rule"
         }
       }
     }

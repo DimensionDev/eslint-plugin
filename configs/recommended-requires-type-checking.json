@@ -2,6 +2,7 @@
   "$schema": "../schema.json",
   "plugins": ["@masknet"],
   "rules": {
-    "@masknet/no-unsafe-date": "error"
+    "@masknet/no-unsafe-date": "error",
+    "@masknet/require-project-reference": "error"
   }
 }

@@ -1,5 +1,5 @@
 // This file is auto generated.
-// 39 Rules
+// 40 Rules
 // 5  Configs
 import array$no_unneeded_flat_map from './rules/array/no-unneeded-flat-map.ts'
 import array$prefer_from from './rules/array/prefer-from.ts'
@@ -40,6 +40,7 @@ import prefer_defer_import from './rules/prefer-defer-import.ts'
 import prefer_early_return from './rules/prefer-early-return.ts'
 import prefer_fetch from './rules/prefer-fetch.ts'
 import prefer_timer_id from './rules/prefer-timer-id.ts'
+import require_project_reference from './rules/require-project-reference.ts'
 export const rules: unknown = {
   'array-no-unneeded-flat-map': array$no_unneeded_flat_map,
   'array-prefer-from': array$prefer_from,
@@ -80,6 +81,7 @@ export const rules: unknown = {
   'prefer-early-return': prefer_early_return,
   'prefer-fetch': prefer_fetch,
   'prefer-timer-id': prefer_timer_id,
+  'require-project-reference': require_project_reference,
 } as const
 import all from './configs/all.json' with { type: 'json' }
 import base from './configs/base.json' with { type: 'json' }

@@ -63,7 +63,8 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
     "@masknet/prefer-defer-import": "error",
     "@masknet/prefer-early-return": "warn",
     "@masknet/prefer-fetch": "warn",
-    "@masknet/prefer-timer-id": "error"
+    "@masknet/prefer-timer-id": "error",
+    "@masknet/require-project-reference": "error"
   }
 }
 ```
@@ -159,6 +160,8 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
   Enforce fetch
 - [prefer-timer-id][prefer_timer_id] :white_check_mark: :bulb:\
   Enforce best practice with timer function
+- [require-project-reference][require_project_reference] :thought_balloon:\
+  Require project references for local package imports
 
 [array$no_unneeded_flat_map]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/no-unneeded-flat-map
 [array$prefer_from]: https://dimensiondev.github.io/eslint-plugin/src/rules/array/prefer-from
@@ -199,6 +202,7 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
 [prefer_early_return]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-early-return
 [prefer_fetch]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-fetch
 [prefer_timer_id]: https://dimensiondev.github.io/eslint-plugin/src/rules/prefer-timer-id
+[require_project_reference]: https://dimensiondev.github.io/eslint-plugin/src/rules/require-project-reference
 
 <!-- end rule list -->
 
