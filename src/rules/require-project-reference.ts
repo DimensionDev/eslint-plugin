@@ -8,6 +8,7 @@ export interface Options {
 
 const TYPESCRIPT_SOURCE_FILE = /\.(?:[cm]?ts|tsx)$/i
 const DECLARATION_FILE = /\.d\.(?:[cm]?ts|ts)$/i
+const programSources = new WeakMap<ts.Program, ProgramSources>()
 
 export default createRule({
   name: 'require-project-reference',
@@ -79,7 +80,7 @@ function isPackageImport(specifier: string) {
 }
 
 function isCurrentProjectSource(program: ts.Program, fileName: string) {
-  return program.getRootFileNames().some((rootFile) => realpath(rootFile) === fileName)
+  return getProgramSources(program).rootFiles.has(fileName)
 }
 
 function realpath(fileName: string) {
@@ -100,11 +101,23 @@ function getProjectReferenceRedirect(program: ts.Program, fileName: string) {
 }
 
 function isProjectReferenceSource(program: ts.Program, fileName: string) {
-  return (
-    program
-      .getResolvedProjectReferences()
-      ?.some((reference) => reference?.commandLine.fileNames.some((source) => realpath(source) === fileName)) ?? false
-  )
+  return getProgramSources(program).projectReferenceFiles.has(fileName)
+}
+
+function getProgramSources(program: ts.Program) {
+  const cached = programSources.get(program)
+  if (cached) return cached
+
+  const sources = {
+    rootFiles: new Set(program.getRootFileNames().map(realpath)),
+    projectReferenceFiles: new Set(
+      program
+        .getResolvedProjectReferences()
+        ?.flatMap((reference) => reference?.commandLine.fileNames.map(realpath) ?? []) ?? [],
+    ),
+  }
+  programSources.set(program, sources)
+  return sources
 }
 
 function getProgramNavigation(program: ts.Program): ProgramWithNavigation {
@@ -121,4 +134,9 @@ interface ProgramWithNavigation {
 
 interface ProjectReferenceRedirect {
   source: string
+}
+
+interface ProgramSources {
+  rootFiles: Set<string>
+  projectReferenceFiles: Set<string>
 }
