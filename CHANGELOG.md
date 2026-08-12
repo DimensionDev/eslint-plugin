@@ -1,5 +1,11 @@
 # @masknet/eslint-plugin
 
+## 0.5.5
+
+### Patch Changes
+
+- c6b3d9b: Cache TypeScript project source paths in `require-project-reference`.
+
 ## 0.5.4
 
 ### Patch Changes
