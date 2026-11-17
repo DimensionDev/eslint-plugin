@@ -85,7 +85,7 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
 - [array/no-unneeded-flat-map][array$no_unneeded_flat_map] :white_check_mark: :wrench:\
   Disallow `Array#flatMap((x) => x)` when simpler alternatives exist
 - [array/prefer-from][array$prefer_from] :white_check_mark: :wrench:\
-  Prefer `Array.from(...)` over `new Array(...)`
+  Disallow `new Array(...)` and prefer `TypedArray.from(...)` for iterable input
 - [browser/no-persistent-storage][browser$no_persistent_storage] :white_check_mark:\
   Disallow use browser persistent storage
 - [browser/no-set-html][browser$no_set_html] :white_check_mark:\
@@ -110,7 +110,7 @@ Add `@masknet` to the plugins section of your `.eslintrc` configuration file.
   Disallow simple string interpolation
 - [string/no-locale-case][string$no_locale_case] :white_check_mark: :wrench:\
   Disallow use `String#toLocale{Upper,Lower}Case()`
-- [string/no-simple-template-literal][string$no_simple_template_literal] :white_check_mark: :wrench:\
+- [string/no-simple-template-literal][string$no_simple_template_literal] :white_check_mark: :bulb:\
   Disallow simple template-literal
 - [string/no-unneeded-to-string][string$no_unneeded_to_string] :white_check_mark: :wrench: :thought_balloon:\
   Disallow `String#toString()` when simpler alternatives exist

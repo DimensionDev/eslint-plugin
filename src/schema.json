@@ -53,7 +53,7 @@
           "$ref": "#/definitions/rule"
         },
         "@masknet/array/prefer-from": {
-          "description": "Prefer `Array.from(...)` over `new Array(...)`\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/array/prefer-from",
+          "description": "Disallow `new Array(...)` and prefer `TypedArray.from(...)` for iterable input\nhttps://dimensiondev.github.io/eslint-plugin/src/rules/array/prefer-from",
           "$ref": "#/definitions/rule"
         },
         "@masknet/browser/no-persistent-storage": {

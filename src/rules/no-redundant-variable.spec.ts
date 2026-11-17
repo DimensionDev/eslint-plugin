@@ -2,6 +2,10 @@ import { tester } from '../spec.ts'
 import module from './no-redundant-variable.ts'
 
 tester.test(module, {
+  valid: [
+    'function example() { using foo = bar; return foo }',
+    'async function example() { await using foo = bar; return foo }',
+  ],
   invalid: [
     {
       code: "function example() { const foo: string = 'bar'; return foo }",

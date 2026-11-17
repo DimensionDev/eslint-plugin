@@ -47,6 +47,8 @@ function isRedundantVariable(
   if (!node) return false
   return (
     node.type === 'VariableDeclaration' &&
+    node.kind !== 'using' &&
+    node.kind !== 'await using' &&
     node.declarations.length === 1 &&
     node.declarations.some(({ init, id }) => init !== null && isSameIdentifier(exit.argument, id))
   )

@@ -21,7 +21,7 @@ const qux = { [`bar`]: foo }
 
 ```ts
 const foo = 'example'
-const bar = foo
+const bar = String(foo)
 const baz = { [bar]: foo }
 const qux = { bar: foo }
 ```
@@ -31,8 +31,8 @@ const qux = { bar: foo }
 <!-- begin attributes -->
 
 - [x] :white_check_mark: Recommended
-- [x] :wrench: Fixable
-- [ ] :bulb: Suggestions
+- [ ] :wrench: Fixable
+- [x] :bulb: Suggestions
 - [ ] :gear: Configurable
 - [ ] :thought_balloon: Requires type information
 

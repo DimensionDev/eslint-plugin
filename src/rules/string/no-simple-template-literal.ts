@@ -10,13 +10,14 @@ export default createRule({
   name: 'string/no-simple-template-literal',
   meta: {
     type: 'suggestion',
-    fixable: 'code',
+    hasSuggestions: true,
     docs: {
       description: 'Disallow simple template-literal',
       recommended: 'stylistic',
     },
     schema: [],
     messages: {
+      fix: 'Replace this simple template literal',
       invalid: 'Disallow simple template-literal',
     },
   },
@@ -26,7 +27,11 @@ export default createRule({
       TemplateLiteral(node) {
         const fix = getFixer(context.sourceCode, node)
         if (!fix) return
-        context.report({ node, messageId: 'invalid', fix })
+        context.report({
+          node,
+          messageId: 'invalid',
+          suggest: [{ messageId: 'fix', fix }],
+        })
       },
     }
   },
@@ -45,7 +50,7 @@ function getFixer(source: Readonly<SourceCode>, node: TSESTree.TemplateLiteral):
         : fixer.replaceText(node, key)
     }
   } else if (isToString(node)) {
-    return (fixer) => fixer.replaceText(node, source.getText(node.expressions[0]))
+    return (fixer) => fixer.replaceText(node, `String(${source.getText(node.expressions[0])})`)
   }
   return
 }

@@ -2,7 +2,7 @@
 
 # `@masknet/array/prefer-from`
 
-Prefer `Array.from(...)` over `new Array(...)`
+Disallow `new Array(...)` and prefer `TypedArray.from(...)` for iterable input
 
 <!-- end title -->
 
@@ -11,15 +11,16 @@ Prefer `Array.from(...)` over `new Array(...)`
 ### :x: Incorrect
 
 ```ts
-declare const elements: string[][]
-new Array(elements)
+new Array(3)
+new Uint8Array([1, 2, 3])
 ```
+
+`new Array(...)` is reported without an autofix because `new Array(length)` creates a sparse array, which is not equivalent to the dense array produced by common alternatives.
 
 ### :white_check_mark: Correct
 
 ```ts
-declare const elements: string[][]
-Array.from(elements)
+Uint8Array.from([1, 2, 3])
 ```
 
 ## Attributes
