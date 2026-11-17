@@ -1,5 +1,21 @@
 # @masknet/eslint-plugin
 
+## 0.5.6
+
+### Patch Changes
+
+- 2d83480: # Avoid unsafe array constructor autofix
+
+  Report `new Array(...)` without an autofix and only autofix TypedArray construction when the input is known to be iterable.
+
+- 2d83480: # Preserve resource disposal
+
+  Exclude `using` and `await using` declarations from `no-redundant-variable` fixes to preserve resource disposal.
+
+- 2d83480: # Make template literal fixes suggestions
+
+  Change `string/no-simple-template-literal` replacements from automatic fixes to editor suggestions so they are not applied by `eslint --fix`.
+
 ## 0.5.5
 
 ### Patch Changes
